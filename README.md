@@ -1,6 +1,7 @@
 # Weed Sheet
 ### This repo is for hosting all the mods, cheats, images and icons in the [Weed Sheet spreadsheet]().
 
+![Weed Sheet in 2022](Media/Screenshots/weed sheet.jpg)
 # Resources
 ### [Weed Sheet](https://docs.google.com/spreadsheets/d/12eUPni-GbMofoGcAvGEoB3BGuzlzkY7DaH_3v3yMG78/) ~ Massive mod spreadsheet hosted on Google Sheets
 ### [Sly Cooper Modding Server](https://discord.gg/gh5xwfj) ~ Discord community dedicated to mod and reverse engineer the Sly series
