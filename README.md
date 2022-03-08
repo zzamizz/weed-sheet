@@ -1,17 +1,12 @@
 # Weed Sheet
-### This repo is for hosting all the mods, cheats, images and icons in the [Weed Sheet spreadsheet]().
+### This repo is only for hosting all the mods, cheats, images and icons in the [Weed Sheet spreadsheet](https://docs.google.com/spreadsheets/d/12eUPni-GbMofoGcAvGEoB3BGuzlzkY7DaH_3v3yMG78/).
 
-![Weed Sheet in 2022](Media/Screenshots/weed sheet.jpg) test
-# Resources
-### [Weed Sheet](https://docs.google.com/spreadsheets/d/12eUPni-GbMofoGcAvGEoB3BGuzlzkY7DaH_3v3yMG78/) ~ Massive mod spreadsheet hosted on Google Sheets
+![Weed Sheet in 2022](https://raw.githubusercontent.com/zzamizz/weed-sheet/main/Media/Screenshots/weed%20sheet.jpg) test
+# Other resources
 ### [Sly Cooper Modding Server](https://discord.gg/gh5xwfj) ~ Discord community dedicated to mod and reverse engineer the Sly series
 ### [pcsx2-sly](https://github.com/zzamizz/pcsx2-sly) ~ Custom PCSX2 build made to run Sly games optimally (VERY WORK IN PROGRESS)
 
-# information
-All mods are uploaded in **.pnach** format, but they can be converted to raw format for modded PS2
-
-
-
-
+# Information
+- All mods are uploaded in **.pnach** format, but they can be converted to raw format for modded consoles.
 
 *insert tutorial*
