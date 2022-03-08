@@ -1,0 +1,64 @@
+comment=Stronger Guard Rocks by zami
+// Replaces smaller guards' rocks with flashlight guards' bullets
+// Not every map is supported as the bullet entity is not always loaded
+// Some maps have workarounds for this:
+// EP2 has swords, EP3 has chopper bullets and EP7's lighthouse has spotlight bullets
+// Report any issues that are not already mentioned:
+// https://discord.gg/gh5xwfj #sly-modding @sami#2055
+patch=1,EE,E0020002,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,20489C58,extended,00EED5D0
+patch=1,EE,E0020003,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,20488308,extended,00879650
+patch=1,EE,E0020004,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,20488B78,extended,008CEAA0
+patch=1,EE,E0020008,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,20489D9C,extended,0066C210
+patch=1,EE,E0020009,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,20489AA8,extended,00EE3550
+patch=1,EE,E002000A,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,20489310,extended,00D8ED00
+patch=1,EE,E002000C,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,2048937C,extended,0059EED0
+patch=1,EE,E002000E,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,20489088,extended,00897560
+patch=1,EE,E002000F,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,2048844C,extended,008AD4C0
+patch=1,EE,E0020011,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,20488374,extended,00CFB080
+patch=1,EE,E002001B,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,204886D4,extended,00C8DAE0
+patch=1,EE,E002001C,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,20489598,extended,00BC3D40
+patch=1,EE,E002001D,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,20488F44,extended,00EBD580
+patch=1,EE,E002001E,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,2048A678,extended,00E74860
+patch=1,EE,E002001F,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,20488308,extended,00AADFE0
+patch=1,EE,E0020020,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,20488AA0,extended,009010A0
+patch=1,EE,E0020023,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,204898F8,extended,00734560
+patch=1,EE,E0020026,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,2048A240,extended,0097A400
+patch=1,EE,E0020028,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,20488CBC,extended,00634A90
