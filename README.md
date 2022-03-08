@@ -4,7 +4,6 @@
 ![Weed Sheet in 2022](https://raw.githubusercontent.com/zzamizz/weed-sheet/main/Media/Screenshots/weed%20sheet.jpg) test
 # Other resources
 ### [Sly Cooper Modding Server](https://discord.gg/gh5xwfj) ~ Discord community dedicated to mod and reverse engineer the Sly series
-### [pcsx2-sly](https://github.com/zzamizz/pcsx2-sly) ~ Custom PCSX2 build made to run Sly games optimally (VERY WORK IN PROGRESS)
 
 # Information
 - All mods are uploaded in **.pnach** format, but they can be converted to raw format for modded consoles.
