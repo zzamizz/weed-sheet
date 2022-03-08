@@ -1,0 +1,7 @@
+comment=Increased cheese by zami
+// dedicated to cheese man
+patch=1,EE,E004000F,extended,0047989C
+patch=1,EE,20C7D734,extended,40800000
+patch=1,EE,20C7D738,extended,40A00000
+patch=1,EE,20C7D754,extended,000000C8
+patch=1,EE,20C7D758,extended,000001F4
