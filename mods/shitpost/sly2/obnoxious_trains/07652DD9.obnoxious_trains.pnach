@@ -1,0 +1,12 @@
+comment=obnoxious trains
+patch=1,EE,E00A001B,extended,003E1110
+patch=1,EE,21B0C240,extended,461C3C00
+patch=1,EE,21B0C160,extended,461C3C00
+patch=1,EE,21B0C1D0,extended,461C3C00
+patch=1,EE,21B0C550,extended,461C3C00
+patch=1,EE,21B0C630,extended,461C3C00
+patch=1,EE,21B0C9B0,extended,461C3C00
+patch=1,EE,21B0CA20,extended,461C3C00
+patch=1,EE,21B0BF30,extended,461C3C00
+patch=1,EE,21B0C320,extended,461C3C00
+patch=1,EE,21B0C710,extended,461C3C00
