@@ -1,0 +1,4 @@
+comment=Dynamite Eagles by zami
+patch=1,EE,E0020020,extended,003E1110
+patch=1,EE,E0010003,extended,003D3980
+patch=1,EE,204883E0,extended,0078DC20
