@@ -1,0 +1,5 @@
+comment=Bear Guards (Episode 6) by zami
+patch=1,EE,E003001B,extended,003E1110
+patch=1,EE,2048B1E0,extended,00000002
+patch=1,EE,20489238,extended,00CFAB70
+patch=1,EE,2048B1DC,extended,007C5B70
