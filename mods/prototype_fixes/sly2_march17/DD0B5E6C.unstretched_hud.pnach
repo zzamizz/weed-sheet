@@ -1,3 +1,0 @@
-comment=Unstretched HUD
-patch=1,EE,202AFD90,extended,3F400000 //hud
-patch=1,EE,202AFDA0,extended,42A00000 //hud
