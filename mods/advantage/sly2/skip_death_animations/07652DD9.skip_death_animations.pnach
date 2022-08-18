@@ -1,0 +1,16 @@
+comment=Skip Death Animations by Cooper & zami
+
+patch=1,EE,E0030000,extended,003D4AB0 // if Sly HP = 0
+patch=1,EE,E0020000,extended,103D4A6C // if act char != 0
+patch=1,EE,003D4AB0,extended,00000028 // fill sly hp
+patch=1,EE,003E1080,extended,00000001 // reload
+
+patch=1,EE,E0030000,extended,003D4AC8 // if bent HP = 0
+patch=1,EE,E0020000,extended,103D4A6C // if act char != 0
+patch=1,EE,003D4AC8,extended,00000028 // fill bent hp
+patch=1,EE,003E1080,extended,00000001 // reload
+
+patch=1,EE,E0030000,extended,003D4AE0 // if Mur HP = 0
+patch=1,EE,E0020000,extended,103D4A6C // if act char != 0
+patch=1,EE,003D4AE0,extended,0000003C // fill mur hp
+patch=1,EE,003E1080,extended,00000001 // reload
