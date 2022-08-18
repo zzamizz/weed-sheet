@@ -1,0 +1,3 @@
+comment=Ultimate Cheat Patch by zami
+patch=1,EE,20262C64,extended,00000001 //Sly Godmode
+patch=1,EE,2027DC00,extended,00000063 //Infinite Lives
