@@ -1,0 +1,22 @@
+comment=Calm Menu Music by zami
+// Patches out dvd_menu_rough with dvd_menu
+// Report any issues that are not already mentioned:
+// https://discord.gg/2GSXcEzPJA #sly-modding @sami#2055
+
+patch=1,EE,E0100001,extended,003E1110 //check MapID=Main Menu
+patch=1,EE,20488E98,extended,736C3188 //replace dvd_menu_rough AoB with dvd_menu
+patch=1,EE,20488E9C,extended,31490B61  
+patch=1,EE,20488EA0,extended,685F34B9 
+patch=1,EE,20488EA4,extended,64697374 
+patch=1,EE,20488EA8,extended,18010965 
+patch=1,EE,20488EAC,extended,5F317400 
+patch=1,EE,20488EB0,extended,6C756F6D 
+patch=1,EE,20488EB4,extended,695F6E69 
+patch=1,EE,20488EB8,extended,6F72746E 
+patch=1,EE,20488EBC,extended,7478655F 
+patch=1,EE,20488EC0,extended,6F697265 
+patch=1,EE,20488EC4,extended,0F020972 
+patch=1,EE,20488EC8,extended,5F347400 
+patch=1,EE,20488ECC,extended,73696568 
+patch=1,EE,20488ED0,extended,685F3474 
+patch=1,EE,20488ED4,extended,316B6361 
