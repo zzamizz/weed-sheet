@@ -1,0 +1,13 @@
+comment=Ultimate Cheat Patch by zami
+
+//All Gadgets
+patch=1,EE,20468DCC,extended,FFFFFFFF
+patch=1,EE,20468DD0,extended,FFFFFFFF
+//Infinite Health
+//patch=1,EE,6036F84C,extended,000003E8
+//patch=1,EE,00020000,extended,2000016C
+//Infinite Gadget Power
+patch=1,EE,6036F84C,extended,000003E8
+patch=1,EE,00020000,extended,20000174
+//All Episodes, jobs, galleries & bonus videos
+patch=1,EE,203448E0,extended,00000001

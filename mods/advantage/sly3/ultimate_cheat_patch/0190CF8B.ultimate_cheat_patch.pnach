@@ -1,0 +1,4 @@
+comment=Ultimate Cheat Patch
+//Infinite Gadget Power
+patch=1,EE,60361D5C,extended,000003E8
+patch=1,EE,00020000,extended,00000174
