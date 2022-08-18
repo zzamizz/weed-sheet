@@ -1,0 +1,4 @@
+gametitle=Sly 3 (September 2, 2005) [Unpatched: 3670B6F9]
+
+comment=16:9
+patch=1,EE,20232C34,extended,00000000
