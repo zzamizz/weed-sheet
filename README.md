@@ -1,5 +1,7 @@
 # Weed Sheet
-### This repo is only for hosting all the mods, cheats, images and icons in the [Weed Sheet spreadsheet](https://docs.google.com/spreadsheets/d/12eUPni-GbMofoGcAvGEoB3BGuzlzkY7DaH_3v3yMG78/)
+This repo is only for hosting all the mods, cheats, images and icons in the [Weed Sheet spreadsheet](https://docs.google.com/spreadsheets/d/12eUPni-GbMofoGcAvGEoB3BGuzlzkY7DaH_3v3yMG78/)
+
+The spreadsheet contains proper descriptions, credits and useful information for the mods.
 
 ![Weed Sheet in 2022](https://raw.githubusercontent.com/zzamizz/weed-sheet/main/Media/Screenshots/weed%20sheet.jpg)
 # Information
