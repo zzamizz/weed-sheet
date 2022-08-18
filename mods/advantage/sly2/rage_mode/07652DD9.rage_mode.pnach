@@ -1,0 +1,17 @@
+comment=Rage Mode by Cooper, zami & NiV
+// Note: Only works for Sly
+// When Sly goes below 15 HP, he goes
+// into a rage state where he can knock
+// down enemies in one hit. If he goes 
+// back above 15 HP, he goes back to normal.
+patch=1,EE,E00A0007,extended,003D4A6C 
+patch=1,EE,E004000F,extended,203D4AB0 
+patch=1,EE,602E1E40,extended,0000000F 
+patch=1,EE,00020000,extended,20045AC8 
+patch=1,EE,602E1E40,extended,3F800000 
+patch=1,EE,00020000,extended,200000D0 
+patch=1,EE,E004000F,extended,303D4AB0 
+patch=1,EE,602E1E40,extended,00000002 
+patch=1,EE,00020000,extended,20045AC8 
+patch=1,EE,602E1E40,extended,00000000 
+patch=1,EE,00020000,extended,200000D0 

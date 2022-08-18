@@ -1,0 +1,20 @@
+comment=Lucky Charm Mode by Cooper & NiV
+// Sets all characters to 1 hit kill.
+// You can pickup two health packs for
+// two free hits like in Sly 1.
+// Note: Going into the safehouse brings
+// your health back to 1.
+patch=1,EE,201A1C24,extended,2404FFF6 
+patch=1,EE,201C6A1C,extended,2405000A
+patch=1,EE,E0010028,extended,003D4AB0
+patch=1,EE,003D4AB0,extended,00000001
+patch=1,EE,E0010015,extended,303D4AB0
+patch=1,EE,003D4AB0,extended,00000015
+patch=1,EE,E0010028,extended,003D4AC8
+patch=1,EE,003D4AC8,extended,00000001
+patch=1,EE,E0010015,extended,303D4AC8
+patch=1,EE,003D4AC8,extended,00000015
+patch=1,EE,E001003C,extended,003D4AE0
+patch=1,EE,003D4AE0,extended,00000001
+patch=1,EE,E0010015,extended,303D4AE0
+patch=1,EE,003D4AE0,extended,00000015

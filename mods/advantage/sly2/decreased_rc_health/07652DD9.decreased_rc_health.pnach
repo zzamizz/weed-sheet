@@ -1,0 +1,5 @@
+comment= EP 4 RC Chopper HP Decrease by Cooper
+// Decreases the HP of the RC Chopper in 
+// Episode 4 to where you can die a lot faster.
+patch=1,EE,E001000E,extended,003E1110
+patch=1,EE,2052A560,extended,41200000
