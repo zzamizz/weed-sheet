@@ -1,0 +1,14 @@
+comment=Unstretched HUD by zami
+
+// in-game hud stretch
+patch=1,EE,20317FC0,extended,3F400000
+patch=1,EE,20317FD0,extended,42A00000
+// stretch blackbars
+patch=1,EE,60370AC8,extended,F50240B3 
+patch=1,EE,00020000,extended,20000264
+patch=1,EE,60370AC8,extended,F502C748
+patch=1,EE,00020000,extended,20000268
+patch=1,EE,60370AC8,extended,ED00C4F1
+patch=1,EE,00020000,extended,2000026C
+patch=1,EE,60370AC8,extended,ED002788
+patch=1,EE,00020000,extended,20000270 
