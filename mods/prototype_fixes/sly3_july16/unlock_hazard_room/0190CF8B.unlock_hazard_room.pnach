@@ -1,0 +1,20 @@
+comment=Unlock Hazard Room by NiV
+// Enter Hazard Room with EP4 Cheat Code (up down down down r1 left)
+patch=1,EE,E0110006,extended,00339350
+patch=1,EE,2046BB24,extended,00000001
+patch=1,EE,2046BB2C,extended,08BC7BE4
+patch=1,EE,2046BB30,extended,A47FF517
+patch=1,EE,2046BB34,extended,E8062AD2
+patch=1,EE,2046BB38,extended,D4298274
+patch=1,EE,2046BB3C,extended,867D0F7E
+patch=1,EE,2046BB40,extended,A1E441C6
+patch=1,EE,2046BB44,extended,B3190085
+patch=1,EE,2046BB48,extended,9CA5BBFC
+patch=1,EE,2046BB4C,extended,9684E78A
+patch=1,EE,2046BB50,extended,379DC2C7
+patch=1,EE,2046BB54,extended,8ED1B0A7
+patch=1,EE,2046BB58,extended,EDDC0D2F
+patch=1,EE,2046BB5C,extended,0E5443F1
+patch=1,EE,2046BB60,extended,08BAE2C4
+patch=1,EE,2046BB64,extended,E8062ACA
+patch=1,EE,2046BB68,extended,A43DB6F5
