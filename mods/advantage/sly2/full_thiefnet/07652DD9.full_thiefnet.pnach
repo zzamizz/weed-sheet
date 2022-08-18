@@ -1,0 +1,53 @@
+comment=Full ThiefNet by zami
+// Unlock every gadget in ThiefNet from the start
+// Mega Jump is temporarily free, because you have to buy it again after each load. 
+// ^^ This means you can only use it in hubs for now.
+
+// Normal Gadgets
+patch=1,EE,202BCE10,extended,00000000
+patch=1,EE,202BCE30,extended,00000000
+patch=1,EE,202BCE50,extended,00000000
+patch=1,EE,202BCE70,extended,00000000
+patch=1,EE,202BCE90,extended,00000000
+patch=1,EE,202BCEB0,extended,00000000
+patch=1,EE,202BCED0,extended,00000000
+patch=1,EE,202BCF10,extended,00000000
+patch=1,EE,202BCF30,extended,00000000
+patch=1,EE,202BCF50,extended,00000000
+patch=1,EE,202BCF70,extended,00000000
+patch=1,EE,202BCF90,extended,00000000
+patch=1,EE,202BCFB0,extended,00000000
+patch=1,EE,202BCFD0,extended,00000000
+patch=1,EE,202BD010,extended,00000000
+patch=1,EE,202BD030,extended,00000000
+patch=1,EE,202BD050,extended,00000000
+patch=1,EE,202BD070,extended,00000000
+patch=1,EE,202BD090,extended,00000000
+patch=1,EE,202BD0B0,extended,00000000
+patch=1,EE,202BD0D0,extended,00000000
+
+// Extra Gadgets (Cheat codes + vaults + unused broken gadget)
+patch=1,EE,202BD0F0,extended,00000000
+patch=1,EE,202BD0E8,extended,00000000
+patch=1,EE,202BD110,extended,00000000
+patch=1,EE,202BD108,extended,00000000
+patch=1,EE,202BD130,extended,00000000
+patch=1,EE,202BD128,extended,00000190
+patch=1,EE,202BD230,extended,00000000
+patch=1,EE,202BD228,extended,000002BC
+patch=1,EE,202BD250,extended,00000000
+patch=1,EE,202BD248,extended,000006A4
+patch=1,EE,202BD150,extended,00000000
+patch=1,EE,202BD148,extended,00000320
+patch=1,EE,202BD170,extended,00000000
+patch=1,EE,202BD168,extended,000006A4
+patch=1,EE,202BD190,extended,00000000
+patch=1,EE,202BD188,extended,00000320
+patch=1,EE,202BD1B0,extended,00000000
+patch=1,EE,202BD1A8,extended,000001F4
+patch=1,EE,202BD1D0,extended,00000000
+patch=1,EE,202BD1C8,extended,000004B0
+patch=1,EE,202BD1F0,extended,00000000
+patch=1,EE,202BD1E8,extended,00000BB8
+patch=1,EE,202BD210,extended,00000000
+patch=1,EE,202BD208,extended,000003E8

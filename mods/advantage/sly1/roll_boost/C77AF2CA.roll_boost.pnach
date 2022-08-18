@@ -1,0 +1,4 @@
+comment=Roll Boost by zami
+// Greatly boosts the roll move
+patch=1,EE,20262E28,extended,45BB8000
+patch=1,EE,20262E2C,extended,459C4000
