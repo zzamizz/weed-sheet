@@ -1,0 +1,74 @@
+comment=OHKO by Cooper, NiV & zami
+// Customizable One-hit KO challenge
+// Remove anything under double slashes to customize the challenge
+// Report any issues that are not already mentioned:
+// https://discord.gg/gh5xwfj #sly-modding
+
+//disable healthbar
+patch=1,EE,E10E0003,extended,003D3980 //check when not loading
+patch=1,EE,603D9Eb8,extended,00000001
+patch=1,EE,00020000,extended,20000064
+patch=1,EE,603D9Eb8,extended,00000001
+patch=1,EE,00020000,extended,20000060
+patch=1,EE,603D9Eb8,extended,00000001
+patch=1,EE,00020000,extended,20000070
+patch=1,EE,603D9Eb8,extended,3F800000
+patch=1,EE,00020000,extended,20000068
+patch=1,EE,603D9Eb8,extended,00000001
+patch=1,EE,00020000,extended,20000038
+patch=1,EE,603D9Eb8,extended,00000001
+patch=1,EE,00020000,extended,20000040
+patch=1,EE,603D9Eb8,extended,3F800000
+patch=1,EE,00020000,extended,2000005C
+//gang hp = 1
+patch=1,EE,E0030002,extended,003D3980
+patch=1,EE,203D4AB0,extended,00000001
+patch=1,EE,203D4AC8,extended,00000001
+patch=1,EE,203D4AE0,extended,00000001
+//hp fix
+patch=1,EE,E0010001,extended,303D4AB0
+patch=1,EE,203D4AB0,extended,00000001
+patch=1,EE,E0010001,extended,303D4AC8
+patch=1,EE,203D4AC8,extended,00000001
+patch=1,EE,E0010001,extended,303D4AE0
+patch=1,EE,203D4AE0,extended,00000001
+//repair truck hp = 0
+patch=1,EE,E0010002,extended,003E1110
+patch=1,EE,205020A8,extended,00000000
+//hack hp = 1
+patch=1,EE,E0020029,extended,103E1110
+patch=1,EE,603E0828,extended,00000001
+patch=1,EE,00020000,extended,00000184
+//rc hp = 0
+patch=1,EE,E0010008,extended,003E1110
+patch=1,EE,205A68F0,extended,00000000
+patch=1,EE,E001000E,extended,003E1110
+patch=1,EE,2052A560,extended,00000000
+patch=1,EE,E001001D,extended,003E1110
+patch=1,EE,205523D0,extended,00000000
+patch=1,EE,E001001E,extended,003E1110
+patch=1,EE,20500618,extended,00000000
+patch=1,EE,E0010026,extended,003E1110
+patch=1,EE,2050EE50,extended,00000000
+//wall bombing nerf (despawn unfair bullets)
+patch=1,EE,E002000E,extended,003E1110
+patch=1,EE,20489600,extended,00000000
+patch=1,EE,20489608,extended,00000000
+//murray turret hp = 1
+patch=1,EE,E0010008,extended,003E1110
+patch=1,EE,205A5BA0,extended,00000001
+//ep3 chopper hp = 0
+patch=1,EE,E001000C,extended,003E1110
+patch=1,EE,20525600,extended,00000000
+//tank hp = 0
+patch=1,EE,E0010011,extended,003E1110
+patch=1,EE,205616C0,extended,00000000
+//rc car = 0
+patch=1,EE,E0010021,extended,003E1110
+patch=1,EE,20DF0AE0,extended,00000000
+//Episode 5 Blimp Turret
+patch=1,EE,E0020000,extended,00563F14
+patch=1,EE,20563F10,extended,00000002
+patch=1,EE,20563F14,extended,00000001
+patch=1,EE,E0010003,extended,30563F10
+patch=1,EE,20563F10,extended,00000003

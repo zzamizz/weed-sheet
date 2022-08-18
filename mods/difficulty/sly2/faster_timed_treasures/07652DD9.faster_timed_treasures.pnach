@@ -1,0 +1,32 @@
+comment= Timed Treasures Decrease by Cooper
+// Increases the timers for all timed treasures 
+// in the game to where they are barely enough 
+// time to get to the safe house.
+patch=1,EE,E0010008,extended,003E1110 
+patch=1,EE,20C7B1FC,extended,41700000 
+patch=1,EE,E001000C,extended,003E1110 
+patch=1,EE,20CE58DC,extended,41C80000 
+patch=1,EE,E001000C,extended,003E1110 
+patch=1,EE,20CE6C8C,extended,41C80000 
+patch=1,EE,E001000E,extended,003E1110 
+patch=1,EE,2132111C,extended,41A00000 
+patch=1,EE,E001000E,extended,003E1110 
+patch=1,EE,213224CC,extended,41F00000 
+patch=1,EE,E0010011,extended,003E1110 
+patch=1,EE,20B5794C,extended,41F00000 
+patch=1,EE,E0010011,extended,003E1110
+patch=1,EE,20B5659C,extended,41C80000 
+patch=1,EE,E001001B,extended,003E1110 
+patch=1,EE,209E699C,extended,41C80000 
+patch=1,EE,E001001B,extended,003E1110 
+patch=1,EE,209E7D3C,extended,41C80000 
+patch=1,EE,E0010020,extended,003E1110 
+patch=1,EE,2129935C,extended,41C80000  
+patch=1,EE,E0010020,extended,003E1110 
+patch=1,EE,2129A70C,extended,41C80000 
+patch=1,EE,E0010026,extended,003E1110 
+patch=1,EE,20CF0A9C,extended,420C0000  
+patch=1,EE,E0010026,extended,003E1110 
+patch=1,EE,20CF31EC,extended,420C0000  
+patch=1,EE,E0010026,extended,003E1110 
+patch=1,EE,20CF1E4C,extended,420C0000 

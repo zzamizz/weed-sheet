@@ -1,0 +1,25 @@
+comment=Ghost Trains by NiV
+// Makes trains in Episode 6 super difficult to see
+// Decreases the opacity address of each carriage to 0.1 (originally 1)
+patch=1,EE,E015001B,extended,003E1110 
+patch=1,EE,20EC474C,extended,3DCCCCCD
+patch=1,EE,20ED50DC,extended,3DCCCCCD
+patch=1,EE,20EFC33C,extended,3DCCCCCD
+patch=1,EE,20EEAB3C,extended,3DCCCCCD
+patch=1,EE,205EF59C,extended,3DCCCCCD
+patch=1,EE,20F4C0FC,extended,3DCCCCCD
+patch=1,EE,20F376CC,extended,3DCCCCCD
+patch=1,EE,20F2291C,extended,3DCCCCCD
+patch=1,EE,20F0DB6C,extended,3DCCCCCD
+patch=1,EE,206324CC,extended,3DCCCCCD
+patch=1,EE,2063651C,extended,3DCCCCCD
+patch=1,EE,2063E07C,extended,3DCCCCCD
+patch=1,EE,20FA272C,extended,3DCCCCCD
+patch=1,EE,20F8B42C,extended,3DCCCCCD
+patch=1,EE,20F74F9C,extended,3DCCCCCD
+patch=1,EE,20F5DC9C,extended,3DCCCCCD
+patch=1,EE,2064099C,extended,3DCCCCCD
+patch=1,EE,206484FC,extended,3DCCCCCD
+patch=1,EE,2062878C,extended,3DCCCCCD
+patch=1,EE,2063C0CC,extended,3DCCCCCD
+patch=1,EE,2064654C,extended,3DCCCCCD

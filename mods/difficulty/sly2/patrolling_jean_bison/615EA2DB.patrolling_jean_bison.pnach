@@ -1,0 +1,10 @@
+comment=Patrolling Jean Bison by zami & NiV
+// Replaces the bear in Episode 7 with Jean Bison
+// Bison's health is 900000, so I'll nerf it some time.
+// This mod swaps bison with bear too, so it makes Episode 7's operation funny.
+// Watch the video about that: https://youtu.be/llTXVWWHoyE
+// Report any issues that are not already mentioned:
+// https://discord.gg/gh5xwfj #sly-modding @sami#2055
+patch=1,EE,E0020020,extended,003EAB10
+patch=1,EE,20493ED4,extended,00007DFA
+patch=1,EE,20493B74,extended,000082A2
