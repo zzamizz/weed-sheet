@@ -1,0 +1,13 @@
+gametitle=Sly Cooper and the Thevius Raccoonus
+comment=FreeCam Mod by TheOnlyZac. Special thanks to VelocityRa and NiV-L-A for all their help!
+
+// Prevent game writing to cam position
+patch=1,EE,20145768,extended,00000000
+
+// Patch out cam horizontal rotation
+patch=1,EE,201455e4,extended,00000000
+patch=1,EE,201455e8,extended,03E00008
+patch=1,EE,201e44f4,extended,00000000
+
+// Preevnt game writing to cam vertical rotation
+patch=1,EE,201e4390,extended,00000000

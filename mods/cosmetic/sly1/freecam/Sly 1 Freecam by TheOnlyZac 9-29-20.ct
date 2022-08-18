@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="31">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1438</ID>
+      <Description>"SLY DATA"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="215B1C20"/>
+      <Color>FF8000</Color>
+      <GroupHeader>1</GroupHeader>
+      <Address>20262E10</Address>
+      <Offsets>
+        <Offset>20000000</Offset>
+      </Offsets>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1331</ID>
+          <Description>"SLY BASE POINTER"</Description>
+          <LastState Value="015B1C20" RealAddress="20262E10"/>
+          <ShowAsHex>1</ShowAsHex>
+          <Color>FF8000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>20262E10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1333</ID>
+          <Description>"Sly Position"</Description>
+          <Options moRecursiveSetValue="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>0000FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1330</ID>
+              <Description>"X Position"</Description>
+              <LastState Value="-2477.805176" RealAddress="215B1D20"/>
+              <Color>0000FF</Color>
+              <VariableType>Float</VariableType>
+              <Address>20262e10</Address>
+              <Offsets>
+                <Offset>20000100</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1334</ID>
+              <Description>"Y Position"</Description>
+              <LastState Value="3625.838135" RealAddress="215B1D24"/>
+              <Color>0000FF</Color>
+              <VariableType>Float</VariableType>
+              <Address>20262e10</Address>
+              <Offsets>
+                <Offset>20000104</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1335</ID>
+              <Description>"Z Position"</Description>
+              <LastState Value="-2585.022949" RealAddress="215B1D28"/>
+              <Color>0000FF</Color>
+              <VariableType>Float</VariableType>
+              <Address>20262e10</Address>
+              <Offsets>
+                <Offset>20000108</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1340</ID>
+          <Description>"Sly Velocity"</Description>
+          <Options moRecursiveSetValue="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>0000FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1341</ID>
+              <Description>"X Velocity"</Description>
+              <LastState Value="0.01457659341" RealAddress="215B1D70"/>
+              <Color>0000FF</Color>
+              <VariableType>Float</VariableType>
+              <Address>20262e10</Address>
+              <Offsets>
+                <Offset>20000150</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1342</ID>
+              <Description>"Y Velocity"</Description>
+              <LastState Value="-0.04433938488" RealAddress="215B1D74"/>
+              <Color>0000FF</Color>
+              <VariableType>Float</VariableType>
+              <Address>20262e10</Address>
+              <Offsets>
+                <Offset>20000154</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1343</ID>
+              <Description>"Z Velocity"</Description>
+              <DropDownList DisplayValueAsItem="1">-1310.130127:Terminal
+</DropDownList>
+              <LastState Value="-0.00001525878906" RealAddress="215B1D78"/>
+              <Color>0000FF</Color>
+              <VariableType>Float</VariableType>
+              <Address>20262e10</Address>
+              <Offsets>
+                <Offset>20000158</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1336</ID>
+          <Description>"Jump Height"</Description>
+          <DropDownList DisplayValueAsItem="1">-217.66:Normal
+2000:Megajump
+</DropDownList>
+          <LastState Value="-2659.885498" RealAddress="215B22C8"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20262e10</Address>
+          <Offsets>
+            <Offset>200006a8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1339</ID>
+          <Description>"Infinite Jumps"</Description>
+          <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>FF8000</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337</ID>
+              <Description>"Jump Addr 1 (freeze @ 2)"</Description>
+              <LastState Value="FFFFFFFF" RealAddress="215B3E48"/>
+              <ShowAsHex>1</ShowAsHex>
+              <Color>FF8000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>20262e10</Address>
+              <Offsets>
+                <Offset>20002228</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1338</ID>
+              <Description>"Jump Addr 2 (freeze @ 1)"</Description>
+              <LastState Value="00000000" RealAddress="215B40B8"/>
+              <ShowAsHex>1</ShowAsHex>
+              <Color>FF8000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>20262e10</Address>
+              <Offsets>
+                <Offset>20002498</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1437</ID>
+      <Description>"CAMERA DATA"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="20A7A320"/>
+      <Color>FF8000</Color>
+      <GroupHeader>1</GroupHeader>
+      <Address>20261990</Address>
+      <Offsets>
+        <Offset>20000000</Offset>
+      </Offsets>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1349</ID>
+          <Description>"CAMERA BASE POINTER"</Description>
+          <LastState Value="00A7A320" RealAddress="20261990"/>
+          <ShowAsHex>1</ShowAsHex>
+          <Color>FF8000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>20261990</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1366</ID>
+          <Description>"Camera X"</Description>
+          <DropDownList DisplayValueAsItem="1">1:Default
+</DropDownList>
+          <LastState Value="-1087.133789" RealAddress="20A7A360"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>20000040</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1368</ID>
+          <Description>"Camera Y"</Description>
+          <DropDownList DisplayValueAsItem="1">1:Default
+</DropDownList>
+          <LastState Value="4528.543945" RealAddress="20A7A364"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>20000044</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1367</ID>
+          <Description>"Camera Z"</Description>
+          <DropDownList DisplayValueAsItem="1">1:Default
+</DropDownList>
+          <LastState Value="-2243.112793" RealAddress="20A7A368"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>20000048</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1356</ID>
+          <Description>"Fade Distance"</Description>
+          <DropDownList DisplayValueAsItem="1">1:Default
+</DropDownList>
+          <LastState Value="1" RealAddress="20A7A3D0"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000b0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1370</ID>
+          <Description>"L/R Tilt"</Description>
+          <DropDownList DisplayValueAsItem="1">0:Default
+</DropDownList>
+          <LastState Value="0" RealAddress="20A7A400"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000e0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1371</ID>
+          <Description>"U/D Tilt"</Description>
+          <DropDownList DisplayValueAsItem="1">0:Default
+</DropDownList>
+          <LastState Value="0" RealAddress="20A7A404"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000e4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1369</ID>
+          <Description>"FOV"</Description>
+          <DropDownList DisplayValueAsItem="1">1:Default
+</DropDownList>
+          <LastState Value="1" RealAddress="20A7A40C"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000ec</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1351</ID>
+          <Description>"Offset H"</Description>
+          <DropDownList DisplayValueAsItem="1">0:Default
+</DropDownList>
+          <LastState Value="0" RealAddress="20A7A410"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000f0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1352</ID>
+          <Description>"Offset V"</Description>
+          <DropDownList DisplayValueAsItem="1">0:Default
+</DropDownList>
+          <LastState Value="0" RealAddress="20A7A414"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000f4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1353</ID>
+          <Description>"Render Distance"</Description>
+          <DropDownList DisplayValueAsItem="1">200.3338776:Default
+98.08009338:Binocucom
+</DropDownList>
+          <LastState Value="200.3338776" RealAddress="20A7A418"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000f8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1354</ID>
+          <Description>"Zoom"</Description>
+          <DropDownList DisplayValueAsItem="1">0:Default
+</DropDownList>
+          <LastState Value="0" RealAddress="20A7A41C"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000fc</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1373</ID>
+          <Description>"Reset Camera at 1"</Description>
+          <DropDownList DisplayValueAsItem="1">1:Reset
+</DropDownList>
+          <LastState Value="0" RealAddress="20A7A540"/>
+          <Color>FF8000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>20000220</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1355</ID>
+          <Description>"Camera Focus"</Description>
+          <DropDownList DisplayValueAsItem="1">0138C250:Sly (prowling)
+01375A70:Guard (prowling)
+015B1C20:Sly (sdc)
+01A14770:Gaurd (sdc)
+018487F0:Vehicle (sdc)
+</DropDownList>
+          <LastState Value="015B1C20" RealAddress="20A7A6FC"/>
+          <ShowAsHex>1</ShowAsHex>
+          <Color>FF8000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200003dc</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1545</ID>
+          <Description>"Rotation (-3.14, 3.14)"</Description>
+          <DropDownList DisplayValueAsItem="1">0138C250:Sly (prowling)
+01375A70:Guard (prowling)
+015B1C20:Sly (sdc)
+01A14770:Gaurd (sdc)
+018487F0:Vehicle (sdc)
+</DropDownList>
+          <LastState Value="2.002505064" RealAddress="20A7A84C"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>2000052c</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1578</ID>
+          <Description>"Vertical Angle"</Description>
+          <DropDownList>0:Normal
+300:Top-down
+</DropDownList>
+          <LastState Value="-0.01351776347" RealAddress="20A7A88C"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>2000056c</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Comments>Info about this table:
+</Comments>
+  <LuaScript>-- FREECAM MOD by TheOnlyZac --
+-- Alpha test version 9/29/2020
+
+local function timer_tick(timer)
+    -- set sly uncontrollable
+    writeInteger(0x20262c68, 5)
+
+    -- get camera data addresses
+    cam_ptr = readPointer(0x20261990)
+    cam_ptr = cam_ptr + 0x20000000
+
+    speed_mult = 1
+    if isKeyPressed(16) then speed_mult = 3
+    elseif isKeyPressed(17) then speed_mult = 0.25 end
+
+    ptr_cam_x = cam_ptr + 0x40
+    cam_x = readFloat(ptr_cam_x)
+
+    ptr_cam_y = cam_ptr + 0x44
+    cam_y = readFloat(ptr_cam_y)
+
+    ptr_cam_z = cam_ptr + 0x48
+    cam_z = readFloat(ptr_cam_z)
+
+    ptr_cam_hr = cam_ptr + 0x52c
+    cam_hr = readFloat(ptr_cam_hr)
+
+    ptr_cam_vr = cam_ptr + 0x56c
+    cam_vr = readFloat(ptr_cam_vr)
+
+    ----X Pos (Fwd/Bkwd)
+    -- If W pressed
+    if (isKeyPressed(87)) then
+        cam_x = cam_x - (math.cos(cam_hr)) * (10 * speed_mult)
+        writeFloat(ptr_cam_x, cam_x)
+        cam_y = cam_y - (math.sin(cam_hr)) * (10 * speed_mult)
+        writeFloat(ptr_cam_y, cam_y)
+    --If S pressed
+    elseif (isKeyPressed(83)) then
+        cam_x = cam_x + (math.cos(cam_hr)) * (10 * speed_mult)
+        writeFloat(ptr_cam_x, cam_x)
+        cam_y = cam_y + (math.sin(cam_hr)) * (10 * speed_mult)
+        writeFloat(ptr_cam_y, cam_y)
+    end
+
+    ----Y Pos (Left/Right)
+    -- If D pressed
+    if (isKeyPressed(65)) then
+        cam_x = cam_x + (math.sin(cam_hr)) * (10 * speed_mult)
+        writeFloat(ptr_cam_x, cam_x)
+        cam_y = cam_y - (math.cos(cam_hr)) * (10 * speed_mult)
+        writeFloat(ptr_cam_y, cam_y)
+    --If A pressed
+    elseif (isKeyPressed(68)) then
+        cam_x = cam_x - (math.sin(cam_hr)) * (10 * speed_mult)
+        writeFloat(ptr_cam_x, cam_x)
+        cam_y = cam_y + (math.cos(cam_hr)) * (10 * speed_mult)
+        writeFloat(ptr_cam_y, cam_y)
+    end
+
+    ----Z Pos (Height)
+    -- If I pressed, increase Z pos
+    if (isKeyPressed(73)) then
+       writeFloat(ptr_cam_z, cam_z + 10 * speed_mult)
+    -- If K pressed, decrease Z pos
+    elseif (isKeyPressed(75)) then
+        writeFloat(ptr_cam_z, cam_z - 10 * speed_mult)
+    end
+
+    ----H Rotation (Left/Right)
+    -- if J pressed
+    if (isKeyPressed(74)) then
+       cam_hr = cam_hr + 0.0175 * speed_mult
+       if cam_hr &gt; 3.14 then cam_hr = -3.14 end
+       writeFloat(ptr_cam_hr, cam_hr)
+    -- if L pressed
+    elseif (isKeyPressed(76)) then
+       cam_hr = cam_hr - 0.0175 * speed_mult
+       if cam_hr &lt; -3.14 then cam_hr = 3.14 end
+       writeFloat(ptr_cam_hr, cam_hr)
+    end
+
+    ----V Rotation (Up/Down)
+    -- If I pressed
+    --[[ if (isKeyPressed(73)) then
+       cam_vr = cam_vr + 3 * speed_mult
+       if cam_vr &gt; 300 then cam_vr = 0 end
+       writeFloat(ptr_cam_vr, cam_vr)
+    -- if J pressed
+    elseif (isKeyPressed(75)) then
+       cam_vr = cam_vr - 3 * speed_mult
+       if cam_vr &lt; -300 then cam_vr = -300 end
+       writeFloat(ptr_cam_vr, cam_vr)
+    end ]]--
+end
+
+local timer = createTimer()
+timer.Interval = 5
+timer.OnTimer = timer_tick
+
+createHotkey(function ()
+    timer.destroy() -- destroy timer
+    writeInteger(0x20262c68, 7)-- set sly controllable
+    --writeFloat(0x20A158C0, 1) -- reset camera
+end, VK_F9)
+</LuaScript>
+</CheatTable>
