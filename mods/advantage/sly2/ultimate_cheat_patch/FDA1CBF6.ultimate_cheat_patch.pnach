@@ -1,0 +1,10 @@
+comment=Ultimate Cheat Patch by sami
+//All Episodes
+patch=1,EE,205A0318,extended,00000008
+//All Gadgets
+patch=1,EE,203DC2F8,word,FFFFFFFF
+patch=1,EE,203DC2FC,word,FFFFFFFF
+//Infinite Gadget Power
+patch=1,EE,203DC2B4,extended,00000064
+patch=1,EE,203DC2E4,extended,00000064
+patch=1,EE,203DC2CC,extended,00000064
