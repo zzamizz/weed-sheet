@@ -1,0 +1,3 @@
+comment=No Fog by Murugo
+// Removes all fog from levels
+patch=1,EE,001434F0,word,44800000

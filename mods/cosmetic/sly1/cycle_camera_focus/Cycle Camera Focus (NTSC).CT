@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="31">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1546</ID>
+      <Description>"INSTRUCTIONS"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1547</ID>
+          <Description>"In the top menu above, click "Table""</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1548</ID>
+          <Description>"Then click "Show Cheat Table Lua Script""</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1549</ID>
+          <Description>"Follow the instructions there to run the script"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1437</ID>
+      <Description>"CAMERA STRUCT"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="20A156A0"/>
+      <Color>FF8000</Color>
+      <GroupHeader>1</GroupHeader>
+      <Address>20261990</Address>
+      <Offsets>
+        <Offset>20000000</Offset>
+      </Offsets>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1366</ID>
+          <Description>"Camera X"</Description>
+          <DropDownList DisplayValueAsItem="1">1:Default
+</DropDownList>
+          <LastState Value="-16738.58398" RealAddress="20A156E0"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>20000040</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1368</ID>
+          <Description>"Camera Y"</Description>
+          <DropDownList DisplayValueAsItem="1">1:Default
+</DropDownList>
+          <LastState Value="-5588.07959" RealAddress="20A156E4"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>20000044</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1367</ID>
+          <Description>"Camera Z"</Description>
+          <DropDownList DisplayValueAsItem="1">1:Default
+</DropDownList>
+          <LastState Value="-1549.015503" RealAddress="20A156E8"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>20000048</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1356</ID>
+          <Description>"Fade Distance"</Description>
+          <DropDownList DisplayValueAsItem="1">1:Default
+</DropDownList>
+          <LastState Value="1" RealAddress="20A15750"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000b0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1370</ID>
+          <Description>"L/R Tilt"</Description>
+          <DropDownList DisplayValueAsItem="1">0:Default
+</DropDownList>
+          <LastState Value="0" RealAddress="20A15780"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000e0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1371</ID>
+          <Description>"U/D Tilt"</Description>
+          <DropDownList DisplayValueAsItem="1">0:Default
+</DropDownList>
+          <LastState Value="0" RealAddress="20A15784"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000e4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1369</ID>
+          <Description>"FOV"</Description>
+          <DropDownList DisplayValueAsItem="1">1:Default
+</DropDownList>
+          <LastState Value="1" RealAddress="20A1578C"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000ec</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1351</ID>
+          <Description>"Offset H"</Description>
+          <DropDownList DisplayValueAsItem="1">0:Default
+</DropDownList>
+          <LastState Value="0" RealAddress="20A15790"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000f0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1352</ID>
+          <Description>"Offset V"</Description>
+          <DropDownList DisplayValueAsItem="1">0:Default
+</DropDownList>
+          <LastState Value="0" RealAddress="20A15794"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000f4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1353</ID>
+          <Description>"Render Distance"</Description>
+          <DropDownList DisplayValueAsItem="1">200.3338776:Default
+98.08009338:Binocucom
+</DropDownList>
+          <LastState Value="200.3338776" RealAddress="20A15798"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000f8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1354</ID>
+          <Description>"Zoom"</Description>
+          <DropDownList DisplayValueAsItem="1">0:Default
+</DropDownList>
+          <LastState Value="0" RealAddress="20A1579C"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200000fc</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1373</ID>
+          <Description>"Reset Camera at 1"</Description>
+          <DropDownList DisplayValueAsItem="1">1:Reset
+</DropDownList>
+          <LastState Value="0" RealAddress="20A158C0"/>
+          <Color>FF8000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>20000220</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1355</ID>
+          <Description>"Camera Focus Pointer"</Description>
+          <DropDownList DisplayValueAsItem="1">0138C250:Sly (prowling)
+01375A70:Guard (prowling)
+015B1C20:Sly (sdc)
+01A14770:Gaurd (sdc)
+018487F0:Vehicle (sdc)
+</DropDownList>
+          <LastState Value="0166D410" RealAddress="20A15A7C"/>
+          <ShowAsHex>1</ShowAsHex>
+          <Color>0000FF</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>200003dc</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1545</ID>
+          <Description>"Rotation (-3.14 to 3.14)"</Description>
+          <DropDownList DisplayValueAsItem="1">0138C250:Sly (prowling)
+01375A70:Guard (prowling)
+015B1C20:Sly (sdc)
+01A14770:Gaurd (sdc)
+018487F0:Vehicle (sdc)
+</DropDownList>
+          <LastState Value="1.869558215" RealAddress="20A15BCC"/>
+          <Color>FF8000</Color>
+          <VariableType>Float</VariableType>
+          <Address>20261990</Address>
+          <Offsets>
+            <Offset>2000052c</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <LuaScript>-- Cycle Camera Focus (Sly 1)
+-- Author: TheOnlyZac
+-- Date: 11/29/2020
+-- Version: 1.0
+
+-- INSTRUCTIONS
+-- Press "Execute Script" below.
+-- Use RIGHT and LEFT arrow keys to focus the camera on the
+-- next or previous entity.
+-- Press END when you are finished to stop the script.
+
+-- If you hit a null pointer, it will reset back to the
+-- first entity in the entity list.
+
+-- sets the camera focus to the given entity
+local function SetFocus(entity_ptr)
+    -- get camera struct
+    cam_struct = readPointer(0x20261990)
+    cam_struct = cam_struct + 0x20000000
+    cam_focus_ptr = cam_struct + 0x3dc
+
+    -- set the cam focus ptr to the next entity
+    writeInteger(cam_focus_ptr, entity_ptr)
+    writeInteger(cam_struct + 0x220, 1)
+end
+
+-- cycles the camera to either the next or prev entity
+local function CycleCamera(direction)
+    -- get camera struct
+    cam_struct = readPointer(0x20261990)
+    cam_struct = cam_struct + 0x20000000
+
+    -- get the current focused entity from the cam struct
+    curr_focus = readPointer(cam_struct + 0x3dc)
+    curr_focus = curr_focus + 0x20000000
+
+    -- get physics struct
+    physics_struct = readPointer(0x20275710)
+    physics_struct = physics_struct + 0x20000000
+
+    entitylist_head_ptr = physics_struct + 0x6c
+
+    -- get the next or prev entity
+    next_focus = 0x0
+
+    if direction == 1 then
+       next_focus = readInteger(curr_focus + 0x414)
+    elseif direction == -1 then
+       next_focus = readInteger(curr_focus + 0x418)
+    end
+
+    -- if hit a null ptr, restart from beginning of list
+    if next_focus == 0x0 then
+       next_focus = readInteger(entitylist_head_ptr)
+    end
+
+    SetFocus(next_focus)
+end
+
+-- cycles the camera to the next entity
+local function CycleNext()
+      CycleCamera(1)
+end
+
+-- cycles the camera to the previous entity
+local function CyclePrev()
+      CycleCamera(-1)
+end
+
+-- ctops the script and resets the camera to Sly
+local function StopScript()
+      createTimer(nil).OnTimer =
+      function(t)
+         next_hk.destroy()
+         prev_hk.destroy()
+         stop_hk.destroy()
+         t.destroy()
+      end
+
+      sly_ptr = readPointer(0x20262E10)
+      sly_ptr = sly_ptr + 0x20000000
+
+      SetFocus(sly_ptr)
+end
+
+next_hk = createHotkey(CycleNext, VK_RIGHT)
+prev_hk = createHotkey(CyclePrev, VK_LEFT)
+stop_hk = createHotkey(StopScript, VK_END)
+</LuaScript>
+</CheatTable>

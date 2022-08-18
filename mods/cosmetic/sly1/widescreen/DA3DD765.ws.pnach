@@ -1,0 +1,10 @@
+comment=16:9 by ElHecht
+patch=1,EE,001438b0,word,08086204
+patch=1,EE,001438b4,word,00000000
+patch=1,EE,00218810,word,3c013f40
+patch=1,EE,00218818,word,4481f000
+patch=1,EE,0021881c,word,461e6303
+patch=1,EE,00218820,word,e60c01f0
+patch=1,EE,00218824,word,46020842
+patch=1,EE,00218828,word,08050e2d
+patch=1,EE,00185184,word,e61e0364
