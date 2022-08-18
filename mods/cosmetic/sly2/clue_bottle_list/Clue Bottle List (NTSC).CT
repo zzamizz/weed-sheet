@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="31">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1993</ID>
+      <Description>"Bottle 1 X"</Description>
+      <LastState Value="-4960.845215" RealAddress="21C98680"/>
+      <Color>82000A</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>200000B0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1994</ID>
+      <Description>"Bottle 1 Y"</Description>
+      <LastState Value="-891.2553711" RealAddress="21C98684"/>
+      <Color>82000A</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>200000B4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1995</ID>
+      <Description>"Bottle 1 Z"</Description>
+      <LastState Value="418.6680908" RealAddress="21C98688"/>
+      <Color>82000A</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>200000B8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1996</ID>
+      <Description>"Bottle 2 X"</Description>
+      <LastState Value="-1522.320923" RealAddress="21C986D0"/>
+      <Color>2C6600</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>20000100</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1997</ID>
+      <Description>"Bottle 2 Y"</Description>
+      <LastState Value="-7220.203125" RealAddress="21C986D4"/>
+      <Color>2C6600</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>20000104</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1998</ID>
+      <Description>"Bottle 2 Z"</Description>
+      <LastState Value="1742.563965" RealAddress="21C986D8"/>
+      <Color>2C6600</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>20000108</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1999</ID>
+      <Description>"Bottle 3 X"</Description>
+      <LastState Value="1670.501831" RealAddress="21C98720"/>
+      <Color>006664</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>20000150</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2000</ID>
+      <Description>"Bottle 3 Y"</Description>
+      <LastState Value="-3327.553223" RealAddress="21C98724"/>
+      <Color>006664</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>20000154</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2001</ID>
+      <Description>"Bottle 3 Z"</Description>
+      <LastState Value="-556.0914917" RealAddress="21C98728"/>
+      <Color>006664</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>20000158</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2002</ID>
+      <Description>"Bottle 4 X"</Description>
+      <LastState Value="687.7590332" RealAddress="21C98770"/>
+      <Color>003166</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>200001A0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2003</ID>
+      <Description>"Bottle 4 Y"</Description>
+      <LastState Value="-1725.974243" RealAddress="21C98774"/>
+      <Color>003166</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>200001A4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2004</ID>
+      <Description>"Bottle 4 Z"</Description>
+      <LastState Value="1779.901001" RealAddress="21C98778"/>
+      <Color>003166</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>200001A8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2005</ID>
+      <Description>"Bottle 5 X"</Description>
+      <LastState Value="-83.96757507" RealAddress="21C987C0"/>
+      <Color>66005F</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>200001F0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2006</ID>
+      <Description>"Bottle 5 Y"</Description>
+      <LastState Value="-6495.288086" RealAddress="21C987C4"/>
+      <Color>66005F</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>200001F4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2007</ID>
+      <Description>"Bottle 5 Z"</Description>
+      <LastState Value="-307.5302124" RealAddress="21C987C8"/>
+      <Color>66005F</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>200001F8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2008</ID>
+      <Description>"Bottle 6 X"</Description>
+      <LastState Value="-2887.943604" RealAddress="21C98810"/>
+      <Color>66000B</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>20000240</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2009</ID>
+      <Description>"Bottle 6 Y"</Description>
+      <LastState Value="-2571.584229" RealAddress="21C98814"/>
+      <Color>66000B</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>20000244</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2010</ID>
+      <Description>"Bottle 6 Z"</Description>
+      <LastState Value="440.4678955" RealAddress="21C98818"/>
+      <Color>66000B</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>20000248</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2011</ID>
+      <Description>"Bottle 7 X"</Description>
+      <LastState Value="-1857.062012" RealAddress="21C98860"/>
+      <Color>666100</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>20000290</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2012</ID>
+      <Description>"Bottle 7 Y"</Description>
+      <LastState Value="-397.0277405" RealAddress="21C98864"/>
+      <Color>666100</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>20000294</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2013</ID>
+      <Description>"Bottle 7 Z"</Description>
+      <LastState Value="1782.954346" RealAddress="21C98868"/>
+      <Color>666100</Color>
+      <VariableType>Float</VariableType>
+      <Address>203DF4DC</Address>
+      <Offsets>
+        <Offset>20000298</Offset>
+      </Offsets>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
