@@ -6,9 +6,9 @@ comment=Character Switcher by zami
 // Report any issues that are not already mentioned:
 // https://discord.gg/2GSXcEzPJA #sly-modding @sami#2055
 
-patch=1,EE,E13C0003,extended,003D3980
-patch=1,EE,E13B00FE,extended,002DFC02
-patch=1,EE,E13A00FF,extended,002DFC11
+patch=1,EE,E13A0003,extended,003D3980
+patch=1,EE,E13900FE,extended,002DFC02
+patch=1,EE,E13800FF,extended,002DFC11
 patch=1,EE,E03B0000,extended,102DE2F0
 patch=1,EE,202DE240,extended,00000001
 patch=1,EE,602E1E40,extended,140FFF00
