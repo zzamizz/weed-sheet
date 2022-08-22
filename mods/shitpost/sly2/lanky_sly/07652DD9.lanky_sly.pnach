@@ -1,0 +1,31 @@
+comment=Lanky Sly
+//sy lankyness
+patch=1,EE,602DE2F0,extended,3ECCCCCD //x
+patch=1,EE,00020002,extended,00000058
+patch=1,EE,00002400,extended,00000000
+patch=1,EE,602DE2F0,extended,3ECCCCCD //y
+patch=1,EE,00020002,extended,00000058
+patch=1,EE,00002414,extended,00000000
+patch=1,EE,602DE2F0,extended,3ECCCCCD //z
+patch=1,EE,00020002,extended,00000058
+patch=1,EE,00002428,extended,00000000
+//sy scale
+patch=1,EE,602DE2F0,extended,3FB33333 //x
+patch=1,EE,00020002,extended,00000058
+patch=1,EE,00000000,extended,00000000
+patch=1,EE,602DE2F0,extended,3FB33333 //y
+patch=1,EE,00020002,extended,00000058
+patch=1,EE,00000014,extended,00000000
+patch=1,EE,602DE2F0,extended,3FB33333 //z
+patch=1,EE,00020002,extended,00000058
+patch=1,EE,00000028,extended,00000000
+//sy hat scale
+patch=1,EE,602DE2F0,extended,40000000 //x
+patch=1,EE,00020002,extended,00000058
+patch=1,EE,00004900,extended,00000000
+patch=1,EE,602DE2F0,extended,40000000 //y
+patch=1,EE,00020002,extended,00000058
+patch=1,EE,00004914,extended,00000000
+patch=1,EE,602DE2F0,extended,40000000 //z
+patch=1,EE,00020002,extended,00000058
+patch=1,EE,00004928,extended,00000000
