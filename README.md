@@ -3,7 +3,7 @@ This repo is only for hosting all the mods, cheats, images and icons in the [Wee
 
 The spreadsheet contains proper descriptions, credits and useful information for the mods.
 
-![Weed Sheet in 2022](https://raw.githubusercontent.com/zzamizz/weed-sheet/main/Media/Screenshots/weed%20sheet.jpg)
+![Weed Sheet in 2022](https://github.com/zzamizz/weed-sheet/blob/main/Media/Screenshots/weed%20sheet%20updated.png)
 # 💻 Usage
 **It's recommended to choose the mods you want from the spreadsheet instead of the repo, otherwise you might miss any important notes.**
 
