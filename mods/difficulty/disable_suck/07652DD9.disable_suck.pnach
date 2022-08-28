@@ -1,0 +1,5 @@
+comment=Disable suck
+// Freezes the game's "suck" (noob mode) to 0 (removes all difficulty adjustment)
+patch=1,EE,603E0F9C,extended,00000000 //Job suck
+patch=1,EE,00020002,extended,200000A8
+patch=1,EE,20000000,extended,00000000
