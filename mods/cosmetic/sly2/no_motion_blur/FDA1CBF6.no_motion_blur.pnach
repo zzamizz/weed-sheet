@@ -1,0 +1,5 @@
+gametitle=Sly Racoon 2 - Band of Thieves (PAL-M11) [SCES-52529]
+comment=No Motion Blur by Meos
+
+//No Motion Blur
+patch=1,EE,20160FC8,extended,00000000

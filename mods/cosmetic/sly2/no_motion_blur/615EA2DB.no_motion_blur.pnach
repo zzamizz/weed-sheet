@@ -1,0 +1,5 @@
+gametitle=Sly Racoon 2 (NTSC-J) [SCPS-15090]
+comment=No Motion Blur by Meos
+
+//No Motion Blur
+patch=1,EE,20161A50,extended,00000000
