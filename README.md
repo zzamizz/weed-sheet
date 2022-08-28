@@ -20,3 +20,5 @@ Alternatively you can automate this process for bigger cheats using [PCSX2CE](ht
 
 # Other resources
 ### [Sly Cooper Modding Server](https://discord.gg/2GSXcEzPJA) ~ Discord community dedicated to mod and reverse engineer the Sly series
+
+hello sly modding
