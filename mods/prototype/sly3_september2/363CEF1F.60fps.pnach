@@ -1,6 +1,6 @@
 comment=60 FPS
 // 60 fps mod for the September build of Sly 3
-// Set PAL frame limit to 59.98 fps in PCSX2 before using. It's in PCSX2_vm.ini and make sure to set it to read only.
+// Set PAL frame limit to 59.94 fps in PCSX2 before using. It's in PCSX2_vm.ini and make sure to set it to read only.
 // On OPL, use GSM and set the game to NTSC. Then use Cheat Device to patch the game
 // Note: FMVs are desynced
 
