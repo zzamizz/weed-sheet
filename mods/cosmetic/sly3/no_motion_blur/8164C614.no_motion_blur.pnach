@@ -1,0 +1,5 @@
+gametitle=Sly 3 (PAL-M11) [SCES-53409]
+comment=No Motion Blur by Meos
+
+//No Motion Blur
+patch=1,EE,201837D8,extended,00000000

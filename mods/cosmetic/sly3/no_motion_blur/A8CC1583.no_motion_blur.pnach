@@ -1,0 +1,5 @@
+gametitle=Sly Cooper 3 Honor Among Thieves (NTSC-K) [SCKA-20063]
+comment=No Motion Blur by Meos
+
+//No Motion Blur
+patch=1,EE,20183EF8,extended,00000000
