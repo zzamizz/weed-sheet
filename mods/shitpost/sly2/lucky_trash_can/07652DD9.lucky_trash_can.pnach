@@ -1,0 +1,6 @@
+comment=Lucky Trash Can by zami
+// Freezes a trash can's durability to 0 for infinite coins
+// Only works in Paris exterior (for now)
+// Probably breaks if entity swap anything
+patch=1,EE,E0010002,extended,003E1110 //check MapID=Paris
+patch=1,EE,205B81BC,extended,00000000
