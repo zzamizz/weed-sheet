@@ -44,6 +44,11 @@ E10100FF 002E0CC9
 ```
 Alternatively, you can automate this process for bigger cheats using [PCSX2CE](https://forums.pcsx2.net/Thread-PCSX2CE-PCSX2-Cheat-Converter-Patch-File-Editor).
 
+# 📖 Wiki
+Check out the repository's wiki for cool stuff:
+
+[PNACH Code Types](https://github.com/zzamizz/weed-sheet/wiki/PNACH-Code-Types)
+
 # 🚧 To-do
 - Add some new reliable tutorial for soft-modded consoles
 
