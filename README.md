@@ -54,4 +54,5 @@ Check out the repository's wiki for cool stuff:
 
 # 💬 Other resources
 [Sly Cooper Modding Server](https://discord.gg/2GSXcEzPJA) ~ Discord community dedicated to mod and reverse engineer the Sly series
+
 [SlyMods](https://slymods.info/wiki/Main_Page) ~ Official wiki for the Sly Cooper modding community
