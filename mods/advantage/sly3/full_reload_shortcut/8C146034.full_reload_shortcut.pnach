@@ -1,3 +1,4 @@
+comment=Full Reload Shortcut by NiV
 //Force full reload of map if R1 is hold when reloading through the debug menu
 patch=1,EE,E0060002,extended,004A4FA0	//if debug menu
 patch=1,EE,E0050001,extended,004A4FE0	//and if in load menu
