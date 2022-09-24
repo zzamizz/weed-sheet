@@ -1,0 +1,94 @@
+gametitle=Sly 2: Band of Thieves (NTSC)
+comment=Klaww Gang Patrols v1.0 by TheOnlyZac
+For any questions or feedback please message TheOnlyZac#0269 on Discord!
+
+== F_NIGHTCLUB_EXTERIOR (Episode 1) ==
+=== Map check ===
+patch=1,EE,E0050001,extended,003D4A60 // check world ID
+patch=1,EE,E0040002,extended,003E1110 // check map ID
+
+=== Swap Boar with Dmitri ===
+patch=1,EE,2048D118,extended,00000003 // set boar guard # to 3
+
+1. check if follow dmitri is final
+patch=1,EE,E0010003,extended,00834964
+
+patch=1,EE,20F63CC8,extended,00C47ED0 // replace boar #3 with dimitri
+
+=========================================================================
+
+== I_TEMPLE_EXTERIOR (Episode 3) ==
+=== Map check ===
+patch=1,EE,E0080003,extended,003D4A60 // check world ID
+patch=1,EE,E007000C,extended,003E1110 // check map ID
+
+=== Swap Rhino with Rajan ===
+patch=1,EE,2048C8A8,extended,00000003 // set rhino guard # to 3
+
+1. check lead rajan is final
+patch=1,EE,E0050003,extended,0072AD54
+
+2. check t3_heist_intro is NOT available
+patch=1,EE,E0040001,extended,107324A4
+
+3. check t3_heist_intro is NOT complete
+patch=1,EE,E0030002,extended,107324A4
+
+4. check t3_boss_intro is NOT available
+patch=1,EE,E0020001,extended,10739184
+
+5. check t3_boss_intro is NOT complete
+patch=1,EE,E0010002,extended,10739184
+
+patch=1,EE,20F46CC8,extended,0127DF40 // replace rhino #3 with rajan
+
+=========================================================================
+
+== P_PRISON_EXTERIOR (Episode 4) ==
+Currently disabled as swapping Contessa with a guard seems to crash the game.
+
+=== Map check ===
+#patch=1,EE,E0060004,extended,003D4A60 // check world ID
+#patch=1,EE,E005000E,extended,003E1110 // check map ID
+
+== Swap Falcon with Contessa ==
+1. Eavesdrop on Contessa is FINAL
+#patch=1,EE,E0040003,extended,00B2F6B4
+
+2. Close to Contessa is FINAL
+#patch=1,EE,E0030003,extended,00B51694
+
+3. t4_heist_intro is NOT complete
+#patch=1,EE,E0020002,extended,10B51F94
+
+4. t4_heist_intro is NOT available
+#patch=1,EE,E0010001,extended,10B51F94
+
+#patch=1,EE,209044BC,extended,006B4780 // repalce vulture #4 with contessa
+
+=========================================================================
+
+== C_SAWMILL_EXTERIOR (Episode 7) ==
+=== Map check ===
+patch=1,EE,E00A0007,extended,003D4A60 // check world ID
+patch=1,EE,E0090020,extended,003E1110 // check map ID
+
+=== Swap Moose with Jean PRE-chalktalk ===
+1. chaltalk IS unvailable
+patch=1,EE,E0030000,extended,00BF0414
+
+patch=1,EE,2048A9DC,extended,00000003 // set moose guard # to 3
+patch=1,EE,2096DD48,extended,00799730 // replace moose #3 with jean bison
+patch=1,EE,20803D50,extended,00981A00 // replace jean bison with moose #3
+
+== Swap Moose with Jean POST-boss fight ==
+1. chaltalk IS final
+patch=1,EE,E0040003,extended,00BF0414
+
+2. m7_boss IS final
+patch=1,EE,E0030003,extended,00C12514
+
+patch=1,EE,2048A9DC,extended,00000003 // set moose guard # to 3
+patch=1,EE,2096DD48,extended,00799730 // replace moose #3 with jean bison
+patch=1,EE,20803D50,extended,00981A00 // replace jean bison with moose #3
+
