@@ -1,0 +1,31 @@
+comment=Disable Event Logs
+// Stops the game from making huge log files into the memory card
+// Code removes the log folder's name string
+patch=1,EE,202CC5B0,extended,00000000
+patch=1,EE,202CC5B8,extended,00000000
+patch=1,EE,202CC5C0,extended,00000000
+patch=1,EE,202CC5C4,extended,00000000
+patch=1,EE,202CC5C8,extended,00000000
+patch=1,EE,202CC5CC,extended,00000000
+patch=1,EE,202CC5D0,extended,00000000
+patch=1,EE,202CC5D4,extended,00000000
+patch=1,EE,202CC5D8,extended,00000000
+patch=1,EE,202CC5DC,extended,00000000
+patch=1,EE,202CC5E0,extended,00000000
+patch=1,EE,202CC5E4,extended,00000000
+patch=1,EE,202CC5E8,extended,00000000
+patch=1,EE,202CC5EC,extended,00000000
+patch=1,EE,202CC5F0,extended,00000000
+patch=1,EE,202CC5F4,extended,00000000
+patch=1,EE,202CC5F8,extended,00000000
+patch=1,EE,202CC5FC,extended,00000000
+patch=1,EE,202CC600,extended,00000000
+patch=1,EE,202CC604,extended,00000000
+patch=1,EE,202CC608,extended,00000000
+patch=1,EE,202CC60C,extended,00000000
+patch=1,EE,202CC610,extended,00000000
+patch=1,EE,202CC614,extended,00000000
+patch=1,EE,202CC620,extended,00000000
+patch=1,EE,202CC624,extended,00000000
+patch=1,EE,202CC628,extended,00000000
+patch=1,EE,202CC62C,extended,00000000
