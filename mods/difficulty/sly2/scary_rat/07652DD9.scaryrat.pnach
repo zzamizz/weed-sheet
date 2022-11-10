@@ -1,0 +1,99 @@
+gametitle=Sly 2: Band of Thieves  (SCUS_973.16, 07652DD9)
+comment=Sly 2 Scary Rat (Version 1.0)
+comment=Thanks to the Sly Cooper Modding Discord Server: https://discord.gg/2GSXcEzPJA
+comment=Made by NiV for the October 2022 Sly Cooper Mod Jam
+
+patch=1,EE,E00A0001,extended,003E1110	//if map id is main menu
+patch=1,EE,204A43F0,extended,72616353		//The Black Chateau string
+patch=1,EE,204A43F4,extended,61522079	
+patch=1,EE,104A43F8,extended,00000074	
+patch=1,EE,204A3FE0,extended,72616353		//Episode 1 string
+patch=1,EE,204A3FE4,extended,61522079	
+patch=1,EE,104A3FE8,extended,00000074	
+patch=1,EE,204A43B7,extended,65656843		//Start episode string
+patch=1,EE,204A43BB,extended,42206573	
+patch=1,EE,104A43BF,extended,00006461	
+patch=1,EE,004A43C1,extended,00000000	
+patch=1,EE,E0520002,extended,003E1110	//if map is paris hub
+patch=1,EE,202DE180,extended,43160000		//fog thre 150
+patch=1,EE,202DE188,extended,3F7D70A4		//fog amount 0.99
+patch=1,EE,202DE18C,extended,00000000		//fog color 0
+patch=1,EE,2048D110,extended,00000000		//FK$Xnpc_boar_guard spawn
+patch=1,EE,2048B538,extended,00000000		//FK$Xnpc_swarmer_goat spawn
+patch=1,EE,20488370,extended,00000000		//FK$Xskydome spawn
+patch=1,EE,2048A898,extended,00000001		//FK$Xnpc_swarmer_rat count
+patch=1,EE,20984120,extended,3F800000		//rat ident mat
+patch=1,EE,20984124,extended,00000000
+patch=1,EE,20984128,extended,00000000
+patch=1,EE,2098412C,extended,00000000
+patch=1,EE,20984130,extended,00000000
+patch=1,EE,20984134,extended,3F800000
+patch=1,EE,20984138,extended,00000000
+patch=1,EE,20984140,extended,00000000
+patch=1,EE,20984144,extended,00000000
+patch=1,EE,20984148,extended,3F800000
+patch=1,EE,20984150,extended,00000000
+patch=1,EE,20984154,extended,00000000
+patch=1,EE,20984158,extended,00000000
+patch=1,EE,20984160,extended,3F800000
+patch=1,EE,20984164,extended,00000000
+patch=1,EE,20984168,extended,00000000
+patch=1,EE,20984170,extended,00000000
+patch=1,EE,20984174,extended,3F800000
+patch=1,EE,20984178,extended,00000000
+patch=1,EE,20984180,extended,00000000
+patch=1,EE,20984184,extended,00000000
+patch=1,EE,20984188,extended,3F800000
+patch=1,EE,20984190,extended,00000000
+patch=1,EE,20984194,extended,00000000
+patch=1,EE,20984198,extended,00000000
+patch=1,EE,E0030001,extended,01DDA040		//if sy control - safehouse exit
+patch=1,EE,E0020000,extended,01DDA0D0			//if flag1 == 0
+patch=1,EE,21DDA0D0,extended,00000001				//flag1 = 1
+patch=1,EE,203E11F8,extended,00000000				//set timer to 0
+patch=1,EE,E0020000,extended,01DDA040		//if sy no control - in safehouse
+patch=1,EE,21DDA0D0,extended,00000000			//flag1 = 0
+patch=1,EE,203E11F8,extended,00000000			//set timer to 0
+patch=1,EE,E004012C,extended,303E11F8		//if timer > 300 - activate Rat
+patch=1,EE,E003015E,extended,203E11F8			//if timer < 350
+patch=1,EE,21DDA0D4,extended,00000001				//flag2 = 1
+patch=1,EE,20984090,extended,00000001				//rat inf reach
+patch=1,EE,209831C8,extended,00000001				//rat vuln
+patch=1,EE,E00303E8,extended,303E11F8		//if timer > 1000 - activate can teleport flag
+patch=1,EE,E002041A,extended,203E11F8			//if timer < 1050
+patch=1,EE,E0010000,extended,01DDA0D8				//if flag3 = 0
+patch=1,EE,21DDA0D8,extended,00000001					//flag3 = 1
+patch=1,EE,E00507D0,extended,203E11F8		//if timer < 2000 - first teleport
+patch=1,EE,E0040001,extended,01DDA0D8			//if flag3 = 1
+patch=1,EE,203E11F8,extended,000007D0				//set timer to 2000
+patch=1,EE,21DDA0D8,extended,00000000				//flag3 = 0
+patch=1,EE,50F8A150,extended,0000000C				//teleport the guard to sy
+patch=1,EE,00984250,extended,00000000	
+patch=1,EE,E0020802,extended,303E11F8		//if timer > 2000 - keep order
+patch=1,EE,21DDA0D8,extended,00000001			//flag3 = 1
+patch=1,EE,21DDA0DC,extended,00000001			//flag4 = 1
+patch=1,EE,E0040001,extended,01DDA0DC		//if flag4 = 1 - constant
+patch=1,EE,202DE06C,extended,3F800000			//set blind to 1
+patch=1,EE,209FDBB4,extended,43FA0000			//rat speed 500
+patch=1,EE,209FDBB8,extended,43FA0000			
+patch=1,EE,209FDBBC,extended,43FA0000			
+patch=1,EE,E0090BB8,extended,303E11F8		//if timer > 3000 - after blink
+patch=1,EE,203E11F8,extended,000007D0			//set timer to 2000
+patch=1,EE,21DDA0E0,extended,00000000			//set flag5 0
+patch=1,EE,503D4AA4,extended,00000004			//copy gadget meter
+patch=1,EE,003D4AB4,extended,00000000
+patch=1,EE,208786B0,extended,00000001			//set blinker flag
+patch=1,EE,208786AC,extended,00000000			//set blinker float
+patch=1,EE,20855CB4,extended,00000001			//set gui
+patch=1,EE,50F8A150,extended,0000000C			//teleport the guard to sy
+patch=1,EE,00984250,extended,00000000
+patch=1,EE,E0070B4A,extended,303E11F8		//if timer > 2890 - Fading
+patch=1,EE,E0030000,extended,01DDA0E0			//if flag5 = 0
+patch=1,EE,21DDA0E0,extended,00000001				//set flag5 1
+patch=1,EE,503D4AB4,extended,00000004				//copy gadget meter
+patch=1,EE,003D4AA4,extended,00000000
+patch=1,EE,203D4AB4,extended,00000064			//set gadget meter to 100
+patch=1,EE,208786B0,extended,00000000			//set blinker
+patch=1,EE,20855CB4,extended,00000002			//set gui
+patch=1,EE,E0010B9F,extended,303E11F8		//if timer > 2975 - Blink
+patch=1,EE,202DE06C,extended,00000000			//set blind to 0
