@@ -1,0 +1,1156 @@
+comment=CheatNet -- by BloxXor & zami3333
+//
+//           CheatNet
+//          
+//      ThiefNet Cheat Menu
+//
+// Credits:
+// -----------
+//  BloxXor - cheat menu concept, treasure sell code + SUPERHOT idea
+//  TheOnlyZac - custom string code
+//  me - everything else
+// ----------
+//
+// Press R1+Select to open the menu. 
+// If the game freezes, it likely did not crash. You have to press right D-Pad everytime you open CheatNet.
+
+// Unlock All Gadgets
+patch=1,EE,203D4AF8,extended,FFFFFFFF
+patch=1,EE,203D4AFC,extended,FFFFFFFF
+
+// Unstretched HUD fix
+patch=1,EE,E1050040,extended,002A3A12 //if float 0.75 (byte 0x40)
+patch=1,EE,E10400A0,extended,002A3A22 //if float 80 (byte 0xA0)
+patch=1,EE,603DA174,extended,44D77000 //horizontal
+patch=1,EE,00020000,extended,0000009C
+patch=1,EE,603DA174,extended,44F25D18 //vertical
+patch=1,EE,00020000,extended,000000A0
+
+// Remove treasure prices
+patch=1,EE,202C3288,extended,00000000
+patch=1,EE,202C3294,extended,00000000
+patch=1,EE,202C32A0,extended,00000000
+patch=1,EE,202C32AC,extended,00000000
+patch=1,EE,202C32B8,extended,00000000
+patch=1,EE,202C32C4,extended,00000000
+patch=1,EE,202C32D0,extended,00000000
+patch=1,EE,202C32DC,extended,00000000
+patch=1,EE,202C32E8,extended,00000000
+patch=1,EE,202C32F4,extended,00000000
+patch=1,EE,202C3300,extended,00000000
+patch=1,EE,202C330C,extended,00000000
+patch=1,EE,202C3318,extended,00000000
+patch=1,EE,202C3324,extended,00000000
+patch=1,EE,202C3330,extended,00000000
+patch=1,EE,202C333C,extended,00000000
+patch=1,EE,202C3348,extended,00000000
+patch=1,EE,202C3354,extended,00000000
+
+// Reset treasure amounts during loading
+patch=1,EE,E0400002,extended,003D3980 //if loading
+patch=1,EE,203D4B04,extended,00000063
+patch=1,EE,203D4B08,extended,00000063
+patch=1,EE,203D4B0C,extended,00000007 //chase switch thingy
+patch=1,EE,203D4B10,extended,00000063
+patch=1,EE,203D4B14,extended,00000063
+patch=1,EE,203D4B18,extended,00000063
+patch=1,EE,203D4B1C,extended,00000063
+patch=1,EE,203D4B20,extended,00000063
+patch=1,EE,203D4B24,extended,00000063
+patch=1,EE,203D4B28,extended,00000063
+patch=1,EE,203D4B2C,extended,00000063
+patch=1,EE,203D4B30,extended,00000063
+patch=1,EE,203D4B34,extended,00000000 //big head mod disabled
+patch=1,EE,203D4B38,extended,00000063
+patch=1,EE,203D4B3C,extended,00000063
+patch=1,EE,203D4B40,extended,00000063
+patch=1,EE,203D4B44,extended,00000063
+patch=1,EE,203D4B48,extended,00000063
+patch=1,EE,203D4B4C,extended,00000000
+patch=1,EE,203D4B50,extended,00000000
+patch=1,EE,203D4B54,extended,00000000
+patch=1,EE,203D4B58,extended,00000000
+patch=1,EE,203D4B5C,extended,00000000
+patch=1,EE,203D4B60,extended,00000000
+patch=1,EE,203D4B64,extended,00000000
+patch=1,EE,203D4B68,extended,00000000
+patch=1,EE,203D4B6C,extended,00000000
+patch=1,EE,203D4B70,extended,00000000
+patch=1,EE,203D4B74,extended,00000000
+patch=1,EE,203D4B78,extended,00000000
+patch=1,EE,203D4B7C,extended,00000000
+patch=1,EE,203D4B80,extended,00000000
+patch=1,EE,203D4B84,extended,00000000
+patch=1,EE,203D4B88,extended,00000000
+patch=1,EE,203D4B8C,extended,00000000
+patch=1,EE,203D4B90,extended,00000000
+patch=1,EE,203D4B94,extended,00000000
+patch=1,EE,203D4B98,extended,00000000
+patch=1,EE,203D4B9C,extended,00000000
+patch=1,EE,203D4BA0,extended,00000000
+patch=1,EE,203D4BA4,extended,00000000
+patch=1,EE,203D4BA8,extended,00000000
+patch=1,EE,203D4BAC,extended,00000000
+patch=1,EE,203D4BB0,extended,00000000
+patch=1,EE,203D4BB4,extended,00000000
+patch=1,EE,203D4BB8,extended,00000000
+patch=1,EE,203D4BBC,extended,00000000
+patch=1,EE,203D4BC0,extended,00000000
+patch=1,EE,203D4BC4,extended,00000000
+patch=1,EE,203D4BC8,extended,00000000
+patch=1,EE,203D4BCC,extended,00000000
+patch=1,EE,203D4BD0,extended,00000000
+patch=1,EE,203D4BD4,extended,00000000
+patch=1,EE,203D4BD8,extended,00000000
+patch=1,EE,203D4BDC,extended,00000000
+patch=1,EE,203D4BE0,extended,00000000
+patch=1,EE,203D4BE4,extended,00000000
+patch=1,EE,203D4BE8,extended,00000000
+patch=1,EE,203D4BEC,extended,00000000
+patch=1,EE,203D4BF0,extended,00000000
+patch=1,EE,203D4BF4,extended,00000000
+patch=1,EE,203D4BF8,extended,00000000
+patch=1,EE,203D4BFC,extended,00000000
+patch=1,EE,203D4C00,extended,00000000
+
+// Music & ambience in ThiefNet
+patch=1,EE,E001FFFF,extended,003DA190 //if thiefnet closed
+patch=1,EE,203DD0A8,extended,00000003 //normal audio
+patch=1,EE,E001FFFF,extended,103DA190 //if thiefnet open
+patch=1,EE,203DD0A8,extended,00000005 //audio in menu
+
+// Remove blue background (sort of)
+patch=1,EE,E001FFFF,extended,103DA190
+patch=1,EE,203E5D94,extended,00000000
+
+// Refresh sell menu (broken)
+.patch=1,EE,E0030000,extended,003DA39C //if menu counter is 0
+.patch=1,EE,203DA19C,extended,00000000 //refresh sell menu
+.patch=1,EE,203DA3A4,extended,00000000 //refresh sell menu
+.patch=1,EE,203DA3A8,extended,00000000 //refresh sell menu
+.patch=1,EE,E003ffff,extended,003DA39C //if menu counter is -1
+.patch=1,EE,203DA19C,extended,00000000 //refresh sell menu
+.patch=1,EE,203DA3A4,extended,00000000 //refresh sell menu
+.patch=1,EE,203DA3A8,extended,00000000 //refresh sell menu
+
+// Open Menu with Combo (Select+R1)
+patch=1,EE,E0080001,extended,203D9EF4 //if startmenu = smaller than 1
+patch=1,EE,E0070001,extended,103EDC98 //if gadgetmenu != open
+patch=1,EE,E0060001,extended,103E1110 //check MapID!=Main Menu
+patch=1,EE,E005F7FE,extended,002DFC02 //if select+R1
+patch=1,EE,603DA174,extended,00000002 //activate hud
+patch=1,EE,00020000,extended,00000064 //
+patch=1,EE,203DA190,extended,00000000 //thiefnet menu to 0
+patch=1,EE,202DDED8,extended,00000000 //clock = 0
+patch=1,EE,203DA160,extended,002DFC00 //thiefnet control
+
+// Fast scroll (Hold Circle)
+patch=1,EE,E010FFFF,extended,103DA190 //if thiefnet menu = open
+
+patch=1,EE,E0030001,extended,003DA39C //if menuitem 1
+patch=1,EE,E10200FF,extended,002DFC0D //if circle
+patch=1,EE,203DA39C,extended,00000006 //menuitem = 6
+patch=1,EE,203DA3A0,extended,00000006 //menuscroll = 6
+
+patch=1,EE,E0030007,extended,003DA39C //if menuitem 7
+patch=1,EE,E10200FF,extended,002DFC0D //if circle
+patch=1,EE,203DA39C,extended,0000000C //menuitem = 12
+patch=1,EE,203DA3A0,extended,0000000C //menuscroll = 12
+
+patch=1,EE,E0030005,extended,003DA39C //if menuitem 5
+patch=1,EE,E10200FF,extended,002DFC0D //if circle
+patch=1,EE,203DA39C,extended,00000000 //menuitem = 0
+patch=1,EE,203DA3A0,extended,00000000 //menuscroll = 0
+
+patch=1,EE,E003000b,extended,003DA39C //if menuitem 11
+patch=1,EE,E10200FF,extended,002DFC0D //if circle
+patch=1,EE,203DA39C,extended,00000006 //menuitem = 6
+patch=1,EE,203DA3A0,extended,00000006 //menuscroll = 6
+.patch=1,EE,E00AFFFF,extended,103DA190 //if thiefnet menu = open
+.patch=1,EE,E0040000,extended,303DA39C //if menuitem more than 0
+.patch=1,EE,E0030003,extended,203DA39C //if menuitem less than 3
+.patch=1,EE,E10200FF,extended,002DFC0D //if circle
+.patch=1,EE,203DA39C,extended,00000006 //menuitem = 6
+.patch=1,EE,203DA3A0,extended,00000001 //menuscroll = 1
+.patch=1,EE,E0040006,extended,203DA39C //if menuitem less than 6
+.patch=1,EE,E0030003,extended,303DA39C //if menuitem more than 3
+.patch=1,EE,E10200FF,extended,002DFC0D //if circle
+.patch=1,EE,203DA39C,extended,00000000 //menuitem = 0
+.patch=1,EE,203DA3A0,extended,00000000 //menuscroll = 0
+
+// Reload shortcut in ThiefNet (L1)
+patch=1,EE,E002FFFF,extended,103DA190 //if thiefnet open
+patch=1,EE,E10100FF,extended,002DFC10
+patch=1,EE,203E1080,extended,00000001 //reload map
+
+// Jobmap shortcut in ThiefNet (R2)
+patch=1,EE,E005FFFF,extended,103DA190 //if thiefnet open
+patch=1,EE,E10400FF,extended,002DFC13
+patch=1,EE,60443794,extended,00000002 // enable mask gui
+patch=1,EE,00020000,extended,00000064
+patch=1,EE,00443740,extended,00000001 // "respawn" flag
+patch=1,EE,003E1080,extended,00000001 // reload
+
+// Fill HP & GP shortcut in ThiefNet (R1)
+patch=1,EE,E007FFFF,extended,103DA190 //if thiefnet open
+patch=1,EE,E10600FF,extended,002DFC11
+patch=1,EE,203D4AB0,extended,00000028 //gang hp
+patch=1,EE,203D4AC8,extended,00000028
+patch=1,EE,203D4AE0,extended,0000003C
+patch=1,EE,203D4AB4,extended,00000064 //gang gp
+patch=1,EE,203D4ACC,extended,00000064 
+patch=1,EE,203D4AE4,extended,00000064 
+
+// Reset clues shortcut in ThiefNet (L2)
+patch=1,EE,E013FFFF,extended,103DA190 //if thiefnet open
+patch=1,EE,E11200FF,extended,002DFC12
+patch=1,EE,E0010002,extended,003E1110 //check MapID=Paris
+patch=1,EE,203D4CD8,extended,00000000 //reset paris bottles
+patch=1,EE,E0010008,extended,003E1110 //check MapID=India
+patch=1,EE,203D4E78,extended,00000000 //reset india bottles
+patch=1,EE,E001000C,extended,003E1110 //check MapID=india2
+patch=1,EE,203D4F90,extended,00000000 //reset india2 bottles
+patch=1,EE,E001000E,extended,003E1110 //check MapID=Prague
+patch=1,EE,203D5020,extended,00000000 //reset Prague bottles
+patch=1,EE,E0010011,extended,003E1110 //check MapID=Prague2
+patch=1,EE,203D50F4,extended,00000000 //reset Prague2 bottles
+patch=1,EE,E001001B,extended,003E1110 //check MapID=Canada
+patch=1,EE,203D53A4,extended,00000000 //reset Canada bottles
+patch=1,EE,E0010020,extended,003E1110 //check MapID=Canada2
+patch=1,EE,203D5500,extended,00000000 //reset canada2 bottles
+patch=1,EE,E0010026,extended,003E1110 //check MapID=Blimp
+patch=1,EE,203D56A0,extended,00000000 //reset Blimp bottles
+patch=1,EE,E0010000,extended,103E1110 //check MapID=not cairo
+patch=1,EE,203E1080,extended,00000001 //reload map
+
+>>>> MENU, CHEATS, STUFF
+.    Treasure amount addresses:
+. bComb:    203D4B04  (Toggle Guard AI)
+. sComb:    203D4B08  (Despawn All Guards)
+. gComb:    203D4B0C  (Chase)
+. bRing:    203D4B10  (Godmode)
+. sRing:    203D4B14  (Infinite Jumps)
+. gRing:    203D4B18  (Undetectable)
+. bWatch:   203D4B1C  (Toggle Job Fail)
+. sWatch:   203D4B20  (SUPERHOT)
+. gWatch:   203D4B24  (Flyable Glider)
+. bPen:     203D4B28  (Spin Charge Boost)
+. sPen:     203D4B2C  (Turnbuckle Boost)
+. gPen:     203D4B30  (Bentley's Jetpack)
+. bMedal:   203D4B34  (Big Head Mod)
+. sMedal:   203D4B38  (Max Draw Distance)
+. gMedal:   203D4B3C  (Claustrophobia)
+. bPWatch:  203D4B40  (Respawn as Sly)
+. sPWatch:  203D4B44  (Respawn as Bentley)
+. gPWatch:  203D4B48  (Respawn as Murray)
+. sNugget:  203D4B4C  (??)
+. mNugget:  203D4B50  (??)
+. lGold:    203D4B54  (??)
+. topaz:    203D4B58  (??)
+. sapph:    203D4B5C  (??)
+. ruby:     203D4B60  (??)
+. sDia:     203D4B64  (??)
+. mDia:     203D4B68  (??)
+. lDia:     203D4B6C  (??)
+. sNeck:    203D4B70  (??)
+. mNeck:    203D4B74  (??)
+. lNeck:    203D4B78  (??)
+. bWatchU:  203D4B7C  (??)
+. sWatchU:  203D4B80  (??)
+. gWatchU:  203D4B84  (??)
+. bRingU:   203D4B88  (??)
+. sRingU:   203D4B8C  (??)
+. gRingU:   203D4B90  (??)
+. bPaint:   203D4B94  (??)
+. sPaint:   203D4B98  (??)
+. gPaint:   203D4B9C  (??)
+. cChalice: 203D4BA0  (??)
+. jBox:     203D4BA4  (??)
+. jVase:    203D4BA8  (??)
+. mVase:    203D4BAC  (??)
+. aKite:    203D4BB0  (??)
+. bUrn:     203D4BB4  (??)
+. cFlask:   203D4BB8  (??)
+. gScroll:  203D4BBC  (??)
+. gSceptr:  203D4BC0  (??)
+. cLantrn:  203D4BC4  (??)
+. cBall:    203D4BC8  (??)
+. gOrb:     203D4BCC  (??)
+. cVase:    203D4BD0  (??)
+. rTiara:   203D4BD4  (??)
+. jCrown:   203D4BD8  (??)
+. cBell:    203D4BDC  (??)
+. aChalice: 203D4BE0  (??)
+. gPlate:   203D4BE4  (??)
+. jDecantr: 203D4BE8  (??)
+. cPlate:   203D4BEC  (??)
+. jChalice: 203D4BF0  (??)
+. aOrigami: 203D4BF4  (??)
+. jEgg:     203D4BF8  (??)
+. gHead:    203D4BFC  (??)
+. gVase:    203D4C00  (??)
+
+          # Cheat 1: Disable Guard AI
+# Cheat
+patch=1,EE,E0010064,extended,003D4B04 //if(bComb == 0x64)
+patch=1,EE,203E1214,extended,00000001 //enable disable guard AI
+
+# Cheat off
+patch=1,EE,E0010063,extended,003D4B04 //if(bComb == 0x63)
+patch=1,EE,203E1214,extended,00000000 //disable disable guard AI
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B04 //if(bComb == 0x6)
+patch=1,EE,203D4B04,extended,00000064 //bComb = 0x64
+patch=1,EE,E0010063,extended,003D4B04 //if(bComb == 0x63)
+patch=1,EE,203D4B04,extended,00000007 //bComb = 0x7
+
+            # Cheat 2: Despawn Guards
+# Cheat
+patch=1,EE,E04C0064,extended,003D4B08 //if(sComb == 0x64)
+patch=1,EE,603E0774,extended,00000001 //despawn offset (uses old offset)
+patch=1,EE,00020007,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001230
+patch=1,EE,603E0774,extended,00000001
+patch=1,EE,00020006,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001230,extended,00000000
+patch=1,EE,603E0774,extended,00000001
+patch=1,EE,00020005,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001230
+patch=1,EE,603E0774,extended,00000001
+patch=1,EE,00020004,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001230,extended,00000000
+patch=1,EE,603E0774,extended,00000001
+patch=1,EE,00020003,extended,00000020
+patch=1,EE,00000020,extended,00001230
+patch=1,EE,603E0774,extended,00000001
+patch=1,EE,00020002,extended,00000020
+patch=1,EE,00001230,extended,00000000
+patch=1,EE,603E0774,extended,00000001
+patch=1,EE,00020000,extended,00001230
+patch=1,EE,603E0780,extended,00000001
+patch=1,EE,00020007,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001230
+patch=1,EE,603E0780,extended,00000001
+patch=1,EE,00020006,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001230,extended,00000000
+patch=1,EE,603E0780,extended,00000001
+patch=1,EE,00020005,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001230
+patch=1,EE,603E0780,extended,00000001
+patch=1,EE,00020004,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001230,extended,00000000
+patch=1,EE,603E0780,extended,00000001
+patch=1,EE,00020003,extended,00000020
+patch=1,EE,00000020,extended,00001230
+patch=1,EE,603E0780,extended,00000001
+patch=1,EE,00020002,extended,00000020
+patch=1,EE,00001230,extended,00000000
+patch=1,EE,603E0780,extended,00000001
+patch=1,EE,00020000,extended,00001230
+patch=1,EE,603E07E0,extended,00000001
+patch=1,EE,00020006,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001230,extended,00000000
+patch=1,EE,603E07E0,extended,00000001
+patch=1,EE,00020005,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001230
+patch=1,EE,603E07E0,extended,00000001
+patch=1,EE,00020004,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001230,extended,00000000
+patch=1,EE,603E07E0,extended,00000001
+patch=1,EE,00020003,extended,00000020
+patch=1,EE,00000020,extended,00001230
+patch=1,EE,603E07E0,extended,00000001
+patch=1,EE,00020002,extended,00000020
+patch=1,EE,00001230,extended,00000000
+patch=1,EE,603E07E0,extended,00000001
+patch=1,EE,00020000,extended,00001230
+patch=1,EE,603E07B0,extended,00000001
+patch=1,EE,00020000,extended,00001230
+patch=1,EE,203D4B08,extended,00000007 //stop offset from freezing
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B08 //if(sComb == 0x6)
+patch=1,EE,203D4B08,extended,00000064 //sComb = 0x64
+patch=1,EE,E0010063,extended,003D4B08 //if(sComb == 0x63)
+patch=1,EE,203D4B08,extended,00000007 //sComb = 0x7
+
+              # Cheat 3: Chase
+# Cheat
+patch=1,EE,E04b0064,extended,003D4B0C //if(gComb == 0x64)
+patch=1,EE,603E0774,extended,00000001
+patch=1,EE,00020007,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E0774,extended,00000001
+patch=1,EE,00020006,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E0774,extended,00000001
+patch=1,EE,00020005,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E0774,extended,00000001
+patch=1,EE,00020004,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E0774,extended,00000001
+patch=1,EE,00020003,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E0774,extended,00000001
+patch=1,EE,00020002,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E0774,extended,00000001
+patch=1,EE,00020000,extended,00001100
+patch=1,EE,603E0780,extended,00000001
+patch=1,EE,00020007,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E0780,extended,00000001
+patch=1,EE,00020006,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E0780,extended,00000001
+patch=1,EE,00020005,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E0780,extended,00000001
+patch=1,EE,00020004,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E0780,extended,00000001
+patch=1,EE,00020003,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E0780,extended,00000001
+patch=1,EE,00020002,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E0780,extended,00000001
+patch=1,EE,00020000,extended,00001100
+patch=1,EE,603E07E0,extended,00000001
+patch=1,EE,00020006,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E07E0,extended,00000001
+patch=1,EE,00020005,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E07E0,extended,00000001
+patch=1,EE,00020004,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E07E0,extended,00000001
+patch=1,EE,00020003,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E07E0,extended,00000001
+patch=1,EE,00020002,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E07E0,extended,00000001
+patch=1,EE,00020000,extended,00001100
+patch=1,EE,603E07B0,extended,00000001
+patch=1,EE,00020000,extended,00001100
+
+# Cheat off (automatic toggle)
+patch=1,EE,E1010000,extended,103DD153 //check if chase music playing
+patch=1,EE,203D4B0C,extended,00000007 //gComb = 0x7
+
+patch=1,EE,E04c0007,extended,003D4B0C //if(gComb == 0x7)
+patch=1,EE,603E0774,extended,00000000
+patch=1,EE,00020007,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E0774,extended,00000000
+patch=1,EE,00020006,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E0774,extended,00000000
+patch=1,EE,00020005,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E0774,extended,00000000
+patch=1,EE,00020004,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E0774,extended,00000000
+patch=1,EE,00020003,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E0774,extended,00000000
+patch=1,EE,00020002,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E0774,extended,00000000
+patch=1,EE,00020000,extended,00001100
+patch=1,EE,603E0780,extended,00000000
+patch=1,EE,00020007,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E0780,extended,00000000
+patch=1,EE,00020006,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E0780,extended,00000000
+patch=1,EE,00020005,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E0780,extended,00000000
+patch=1,EE,00020004,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E0780,extended,00000000
+patch=1,EE,00020003,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E0780,extended,00000000
+patch=1,EE,00020002,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E0780,extended,00000000
+patch=1,EE,00020000,extended,00001100
+patch=1,EE,603E07E0,extended,00000000
+patch=1,EE,00020006,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E07E0,extended,00000000
+patch=1,EE,00020005,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E07E0,extended,00000000
+patch=1,EE,00020004,extended,00000020
+patch=1,EE,00000020,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E07E0,extended,00000000
+patch=1,EE,00020003,extended,00000020
+patch=1,EE,00000020,extended,00001100
+patch=1,EE,603E07E0,extended,00000000
+patch=1,EE,00020002,extended,00000020
+patch=1,EE,00001100,extended,00000000
+patch=1,EE,603E07E0,extended,00000000
+patch=1,EE,00020000,extended,00001100
+patch=1,EE,603E07B0,extended,00000000
+patch=1,EE,00020000,extended,00001100
+patch=1,EE,203D4B0C,extended,00000007 //gComb = 0x7
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B0C //if(gComb == 0x6)
+patch=1,EE,203D4B0C,extended,00000064 //gComb = 0x64
+patch=1,EE,E0010063,extended,003D4B0C //if(gComb == 0x63)
+patch=1,EE,203D4B0C,extended,00000007 //gComb = 0x7
+
+              # Cheat 4: Godmode
+# Cheat
+patch=1,EE,E0020064,extended,003D4B10 //if(bRing == 0x64)
+patch=1,EE,602DE2F0,extended,00000001 //godmode on
+patch=1,EE,00020000,extended,00000298
+
+# Cheat off
+patch=1,EE,E0030063,extended,003D4B10 //if(bRing == 0x63)
+patch=1,EE,602DE2F0,extended,00000000 //godmode off
+patch=1,EE,00020000,extended,00000298
+patch=1,EE,203D4B10,extended,00000007 //unfreeze offset
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B10 //if(bRing == 0x6)
+patch=1,EE,203D4B10,extended,00000064 //bRing = 0x64
+patch=1,EE,E0010063,extended,003D4B10 //if(bRing == 0x63)
+patch=1,EE,203D4B10,extended,00000007 //bRing = 0x7
+
+            # Cheat 5: Infinite Jumps
+# Cheat
+patch=1,EE,E0020064,extended,003D4B14 //if(sRing == 0x64)
+patch=1,EE,602DE2F0,extended,00000001 //infinite jumps (doesn't need toggle off)
+patch=1,EE,00020000,extended,000002E8
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B14 //if(sRing == 0x6)
+patch=1,EE,203D4B14,extended,00000064 //sRing = 0x64
+patch=1,EE,E0010063,extended,003D4B14 //if(sRing == 0x63)
+patch=1,EE,203D4B14,extended,00000007 //sRing = 0x7
+
+            # Cheat 6: Undetectable
+# Cheat
+patch=1,EE,E0020064,extended,003D4B18 //if(gRing == 0x64)
+patch=1,EE,602E1E40,extended,00000001 //undetected
+patch=1,EE,00020000,extended,000011AC 
+
+# Cheat off
+patch=1,EE,E0030063,extended,003D4B18 //if(gRing == 0x63)
+patch=1,EE,602E1E40,extended,00000000 //undetected
+patch=1,EE,00020000,extended,000011AC 
+patch=1,EE,203D4B18,extended,00000007 //unfreeze offset
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B18 //if(gRing == 0x6)
+patch=1,EE,203D4B18,extended,00000064 //gRing = 0x64
+patch=1,EE,E0010063,extended,003D4B18 //if(gRing == 0x63)
+patch=1,EE,203D4B18,extended,00000007 //gRing = 0x7
+
+           # Cheat 7: Toggle Job Fail
+# Cheat
+patch=1,EE,E0070064,extended,003D4B1C //if(bWatch == 0x64)
+patch=1,EE,603E0ABC,extended,00000002 //force job failed
+patch=1,EE,00020000,extended,00000064
+patch=1,EE,203DA190,extended,FFFFFFFF //thiefnet menu = -1
+patch=1,EE,203DA160,extended,00000000 //disable thiefnet control
+patch=1,EE,603DA174,extended,00000001 //close thiefnet hud
+patch=1,EE,00020000,extended,00000064 
+patch=1,EE,203D4B1C,extended,00000007 //stop offset from freezing
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B1C //if(bWatch == 0x6)
+patch=1,EE,203D4B1C,extended,00000064 //bWatch = 0x64
+patch=1,EE,E0010063,extended,003D4B1C //if(bWatch == 0x63)
+patch=1,EE,203D4B1C,extended,00000007 //bWatch = 0x7
+
+                  # Cheat 8: SUPERHOT
+# Cheat
+patch=1,EE,E0040064,extended,003D4B20 //if(sWatch == 0x64)
+patch=1,EE,E002FFFF,extended,003DA190 //if thiefnet menu != open
+patch=1,EE,502E0C44,extended,00000004 //copy from leftstick
+patch=1,EE,002DDED8,extended,00000000 //into clock1
+patch=1,EE,203DD0A8,extended,00000002 //enable music outside of pause
+
+# Cheat off
+patch=1,EE,E0040063,extended,003D4B20 //if(sWatch == 0x63)
+patch=1,EE,E002FFFF,extended,003DA190 //if thiefnet menu != open
+patch=1,EE,202DDED8,extended,3F800000 //return clock to normal
+patch=1,EE,203D4B20,extended,00000007 //unfreeze offset
+patch=1,EE,203DD0A8,extended,00000003 //music back to normal
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B20 //if(sWatch == 0x6)
+patch=1,EE,203D4B20,extended,00000064 //sWatch = 0x64
+patch=1,EE,E0010063,extended,003D4B20 //if(sWatch == 0x63)
+patch=1,EE,203D4B20,extended,00000007 //sWatch = 7
+
+              # Cheat 9: Flyable Glider
+# Cheat
+patch=1,EE,E0040064,extended,003D4B24 //if(gWatch == 0x64)
+patch=1,EE,202BF850,extended,44FA0000 //pull fly speed
+patch=1,EE,202BF854,extended,44FA0000 //push fly speed
+patch=1,EE,202BF858,extended,C4480000 //pull vertical speed
+patch=1,EE,202BF85C,extended,44480000 //push vertical speed
+
+# Cheat off
+patch=1,EE,E0050063,extended,003D4B24 //if(gWatch == 0x63)
+patch=1,EE,202BF850,extended,43960000 //pull fly speed
+patch=1,EE,202BF854,extended,44480000 //push fly speed
+patch=1,EE,202BF858,extended,C3480000 //pull vertical speed
+patch=1,EE,202BF85C,extended,C3C80000 //push vertical speed
+patch=1,EE,203D4B24,extended,00000007 //unfreeze offset
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B24 //if(gWatch == 0x6)
+patch=1,EE,203D4B24,extended,00000064 //gWatch = 0x64
+patch=1,EE,E0010063,extended,003D4B24 //if(gWatch == 0x63)
+patch=1,EE,203D4B24,extended,00000007 //gWatch = 7
+
+              # Cheat 10: Spin Charge Boost
+# Cheat
+patch=1,EE,E0020064,extended,003D4B28 //if(bPen == 0x64)
+patch=1,EE,202BF3C0,extended,4780E800 //spin charge speed 66000
+patch=1,EE,202BD1EC,extended,00000000 //usage to 0
+
+# Cheat off
+patch=1,EE,E0020063,extended,003D4B28 //if(bPen == 0x63)
+patch=1,EE,202BF3C0,extended,447A0000 //spin charge speed 1000 (Default)
+patch=1,EE,202BD1EC,extended,00000014 //usage to 20 (default)
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B28 //if(bPen == 0x6)
+patch=1,EE,203D4B28,extended,00000064 //bPen = 0x64
+patch=1,EE,E0010063,extended,003D4B28 //if(bPen == 0x63)
+patch=1,EE,203D4B28,extended,00000007 //bPen = 0x7
+
+               # Cheat 11: Turnbuckle Boost
+# Cheat
+patch=1,EE,E0020064,extended,003D4B2C //if(sPen == 0x64)
+patch=1,EE,202BF768,extended,40A00000 // turnbuckle h. speed 5
+patch=1,EE,202BF8DC,extended,442F0000 // turnbuckle v. speed 700
+
+# Cheat
+patch=1,EE,E0020063,extended,003D4B2C //if(sPen == 0x63)
+patch=1,EE,202BF768,extended,3F800000 // turnbuckle h. speed 1
+patch=1,EE,202BF8DC,extended,43FA0000 // turnbuckle v. speed 500
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B2C //if(sPen == 0x6)
+patch=1,EE,203D4B2C,extended,00000064 //sPen = 0x64
+patch=1,EE,E0010063,extended,003D4B2C //if(sPen == 0x63)
+patch=1,EE,203D4B2C,extended,00000007 //sPen = 0x7
+
+             # Cheat 12: Bento's Jetpack (Use L1)
+# Cheat
+patch=1,EE,E0030064,extended,003D4B30 //if(gPen == 0x64)
+patch=1,EE,202BF830,extended,50000000 //duration FF
+patch=1,EE,202BF87C,extended,451C4000 //hoverpack h. speed 2500
+patch=1,EE,202BF880,extended,C3FA0000 //hoverpack v. speed -500
+.202DFC10
+
+# Cheat off
+patch=1,EE,E0020063,extended,003D4B30 //if(gPen == 0x63)
+patch=1,EE,202BF87C,extended,43960000 //hoverpack h. speed 300
+patch=1,EE,202BF880,extended,C2C80000 //hoverpack v. speed -100
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B30 //if gPen amount 6
+patch=1,EE,203D4B30,extended,00000064 //gPen amount 100
+patch=1,EE,E0010063,extended,003D4B30 //if gPen amount 99
+patch=1,EE,203D4B30,extended,00000007 //gPen amount 7
+
+               # Cheat 13: Big Head Mod
+# Cheat
+.patch=1,EE,E0120064,extended,003D4B34 //if(sPen == 0x64)
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B34 //if(bMedal == 0x6)
+patch=1,EE,203D4B34,extended,00000064 //bMedal = 0x64
+patch=1,EE,E0010063,extended,003D4B34 //if(bMedal == 0x63)
+patch=1,EE,203D4B34,extended,00000007 //bMedal = 0x7
+
+            # Cheat 14: Max Draw Distance
+# Cheat
+patch=1,EE,E0010064,extended,003D4B38 //if(sMedal == 0x64)
+patch=1,EE,202DDF5C,extended,459C4000
+
+# Cheat off
+patch=1,EE,E0010063,extended,003D4B38 //if(sMedal == 0x63)
+patch=1,EE,202DDF5C,extended,3F800000
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B38 //if(sMedal == 0x6)
+patch=1,EE,203D4B38,extended,00000064 //sMedal = 0x64
+patch=1,EE,E0010063,extended,003D4B38 //if(sMedal == 0x63)
+patch=1,EE,203D4B38,extended,00000007 //sMedal = 0x7
+
+            # Cheat 15: Claustrophobia
+# Cheat
+patch=1,EE,E0020064,extended,003D4B3C //if(gMedal == 0x64)
+patch=1,EE,202DDF7C,extended,41200000 //set claustrophobia to 10
+patch=1,EE,202DDF5C,extended,3F4CCCCD //fix draw distance
+
+# Cheat off
+patch=1,EE,E0010063,extended,003D4B3C //if(gMedal == 0x64)
+patch=1,EE,202DDF7C,extended,3FDD3BDA //set claustrophobia to normal
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B3C //if(gMedal == 0x6)
+patch=1,EE,203D4B3C,extended,00000064 //gMedal = 0x64
+patch=1,EE,E0010063,extended,003D4B3C //if(gMedal == 0x63)
+patch=1,EE,203D4B3C,extended,00000007 //gMedal = 0x7
+
+             # Cheat 16: Respawn as Sly
+# Cheat
+patch=1,EE,E0040064,extended,003D4B40 //if(bPWatch == 0x64)
+patch=1,EE,203D4A6C,extended,00000007 //set actchar to sly
+patch=1,EE,203E10C8,extended,00006B29 //spawn location infront of safehouse
+patch=1,EE,203E1080,extended,00000001 //reload map
+patch=1,EE,203D4B40,extended,00000007 //bPWatch = 0x7 (stop offset)
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B40 //if(bPWatch == 0x6)
+patch=1,EE,203D4B40,extended,00000064 //bPWatch = 0x64
+patch=1,EE,E0010063,extended,003D4B40 //if(bPWatch == 0x63)
+patch=1,EE,203D4B40,extended,00000007 //bPWatch = 0x7
+
+             # Cheat 17: Respawn as Bentley
+# Cheat
+patch=1,EE,E0040064,extended,003D4B44 //if(sPWatch == 0x64)
+patch=1,EE,203D4A6C,extended,00000008 //set actchar to bentley
+patch=1,EE,203E10C8,extended,00006B29 //spawn location infront of safehouse
+patch=1,EE,203E1080,extended,00000001 //reload map
+patch=1,EE,203D4B44,extended,00000007 //sPWatch = 0x7 (stop offset)
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B44 //if(sPWatch == 0x6)
+patch=1,EE,203D4B44,extended,00000064 //sPWatch = 0x64
+patch=1,EE,E0010063,extended,003D4B44 //if(sPWatch == 0x63)
+patch=1,EE,203D4B44,extended,00000007 //sPWatch = 0x7
+
+             # Cheat 18: Respawn as Murray
+# Cheat
+patch=1,EE,E0040064,extended,003D4B48 //if(gPWatch == 0x64)
+patch=1,EE,203D4A6C,extended,00000009 //set actchar to murray
+patch=1,EE,203E10C8,extended,00006B29 //spawn location infront of safehouse
+patch=1,EE,203E1080,extended,00000001 //reload map
+patch=1,EE,203D4B48,extended,00000007 //gPWatch = 0x7 (stop offset)
+
+# Sell code
+patch=1,EE,E0010006,extended,003D4B48 //if(gPWatch == 0x6)
+patch=1,EE,203D4B48,extended,00000064 //gPWatch = 0x64
+patch=1,EE,E0010063,extended,003D4B48 //if(gPWatch == 0x63)
+patch=1,EE,203D4B48,extended,00000007 //gPWatch = 0x7
+
+
+
+
+
+
+
+
+
+
+//Custom strings
+pnach file generated with sly-string-toolkit
+https://github.com/theonlyzac/sly-string-toolkit
+date: 2023-02-10 07:47:42
+
+patch=1,EE,203C7980,extended,26585326
+patch=1,EE,203C7984,extended,6F543D2E
+patch=1,EE,203C7988,extended,656C6767
+patch=1,EE,203C798C,extended,4F532620
+patch=1,EE,203C7990,extended,463D2E26
+patch=1,EE,203C7994,extended,20747361
+patch=1,EE,203C7998,extended,6F726373
+patch=1,EE,203C799C,extended,26206C6C
+patch=1,EE,203C79A0,extended,2E265453
+patch=1,EE,203C79A4,extended,6978453D
+patch=1,EE,203C79A8,extended,656D2074
+patch=1,EE,203C79AC,extended,260A756E
+patch=1,EE,203C79B0,extended,2E264C53
+patch=1,EE,203C79B4,extended,6C65523D
+patch=1,EE,203C79B8,extended,2064616F
+patch=1,EE,203C79BC,extended,266C5326
+patch=1,EE,203C79C0,extended,65523D2E
+patch=1,EE,203C79C4,extended,20746573
+patch=1,EE,203C79C8,extended,65756C43
+patch=1,EE,203C79CC,extended,53262073
+patch=1,EE,203C79D0,extended,3D2E2652
+patch=1,EE,203C79D4,extended,6C6C6946
+patch=1,EE,203C79D8,extended,2F504820
+patch=1,EE,203C79DC,extended,260A5047
+patch=1,EE,203C79E0,extended,2E267253
+patch=1,EE,203C79E4,extended,626F4A3D
+patch=1,EE,203C79E8,extended,2070616D
+patch=1,EE,203C79EC,extended,26285326
+patch=1,EE,203C79F0,extended,3F3F3D2E
+patch=1,EE,203C79F4,extended,5326203F
+patch=1,EE,203C79F8,extended,3D2E2629
+patch=1,EE,203C79FC,extended,003F3F3F
+patch=1,EE,203C7A00,extended,6B636168
+patch=1,EE,203C7A04,extended,3A207265
+patch=1,EE,203C7A08,extended,65676172
+patch=1,EE,203C7A0C,extended,2D2D003A
+patch=1,EE,203C7A10,extended,2D2D203E
+patch=1,EE,203C7A14,extended,2D2D203E
+patch=1,EE,203C7A18,extended,6168003E
+patch=1,EE,203C7A1C,extended,72656B63
+patch=1,EE,203C7A20,extended,61723A20
+patch=1,EE,203C7A24,extended,003A6567
+patch=1,EE,203C7A28,extended,63616800
+patch=1,EE,203C7A2C,extended,2072656B
+patch=1,EE,203C7A30,extended,6761723A
+patch=1,EE,203C7A34,extended,54003A65
+patch=1,EE,203C7A38,extended,6C67676F
+patch=1,EE,203C7A3C,extended,75472065
+patch=1,EE,203C7A40,extended,20647261
+patch=1,EE,203C7A44,extended,44004941
+patch=1,EE,203C7A48,extended,61707365
+patch=1,EE,203C7A4C,extended,41206E77
+patch=1,EE,203C7A50,extended,47206C6C
+patch=1,EE,203C7A54,extended,64726175
+patch=1,EE,203C7A58,extended,68430073
+patch=1,EE,203C7A5C,extended,00657361
+patch=1,EE,203C7A60,extended,6D646F47
+patch=1,EE,203C7A64,extended,0065646F
+patch=1,EE,203C7A68,extended,69666E49
+patch=1,EE,203C7A6C,extended,6574696E
+patch=1,EE,203C7A70,extended,6D754A20
+patch=1,EE,203C7A74,extended,55007370
+patch=1,EE,203C7A78,extended,7465646E
+patch=1,EE,203C7A7C,extended,61746365
+patch=1,EE,203C7A80,extended,00656C62
+patch=1,EE,203C7A84,extended,67676F54
+patch=1,EE,203C7A88,extended,4A20656C
+patch=1,EE,203C7A8C,extended,4620626F
+patch=1,EE,203C7A90,extended,006C6961
+patch=1,EE,203C7A94,extended,61656843
+patch=1,EE,203C7A98,extended,74654E74
+patch=1,EE,203C7A9C,extended,00000000
+patch=1,EE,203C7AA0,extended,50555300
+patch=1,EE,203C7AA4,extended,4F485245
+patch=1,EE,203C7AA8,extended,6C460054
+patch=1,EE,203C7AAC,extended,6C626179
+patch=1,EE,203C7AB0,extended,6C472065
+patch=1,EE,203C7AB4,extended,72656469
+patch=1,EE,203C7AB8,extended,69705300
+patch=1,EE,203C7ABC,extended,6843206E
+patch=1,EE,203C7AC0,extended,65677261
+patch=1,EE,203C7AC4,extended,6F6F4220
+patch=1,EE,203C7AC8,extended,54007473
+patch=1,EE,203C7ACC,extended,626E7275
+patch=1,EE,203C7AD0,extended,6C6B6375
+patch=1,EE,203C7AD4,extended,6F422065
+patch=1,EE,203C7AD8,extended,0074736F
+patch=1,EE,203C7ADC,extended,746E6542
+patch=1,EE,203C7AE0,extended,2073276F
+patch=1,EE,203C7AE4,extended,7074654A
+patch=1,EE,203C7AE8,extended,206B6361
+patch=1,EE,203C7AEC,extended,4C53265B
+patch=1,EE,203C7AF0,extended,005D2E26
+patch=1,EE,203C7AF4,extended,20676942
+patch=1,EE,203C7AF8,extended,64616548
+patch=1,EE,203C7AFC,extended,646F4D20
+patch=1,EE,203C7B00,extended,78614D00
+patch=1,EE,203C7B04,extended,61724420
+patch=1,EE,203C7B08,extended,69442077
+patch=1,EE,203C7B0C,extended,6E617473
+patch=1,EE,203C7B10,extended,43006563
+patch=1,EE,203C7B14,extended,7375616C
+patch=1,EE,203C7B18,extended,706F7274
+patch=1,EE,203C7B1C,extended,69626F68
+patch=1,EE,203C7B20,extended,65520061
+patch=1,EE,203C7B24,extended,77617073
+patch=1,EE,203C7B28,extended,7361206E
+patch=1,EE,203C7B2C,extended,796C5320
+patch=1,EE,203C7B30,extended,73655200
+patch=1,EE,203C7B34,extended,6E776170
+patch=1,EE,203C7B38,extended,20736120
+patch=1,EE,203C7B3C,extended,746E6542
+patch=1,EE,203C7B40,extended,0079656C
+patch=1,EE,203C7B44,extended,70736552
+patch=1,EE,203C7B48,extended,206E7761
+patch=1,EE,203C7B4C,extended,4D207361
+patch=1,EE,203C7B50,extended,61727275
+patch=1,EE,203C7B54,extended,64690079
+patch=1,EE,203C7B58,extended,38383820
+patch=1,EE,203C7B5C,extended,6F6D2038
+patch=1,EE,203C7B60,extended,746E656D
+patch=1,EE,203C7B64,extended,00000000
+patch=1,EE,202E60B0,extended,8C820004
+patch=1,EE,202E60B4,extended,340800DB
+patch=1,EE,202E60B8,extended,15050005
+patch=1,EE,202E60BC,extended,00000000
+patch=1,EE,202E60C0,extended,00000000
+patch=1,EE,202E60C4,extended,3C02203C
+patch=1,EE,202E60C8,extended,34427980
+patch=1,EE,202E60CC,extended,00000000
+patch=1,EE,202E60D0,extended,340800DA
+patch=1,EE,202E60D4,extended,15050005
+patch=1,EE,202E60D8,extended,00000000
+patch=1,EE,202E60DC,extended,00000000
+patch=1,EE,202E60E0,extended,3C02203C
+patch=1,EE,202E60E4,extended,34427A00
+patch=1,EE,202E60E8,extended,00000000
+patch=1,EE,202E60EC,extended,340800DC
+patch=1,EE,202E60F0,extended,15050005
+patch=1,EE,202E60F4,extended,00000000
+patch=1,EE,202E60F8,extended,00000000
+patch=1,EE,202E60FC,extended,3C02203C
+patch=1,EE,202E6100,extended,34427A0E
+patch=1,EE,202E6104,extended,00000000
+patch=1,EE,202E6108,extended,340800DD
+patch=1,EE,202E610C,extended,15050005
+patch=1,EE,202E6110,extended,00000000
+patch=1,EE,202E6114,extended,00000000
+patch=1,EE,202E6118,extended,3C02203C
+patch=1,EE,202E611C,extended,34427A1A
+patch=1,EE,202E6120,extended,00000000
+patch=1,EE,202E6124,extended,340800DE
+patch=1,EE,202E6128,extended,15050005
+patch=1,EE,202E612C,extended,00000000
+patch=1,EE,202E6130,extended,00000000
+patch=1,EE,202E6134,extended,3C02203C
+patch=1,EE,202E6138,extended,34427A28
+patch=1,EE,202E613C,extended,00000000
+patch=1,EE,202E6140,extended,340800E3
+patch=1,EE,202E6144,extended,15050005
+patch=1,EE,202E6148,extended,00000000
+patch=1,EE,202E614C,extended,00000000
+patch=1,EE,202E6150,extended,3C02203C
+patch=1,EE,202E6154,extended,34427A29
+patch=1,EE,202E6158,extended,00000000
+patch=1,EE,202E615C,extended,340800E4
+patch=1,EE,202E6160,extended,15050005
+patch=1,EE,202E6164,extended,00000000
+patch=1,EE,202E6168,extended,00000000
+patch=1,EE,202E616C,extended,3C02203C
+patch=1,EE,202E6170,extended,34427A37
+patch=1,EE,202E6174,extended,00000000
+patch=1,EE,202E6178,extended,340800E5
+patch=1,EE,202E617C,extended,15050005
+patch=1,EE,202E6180,extended,00000000
+patch=1,EE,202E6184,extended,00000000
+patch=1,EE,202E6188,extended,3C02203C
+patch=1,EE,202E618C,extended,34427A47
+patch=1,EE,202E6190,extended,00000000
+patch=1,EE,202E6194,extended,340800E6
+patch=1,EE,202E6198,extended,15050005
+patch=1,EE,202E619C,extended,00000000
+patch=1,EE,202E61A0,extended,00000000
+patch=1,EE,202E61A4,extended,3C02203C
+patch=1,EE,202E61A8,extended,34427A5A
+patch=1,EE,202E61AC,extended,00000000
+patch=1,EE,202E61B0,extended,340800E7
+patch=1,EE,202E61B4,extended,15050005
+patch=1,EE,202E61B8,extended,00000000
+patch=1,EE,202E61BC,extended,00000000
+patch=1,EE,202E61C0,extended,3C02203C
+patch=1,EE,202E61C4,extended,34427A60
+patch=1,EE,202E61C8,extended,00000000
+patch=1,EE,202E61CC,extended,340800E8
+patch=1,EE,202E61D0,extended,15050005
+patch=1,EE,202E61D4,extended,00000000
+patch=1,EE,202E61D8,extended,00000000
+patch=1,EE,202E61DC,extended,3C02203C
+patch=1,EE,202E61E0,extended,34427A68
+patch=1,EE,202E61E4,extended,00000000
+patch=1,EE,202E61E8,extended,340800E9
+patch=1,EE,202E61EC,extended,15050005
+patch=1,EE,202E61F0,extended,00000000
+patch=1,EE,202E61F4,extended,00000000
+patch=1,EE,202E61F8,extended,3C02203C
+patch=1,EE,202E61FC,extended,34427A77
+patch=1,EE,202E6200,extended,00000000
+patch=1,EE,202E6204,extended,340800EA
+patch=1,EE,202E6208,extended,15050005
+patch=1,EE,202E620C,extended,00000000
+patch=1,EE,202E6210,extended,00000000
+patch=1,EE,202E6214,extended,3C02203C
+patch=1,EE,202E6218,extended,34427A84
+patch=1,EE,202E621C,extended,00000000
+patch=1,EE,202E6220,extended,34080C49
+patch=1,EE,202E6224,extended,15050005
+patch=1,EE,202E6228,extended,00000000
+patch=1,EE,202E622C,extended,00000000
+patch=1,EE,202E6230,extended,3C02203C
+patch=1,EE,202E6234,extended,34427A94
+patch=1,EE,202E6238,extended,00000000
+patch=1,EE,202E623C,extended,34080C4A
+patch=1,EE,202E6240,extended,15050005
+patch=1,EE,202E6244,extended,00000000
+patch=1,EE,202E6248,extended,00000000
+patch=1,EE,202E624C,extended,3C02203C
+patch=1,EE,202E6250,extended,34427A9D
+patch=1,EE,202E6254,extended,00000000
+patch=1,EE,202E6258,extended,34080C4B
+patch=1,EE,202E625C,extended,15050005
+patch=1,EE,202E6260,extended,00000000
+patch=1,EE,202E6264,extended,00000000
+patch=1,EE,202E6268,extended,3C02203C
+patch=1,EE,202E626C,extended,34427A9E
+patch=1,EE,202E6270,extended,00000000
+patch=1,EE,202E6274,extended,34080C4C
+patch=1,EE,202E6278,extended,15050005
+patch=1,EE,202E627C,extended,00000000
+patch=1,EE,202E6280,extended,00000000
+patch=1,EE,202E6284,extended,3C02203C
+patch=1,EE,202E6288,extended,34427A9F
+patch=1,EE,202E628C,extended,00000000
+patch=1,EE,202E6290,extended,34080C4D
+patch=1,EE,202E6294,extended,15050005
+patch=1,EE,202E6298,extended,00000000
+patch=1,EE,202E629C,extended,00000000
+patch=1,EE,202E62A0,extended,3C02203C
+patch=1,EE,202E62A4,extended,34427AA0
+patch=1,EE,202E62A8,extended,00000000
+patch=1,EE,202E62AC,extended,340800EB
+patch=1,EE,202E62B0,extended,15050005
+patch=1,EE,202E62B4,extended,00000000
+patch=1,EE,202E62B8,extended,00000000
+patch=1,EE,202E62BC,extended,3C02203C
+patch=1,EE,202E62C0,extended,34427AA1
+patch=1,EE,202E62C4,extended,00000000
+patch=1,EE,202E62C8,extended,340800EC
+patch=1,EE,202E62CC,extended,15050005
+patch=1,EE,202E62D0,extended,00000000
+patch=1,EE,202E62D4,extended,00000000
+patch=1,EE,202E62D8,extended,3C02203C
+patch=1,EE,202E62DC,extended,34427AAA
+patch=1,EE,202E62E0,extended,00000000
+patch=1,EE,202E62E4,extended,340800ED
+patch=1,EE,202E62E8,extended,15050005
+patch=1,EE,202E62EC,extended,00000000
+patch=1,EE,202E62F0,extended,00000000
+patch=1,EE,202E62F4,extended,3C02203C
+patch=1,EE,202E62F8,extended,34427AB9
+patch=1,EE,202E62FC,extended,00000000
+patch=1,EE,202E6300,extended,340800EE
+patch=1,EE,202E6304,extended,15050005
+patch=1,EE,202E6308,extended,00000000
+patch=1,EE,202E630C,extended,00000000
+patch=1,EE,202E6310,extended,3C02203C
+patch=1,EE,202E6314,extended,34427ACB
+patch=1,EE,202E6318,extended,00000000
+patch=1,EE,202E631C,extended,340800EF
+patch=1,EE,202E6320,extended,15050005
+patch=1,EE,202E6324,extended,00000000
+patch=1,EE,202E6328,extended,00000000
+patch=1,EE,202E632C,extended,3C02203C
+patch=1,EE,202E6330,extended,34427ADC
+patch=1,EE,202E6334,extended,00000000
+patch=1,EE,202E6338,extended,340800F0
+patch=1,EE,202E633C,extended,15050005
+patch=1,EE,202E6340,extended,00000000
+patch=1,EE,202E6344,extended,00000000
+patch=1,EE,202E6348,extended,3C02203C
+patch=1,EE,202E634C,extended,34427AF4
+patch=1,EE,202E6350,extended,00000000
+patch=1,EE,202E6354,extended,340800F1
+patch=1,EE,202E6358,extended,15050005
+patch=1,EE,202E635C,extended,00000000
+patch=1,EE,202E6360,extended,00000000
+patch=1,EE,202E6364,extended,3C02203C
+patch=1,EE,202E6368,extended,34427B01
+patch=1,EE,202E636C,extended,00000000
+patch=1,EE,202E6370,extended,340800F2
+patch=1,EE,202E6374,extended,15050005
+patch=1,EE,202E6378,extended,00000000
+patch=1,EE,202E637C,extended,00000000
+patch=1,EE,202E6380,extended,3C02203C
+patch=1,EE,202E6384,extended,34427B13
+patch=1,EE,202E6388,extended,00000000
+patch=1,EE,202E638C,extended,340800F3
+patch=1,EE,202E6390,extended,15050005
+patch=1,EE,202E6394,extended,00000000
+patch=1,EE,202E6398,extended,00000000
+patch=1,EE,202E639C,extended,3C02203C
+patch=1,EE,202E63A0,extended,34427B22
+patch=1,EE,202E63A4,extended,00000000
+patch=1,EE,202E63A8,extended,340800F4
+patch=1,EE,202E63AC,extended,15050005
+patch=1,EE,202E63B0,extended,00000000
+patch=1,EE,202E63B4,extended,00000000
+patch=1,EE,202E63B8,extended,3C02203C
+patch=1,EE,202E63BC,extended,34427B31
+patch=1,EE,202E63C0,extended,00000000
+patch=1,EE,202E63C4,extended,340800F5
+patch=1,EE,202E63C8,extended,15050005
+patch=1,EE,202E63CC,extended,00000000
+patch=1,EE,202E63D0,extended,00000000
+patch=1,EE,202E63D4,extended,3C02203C
+patch=1,EE,202E63D8,extended,34427B44
+patch=1,EE,202E63DC,extended,00000000
+patch=1,EE,202E63E0,extended,340822B8
+patch=1,EE,202E63E4,extended,15050005
+patch=1,EE,202E63E8,extended,00000000
+patch=1,EE,202E63EC,extended,00000000
+patch=1,EE,202E63F0,extended,3C02203C
+patch=1,EE,202E63F4,extended,34427B56
+patch=1,EE,202E63F8,extended,00000000
+patch=1,EE,202E63FC,extended,03E00008
+patch=1,EE,202E6400,extended,00000000
+patch=1,EE,202E6404,extended,00000000
+patch=1,EE,2013e384,extended,00000000 # nop
+patch=1,EE,2013e380,extended,080B982C # j 0x2E60B0
