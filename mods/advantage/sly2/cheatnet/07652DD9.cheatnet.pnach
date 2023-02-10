@@ -752,7 +752,7 @@ patch=1,EE,202DDF5C,extended,3F4CCCCD //fix draw distance
 
 # Cheat off
 patch=1,EE,E0010063,extended,003D4B3C //if(gMedal == 0x64)
-patch=1,EE,202DDF7C,extended,3FDD3BDA //set claustrophobia to normal
+patch=1,EE,202DDF7C,extended,3FA63BDA //set claustrophobia to normal
 
 # Sell code
 patch=1,EE,E0010006,extended,003D4B3C //if(gMedal == 0x6)
