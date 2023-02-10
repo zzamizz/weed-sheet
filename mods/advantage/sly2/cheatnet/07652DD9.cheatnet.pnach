@@ -746,13 +746,20 @@ patch=1,EE,203D4B38,extended,00000007 //sMedal = 0x7
 
             # Cheat 15: Claustrophobia
 # Cheat
+patch=1,EE,E0030001,extended,003DA190 //if thiefnet menu = open
+patch=1,EE,E0020006,extended,003D4B3C //if(gMedal == 0x6)
+patch=1,EE,502DDF7C,extended,00000004 //copybytes from claustro
+patch=1,EE,003D0C00,extended,00000000 //to codecave (before cheat activates)
+
 patch=1,EE,E0020064,extended,003D4B3C //if(gMedal == 0x64)
 patch=1,EE,202DDF7C,extended,41200000 //set claustrophobia to 10
 patch=1,EE,202DDF5C,extended,3F4CCCCD //fix draw distance
 
 # Cheat off
-patch=1,EE,E0010063,extended,003D4B3C //if(gMedal == 0x64)
-patch=1,EE,202DDF7C,extended,3FA63BDA //set claustrophobia to normal
+patch=1,EE,E0030001,extended,003DA190 //if thiefnet menu = open
+patch=1,EE,E0020063,extended,003D4B3C //if(gMedal == 0x64)
+patch=1,EE,503D0C00,extended,00000004 //copybytes from codecave
+patch=1,EE,002DDF7C,extended,00000000 //to claustro
 
 # Sell code
 patch=1,EE,E0010006,extended,003D4B3C //if(gMedal == 0x6)
