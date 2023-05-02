@@ -4,7 +4,7 @@ comment=Prototype fix by Velocity & Meos
 // Security bypass & debug menu (without timer)
 patch=1,EE,2020B4E8,extended,3C02004C
 patch=1,EE,2020B4EC,extended,34426590
-patch=1,EE,2020B4F0,extended,7FB10020
+patch=1,EE,2020B4F0,extended,00000000
 patch=1,EE,2020B4F4,extended,03E00008
 patch=1,EE,2020B4F8,extended,00000000
 patch=1,EE,201685A8,extended,10000048
