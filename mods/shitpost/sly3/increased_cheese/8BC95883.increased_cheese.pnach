@@ -1,7 +1,19 @@
-comment=Increased cheese by zami
+comment=Increased cheese by zami3333
 // dedicated to cheese man
-patch=1,EE,E004000F,extended,0047989C
-patch=1,EE,20C7D734,extended,40800000
-patch=1,EE,20C7D738,extended,40A00000
-patch=1,EE,20C7D754,extended,000000C8
-patch=1,EE,20C7D758,extended,000001F4
+patch=1,EE,E010000F,extended,0047989C //if mapid=15
+patch=1,EE,6050C8C0,extended,40800000 //increase cheese size
+patch=1,EE,00020005,extended,00000000
+patch=1,EE,000000D4,extended,00000008
+patch=1,EE,0000001C,extended,00000014
+patch=1,EE,6050C8C0,extended,40A00000 //increase cheese size 2
+patch=1,EE,00020005,extended,00000000
+patch=1,EE,000000D4,extended,00000008
+patch=1,EE,0000001C,extended,00000018
+patch=1,EE,6050C8C0,extended,000000C8 //increase cheese rate
+patch=1,EE,00020005,extended,00000000
+patch=1,EE,000000D4,extended,00000008
+patch=1,EE,0000001C,extended,00000034
+patch=1,EE,6050C8C0,extended,000001F4 //increase cheese rate 2
+patch=1,EE,00020005,extended,00000000
+patch=1,EE,000000D4,extended,00000008
+patch=1,EE,0000001C,extended,00000038
