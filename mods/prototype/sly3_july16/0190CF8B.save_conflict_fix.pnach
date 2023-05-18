@@ -1,0 +1,14 @@
+comment=Save Conflict Fix by SCRC
+//Change Save File Name to Avoid Conflicts (BASCUS-42071)
+patch=1,EE,20317F08,extended,37303234
+patch=1,EE,20317F0C,extended,4F415931
+patch=1,EE,20317F20,extended,37303234
+patch=1,EE,20317F24,extended,4F415931
+patch=1,EE,20317F34,extended,3032342D
+patch=1,EE,20317F38,extended,41593137
+patch=1,EE,20317F60,extended,37303234
+patch=1,EE,20317F64,extended,4F415931
+patch=1,EE,20317F80,extended,37303234
+patch=1,EE,20317F84,extended,4F415931
+patch=1,EE,20317FB4,extended,342D5355
+patch=1,EE,20317FB8,extended,31373032

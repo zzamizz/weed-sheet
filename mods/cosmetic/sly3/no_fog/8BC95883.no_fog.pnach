@@ -1,3 +1,2 @@
 comment=No Fog
-// Removes all fog
 patch=1,EE,2036BC2C,extended,00000000

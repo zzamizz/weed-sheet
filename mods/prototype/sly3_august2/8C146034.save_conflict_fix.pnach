@@ -1,0 +1,14 @@
+comment=Save Conflict Fix by SCRC
+//Change Save File Name to Avoid Conflicts (BESCES-42069)
+patch=1,EE,203475D8,extended,36303234
+patch=1,EE,203475DC,extended,4F415939
+patch=1,EE,203475F0,extended,36303234
+patch=1,EE,203475F4,extended,4F415939
+patch=1,EE,20347604,extended,3032342D
+patch=1,EE,20347608,extended,41593936
+patch=1,EE,20347630,extended,36303234
+patch=1,EE,20347634,extended,4F415939
+patch=1,EE,20347650,extended,36303234
+patch=1,EE,20347654,extended,4F415939
+patch=1,EE,20347684,extended,342D5345
+patch=1,EE,20347688,extended,39363032
