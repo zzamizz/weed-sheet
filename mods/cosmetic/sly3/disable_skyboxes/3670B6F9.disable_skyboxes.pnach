@@ -1,0 +1,4 @@
+comment=Disable Skyboxes by zami3333
+patch=1,EE,E102003A,extended,3039A19B //level uptime check
+patch=1,EE,604BDBC8,extended,00000000
+patch=1,EE,00020000,extended,000000A8
