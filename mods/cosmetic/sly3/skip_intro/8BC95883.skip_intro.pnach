@@ -1,0 +1,22 @@
+comment=Skip Intro by zami3333
+// Skips the intro cutscene
+// Boots the game directly to a fully unlocked episode menu
+
+// Save Kaine Island AOB to codecave
+patch=1,EE,E1020000,extended,0036BBAF //if uptime less than 0x0
+patch=1,EE,502EE898,extended,00000040 //cb from kaineaob
+patch=1,EE,000F0000,extended,00000000 //to codecave
+
+// Replace Kaine Island AOB with Menu AOB
+patch=1,EE,E103003D,extended,3036BBAF //if uptime more than 0x3D
+patch=1,EE,E102003F,extended,2036BBAF //if uptime less than 0x3F
+patch=1,EE,502EDFD8,extended,00000040 //cb from mainmenuaob
+patch=1,EE,002EE898,extended,00000000 //to kaineaob
+
+// Restore Kaine Island AOB from codecave
+patch=1,EE,E1020040,extended,0036BBAF //if uptime less than 0x40
+patch=1,EE,500F0000,extended,00000040 //cb from codecave
+patch=1,EE,002EE898,extended,00000000 //to kaineaob
+
+// Unlock full episode menu
+patch=1,EE,203448E0,extended,00000001

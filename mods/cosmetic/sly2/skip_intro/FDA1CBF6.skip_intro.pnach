@@ -1,0 +1,25 @@
+comment=Skip Intro by zami3333
+// Skips the entire intro by booting into a full episode menu instead
+
+// Load Menu instead of Cairo
+patch=1,EE,E110003F,extended,202E530F //if uptime less than 0x3F
+patch=1,EE,203E8888,extended,0E07D3C3 
+patch=1,EE,203E888C,extended,B6E2AD2E 
+patch=1,EE,203E8890,extended,C64DF0E3 
+patch=1,EE,203E8894,extended,F6811DD6 
+patch=1,EE,203E8898,extended,ED62EA9B 
+patch=1,EE,203E889C,extended,6B8A1AAD 
+patch=1,EE,203E88A0,extended,462398A6 
+patch=1,EE,203E88A4,extended,C00A9106 
+patch=1,EE,203E88A8,extended,4366AC19 
+patch=1,EE,203E88AC,extended,A5BD16F7 
+patch=1,EE,203E88B0,extended,12568736 
+patch=1,EE,203E88B4,extended,58F450F3 
+patch=1,EE,203E88B8,extended,6EC96089 
+patch=1,EE,203E88BC,extended,0E02C8E3 
+patch=1,EE,203E88C0,extended,C64DF0D4 
+patch=1,EE,203E88C4,extended,B6FC032D 
+
+// Unlock full episode menu
+patch=1,EE,E0010001,extended,003E8910
+patch=1,EE,205A0318,extended,00000008
