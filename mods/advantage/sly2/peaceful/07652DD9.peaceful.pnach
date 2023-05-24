@@ -1,0 +1,360 @@
+comment=Peaceful by zami3333
+// "Peaceful Mode" removes all guards and danger from levels
+// Cheat toggle requires 100% savefile (bypass this by setting 0x00091220 to 1)
+// 
+//  Notes:
+//  * Level reload is required after toggling
+//  * Replaces the USB headset option
+//  * First release works only in hubmaps
+//  * Later update will include submaps, as well as removes inanimate enemies (tanks and spotlights)
+// Report any issues that are not already mentioned:
+// https://discord.gg/2GSXcEzPJA #sly-modding @sami#2055
+
+//TODO - add submaps
+//TODO - force gang maxhealth to super high (for natural hazards)
+
+# Savefile Check
+patch=1,EE,E0010000,extended,00091220 //if(custom100flag = 0)
+patch=1,EE,002F6510,extended,00000050 //force usbheadset = 0x50(off)
+
+patch=1,EE,E0080064,extended,003D4C98 //if(every ep = 100percent)
+patch=1,EE,E0070064,extended,003D4E38 
+patch=1,EE,E0060064,extended,003D4F50 
+patch=1,EE,E0050064,extended,003D4FE0 
+patch=1,EE,E0040064,extended,003D50B4 
+patch=1,EE,E0030064,extended,003D5364 
+patch=1,EE,E0020064,extended,003D54C0 
+patch=1,EE,E0010064,extended,003D5660
+patch=1,EE,00091220,extended,00000001 //custom 100percent flag = 1
+
+# Pause Menu Setting - String
+patch=1,EE,2013E380,extended,087FFA80 //sly-string-toolkit
+patch=1,EE,2013E384,extended,00000000
+patch=1,EE,21FFEA00,extended,8C820004
+patch=1,EE,21FFEA04,extended,3408004F
+patch=1,EE,21FFEA08,extended,15050005
+patch=1,EE,21FFEA0C,extended,00000000
+patch=1,EE,21FFEA10,extended,00000000
+patch=1,EE,21FFEA14,extended,3C020009
+patch=1,EE,21FFEA18,extended,34421230
+patch=1,EE,21FFEA1C,extended,00000000
+patch=1,EE,21FFEA20,extended,34080050
+patch=1,EE,21FFEA24,extended,15050005
+patch=1,EE,21FFEA28,extended,00000000
+patch=1,EE,21FFEA2C,extended,00000000
+patch=1,EE,21FFEA30,extended,3C020009
+patch=1,EE,21FFEA34,extended,34421242
+patch=1,EE,21FFEA38,extended,00000000
+patch=1,EE,21FFEA3C,extended,03E00008
+patch=1,EE,21FFEA40,extended,00000000
+patch=1,EE,21FFEA44,extended,00000000
+
+patch=1,EE,E10A0000,extended,00091220 //if(custom100flag = 0)
+patch=1,EE,20091240,extended,6550006E //string="Peaceful Mode: Off (100percent required)"
+patch=1,EE,20091244,extended,66656361
+patch=1,EE,20091248,extended,4D206C75
+patch=1,EE,2009124C,extended,3A65646F
+patch=1,EE,20091250,extended,66664F20
+patch=1,EE,20091254,extended,30312820
+patch=1,EE,20091258,extended,72202530
+patch=1,EE,2009125C,extended,69757165
+patch=1,EE,20091260,extended,29646572
+patch=1,EE,20091264,extended,00000000
+
+patch=1,EE,E10B0001,extended,00091220 //if(custom100flag = 1)
+patch=1,EE,20091230,extended,63616550 //string="Peaceful Mode: On/Off"
+patch=1,EE,20091234,extended,6C756665
+patch=1,EE,20091238,extended,646F4D20
+patch=1,EE,2009123C,extended,4F203A65
+patch=1,EE,20091240,extended,6550006E
+patch=1,EE,20091244,extended,66656361
+patch=1,EE,20091248,extended,4D206C75
+patch=1,EE,2009124C,extended,3A65646F
+patch=1,EE,20091250,extended,66664F20
+patch=1,EE,20091254,extended,00000000
+
+# Paris
+patch=1,EE,E01B004F,extended,002F6510 //if(usbheadset = 1)
+patch=1,EE,E01A0002,extended,003E1110 //mapcheck
+patch=1,EE,214049C0,extended,00000000 //boar spawn
+patch=1,EE,21405570,extended,00000000
+patch=1,EE,21414000,extended,00000000
+patch=1,EE,21419960,extended,00000000
+patch=1,EE,2141B2A0,extended,00000000
+patch=1,EE,21413BE0,extended,00000000 //goat spawn
+patch=1,EE,21403D90,extended,00000000 //rat spawn
+patch=1,EE,214048A0,extended,00000000
+patch=1,EE,21413D40,extended,00000000
+patch=1,EE,21413EA0,extended,00000000
+patch=1,EE,21414D00,extended,00000000
+patch=1,EE,21414E40,extended,00000000
+patch=1,EE,21414F80,extended,00000000
+patch=1,EE,214150C0,extended,00000000
+patch=1,EE,21415200,extended,00000000
+patch=1,EE,21415340,extended,00000000
+patch=1,EE,21415480,extended,00000000
+patch=1,EE,214173C0,extended,00000000
+patch=1,EE,21417510,extended,00000000
+patch=1,EE,21417660,extended,00000000
+patch=1,EE,214177B0,extended,00000000
+patch=1,EE,2141B020,extended,00000000
+patch=1,EE,2141B160,extended,00000000
+patch=1,EE,2141F660,extended,00000000
+patch=1,EE,2141F7A0,extended,00000000
+patch=1,EE,214282B0,extended,00000000
+
+# Wine Cellar
+patch=1,EE,E003004F,extended,002F6510 //if(usbheadset = 1)
+patch=1,EE,E0020003,extended,003E1110 //mapcheck
+patch=1,EE,20489E04,extended,00000000 //boar spawn(fkflag)
+patch=1,EE,20488F40,extended,00000000 //rat spawn(fkflag)
+
+# Nightclub
+patch=1,EE,E002004F,extended,002F6510 //if(usbheadset = 1)
+patch=1,EE,E0010004,extended,003E1110 //mapcheck
+patch=1,EE,204891C8,extended,00000000 //rat spawn(fkflag)
+//TODO - find method to despawn boars (fk nor despawnflag dont work)
+
+# India
+patch=1,EE,E023004F,extended,002F6510 //if(usbheadset = 1)
+patch=1,EE,E0220008,extended,003E1110 //mapcheck
+patch=1,EE,20B51CD0,extended,00000000 //monkey spawn
+patch=1,EE,20B69170,extended,00000000
+patch=1,EE,20B740D0,extended,00000000
+patch=1,EE,210AA0A0,extended,00000000
+patch=1,EE,2126F130,extended,00000000
+patch=1,EE,2126F790,extended,00000000
+patch=1,EE,212705A0,extended,00000000
+patch=1,EE,20770440,extended,00000000
+patch=1,EE,20770600,extended,00000000 //rhino spawn
+patch=1,EE,20770770,extended,00000000
+patch=1,EE,20771CC0,extended,00000000
+patch=1,EE,20772030,extended,00000000
+patch=1,EE,210A8920,extended,00000000
+patch=1,EE,2126DCC0,extended,00000000
+patch=1,EE,2126DE00,extended,00000000
+patch=1,EE,2126EAD0,extended,00000000
+patch=1,EE,2126FF40,extended,00000000
+patch=1,EE,214CC610,extended,00000000
+patch=1,EE,2109D650,extended,00000000 //goat spawn
+patch=1,EE,2126E460,extended,00000000
+patch=1,EE,2126F8D0,extended,00000000
+patch=1,EE,210A0480,extended,00000000 //cobra spawn
+patch=1,EE,210A05A0,extended,00000000
+patch=1,EE,210A0910,extended,00000000
+patch=1,EE,210A0A30,extended,00000000
+patch=1,EE,210A0B50,extended,00000000
+patch=1,EE,210A0C70,extended,00000000
+patch=1,EE,210A0D90,extended,00000000
+patch=1,EE,210A0EB0,extended,00000000
+patch=1,EE,210A0FD0,extended,00000000
+patch=1,EE,210A10F0,extended,00000000
+patch=1,EE,210A1210,extended,00000000
+patch=1,EE,210A1330,extended,00000000
+patch=1,EE,210A1450,extended,00000000
+patch=1,EE,2048A608,extended,00000000 //elephantspawner spawn(fkflag)
+
+# India 2
+patch=1,EE,E011004F,extended,002F6510 //if(usbheadset = 1)
+patch=1,EE,E010000C,extended,003E1110 //mapcheck
+patch=1,EE,208E0F50,extended,00000000 //monkey spawn
+patch=1,EE,2098FFA0,extended,00000000
+patch=1,EE,20991B60,extended,00000000
+patch=1,EE,211600E0,extended,00000000
+patch=1,EE,21629EC0,extended,00000000
+patch=1,EE,21167F60,extended,00000000 //rhino spawn
+patch=1,EE,2115FE20,extended,00000000 //goat spawn
+patch=1,EE,2115FF80,extended,00000000
+patch=1,EE,21629D40,extended,00000000
+patch=1,EE,211685B0,extended,00000000 //cobra spawn 
+patch=1,EE,211686D0,extended,00000000
+patch=1,EE,211687F0,extended,00000000
+patch=1,EE,21168910,extended,00000000
+patch=1,EE,21168A30,extended,00000000
+patch=1,EE,21168B50,extended,00000000
+patch=1,EE,21168C70,extended,00000000
+//TODO - despawn spawner elephant
+
+# Prague
+patch=1,EE,E026004F,extended,002F6510 //if(usbheadset = 1)
+patch=1,EE,E025000E,extended,003E1110 //mapcheck
+patch=1,EE,20872200,extended,00000000 //wolf spawn
+patch=1,EE,20872320,extended,00000000
+patch=1,EE,20E42C20,extended,00000000
+patch=1,EE,20E42D80,extended,00000000
+patch=1,EE,20E44830,extended,00000000
+patch=1,EE,20E44990,extended,00000000
+patch=1,EE,20E44AF0,extended,00000000
+patch=1,EE,21496C20,extended,00000000
+patch=1,EE,21497710,extended,00000000
+patch=1,EE,21497E80,extended,00000000
+patch=1,EE,214985F0,extended,00000000
+patch=1,EE,21498D60,extended,00000000
+patch=1,EE,214994D0,extended,00000000
+patch=1,EE,21499C40,extended,00000000
+patch=1,EE,2149A3B0,extended,00000000
+patch=1,EE,2149AB20,extended,00000000
+patch=1,EE,214D0120,extended,00000000
+patch=1,EE,2093A5D0,extended,00000000 //vulture spawn
+patch=1,EE,2093A720,extended,00000000
+patch=1,EE,2093A870,extended,00000000
+patch=1,EE,2093B5C0,extended,00000000
+patch=1,EE,2093B710,extended,00000000
+patch=1,EE,2093B860,extended,00000000
+patch=1,EE,2093C770,extended,00000000
+patch=1,EE,2093C8C0,extended,00000000
+patch=1,EE,209A6E80,extended,00000000
+patch=1,EE,20C62390,extended,00000000
+patch=1,EE,20C63020,extended,00000000
+patch=1,EE,20C63B70,extended,00000000
+patch=1,EE,20C641B0,extended,00000000
+patch=1,EE,20E42EE0,extended,00000000
+patch=1,EE,20E44C50,extended,00000000
+patch=1,EE,20E45FA0,extended,00000000
+patch=1,EE,214DA640,extended,00000000
+patch=1,EE,20E41560,extended,00000000 //goat spawn
+patch=1,EE,20E416C0,extended,00000000
+patch=1,EE,214CBBE0,extended,00000000
+//TODO - despawn tank
+
+# Prague 2
+patch=1,EE,E032004F,extended,002F6510 //if(usbheadset = 1)
+patch=1,EE,E0310011,extended,003E1110 //mapcheck
+patch=1,EE,20DDFE20,extended,00000000 //wolf spawn
+patch=1,EE,20F471D0,extended,00000000
+patch=1,EE,20F472D0,extended,00000000
+patch=1,EE,20F473D0,extended,00000000
+patch=1,EE,20F474D0,extended,00000000
+patch=1,EE,20F475D0,extended,00000000
+patch=1,EE,20FE40B0,extended,00000000
+patch=1,EE,20FE4B90,extended,00000000
+patch=1,EE,20FE5300,extended,00000000
+patch=1,EE,20FE5A70,extended,00000000
+patch=1,EE,20FE61E0,extended,00000000
+patch=1,EE,20FE6950,extended,00000000
+patch=1,EE,20FE70C0,extended,00000000
+patch=1,EE,20FE7830,extended,00000000
+patch=1,EE,21264570,extended,00000000
+patch=1,EE,2127D2E0,extended,00000000
+patch=1,EE,2127D400,extended,00000000
+patch=1,EE,2127D520,extended,00000000
+patch=1,EE,2127E6F0,extended,00000000
+patch=1,EE,2127E810,extended,00000000
+patch=1,EE,2127E930,extended,00000000
+patch=1,EE,2127FB00,extended,00000000
+patch=1,EE,2127FC20,extended,00000000
+patch=1,EE,21280DF0,extended,00000000
+patch=1,EE,21280F10,extended,00000000
+patch=1,EE,21281030,extended,00000000
+patch=1,EE,21282200,extended,00000000
+patch=1,EE,21282320,extended,00000000
+patch=1,EE,21282440,extended,00000000
+patch=1,EE,21283610,extended,00000000
+patch=1,EE,21283730,extended,00000000
+patch=1,EE,21283850,extended,00000000
+patch=1,EE,21283970,extended,00000000
+patch=1,EE,21283A90,extended,00000000
+patch=1,EE,21284C60,extended,00000000
+patch=1,EE,21284D80,extended,00000000
+patch=1,EE,21284EA0,extended,00000000
+patch=1,EE,21284FC0,extended,00000000
+patch=1,EE,212850E0,extended,00000000
+patch=1,EE,20DE3540,extended,00000000
+patch=1,EE,215BC6E0,extended,00000000 //vulture spawn
+patch=1,EE,215BCC20,extended,00000000
+patch=1,EE,215BCD60,extended,00000000
+patch=1,EE,215BD3C0,extended,00000000
+patch=1,EE,215BE000,extended,00000000
+patch=1,EE,215BE1A0,extended,00000000
+patch=1,EE,20DDD8C0,extended,00000000 //goat spawn
+patch=1,EE,212E28F0,extended,00000000
+patch=1,EE,2048CB28,extended,00000000 //biplane bomber spawn
+//TODO - despawn tanks and spotlights
+
+# Canada
+patch=1,EE,E00F004F,extended,002F6510 //if(usbheadset = 1)
+patch=1,EE,E00E001B,extended,003E1110 //mapcheck
+patch=1,EE,209C89E0,extended,00000000 //goose spawn
+patch=1,EE,209D9CC0,extended,00000000
+patch=1,EE,21003700,extended,00000000
+patch=1,EE,21009770,extended,00000000 //moose spawn
+patch=1,EE,210008B0,extended,00000000 //goat spawn
+patch=1,EE,2100BA20,extended,00000000 //bear spawn
+patch=1,EE,213583E0,extended,00000000
+patch=1,EE,20690CF0,extended,00000000 //eaglebomber spawn
+patch=1,EE,20691780,extended,00000000
+patch=1,EE,20691DA0,extended,00000000
+patch=1,EE,208F0640,extended,00000000 //mole spawn
+patch=1,EE,208F2410,extended,00000000
+patch=1,EE,208F2F50,extended,00000000
+patch=1,EE,208F3A90,extended,00000000
+
+# Canada 2
+patch=1,EE,E01A004F,extended,002F6510 //if(usbheadset = 1)
+patch=1,EE,E0190020,extended,003E1110 //mapcheck
+patch=1,EE,2085CE30,extended,00000000 //goose spawn
+patch=1,EE,2085CF70,extended,00000000
+patch=1,EE,2085D0B0,extended,00000000
+patch=1,EE,20988370,extended,00000000
+patch=1,EE,20988490,extended,00000000
+patch=1,EE,20AD0510,extended,00000000
+patch=1,EE,20AD0C90,extended,00000000
+patch=1,EE,20AD7710,extended,00000000
+patch=1,EE,20ADE190,extended,00000000
+patch=1,EE,21472AC0,extended,00000000
+patch=1,EE,20988130,extended,00000000 //moose spawn
+patch=1,EE,20988250,extended,00000000
+patch=1,EE,21472C10,extended,00000000
+patch=1,EE,21465D00,extended,00000000 //goat spawn
+patch=1,EE,20988C70,extended,00000000 //bear spawn
+patch=1,EE,214729A0,extended,00000000
+patch=1,EE,205F2B00,extended,00000000 //eaglebomber spawn
+patch=1,EE,205F35B0,extended,00000000
+patch=1,EE,205F3BD0,extended,00000000
+patch=1,EE,205F41F0,extended,00000000
+patch=1,EE,205F4810,extended,00000000
+patch=1,EE,205F4E30,extended,00000000
+patch=1,EE,205F5450,extended,00000000
+patch=1,EE,205F5A70,extended,00000000
+patch=1,EE,205F6090,extended,00000000
+//TODO - remove falling icicles from lighthouse
+
+# Blimp
+patch=1,EE,E024004F,extended,002F6510 //if(usbheadset = 1)
+patch=1,EE,E0230026,extended,003E1110 //mapcheck
+patch=1,EE,20ECFCA0,extended,00000000 //clockla spawn
+patch=1,EE,20F3E200,extended,00000000 //pelican spawn
+patch=1,EE,213061B0,extended,00000000
+patch=1,EE,2130AFC0,extended,00000000
+patch=1,EE,20A8B330,extended,00000000
+patch=1,EE,20ACD0F0,extended,00000000
+patch=1,EE,20AE29E0,extended,00000000
+patch=1,EE,20AF76D0,extended,00000000
+patch=1,EE,20EC5C40,extended,00000000
+patch=1,EE,211555F0,extended,00000000
+patch=1,EE,211557D0,extended,00000000
+patch=1,EE,21155DB0,extended,00000000
+patch=1,EE,21156EB0,extended,00000000
+patch=1,EE,21157660,extended,00000000
+patch=1,EE,20EC5AF0,extended,00000000 //swarmer spawn
+patch=1,EE,21158560,extended,00000000
+patch=1,EE,211586A0,extended,00000000
+patch=1,EE,211587E0,extended,00000000
+patch=1,EE,21158FC0,extended,00000000
+patch=1,EE,21159100,extended,00000000
+patch=1,EE,21159240,extended,00000000
+patch=1,EE,21159A20,extended,00000000
+patch=1,EE,21159B60,extended,00000000
+patch=1,EE,21159CA0,extended,00000000
+patch=1,EE,2115A4D0,extended,00000000
+patch=1,EE,2115A610,extended,00000000
+patch=1,EE,2115A750,extended,00000000
+patch=1,EE,2119C540,extended,00000000 //chopper spawn
+patch=1,EE,213207C0,extended,00000000
+patch=1,EE,213230D0,extended,00000000
+patch=1,EE,2132A7F0,extended,00000000
+patch=1,EE,2132CF10,extended,00000000
+patch=1,EE,2132F630,extended,00000000
+patch=1,EE,21331D50,extended,00000000
+patch=1,EE,21334470,extended,00000000
+//TODO - remove chopper bombs and spotlights
