@@ -1,0 +1,2 @@
+comment=Dongle Skip by Meos
+patch=1,EE,20173608,extended,1000005C
