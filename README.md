@@ -14,8 +14,8 @@ All mods made via memory editing are uploaded in ``.pnach`` format to use with [
 
 ![Sheet link](https://raw.githubusercontent.com/zzamizz/weed-sheet/main/Media/Screenshots/sheetlink.png)
 
-- Select "Raw" and then press ``Ctrl+S`` to download the raw text page as PNACH
-![Download raw](https://raw.githubusercontent.com/zzamizz/weed-sheet/main/Media/Screenshots/downloadraw.png)
+- Select "Download raw file" to download the PNACH
+![Download raw](https://raw.githubusercontent.com/zzamizz/weed-sheet/main/Media/Screenshots/downloadraw2.png)
 ## How to install and enable the mods for PCSX2:
 - Locate your emulator's ``/cheats`` directory and move the downloaded .pnach files in.
 
