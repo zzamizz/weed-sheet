@@ -1,0 +1,4 @@
+gametitle= Sly 2 August 10 Review Code [SCUS-97316] [08/09/04 19:56]
+
+comment=No Motion Blur by Meos
+patch=1,EE,201617C0,extended,00000000

@@ -1,0 +1,4 @@
+gametitle= Sly 2 March 17 Internal Build [SCUS-97316] [03/17/04 14:05]
+
+comment=No Motion Blur by Meos
+patch=1,EE,2017C8E0,extended,00000000

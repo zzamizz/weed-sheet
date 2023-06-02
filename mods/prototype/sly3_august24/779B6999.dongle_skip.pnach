@@ -1,0 +1,4 @@
+gametitle= Sly 3 August 24 Prototype [SCUS-97464] [08/24/05 22:34]
+
+comment=Dongle Skip
+patch=1,EE,20324100,extended,00000000
