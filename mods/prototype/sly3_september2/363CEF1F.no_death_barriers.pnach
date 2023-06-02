@@ -1,3 +1,0 @@
-comment=No Death Barriers by Cooper
-// Removes the death barriers so its easier to go out of bounds.
-patch=1,EE,2039F108,extended,00000001
