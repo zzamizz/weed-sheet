@@ -1,0 +1,5 @@
+comment=FMV skipper by zami3333
+// Skip any video cutscene by pressing X
+patch=1,EE,E0020020,extended,302F67D0
+patch=1,EE,E10100FF,extended,002DFC0E
+patch=1,EE,202F6810,extended,00000000
