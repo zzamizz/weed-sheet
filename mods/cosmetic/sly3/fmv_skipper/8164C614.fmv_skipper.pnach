@@ -1,0 +1,7 @@
+gametitle= Sly 3: Honor Among Thieves (PAL) [SCES-53409] [09/21/05 18:43]
+
+comment=FMV Skipper by zami3333
+// Skip any video cutscene by pressing X
+patch=1,EE,E0020020,extended,3038AA60 //if(fmv frame counter > 20)
+patch=1,EE,E10100FF,extended,0036F20E //if cross
+patch=1,EE,2038AAA0,extended,00000000 //skip

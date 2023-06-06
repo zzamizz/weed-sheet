@@ -1,0 +1,7 @@
+gametitle= Sly 3 September 2 Review [SCES-53409] [09/02/05 17:47]
+
+comment=FMV Skipper by zami3333
+// Skip any video cutscene by pressing X
+patch=1,EE,E0020020,extended,303CE250 //if(fmv frame counter > 20)
+patch=1,EE,E10100FF,extended,0039CE0E //if cross
+patch=1,EE,203CE290,extended,00000000 //skip

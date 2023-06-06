@@ -1,0 +1,7 @@
+gametitle= Sly Cooper (NTSC-K) [SCKA-20004] [12/31/02 13:08]
+
+comment=FMV Skipper by zami3333
+// Skip any video cutscene by pressing X
+patch=1,EE,E0020020,extended,3026A218 //if(fmv frame counter > 20)
+patch=1,EE,E10100FF,extended,0026352C //if cross
+patch=1,EE,2026A260,extended,00000000 //skip

@@ -1,0 +1,7 @@
+gametitle= Sly 3 July 16 Preview Code [SCUS-97464] [07/16/05 18:54]
+
+comment=FMV Skipper by zami3333
+// Skip any video cutscene by pressing X
+patch=1,EE,E0020020,extended,3037C030 //if(fmv frame counter > 20)
+patch=1,EE,E10100FF,extended,00360C8E //if cross
+patch=1,EE,2037C070,extended,00000000 //skip

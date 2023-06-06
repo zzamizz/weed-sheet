@@ -1,0 +1,7 @@
+gametitle= Sly 2 August 10 Review Code [SCUS-97316] [08/09/04 19:56]
+
+comment=FMV Skipper by zami3333
+// Skip any video cutscene by pressing X
+patch=1,EE,E0020020,extended,302FC1D0 //if(fmv frame counter > 20)
+patch=1,EE,E10100FF,extended,002E560E //if cross
+patch=1,EE,202FC210,extended,00000000 //skip

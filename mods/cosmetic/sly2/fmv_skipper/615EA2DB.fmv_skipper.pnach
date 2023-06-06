@@ -1,0 +1,7 @@
+gametitle= Kaitou Sly Cooper 2 (NTSC-J) [SCPS-15090] [01/21/25 11:44]
+
+comment=FMV Skipper by zami3333
+// Skip any video cutscene by pressing X
+patch=1,EE,E0020020,extended,302FFA40 //if(fmv frame counter > 20)
+patch=1,EE,E10100FF,extended,002E8E8E //if cross
+patch=1,EE,202FFA80,extended,00000000 //skip

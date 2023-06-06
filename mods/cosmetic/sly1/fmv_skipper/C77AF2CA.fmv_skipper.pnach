@@ -1,0 +1,7 @@
+gametitle= Sly Cooper and the Thievius Raccoonus (NTSC) [SCUS-97198] [08/24/02 22:06]
+
+comment=FMV Skipper by zami3333
+// Skip any video cutscene by pressing X
+patch=1,EE,E0020020,extended,30269A18 //if(fmv frame counter > 20)
+patch=1,EE,E10100FF,extended,00262D24 //if cross
+patch=1,EE,20269A60,extended,00000000 //skip
