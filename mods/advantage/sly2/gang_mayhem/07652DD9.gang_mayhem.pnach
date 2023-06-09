@@ -5,7 +5,7 @@ comment=Made by NiV
 //Spawns the rest of the gang near the player
 //R1+Select to trigger
 //R1+dpad right to switch between chars
-//CLPS2C code: pastebin.com/P5kKPPEv
+//CLPS2C code: https://pastebin.com/P5kKPPEv
 
 patch=1,EE,201A761C,extended,0803C400
 patch=1,EE,201A7620,extended,00000000

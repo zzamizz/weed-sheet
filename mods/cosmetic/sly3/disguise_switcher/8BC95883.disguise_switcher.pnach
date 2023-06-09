@@ -1,0 +1,51 @@
+gametitle=Sly 3: Honor Amongs Thieves (SCUS_974.64, 8BC95883)
+comment=Sly 3 Disguise Switcher (Version 1.0)
+comment=Thanks to the Sly Cooper Modding Discord Server: https://discord.gg/2GSXcEzPJA
+comment=Made by NiV
+//Makes Sly able to run through his 6 disguises.
+//Select in the gadget grid one of the 3 main disguises.
+//Equip the selected disguise.
+//R1+Select to go forward in the lineup (venice -> photographer -> pirate -> aces -> black -> tsao).
+//R1+L3 to enable/disable movment.
+//CLPS2C code: https://pastebin.com/gbb9vn1r
+
+patch=1,EE,201AF92C,extended,3C020008
+patch=1,EE,201AF930,extended,8C420000
+patch=1,EE,E0010000,extended,00080000
+patch=1,EE,20080000,extended,00000759
+patch=1,EE,E10800F7,extended,0036E783
+patch=1,EE,E10700FE,extended,0036E782
+patch=1,EE,E1060000,extended,00080004
+patch=1,EE,00080004,extended,00000001
+patch=1,EE,30000001,extended,00080000
+patch=1,EE,E001075E,extended,00080000
+patch=1,EE,20080000,extended,000038C7
+patch=1,EE,E00138C8,extended,00080000
+patch=1,EE,20080000,extended,00000759
+patch=1,EE,E1010001,extended,00080004
+patch=1,EE,30000001,extended,00080005
+patch=1,EE,E102001D,extended,30080005
+patch=1,EE,00080004,extended,00000000
+patch=1,EE,00080005,extended,00000000
+patch=1,EE,E10B00F7,extended,0036E783
+patch=1,EE,E10A00FD,extended,0036E782
+patch=1,EE,E1040000,extended,00080006
+patch=1,EE,00080006,extended,00000001
+patch=1,EE,60370AC0,extended,00000001
+patch=1,EE,00020002,extended,00001108
+patch=1,EE,00000064,extended,00000000
+patch=1,EE,E1040002,extended,00080006
+patch=1,EE,00080006,extended,00000003
+patch=1,EE,60370AC0,extended,00000000
+patch=1,EE,00020002,extended,00001108
+patch=1,EE,00000064,extended,00000000
+patch=1,EE,E1040001,extended,00080006
+patch=1,EE,30000001,extended,00080007
+patch=1,EE,E102001D,extended,30080007
+patch=1,EE,00080006,extended,00000002
+patch=1,EE,00080007,extended,00000000
+patch=1,EE,E1040003,extended,00080006
+patch=1,EE,30000001,extended,00080007
+patch=1,EE,E102001D,extended,30080007
+patch=1,EE,00080006,extended,00000000
+patch=1,EE,00080007,extended,00000000
