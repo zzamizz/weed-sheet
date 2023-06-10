@@ -1,0 +1,10 @@
+gametitle= Sly 1 August 23 Review Code [SCUS-97316] [08/23/02 01:19]
+
+comment=Anticheat Fix by Meos
+patch=1,EE,20160050,extended,27BDFFF0
+patch=1,EE,20160054,extended,7FBF0000
+patch=1,EE,20160060,extended,7BBF0000
+patch=1,EE,20160064,extended,03E00008
+patch=1,EE,20160068,extended,27BD0010
+patch=1,EE,201EA07C,extended,24020000
+patch=1,EE,00264E90,extended,00000000

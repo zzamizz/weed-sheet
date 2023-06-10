@@ -1,0 +1,4 @@
+gametitle= Sly 1 August 23 Review Code [SCUS-97198] [08/23/02 01:19]
+
+comment=No Motion Blur by Meos
+patch=1,EE,2015F45C,extended,24060000
