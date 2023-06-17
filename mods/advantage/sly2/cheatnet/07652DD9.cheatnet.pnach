@@ -872,7 +872,7 @@ comment=.
  . sRing:    3D4B14  (Infinite Jumps)
  . gRing:    3D4B18  (Spin Charge Boost)
  . bWatch:   3D4B1C  (Turnbuckle Boost)
- . sWatch:   3D4B20  (Bentley's Jetpack)
+ . sWatch:   3D4B20  (Bento's Jetpack)
  . gWatch:   3D4B24  (Flyable Glider)
  . bPen:     3D4B28  (Undetectable)
  . sPen:     3D4B2C  (Godmode)
@@ -1582,19 +1582,19 @@ comment=.
  patch=1,EE,E0010063,extended,003D4B1C //if(bWatch == 0x63)
  patch=1,EE,203D4B1C,extended,00000007 //bWatch = 0x7
 
-/ 8: Bento's Jetpack (Use L1)
+/ 8: Bento's Jetpack
  # Cheat
  patch=1,EE,E0030064,extended,003D4B20 //if(sWatch == 0x64)
- patch=1,EE,202BF820,extended,50000000 //duration FF
  patch=1,EE,202BF87C,extended,451C4000 //hoverpack h. speed 2500
  patch=1,EE,202BF880,extended,C3FA0000 //hoverpack v. speed -500
- .202DFC10
+ patch=1,EE,202BF830,extended,461C3C00 //duration 9999
  
  # Cheat off
- patch=1,EE,E0020063,extended,003D4B20 //if(sWatch == 0x63)
+ patch=1,EE,E0030063,extended,003D4B20 //if(sWatch == 0x63)
  patch=1,EE,202BF87C,extended,43960000 //hoverpack h. speed 300
  patch=1,EE,202BF880,extended,C2C80000 //hoverpack v. speed -100
- 
+ patch=1,EE,202BF830,extended,40400000 //duration 3
+
  # Sell code
  patch=1,EE,E0010006,extended,003D4B20 //if sWatch amount 6
  patch=1,EE,203D4B20,extended,00000064 //sWatch amount 100
@@ -1743,16 +1743,25 @@ comment=.
  patch=1,EE,203C8815,extended,00000000
  
  # Sleep
- patch=1,EE,E00C0005,extended,003D4B30 //if(gPen == 0x5)
+ patch=1,EE,E0150005,extended,003D4B30 //if(gPen == 0x5)
  patch=1,EE,602E1E40,extended,00080000 //sly square
  patch=1,EE,00020002,extended,000000E4
  patch=1,EE,00000BC8,extended,00000000
+ patch=1,EE,602E1E40,extended,0000FFCE //sly damage
+ patch=1,EE,00010002,extended,000000E4
+ patch=1,EE,00000BC4,extended,00000000
  patch=1,EE,602DD5BC,extended,00080000 //bentley square
  patch=1,EE,00020002,extended,000000E4
  patch=1,EE,00000228,extended,00000000
+ patch=1,EE,602DD5BC,extended,0000FFCE //bentley damage
+ patch=1,EE,00010002,extended,000000E4
+ patch=1,EE,20000224,extended,00000000
  patch=1,EE,602F7900,extended,00080000 //murray square
  patch=1,EE,00020002,extended,000000E4
  patch=1,EE,000006F8,extended,00000000
+ patch=1,EE,602F7900,extended,0000FFCE //murray damage
+ patch=1,EE,00010002,extended,000000E4
+ patch=1,EE,000006F4,extended,00000000
  patch=1,EE,203C880D,extended,65656C53 //change string to Sleep
  patch=1,EE,203C8811,extended,74750070
  patch=1,EE,203C8815,extended,00000000
@@ -2550,10 +2559,11 @@ comment=.
 
 / 64: Crash
  # Cheat
- patch=1,EE,E0040006,extended,003D4C00 //if no vase
+ patch=1,EE,E0050006,extended,003D4C00 //if no vase
  patch=1,EE,203D4C00,extended,27BC86AA //infinite vase
- patch=1,EE,E00286AA,extended,003D4C00 //if no vase
- patch=1,EE,202DDED8,extended,41A00000 //clocky thingy
+ patch=1,EE,E00386AA,extended,003D4C00 //if toggle
+ patch=1,EE,203E1088,extended,41A00000 //clocky thingy
+ patch=1,EE,203E1080,extended,00000001
  patch=1,EE,30100002,extended,003E11F0 //the crash
  
 cheatnet_strings by Sly String Toolkit
@@ -3016,7 +3026,7 @@ patch=1,EE,203C7A50,extended,6E654200
 patch=1,EE,203C7A54,extended,73276F74
 patch=1,EE,203C7A58,extended,74654A20
 patch=1,EE,203C7A5C,extended,6B636170
-patch=1,EE,203C7A60,extended,53265B20
+patch=1,EE,203C7A60,extended,53265B00
 patch=1,EE,203C7A64,extended,5D2E264C
 patch=1,EE,203C7A68,extended,796C4600
 patch=1,EE,203C7A6C,extended,656C6261
