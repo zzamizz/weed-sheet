@@ -1,11 +1,11 @@
 gametitle=Sly 2: Band of Thieves (SCUS_973.16, 07652DD9)
-comment=Sly 2 Gang Mayhem (Version 1.0)
+comment=Sly 2 Gang Mayhem (Version 1.1)
 comment=Thanks to the Sly Cooper Modding Discord Server: https://discord.gg/2GSXcEzPJA
 comment=Made by NiV
 //Spawns the rest of the gang near the player
 //R1+Select to trigger
 //R1+dpad right to switch between chars
-//CLPS2C code: https://pastebin.com/P5kKPPEv
+//CLPS2C code: https://pastebin.com/WBjSa3yw
 
 patch=1,EE,201A761C,extended,0803C400
 patch=1,EE,201A7620,extended,00000000
@@ -196,6 +196,7 @@ patch=1,EE,200F124C,extended,8E22E538
 patch=1,EE,200F1250,extended,24420001
 patch=1,EE,200F1254,extended,08069D89
 patch=1,EE,200F1258,extended,00000000
+patch=1,EE,E1030001,extended,103E1110
 patch=1,EE,E10200F7,extended,002DFC03
 patch=1,EE,E10100FE,extended,002DFC02
 patch=1,EE,003D0D00,extended,00000001
