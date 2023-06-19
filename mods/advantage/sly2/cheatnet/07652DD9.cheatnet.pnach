@@ -309,10 +309,14 @@ comment=.
 // Unstretched HUD fix
  patch=1,EE,E1050040,extended,002A3A12 //if float 0.75 (byte 0x40)
  patch=1,EE,E10400A0,extended,002A3A22 //if float 80 (byte 0xA0)
- patch=1,EE,603DA174,extended,44D77000 //horizontal
+ patch=1,EE,603DA174,extended,44D77000 //thiefnet horizontal
  patch=1,EE,00020000,extended,0000009C
- patch=1,EE,603DA174,extended,44F25D18 //vertical
+ patch=1,EE,603DA174,extended,44F25D18 //thiefnet vertical
  patch=1,EE,00020000,extended,000000A0
+ patch=1,EE,E1030080,extended,002A3A12 //if float 1 (byte 0x80)
+ patch=1,EE,E1020000,extended,002A3A22 //if float 0 (byte 0x00)
+ patch=1,EE,603DA174,extended,44DE0000 //thiefnet horizontal
+ patch=1,EE,00020000,extended,0000009C
 
 // Remove treasure prices
  patch=1,EE,202C3288,extended,00000000
@@ -583,7 +587,7 @@ comment=.
  patch=1,EE,203DA39C,extended,00000000 //menuitem = 0
 
 // ThiefNet visual changes
- patch=1,EE,E047FFFF,extended,103DA190 //if thiefnet open
+ patch=1,EE,E04CFFFF,extended,103DA190 //if thiefnet open
  # Remove ThiefNet parts completely
  patch=1,EE,603E5D94,extended,00000000 //blue bg ptr
  patch=1,EE,00020001,extended,00000000
@@ -627,7 +631,13 @@ comment=.
  patch=1,EE,203E2A04,extended,472D9CF3 //desc text space
  patch=1,EE,203E29FC,extended,FFB09C70 //desc text color
  patch=1,EE,203E2A10,extended,00000001 //desc text center alignment
+ patch=1,EE,E1020080,extended,002A3A12 //if float 1 (byte 0x80)
+ patch=1,EE,E1010000,extended,002A3A22 //if float 0 (byte 0x00)
+ patch=1,EE,203E2A00,extended,41700000 //desc text scale
+ patch=1,EE,E1020040,extended,002A3A12 //if float 0.75 (byte 0x40)
+ patch=1,EE,E10100A0,extended,002A3A22 //if float 80 (byte 0xA0)
  patch=1,EE,203E2A00,extended,41A00000 //desc text scale
+
  # Make selected treasure text bright
  patch=1,EE,E101000C,extended,003F5806 //if selectorpos1
  patch=1,EE,203E373C,extended,FFD0BC90 //selectorpos1 bright color
