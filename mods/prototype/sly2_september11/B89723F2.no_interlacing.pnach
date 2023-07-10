@@ -1,0 +1,4 @@
+gametitle= Sly 2 September 11 Review Code [SCES-52529] [09/11/04 18:30]
+
+comment=No Interlacing by Asasega
+patch=1,EE,2024150C,extended,00000000
