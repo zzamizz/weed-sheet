@@ -1,0 +1,155 @@
+[Cool Mods\Perfect Loot Odds]
+
+//100% Chance of Shiny Pockets
+patch=1,EE,202C39AC,extended,3F800000 // Ep1
+patch=1,EE,202C378C,extended,3F800000
+patch=1,EE,202C39E8,extended,3F800000 // Ep2
+patch=1,EE,202C37C8,extended,3F800000
+patch=1,EE,202C3A24,extended,3F800000 // Ep3
+patch=1,EE,202C3804,extended,3F800000
+patch=1,EE,202C3A60,extended,3F800000 // Ep4
+patch=1,EE,202C3840,extended,3F800000
+patch=1,EE,202C3A9C,extended,3F800000 // Ep5
+patch=1,EE,202C387C,extended,3F800000
+patch=1,EE,202C3AD8,extended,3F800000 // Ep6
+patch=1,EE,202C38B8,extended,3F800000
+patch=1,EE,202C3B14,extended,3F800000 // Ep7
+patch=1,EE,202C38F4,extended,3F800000
+patch=1,EE,202C3B50,extended,3F800000 // Ep8
+patch=1,EE,202C3930,extended,3F800000
+
+//Paris Boars (Flashlight Guards)
+patch=1,EE,202C39B0,extended,00000000
+patch=1,EE,202C39B8,extended,00000000
+patch=1,EE,202C39C0,extended,00000000
+patch=1,EE,202C39C8,extended,00000000
+patch=1,EE,202C39D0,extended,3F800000 // Gold Ring
+patch=1,EE,202C39D8,extended,00000000
+
+//Rat+Frog (Rooftop Guards)
+patch=1,EE,202C3790,extended,00000000
+patch=1,EE,202C3798,extended,00000000
+patch=1,EE,202C37A0,extended,00000000
+patch=1,EE,202C3798,extended,00000000
+patch=1,EE,202C37B0,extended,00000000
+patch=1,EE,202C37B8,extended,3F800000 // Gold Ring (Silver Ring Replacement)
+patch=1,EE,202C37BC,extended,0000045F
+
+//India 1 Rhino (Flashlight Guards)
+patch=1,EE,202C39EC,extended,00000000
+patch=1,EE,202C39F4,extended,00000000
+patch=1,EE,202C39FC,extended,00000000
+patch=1,EE,202C3A04,extended,00000000
+patch=1,EE,202C3A0C,extended,3F800000 // Gold Medal
+patch=1,EE,202C3A14,extended,00000000
+
+//India 1 Monkey+Goat (Rooftop Guards)
+patch=1,EE,202C37CC,extended,00000000
+patch=1,EE,202C37D4,extended,00000000
+patch=1,EE,202C37DC,extended,00000000
+patch=1,EE,202C37E4,extended,00000000
+patch=1,EE,202C37EC,extended,00000000
+patch=1,EE,202C37F4,extended,3F800000 // Gold Medal (Silver Medal Replacement)
+patch=1,EE,202C37F8,extended,00000468
+
+//India 2 Rhino (Flashlight Guards)
+patch=1,EE,202C3A28,extended,00000000
+patch=1,EE,202C3A30,extended,00000000
+patch=1,EE,202C3A38,extended,00000000
+patch=1,EE,202C3A40,extended,00000000
+patch=1,EE,202C3A48,extended,3F800000 // Gold Medal
+patch=1,EE,202C3A50,extended,00000000
+
+//India 2 Monkey+Goat (Rooftop Guards)
+patch=1,EE,202C3808,extended,00000000
+patch=1,EE,202C3810,extended,00000000
+patch=1,EE,202C3818,extended,00000000
+patch=1,EE,202C3820,extended,00000000
+patch=1,EE,202C3828,extended,00000000
+patch=1,EE,202C3830,extended,3F800000 // Gold Medal (Silver Medal Replacement)
+patch=1,EE,202C3834,extended,00000468
+
+//Prague 1 Vulture (Flashlight Guards)
+patch=1,EE,202C3A64,extended,00000000
+patch=1,EE,202C3A6C,extended,00000000
+patch=1,EE,202C3A74,extended,00000000
+patch=1,EE,202C3A7C,extended,00000000
+patch=1,EE,202C3A84,extended,3F800000 // Ruby
+patch=1,EE,202C3A8C,extended,00000000
+
+//Prague 1 Wolf+Bat (Rooftop Guards)
+patch=1,EE,202C3844,extended,00000000
+patch=1,EE,202C384C,extended,00000000
+patch=1,EE,202C3854,extended,00000000
+patch=1,EE,202C385C,extended,00000000
+patch=1,EE,202C3864,extended,00000000
+patch=1,EE,202C386C,extended,3F800000 // Ruby (Sapphire Replacement)
+patch=1,EE,202C3870,extended,00000471
+
+//Prague 2 Vulture (Flashlight Guards)
+patch=1,EE,202C3AA0,extended,00000000
+patch=1,EE,202C3AA8,extended,00000000
+patch=1,EE,202C3AB0,extended,00000000
+patch=1,EE,202C3AB8,extended,00000000
+patch=1,EE,202C3AC0,extended,3F800000 // Ruby
+patch=1,EE,202C3AC8,extended,00000000
+
+//Prague 2 Wolf+Bat (Rooftop Guards)
+patch=1,EE,202C3880,extended,00000000
+patch=1,EE,202C3888,extended,00000000
+patch=1,EE,202C3890,extended,00000000
+patch=1,EE,202C3898,extended,00000000
+patch=1,EE,202C38A0,extended,00000000
+patch=1,EE,202C38A8,extended,3F800000 // Ruby (Sapphire Replacement)
+patch=1,EE,202C38AC,extended,00000471
+
+//Canada 1 Moose (Flashlight Guards)
+patch=1,EE,202C3ADC,extended,00000000
+patch=1,EE,202C3AE4,extended,00000000
+patch=1,EE,202C3AEC,extended,00000000
+patch=1,EE,202C3AF4,extended,00000000
+patch=1,EE,202C3AFC,extended,3F800000 // Large Necklace
+patch=1,EE,202C3B04,extended,00000000
+
+//Canada 1 Goose+Goat (Rooftop Guards)
+patch=1,EE,202C38BC,extended,00000000
+patch=1,EE,202C38C4,extended,00000000
+patch=1,EE,202C38CC,extended,00000000
+patch=1,EE,202C38D4,extended,00000000
+patch=1,EE,202C38DC,extended,00000000
+patch=1,EE,202C38E4,extended,3F800000 // Large Necklace (Medium Necklace Replacement)
+patch=1,EE,202C38E8,extended,00000477
+
+//Canada 2 Moose (Flashlight Guards)
+patch=1,EE,202C3B18,extended,00000000
+patch=1,EE,202C3B20,extended,00000000
+patch=1,EE,202C3B28,extended,00000000
+patch=1,EE,202C3B30,extended,00000000
+patch=1,EE,202C3B38,extended,3F800000 // Large Necklace
+patch=1,EE,202C3B40,extended,00000000
+
+//Canada 2 Goose+Goat (Rooftop Guards)
+patch=1,EE,202C38F8,extended,00000000
+patch=1,EE,202C3900,extended,00000000
+patch=1,EE,202C3908,extended,00000000
+patch=1,EE,202C3910,extended,00000000
+patch=1,EE,202C3918,extended,00000000
+patch=1,EE,202C3920,extended,3F800000 // Large Necklace (Medium Necklace Replacement)
+patch=1,EE,202C3924,extended,00000477
+
+//Blimp Mechanical Pelican (Flashlight Guards)
+patch=1,EE,202C3B54,extended,00000000
+patch=1,EE,202C3B5C,extended,00000000
+patch=1,EE,202C3B64,extended,00000000
+patch=1,EE,202C3B6C,extended,00000000
+patch=1,EE,202C3B74,extended,3F800000 // Large Diamond
+patch=1,EE,202C3B7C,extended,00000000
+
+//Blimp Pelican (Rooftop Guards)
+patch=1,EE,202C3934,extended,00000000
+patch=1,EE,202C393C,extended,00000000
+patch=1,EE,202C3944,extended,00000000
+patch=1,EE,202C394C,extended,00000000
+patch=1,EE,202C3954,extended,00000000
+patch=1,EE,202C395C,extended,3F800000 // Large diamond (Medium Diamond Replacement)
+patch=1,EE,202C3960,extended,00000474
