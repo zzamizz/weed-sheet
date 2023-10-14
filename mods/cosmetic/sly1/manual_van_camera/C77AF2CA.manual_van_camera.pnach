@@ -1,0 +1,11 @@
+gametitle=Sly 1
+
+comment=Manual Van Camera (At the Dog Track) by niaarchangel
+patch=1,EE,E1070002,extended,0027DBF8 //Check if World 2
+patch=1,EE,E1060004,extended,0027DBFC //Check if At the Dog Track
+patch=1,EE,50262C68,extended,00000001 //Copy Playable byte to code cave
+patch=1,EE,01111CE8,extended,00000000
+patch=1,EE,71111CE8,extended,00200002 //Check if playable bit is on
+patch=1,EE,E1020002,extended,01111CE8
+patch=1,EE,711E886B,extended,000000C0 //Set Normal Camera bits to on
+patch=1,EE,20A731EC,extended,442F0000 //Adjust Zoom Level
