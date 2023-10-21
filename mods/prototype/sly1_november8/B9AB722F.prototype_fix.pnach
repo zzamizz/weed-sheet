@@ -1,0 +1,12 @@
+gametitle= Sly Raccoon November Review [SCES-50917] [11/08/02 12:02]
+
+comment=Prototype Fix by Meos
+// Anti Proto Crack
+patch=1,EE,2016055C,extended,10000066
+patch=1,EE,20160560,extended,00000000 
+
+// Anti Piracy
+patch=1,EE,2015F334,extended,00001021
+patch=1,EE,201906A0,extended,00001021
+patch=1,EE,201EB104,extended,00001021
+patch=1,EE,2012B958,extended,10000008
