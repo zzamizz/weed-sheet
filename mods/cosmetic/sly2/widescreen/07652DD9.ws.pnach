@@ -1,8 +1,6 @@
-comment=16:9
-patch=1,EE,2014D750,extended,3C013FDD
-patch=1,EE,E005FFFF,extended,002DEB44
-patch=1,EE,E00407C1,extended,002DEB48
-patch=1,EE,E0030001,extended,0080F8A4
-patch=1,EE,E0120001,extended,008565E8
-patch=1,EE,E0110002,extended,008565EA
-patch=1,EE,202DDF80,extended,3DCCCCCD
+gametitle= Sly 2: Band of Thieves (NTSC) [SCUS-97316] [08/13/04 00:32]
+
+comment=16:9 v4
+patch=1,EE,2014D750,extended,3C013FDD //widescreen asm
+patch=1,EE,E001000B,extended,003E1110 //if map ballroom
+patch=1,EE,202DE3BC,extended,3C23D70A //binocucom range
