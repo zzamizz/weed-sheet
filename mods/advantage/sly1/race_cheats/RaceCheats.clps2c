@@ -1,0 +1,70 @@
+SR "gametitle=Sly Cooper and the Thievius Raccoonus (NTSC) [SCUS-97198] [08/24/02 22:06]\n\n"
+SR "[Advantage\Race Cheats] \n"
+SR "comment=Infinite boosts, forced first place, L1 to enable autopilot.\n"
+SR "author=zami3333\n\n"
+
+// Vars
+    Set levelID 0x27DBFC 
+    Set worldID 0x27DBF8
+
+    Set hasControl 0x262C68
+
+    Set padCross 0x262D24
+    Set padL1 0x262D26
+    Set padR1 0x262D27
+
+    Set van 0x269C98
+    Set state 0xB34
+
+    Set global 2486D8
+    Set raceVars 0x264
+    Set nitros 0
+
+    Set entityListPtr 0x275710,0x1AE0
+    Set firstMonky 0x74
+    Set firstCar 0x1A4
+    Set nextSame 0xC
+    Set Laps 0xB00
+
+// Cheats
+    // At the Dog Track
+        If worldID =. 2 && levelID =. 4 && hasControl =. 7 
+        // Infinite Nitros
+            WP8 global,raceVars,nitros 99
+
+        // Always First Place
+            WP8 entityListPtr,firstCar,Laps 0
+            WP8 entityListPtr,firstCar,nextSame,Laps 0
+            WP8 entityListPtr,firstCar,nextSame,nextSame,Laps 0
+            WP8 entityListPtr,firstCar,nextSame,nextSame,nextSame,Laps 0
+
+        // L1 for Autopilot (R1 to disable)
+            If padL1 =. 0xFF
+                WP8 van,state 1 // autopilot
+            EI
+
+            If padR1 =. 0xFF
+                WP8 van,state 2 // manual
+            EI
+        EI
+
+    // A Desperate Race
+        If worldID =. 4 && levelID =. 7 && hasControl =. 7 
+        // Infinite Nitros
+            WP8 global,raceVars,nitros 99
+
+        // Always First Place
+            WP8 entityListPtr,firstMonky,Laps 0
+            WP8 entityListPtr,firstMonky,nextSame,Laps 0
+            WP8 entityListPtr,firstMonky,nextSame,nextSame,Laps 0
+            WP8 entityListPtr,firstMonky,nextSame,nextSame,nextSame,Laps 0
+
+        // L1 for Autopilot (R1 to disable)
+            If padL1 =. 0xFF
+                WP8 van,state 1 // autopilot
+            EI
+
+            If padR1 =. 0xFF
+                WP8 van,state 2 // manual
+            EI
+        EI
