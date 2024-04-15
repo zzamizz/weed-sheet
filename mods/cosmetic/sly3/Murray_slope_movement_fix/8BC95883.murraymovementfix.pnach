@@ -1,0 +1,6 @@
+[Murray Slope Movement Fix]
+patch=1,EE,E0040000,extended,0036F8C0
+patch=1,EE,E0030003,extended,00467B00
+patch=1,EE,6038AE90,extended,C2F38425
+patch=1,EE,00020003,extended,00000288
+patch=1,EE,0000008C,extended,000000B8
