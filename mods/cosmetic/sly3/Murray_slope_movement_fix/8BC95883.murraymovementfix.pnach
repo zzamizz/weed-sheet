@@ -1,4 +1,6 @@
 [Murray Slope Movement Fix]
+comment=Fixes Murray's broken downhill movement after using the ball move.
+author=NiV-L-A & SCRC
 patch=1,EE,E0040000,extended,0036F8C0
 patch=1,EE,E0030003,extended,00467B00
 patch=1,EE,6038AE90,extended,C2F38425
