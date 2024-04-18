@@ -1,0 +1,8 @@
+[Invisible Rope Fix]
+comment=Fixes the invisible rope in Venice after beating the operation.
+author=SlyCooperReloadCoded
+patch=1,EE,E004000F,extended,0036BCF0
+patch=1,EE,E0030003,extended,0047989C
+patch=1,EE,E002F0FF,extended,00B2B56C
+patch=1,EE,E0010810,extended,00B2B56E
+patch=1,EE,20B71E5C,extended,00000000
