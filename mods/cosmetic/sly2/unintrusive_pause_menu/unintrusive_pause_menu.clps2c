@@ -1,0 +1,130 @@
+SR "gametitle=Sly 2: Band of Thieves (NTSC) [SCUS-97316] [08/13/04 00:32]\n\n"
+SR "[Cosmetic\Unintrusive Pause Menu] \n"
+SR "comment=A simplified and stripped down pause menu.\n"
+SR "author=zami3333\n\n"
+
+Set padStart 2E0CB5 
+Set tnStatus 3DA190
+Set isPaused 3D9EF4
+Set isGadgets 3043DC
+Set menuDisplayedItems 3D9EF8
+Set subMenuDisplayedItems 3D9F14
+Set menuSlot1 2F65D0
+Set menuSlot2 2F65F0
+Set menuSlot3 2F6610
+Set menuSlot4 2F6630
+Set optionSlot9 2F6570
+Set itemKeepPlaying "39 00 00 00 70 02 1B 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+Set itemEpisodeMenu "42 00 00 00 D8 06 1B 00 02 00 00 00 68 00 2C 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00"
+Set itemQuitGame "46 00 00 00 D8 06 1B 00 02 00 00 00 28 00 2C 00 48 08 1B 00 00 00 00 00 00 00 00 00 00 00 00 00"
+Set itemOptions "2C 00 00 00 E0 04 1B 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+Set itemVibrations "48 00 00 00 C0 FF 1A 00 02 00 00 00 68 FD 2B 00 00 00 00 00 C8 F9 1A 00 00 00 00 00 00 00 00 00"
+Set whichSubmenu 3D9F1A // check byte of pointer of what submenu is currently open, then set displayed ítems accordingly
+// 2c = exit to episode menu/quit game   2f = options
+// unsure if at any point this pointer decides to shift in memory
+
+IF isGadgets !: 1
+    IF isPaused =. 1
+        W32 menuDisplayedItems 4
+
+        IF whichSubmenu =. 0x2C
+            W32 subMenuDisplayedItems 2
+        EI
+        IF whichSubmenu =. 0x2F
+            W32 subMenuDisplayedItems 9
+        EI
+
+        WB menuSlot1 itemKeepPlaying
+        WB menuSlot2 itemEpisodeMenu
+        WB menuSlot3 itemOptions
+        WB menuSlot4 itemQuitGame
+        WB optionSlot9 itemVibrations // replaces "center screen"
+
+        IF tnStatus =: 0xFFFF
+            W32 3E22E4 0 // remove murray
+            W32 3E2324 0 // remove bentley
+            W32 3E2364 0 // remove carmelita
+            W32 3E2264 0 // remove sly
+            W32 3E23E4 0 // remove "we'll be right back"
+            W32 3E2424 0
+            W32 3E2464 0
+            W32 3E24A4 0
+            W32 3E24E4 0
+            W32 3E2524 0
+            W32 3E2564 0
+            W32 3E25A4 0
+            WF 3F23A4 630 // black box vpos
+            WF 3F2444 630  
+            WF 3F2AC4 630  
+            WF 3F3024 630  
+            WF 3F3384 630  
+            WF 3F3874 630  
+            WF 3F44E4 630  
+            WF 3F4F04 630  
+            WF 3F5734 630  
+            WF 3F5CB4 630  
+            WF 3F5FE4 630  
+            WF 3F6954 630  
+            WF 3F7374 630  
+            WF 3F7BC4 630  
+            WF 3F8144 630  
+            WF 3F8474 630  
+            WF 3F8DE4 630  
+            WF 3F9824 630  
+            WF 3FA074 630  
+            WF 3FA5F4 630  
+            WF 3FC5A4 630  
+            WF 3FD1D4 630  
+            WF 3F3324 630
+            WF 3F2390 4 // black box hscale
+            WF 3F2430 4 
+            WF 3F2AB0 4 
+            WF 3F3010 4 
+            WF 3F3370 4 
+            WF 3F3860 4 
+            WF 3F44D0 4 
+            WF 3F4EF0 4 
+            WF 3F5720 4 
+            WF 3F5CA0 4 
+            WF 3F5FD0 4 
+            WF 3F6940 4 
+            WF 3F7360 4 
+            WF 3F7BB0 4 
+            WF 3F8130 4 
+            WF 3F8460 4 
+            WF 3F8DD0 4 
+            WF 3F9810 4 
+            WF 3FA060 4 
+            WF 3FA5E0 4 
+            WF 3FC590 4 
+            WF 3FD1C0 4 
+            WF 3F3310 4
+            WF 3F239C 3.18 // black box vscale
+            WF 3F243C 3.18 
+            WF 3F2ABC 3.18 
+            WF 3F301C 3.18 
+            WF 3F337C 3.18 
+            WF 3F386C 3.18 
+            WF 3F44DC 3.18 
+            WF 3F4EFC 3.18 
+            WF 3F572C 3.18 
+            WF 3F5CAC 3.18 
+            WF 3F5FDC 3.18 
+            WF 3F694C 3.18 
+            WF 3F736C 3.18 
+            WF 3F7BBC 3.18 
+            WF 3F813C 3.18 
+            WF 3F846C 3.18 
+            WF 3F8DDC 3.18 
+            WF 3F981C 3.18 
+            WF 3FA06C 3.18 
+            WF 3FA5EC 3.18 
+            WF 3FC59C 3.18 
+            WF 3FD1CC 3.18 
+            WF 3F331C 3.18
+            WF 3F2C44 451 // text vpos
+            WF 3F2FA4 451
+            WF 3F2A24 451
+        EI
+    EI
+EI
