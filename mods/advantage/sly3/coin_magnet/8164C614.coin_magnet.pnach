@@ -1,0 +1,7 @@
+gametitle=Sly 3: Honor Among Thieves (PAL) [SCES-53409] [09/21/05 18:43]
+
+[Advantage\Coin Magnet] 
+comment=Greatly increases the coin pickup range.
+author=NiV-L-A, zami3333
+
+patch=1,EE,201F7E44,extended,3C01447A

@@ -1,0 +1,10 @@
+SR "gametitle=Sly 3: Honor Among Thieves (PAL) [SCES-53409] [09/21/05 18:43]\n\n"
+SR "[Advantage\Coin Magnet] \n"
+SR "comment=Greatly increases the coin pickup range.\n"
+SR "author=NiV-L-A, zami3333\n"
+// thanks to niv for finding the coin range stuff in sly 2 and doing the research
+
+ASM_START 1F7E44
+    lui $at,0x447A // set coin pickup range to 1000 (a float in the coin struct, default = 65)
+ASM_END
+// 1000 is about the range of a "strong" magnet, increase it to like 99999999 to get all the world's coins

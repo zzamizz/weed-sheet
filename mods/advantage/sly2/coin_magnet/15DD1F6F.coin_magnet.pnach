@@ -1,0 +1,8 @@
+gametitle=Sly 2: Band of Thieves (PAL v2.01) [SCES-52529] [10/06/04 21:23]
+
+[Advantage\Coin Magnet] 
+comment=Greatly increases the coin pickup range.
+author=NiV-L-A, zami3333
+
+patch=1,EE,201C679C,extended,3C01447A
+patch=1,EE,202C811C,extended,447A0000

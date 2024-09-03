@@ -1,0 +1,13 @@
+SR "gametitle=Sly 2: Band of Thieves (PAL v2.01) [SCES-52529] [10/06/04 21:23]\n\n"
+SR "[Advantage\Coin Magnet] \n"
+SR "comment=Greatly increases the coin pickup range.\n"
+SR "author=NiV-L-A, zami3333\n"
+// thanks to niv for finding the coin range offset + global variable and doing the research
+
+ASM_START 1C679C
+    lui $at,0x447A // set coin pickup range to 1000 (a float in the coin struct, default = 65)
+ASM_END
+WF 2C811C 1000 // another coin pickup range (global var, default = 300)
+// both floats need to be set to high
+
+// 1000 is about the range of a "strong" magnet, increase it to like 99999999 to get all the world's coins

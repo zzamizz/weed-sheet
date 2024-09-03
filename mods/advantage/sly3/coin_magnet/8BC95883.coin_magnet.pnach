@@ -1,0 +1,7 @@
+gametitle=Sly 3: Honor Among Thieves (NTSC) [SCUS-97464] [08/28/05 02:12]
+
+[Advantage\Coin Magnet] 
+comment=Greatly increases the coin pickup range.
+author=NiV-L-A, zami3333
+
+patch=1,EE,201F79CC,extended,3C01447A
