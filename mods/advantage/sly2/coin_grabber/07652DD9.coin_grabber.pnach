@@ -2,7 +2,7 @@ gametitle=Sly 2: Band of Thieves (NTSC) [SCUS-97316] [08/13/04 00:32]
 
 [Advantage\Coin Grabber] 
 comment=Custom gadget: Press Triangle and Circle to smash everything. (Inspired by Bolt Grabber from R&C)
-author=zami3333
+author=zami3333, NiV-L-A
 // Warning: Can clip you OOB sometimes 
 
 patch=1,EE,201C6534,extended,3C01447A

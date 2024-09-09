@@ -1,7 +1,7 @@
 SR "gametitle=Sly 2: Band of Thieves (NTSC) [SCUS-97316] [08/13/04 00:32]\n\n"
 SR "[Advantage\Coin Grabber] \n"
 SR "comment=Custom gadget: Press Triangle and Circle to smash everything. (Inspired by Bolt Grabber from R&C)\n"
-SR "author=zami3333\n"
+SR "author=zami3333, NiV-L-A\n"
 
 SR "// Warning: Can clip you OOB sometimes \n"
 Set sly 2E1E40
