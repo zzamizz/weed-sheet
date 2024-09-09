@@ -1,0 +1,13 @@
+gametitle=Sly Raccoon (PAL) [SCES-50917] [11/21/02 21:05]
+
+[Advantage\Dialogue Skipper] 
+comment=Press R2 to skip the currently playing voiceline.
+author=zami3333
+
+patch=1,EE,E10400FF,extended,00263F91
+patch=1,EE,E1030000,extended,00080001
+patch=1,EE,00080001,extended,00000001
+patch=1,EE,60276448,extended,00000000
+patch=1,EE,00020001,extended,000002E8
+patch=1,EE,E1010000,extended,00263F91
+patch=1,EE,00080001,extended,00000000

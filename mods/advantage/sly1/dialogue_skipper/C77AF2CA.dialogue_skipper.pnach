@@ -1,0 +1,13 @@
+gametitle=Sly Cooper and the Thievius Raccoonus (NTSC) [SCUS-97198] [08/24/02 22:06]
+
+[Advantage\Dialogue Skipper] 
+comment=Press R2 to skip the currently playing voiceline.
+author=zami3333
+
+patch=1,EE,E10400FF,extended,00262D29
+patch=1,EE,E1030000,extended,00080001
+patch=1,EE,00080001,extended,00000001
+patch=1,EE,6027051C,extended,00000000
+patch=1,EE,00020001,extended,000002E8
+patch=1,EE,E1010000,extended,00262D29
+patch=1,EE,00080001,extended,00000000
