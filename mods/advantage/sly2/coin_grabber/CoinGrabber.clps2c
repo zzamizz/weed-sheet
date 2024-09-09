@@ -1,0 +1,85 @@
+SR "gametitle=Sly 2: Band of Thieves (NTSC) [SCUS-97316] [08/13/04 00:32]\n\n"
+SR "[Advantage\Coin Grabber] \n"
+SR "comment=Custom gadget: Press Triangle and Circle to smash everything. (Inspired by Bolt Grabber from R&C)\n"
+SR "author=zami3333\n"
+
+SR "// Warning: Can clip you OOB sometimes \n"
+Set sly 2E1E40
+Set triangleRadiusX 1A84,2850
+Set triangleRadiusY 1A84,2854
+Set triangleRadiusZ 1A84,2858
+
+Set grabber 0x80001
+
+Set pad_Circle 2DFC0D
+Set pad_Triangle 2DFC0C
+
+// part 1 of coin magnet
+ASM_START 1C6534
+    lui $at,0x447A // set coin pickup range to 1000
+ASM_END
+
+// sly-string-toolkit
+W32 13E380 0x080B982C
+W32 13E384 0x00000000
+W32 2E60B0 0x8C820004
+W32 2E60B4 0x340800B5
+W32 2E60B8 0x15050003
+W32 2E60BC 0x00000000
+W32 2E60C0 0x3C02003C
+W32 2E60C4 0x34427980
+W32 2E60C8 0x340800B6
+W32 2E60CC 0x15050003
+W32 2E60D0 0x00000000
+W32 2E60D4 0x3C02003C
+W32 2E60D8 0x3442798D
+W32 2E60DC 0x03E00008
+W32 2E60E0 0x00000000
+W32 2E60E4 0x00000000
+W32 3C7980 0x6E696F43
+W32 3C7984 0x61724720
+W32 3C7988 0x72656262
+W32 3C798C 0x616D5300
+W32 3C7990 0x65206873
+W32 3C7994 0x79726576
+W32 3C7998 0x6E696874
+W32 3C799C 0x6E612067
+W32 3C79A0 0x6F632064
+W32 3C79A4 0x63656C6C
+W32 3C79A8 0x6F632074
+W32 3C79AC 0x20736E69
+W32 3C79B0 0x6D6F7266
+W32 3C79B4 0x206E6120
+W32 3C79B8 0x65747865
+W32 3C79BC 0x6465646E
+W32 3C79C0 0x6E617220
+W32 3C79C4 0x002E6567
+
+CB 3D4AFC 3DC410 1
+AND8 3DC410 1 // tornado buy check
+W32 2BD110 0 // episode unlock
+W32 2BD108 1500 // price
+
+// enabling the grabber
+IF 3DC410 =. 1 && pad_Triangle =. 0xFF && pad_Circle =. 0xFF
+    W8 grabber 1
+EI
+
+IF 3DC410 =. 1 && pad_Triangle !. 0xFF && pad_Circle !. 0xFF
+    W8 grabber 0
+EI
+
+// the grabber
+IF grabber =. 1
+    WPF sly,triangleRadiusX 50 // sometimes clips sly oob
+    WPF sly,triangleRadiusY 50
+    WPF sly,triangleRadiusZ 50
+    WF 2C0D7C 1000 // part 2 of coin magnet
+EI
+
+IF grabber =. 0
+    WPF sly,triangleRadiusX 1
+    WPF sly,triangleRadiusY 1
+    WPF sly,triangleRadiusZ 1
+    WF 2C0D7C 300 // part 2 of coin magnet
+EI
