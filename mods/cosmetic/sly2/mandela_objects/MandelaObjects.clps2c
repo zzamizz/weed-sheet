@@ -1,0 +1,30 @@
+SR "gametitle=Sly 2: Band of Thieves (NTSC) [SCUS-97316] [08/13/04 00:32]\n\n"
+SR "[Cosmetic\Mandela Objects] \n"
+SR "comment=Stops random map objects from never spawning.\n"
+SR "author=zami3333\n\n"
+
+Set mapID 3E1110
+
+// Paris 
+    IF mapID =. 2
+        W32 48F3B0 34 // Planted trees, 6 -> 34
+        W32 48EF78 12 // Row boats, 4 -> 12
+        W32 489314 21 // Money crates, 6 -> 21
+        W32 488888 42 // Cafe chairs, 23 -> 42 (maybe not needed?)
+        W32 48EDC8 27 // Lamp posts, 8 -> 27
+    EI
+
+// Prague
+    IF mapID =. 14
+        W32 48B8A0 22 // Lamp posts, 6 -> 22
+    EI
+
+// Prague 2
+    IF mapID =. 17
+        W32 48D1F0 40 // Lamp posts, 22 -> 40
+    EI
+
+// Canada 2
+    IF mapID =. 32
+        W32 48B834 8 // Outhouses, 6 -> 8
+    EI

@@ -1,0 +1,19 @@
+gametitle=Sly 2: Band of Thieves (NTSC) [SCUS-97316] [08/13/04 00:32]
+
+[Cosmetic\Mandela Objects] 
+comment=Stops random map objects from never spawning.
+author=zami3333
+
+
+patch=1,EE,E1050002,extended,003E1110
+patch=1,EE,2048F3B0,extended,00000022
+patch=1,EE,2048EF78,extended,0000000C
+patch=1,EE,20489314,extended,00000015
+patch=1,EE,20488888,extended,0000002A
+patch=1,EE,2048EDC8,extended,0000001B
+patch=1,EE,E101000E,extended,003E1110
+patch=1,EE,2048B8A0,extended,00000016
+patch=1,EE,E1010011,extended,003E1110
+patch=1,EE,2048D1F0,extended,00000028
+patch=1,EE,E1010020,extended,003E1110
+patch=1,EE,2048B834,extended,00000008
