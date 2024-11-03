@@ -1,0 +1,15 @@
+SR "gametitle=Sly 2: Band of Thieves (NTSC) [SCUS-97316] [08/13/04 00:32]\n\n"
+SR "[Cosmetic\Ultrawide 32:9] \n"
+SR "comment=Tweaks the game for 32:9 monitors\n"
+SR "author=zami3333\n"
+
+// World stretch
+W32 14D750 0x3C014063
+
+// HUD Scale X
+WF 2a3a10 0.4
+
+// HUD Pos X
+WF 2a3a20 193
+
+Include "UnstretchedHUD329.clps2c" // hud tweaks

@@ -1,0 +1,273 @@
+// GUIs
+Set gui_Health 0x3D9EB8
+Set gui_GameProgress 2E65C4
+Set gui_Bottles 3E1048
+Set gui_Coins 3E103C
+Set gui_Blackbars 2E1E60
+Set gui_PressStart 3DA554
+Set gui_Fadeout 2E1E60
+Set gui_JobComplete 3E0AC8
+Set gui_DvdMenu 3E0AEC
+Set gui_SpiceBlueBG 3DDD80
+Set gui_JobSpecific1 3E0AD4
+Set gui_JobSpecific2 3E0AD8
+Set gui_JobSpecific3 3DE3CC
+Set gui_JobFailed 3E0ABC
+Set gui_Dimitri 3E0AB0
+Set gui_Notification 2E6574
+Set gui_TreasureTimer 3E1054
+
+// Global
+Set mapID 3E1110
+
+Set masterXscale 2A3A10
+Set masterYpos 2A3A20
+
+Set tnStatus 3DA190
+Set isPaused 3D9EF4
+Set isGadgets 3043DC
+Set csPlaying 3E1208
+Set csPlaying2 3E1210
+Set binocDiagPlaying 2DE4A0
+
+// Gang
+Set sly 2E1E40
+Set bentley 2DD5BC
+Set murray 2F7900
+
+// Offsets
+Set binoc 0xF2C
+Set binocDialog 0xF30
+Set vPos 0xA0
+Set hPos 0x9C
+Set floats 84,8,4
+
+// Gang HP - Position
+    WPF gui_Health,vPos 1942
+    WPF gui_Health,hPos 1744
+//
+
+// Bottles - Position
+    WPF gui_Bottles,hPos 1835
+//
+
+// Coins - Position
+    WPF gui_Coins,hPos 1835
+//
+
+// "Blow The Dam" stuff
+    If mapID =. 0xC
+        WF 57D84C 1744 // chopper hor
+        WF 57D850 1942 // chopper ver
+        WF 72D40C 1840 // dam hor
+        WF 72D410 1932.91 // dam ver
+    EI
+// 
+
+// Blackbars - Text Scale
+    WPF gui_Blackbars,1F0 21
+//
+
+// Blackbars - Stretch (32:9 VALUES)
+    WPF gui_Blackbars,2A4 0xF50B7400
+    WPF gui_Blackbars,2A8 0xF55F8F00
+    WPF gui_Blackbars,2AC 0xED00AC00
+    WPF gui_Blackbars,2B0 0xED006400
+//
+
+// Binocucom - Stretch to 4:3
+   //WF 3C8060 1.3 // set codecave of og stretch values
+   //WF 3C806C 1
+   //WF 3C8070 -95
+   WP32 sly,F2C,F8 0x3C8060 // set codecave ptrs
+   WP32 bentley,F2C,F8 0x3C8060
+   WP32 murray,F2C,F8 0x3C8060
+//
+
+// Binocucom - Small changes
+    WP32 sly,F30,514 0 // remove extra piece of dialogbinoc
+
+    If binocDiagPlaying =. 1 // remove job&objective strings while binoc dialog
+        WP32 sly,F2C,BD4 0
+        WP32 sly,F2C,C14 0
+    EI
+    If binocDiagPlaying =. 0 // restore job&objective strings
+        WP32 sly,F2C,BD4 3
+        WP32 sly,F2C,C14 3
+    EI
+//
+
+// Gadget Grid - Background
+    If isGadgets =. 1
+        W32 3F07F0 0x40000000
+        W32 3F0C30 0x40000000
+        W32 3F02A0 0x40000000
+        //W32 3F0CD0 0x42640000
+        //WF 3EF070 57
+    EI
+//
+
+// Job Complete - Murray
+    WP16 gui_JobComplete,1AC,54 0x7FFF // red bar
+    WP32 gui_JobComplete,1AC,58 0x2BB98561
+    WP32 gui_JobComplete,1AC,5C 0xFF87BB61
+    WP32 gui_JobComplete,16C,54 0xF0009B00 // black bg
+    WP32 gui_JobComplete,16C,58 0xF0003500
+    WP32 gui_JobComplete,7AC,54 0xFA966808 // white flash
+    WP32 gui_JobComplete,7AC,58 0x136B1808
+    WP32 gui_JobComplete,7AC,5C 0x136BD7F8
+//
+
+// Episode Menu - Episode Select
+    If mapID =. 1
+        WP32 gui_DvdMenu,1DC,50 0x7504800A // black bars
+        WP32 gui_DvdMenu,1DC,54 0xFB00BF00
+        WP32 gui_DvdMenu,1DC,60 0x0500E921
+    EI
+//
+
+// Spice Plants - Blue Background
+    If mapID =. 0xC
+        WP32 gui_SpiceBlueBG,16C,54 0x06401640
+        WP32 gui_SpiceBlueBG,16C,58 0x0640C9C0 // blue bg stretch
+        WP32 gui_SpiceBlueBG,16C,5C 0xE9C0F9C0
+        WP32 gui_SpiceBlueBG,16C,60 0xF2C01640
+    EI
+//
+
+// Job Specific - Position
+    WPF gui_JobSpecific1,hPos 1835
+    WPF gui_JobSpecific2,hPos 1835
+    WPF gui_JobSpecific3,hPos 1835
+//
+
+// Job Failed - Text scales & position + line stretch
+    WPF gui_JobFailed,480 20 // Texts
+    WPF gui_JobFailed,440 22
+    WPF gui_JobFailed,448 28.3
+    WP8 gui_JobFailed,450 1
+
+    WP32 gui_JobFailed,17C,58 0xFFE0A061 // blue line stretch
+    WP32 gui_JobFailed,17C,5C 0x00204A40 
+
+    WP32 gui_JobFailed,33C,50 0x7502E00A // line stretch
+    WP32 gui_JobFailed,33C,58 0x00002A40
+
+    WP32 gui_JobFailed,1FC,54 0xFB00E921 // black stretch
+    WP32 gui_JobFailed,1FC,58 0xFB0036E0
+    WP32 gui_JobFailed,1FC,5C 0x050036E0
+    WP32 gui_JobFailed,1FC,60 0x0500E921
+//
+
+// Dimitri Intro - Green Background
+    If mapID =. 2
+        WP32 gui_Dimitri,16C,54 0x06401640 // black stretch
+        WP32 gui_Dimitri,16C,58 0x0640E9C0
+        WP32 gui_Dimitri,16C,5C 0xE9C0E9C0
+        WP32 gui_Dimitri,16C,60 0xEEC00640
+    EI
+//
+
+// Cairo - Sly Introduction
+    If mapID =. 0
+        WP32 gui_Dimitri,16C,54 0x06401640 // blue stretch
+        WP32 gui_Dimitri,16C,58 0x0640E9C0
+        WP32 gui_Dimitri,16C,5C 0xE9C0E9C0
+        WP32 gui_Dimitri,16C,60 0xEEC00640
+
+        WP32 gui_Dimitri,20,20,20,16C,54 0x06403F40 // red stretch
+        WP32 gui_Dimitri,20,20,20,16C,58 0x0640E9C0
+        WP32 gui_Dimitri,20,20,20,16C,5C 0xF9C0E2C0
+        WP32 gui_Dimitri,20,20,20,16C,60 0xF9C01640
+
+        WP32 gui_Dimitri,20,20,20,20,16C,54 0x06403F40 // red stretch
+        WP32 gui_Dimitri,20,20,20,20,16C,58 0x0640E9C0
+        WP32 gui_Dimitri,20,20,20,20,16C,5C 0xF9C0E2C0
+        WP32 gui_Dimitri,20,20,20,20,16C,60 0xF9C01640
+    EI
+//
+
+// Pause Menu - Black Background
+    If isPaused =. 1
+        //W16 3E4AB6 0xEB00
+        //W16 3E4AB8 0x36E0
+        //W16 3E4ABC 0x16E0
+        //W16 3E4AC0 0xE921
+        WF 3FBA30 4.05000019 // load blue hstretch 
+        WF 3FA940 4.05000019
+        WF 3FBA70 4.05000019 // load blackshadow hstretch 
+        WF 3FBAB0 4.05000019 // load currentgamestatus hstretch 
+        WF 3FBAF0 2 // load blueline hstrtetch 
+        WF 3FBB30 2 // load blueline 
+        WF 3FBB70 4.05000019 // load shadowy 
+        WF 3FBBB0 4.05000019 // loadgame black 
+        WF 3FBBF0 2 // load blueline 
+        WF 3FBC30 2 // load blueline 
+        WF 3FBC80 -80 // load game button 
+        WF 3FBCC0 470 // back button 
+        WF 3FBE00 370.4500122 // currentgame status (center) 
+        WF 3FBE40 434.4500122 // loadgame text (center) 
+        WF 3FBE70 2 // load topblueline 
+        WF 3FBEB0 2 // loadgame save line 
+        WF 3FBEF0 2 // loadgame saveline 
+        WF 3FBF40 165.6999969 // load access text 
+        WF 3FBF80 -11 // sly logo
+
+    EI
+
+// ThiefNet - Blue Background
+    If tnStatus !: 0xFFFF // if tn open
+        W16 3E3B3C 0x46E0
+        W16 3E3B40 0xB921
+        W16 3E3B34 0xE921
+        W16 3E3B38 0x16E0
+    EI
+//
+
+// Notification - Stretch
+    WP32 gui_Notification,16C,54 0xFB00C921 // black bg
+    WP32 gui_Notification,16C,58 0xFB0036E0
+    WP32 gui_Notification,16C,5C 0x050016E0
+    WP32 gui_Notification,16C,60 0x0500C921
+    WP32 gui_Notification,1EC,54 0x0020C061 // blue line
+    WP32 gui_Notification,1EC,58 0xFFE0D061
+    WP32 gui_Notification,1EC,5C 0x00207A40
+    WP32 gui_Notification,1EC,60 0xFFE07A40
+    WP32 gui_Notification,32C,54 0x0000E061 // underline
+    WP32 gui_Notification,32C,58 0x00002A40
+//
+
+// Treasure timer - Horizontal position
+    WPF gui_TreasureTimer,hPos 1835
+    WPF gui_TreasureTimer,vPos 1940.90918
+//
+
+// Stop certain GUIs from moving to make way for the infobox (ty NiV-L-A)
+    ASM_START 0020F7FC
+        addiu $s1,$s2,0x3BAC
+    ASM_END
+
+    ASM_START 0020F804
+        addiu $s3,$s2,0x3BB0
+    ASM_END
+
+    ASM_START 0020F904
+        slti $v0,$s4,0x0003
+    ASM_END
+//
+
+// Game Progress - Stretch & position
+    WPF gui_GameProgress,floats,BA0 5 // black bar stretch
+    WPF gui_GameProgress,floats,3A0 30 // book hPos
+    WPF gui_GameProgress,floats,430 30
+    WPF gui_GameProgress,floats,4B0 30
+    WPF gui_GameProgress,floats,500 30
+    WPF gui_GameProgress,floats,630 30
+    WPF gui_GameProgress,floats,7A0 30
+    WPF gui_GameProgress,floats,7E0 30
+    WPF gui_GameProgress,floats,8C0 30
+    WPF gui_GameProgress,floats,900 30
+    WPF gui_GameProgress,floats,550 85 // progress % hPos
+    WPF gui_GameProgress,floats,670 85
+    
+//
