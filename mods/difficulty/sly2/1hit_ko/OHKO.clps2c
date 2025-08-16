@@ -1,0 +1,69 @@
+SR "gametitle= Sly 2: Band of Thieves (NTSC) [SCUS-97316] [08/13/04 00:32]\n"
+SR "[OHKO]\n"
+SR "author=Cooper, NiV-L-A & zami3333\n"
+
+Set mapID 003E8910
+
+IF 3D3980 =. 3 // if not in a loading screen
+    WP32 3D9Eb8,38 1 // disable gang healthbar
+    WP32 3D9Eb8,40 1 //
+    WPF 3D9Eb8,5C 1 //
+    WP32 3D9Eb8,60 1 //
+    WP32 3D9Eb8,64 1 //
+    WPF 3D9Eb8,68 1 //
+    WP32 3D9Eb8,70 1 //
+
+    W32 3D4AB0 1 // set gang hp to 1
+    W32 3D4AC8 1 //
+    W32 3D4AE0 1 //
+EI
+
+// hp fixes
+IF 3D4AB0 >. 1
+    W32 3D4AB0 1
+EI
+IF 3D4AC8 >. 1
+    W32 3D4AC8 1
+EI
+IF 3D4AE0 >. 1
+    W32 3D4AE0 1
+EI
+
+IF mapID !. 0x29 // crash handler
+    WP32 3E0828,184 1 // bentley hack hp
+EI
+
+IF mapID =. 2 // paris
+    W32 5020A8 0 // repair truck hp
+EI
+IF mapID =. 8 // india
+    W32 5A68F0 0 // bentley rc hp
+    W32 5A5BA0 0 // murray turret hp
+EI
+IF mapID =. 0xC // india2
+    W32 525600 0 // bentley chopper hp
+EI
+IF mapID =. 0xE // prague
+    W32 52A560 0 // wall bombing rc hp
+    W32 489600 0 // despawn FK$Xp_vulture_guard_bullet_hs
+    W32 489608 0 //
+EI
+IF mapID =. 0x11 // prague2
+    W32 5616C0 0 // tank hp
+    IF 0x122409A >: 0x4000 // if bentley hp GUI has ran a couple secs
+        W32 563F10 1 // bentley blimp hp
+    EI
+EI
+IF mapID =. 0x1D // train
+    W32 5523D0 0 // aerial assault rc hp
+EI
+IF mapID =. 0x1E // train
+    W32 500618 0 // neyla boss rc hp
+EI
+IF mapID =. 0x21 // rc
+    W32 DF0AE0 0 // rc car hp
+EI
+IF mapID =. 0x26 // blimp
+    W32 50EE50 0 // carmgunner chopper hp
+EI
+
