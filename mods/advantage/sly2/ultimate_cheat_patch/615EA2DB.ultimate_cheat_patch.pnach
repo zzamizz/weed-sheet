@@ -1,8 +1,7 @@
-comment=Ultimate Cheat Patch by zami
-//All Gadgets
-patch=1,EE,203DE2F8,extended,FFFFFFFF
+[Ultimate Cheat Patch]
+author=zami3333
+patch=1,EE,203DE2F8,extended,FFFFFFFF //All Gadgets
 patch=1,EE,203DE2FC,extended,FFFFFFFF
-//Infinite Gadget Power
-patch=1,EE,203DE2B4,extended,00000064
+patch=1,EE,203DE2B4,extended,00000064 //Infinite Gadget Power
 patch=1,EE,203DE2CC,extended,00000064
 patch=1,EE,203DE2E4,extended,00000064

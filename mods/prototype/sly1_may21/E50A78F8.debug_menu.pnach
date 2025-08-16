@@ -1,7 +1,7 @@
 gametitle=Sly 1 (May 21, 2002) [E50A78F8]
-comment=Prototype fix by Velocity & Meos
-
-// Security bypass & debug menu (without timer)
+[Prototype fix]
+author=Velocity & Meos
+comment=Security bypass & debug menu (without timer)
 patch=1,EE,2020B4E8,extended,3C02004C
 patch=1,EE,2020B4EC,extended,34426590
 patch=1,EE,2020B4F0,extended,00000000

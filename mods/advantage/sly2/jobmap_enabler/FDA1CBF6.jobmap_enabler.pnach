@@ -1,6 +1,6 @@
-comment=Jobmap Enabler by zami3333
-// Allows you to enable the jobmap glitch from the pause menu (FKA "Jobless Devmap") 
-// Press L2+R2 while paused & hovering "Quit Game" to reload into jobmap.
+[Jobmap Enabler]
+author=zami3333
+comment=Press L2+R2 while paused & hovering "Quit Game" to reload into jobmap. (FKA "Jobless Devmap")
 
 patch=1,EE,E1070001,extended,003E16F4
 patch=1,EE,E1060001,extended,003E170C

@@ -1,4 +1,5 @@
-comment=Reality Bender Mod by SlyCooperReloadCoded
+[Reality Bender]
+author=SlyCooperReloadCoded
 
 //Sets up required check for whether or not Tornado Strike has been purchased
 patch=1,EE,503DC2FC,extended,00000001

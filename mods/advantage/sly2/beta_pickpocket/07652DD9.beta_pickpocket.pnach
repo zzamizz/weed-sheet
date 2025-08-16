@@ -1,5 +1,5 @@
-comment=Beta Pickpocket by Meos
-// Makes pickpocketing like the March 2004 
-// build where the treasure will fall on the 
-// ground and Sly has to walk over and pick it up. 
+[Beta Pickpocket]
+author=Meos
+comment=Makes pickpocketing like the March 2004 prototype
+// Treasure will fall on the ground and Sly has to walk over and pick it up. 
 patch=1,EE,20193404,extended,00000000

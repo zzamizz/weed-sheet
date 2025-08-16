@@ -1,7 +1,6 @@
-comment= Timed Treasures Decrease by Cooper
-// Increases the timers for all timed treasures 
-// in the game to where they are barely enough 
-// time to get to the safe house.
+[Timed Treasures Decrease]
+author=Cooper
+comment=Decreases the timers for all timed treasures 
 patch=1,EE,E0010008,extended,003E1110 
 patch=1,EE,20C7B1FC,extended,41700000 
 patch=1,EE,E001000C,extended,003E1110 

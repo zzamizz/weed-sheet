@@ -1,6 +1,8 @@
 gametitle=Sly 1
 
-comment=Manual Van Camera (At the Dog Track) by niaarchangel
+[Manual Van Camera]
+comment=(At the Dog Track)
+author=niaarchangel
 patch=1,EE,E1090002,extended,0027DBF8 //Check if World 2
 patch=1,EE,E1080004,extended,0027DBFC //Check if At the Dog Track
 patch=1,EE,50262C68,extended,00000001 //Copy Playable byte to code cave

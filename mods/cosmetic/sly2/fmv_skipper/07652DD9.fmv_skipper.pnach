@@ -1,7 +1,8 @@
 gametitle= Sly 2: Band of Thieves (NTSC) [SCUS-97316] [08/13/04 00:32]
 
-comment=FMV Skipper by zami3333
-// Skip any video cutscene by pressing X
+[FMV Skipper]
+author=zami3333
+comment=Skip any video cutscene by pressing X
 patch=1,EE,E0020020,extended,302F67D0 //if(fmv frame counter > 20)
 patch=1,EE,E10100FF,extended,002DFC0E //if cross
 patch=1,EE,202F6810,extended,00000000 //skip

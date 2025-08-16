@@ -1,8 +1,8 @@
 gametitle=Sly 2: Band of Thieves (SCUS_973.16, 07652DD9)
-comment=Sly 2 Murray in Prague
-comment=Thanks to the Sly Cooper Modding Discord Server: https://discord.gg/2GSXcEzPJA
-comment=Made by NiV-L-A
-//Makes Murray playable from the safehouse after completing the EP4 operation
+[Murray in Prague]
+author=NiV-L-A
+comment=Makes Murray playable from the safehouse after completing the EP4 operation
+//Thanks to the Sly Cooper Modding Discord Server: https://discord.gg/2GSXcEzPJA
 //CLPS2C code: https://pastebin.com/06LcWEqy
 
 patch=1,EE,201A761C,extended,0803C498

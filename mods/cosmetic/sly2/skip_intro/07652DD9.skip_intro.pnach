@@ -1,5 +1,6 @@
-comment=Skip Intro by zami3333
-// Skips the entire intro by booting into a full episode menu instead
+[Skip Intro]
+author=zami3333
+comment=Skips the entire intro by booting into a full episode menu instead
 
 // Load Menu instead of Cairo
 patch=1,EE,E110003F,extended,202DDF0F //if uptime less than 0x3F

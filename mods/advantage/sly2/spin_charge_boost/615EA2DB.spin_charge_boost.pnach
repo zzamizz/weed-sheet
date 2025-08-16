@@ -1,4 +1,5 @@
-comment=Spin Charge Boost by Cooper
-// Greatly boosts the spin speed of Lightning Spin and regular spin attack
+[Spin Charge Boost]
+author=Cooper
+comment=Greatly boosts the spin speed of Lightning Spin and regular spin attack
 // Video showcase: https://youtu.be/MaY2vRLbXH8
 patch=1,EE,202C8250,extended,4780E800

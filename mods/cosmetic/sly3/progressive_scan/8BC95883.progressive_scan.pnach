@@ -1,4 +1,5 @@
-comment=Progressive Scan by Puggsy
+[Progressive Scan]
+author=Puggsy
 patch=1,EE,2029EFE4,extended,24110000 //00058c03
 patch=1,EE,2029EFE8,extended,24120050 //00069403
 patch=1,EE,2029EFF4,extended,24130001 //00079c03

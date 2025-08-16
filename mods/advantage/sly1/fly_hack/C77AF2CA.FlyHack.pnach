@@ -1,6 +1,6 @@
-comment= FlyHack mod by Vrdiy, with major help from: NiV-L-A, TheOnlyZac, Sami, and everyone else in the Sly Cooper Modding Discord!
-press X to fly when fly move is selected(decoy overwrite)
-gametitle=Sly Cooper and the Thevius Raccoonus
+[FlyHack]
+comment= By Vrdiy, with major help from: NiV-L-A, TheOnlyZac, Sami, and everyone else in the Sly Cooper Modding Discord! Press X to fly when fly move is selected(decoy overwrite)
+gametitle=Sly Cooper and the Thievius Raccoonus
 
 patch=1,EE,2024DB77,extended,00796C46
 patch=1,EE,E0030005,extended,00274F74

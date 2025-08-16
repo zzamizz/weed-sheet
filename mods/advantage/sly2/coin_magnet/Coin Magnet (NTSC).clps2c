@@ -1,5 +1,5 @@
 SR "gametitle=Sly 2: Band of Thieves (NTSC) [SCUS-97316] [08/13/04 00:32]\n\n"
-SR "[Advantage\Coin Magnet] \n"
+SR "[Coin Magnet] \n"
 SR "comment=Greatly increases the coin pickup range.\n"
 SR "author=NiV-L-A, zami3333\n"
 // thanks to niv for finding the coin range offset + global variable and doing the research

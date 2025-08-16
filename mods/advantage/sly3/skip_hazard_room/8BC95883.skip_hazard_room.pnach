@@ -1,4 +1,5 @@
-comment=Skip Hazard Room by zami
+[Skip Hazard Room
+comment=zami3333
 patch=1,EE,E0020000,extended,0047989C
 patch=1,EE,E0010002,extended,0056AEC8
 patch=1,EE,0056AEC8,extended,00000003

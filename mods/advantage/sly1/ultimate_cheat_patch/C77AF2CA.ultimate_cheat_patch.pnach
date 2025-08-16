@@ -1,3 +1,6 @@
-comment=Ultimate Cheat Patch by zami
-patch=1,EE,20262C64,extended,00000001 //Sly Godmode
-patch=1,EE,2027DC00,extended,00000063 //Infinite Lives
+[Ultimate Cheat Patch]
+author=zami3333
+patch=1,EE,20262C64,extended,00000001 // Sly Invulnerability
+patch=1,EE,2027DC00,extended,00000063 // Infinite Lives 
+patch=1,EE,2027DC14,extended,FFFFFFFF // Unlock All Cutscenes
+patch=1,EE,2027DC04,extended,00000002 // Infinite Gold Charms

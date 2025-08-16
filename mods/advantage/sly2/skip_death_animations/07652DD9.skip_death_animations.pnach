@@ -1,4 +1,5 @@
-comment=Skip Death Animations by Cooper & zami
+[Skip Death Animations]
+author=Cooper & zami3333
 
 patch=1,EE,E0030000,extended,003D4AB0 // if Sly HP = 0
 patch=1,EE,E0020000,extended,103D4A6C // if act char != 0

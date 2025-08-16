@@ -1,6 +1,6 @@
-comment=Manhunt Mod by zami
-// Every guard is after you at all times
-// Makes some jobs impossible, consider it a freeplay mod
+[Manhunt]
+author=zami3333
+comment=Every guard is after you at all times. Makes some jobs impossible, consider it a freeplay-only mod.
 // Video showcase:  https://youtu.be/S4guxW1RisA
 // Report issues:   https://discord.gg/gh5xwfj #sly-modding @sami#2055
 

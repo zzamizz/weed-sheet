@@ -1,6 +1,7 @@
 gamename=Sly 2 (PAL) [FDA1CBF6]
-comment=Free Camera by Meos
-// Replaces the L3 button with a fully functioning freecam
+[Free Camera]
+author=Meos
+comment=Replaces the L3 button with a fully functioning freecam. See PNACH for controls.
 // Based on the "Truck" camera from the debug menu
 // [L3] = Toggle on/off Free-camera
 // [D-pad] = Move Camera Position

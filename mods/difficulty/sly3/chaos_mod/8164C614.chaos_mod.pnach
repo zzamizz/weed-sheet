@@ -1,5 +1,6 @@
 gametitle= Sly 3: Honor Among Thieves (PAL) [SCES-53409] [09/21/05 18:43]
-comment=Made By BloxXor (youtube.com/c/BloxXorinPerseilyt)
+[Chaos Mod]
+author=BloxXor (youtube.com/c/BloxXorinPerseilyt)
 patch=1,EE,2036C6AC,extended,3F000000
 patch=1,EE,D036F1D8,extended,0000060C
 patch=1,EE,2034C0D0,extended,00000000

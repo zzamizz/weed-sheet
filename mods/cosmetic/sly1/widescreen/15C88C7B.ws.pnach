@@ -1,2 +1,3 @@
-comment=16:9 by Arapapa
+[16:9 Widescreen]
+author=Arapapa
 patch=1,EE,00143a50,word,3c013fdd

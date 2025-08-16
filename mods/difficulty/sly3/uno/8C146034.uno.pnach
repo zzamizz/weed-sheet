@@ -1,8 +1,8 @@
 gametitle=Sly 3 August 2 Preview (SCES_525.29, 8C146034)
-comment=Sly 3 Parkour Map: Uno (Version 1.1)
-comment=Thanks to the Sly Cooper Modding Discord Server: https://discord.gg/2GSXcEzPJA
-comment=Map editing done by using a modified version of 'Jewel', a WIP PCSX2 trainer for Sly 2 (https://github.com/TheOnlyZac/jewel)
+[Parkour Map: Uno (Version 1.1)]
 comment=Made by NiV for the September 2022 Sly Cooper Mod Jam
+//Thanks to the Sly Cooper Modding Discord Server: https://discord.gg/2GSXcEzPJA
+//Map editing done by using a modified version of 'Jewel', a WIP PCSX2 trainer for Sly 2 (https://github.com/TheOnlyZac/jewel)
 
 //Debug menu warps
 patch=1,EE,E02A0006,extended,004AF8A4	//check map id

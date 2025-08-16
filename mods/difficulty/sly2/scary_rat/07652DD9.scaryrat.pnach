@@ -1,7 +1,7 @@
 gametitle=Sly 2: Band of Thieves  (SCUS_973.16, 07652DD9)
-comment=Sly 2 Scary Rat (Version 1.0)
-comment=Thanks to the Sly Cooper Modding Discord Server: https://discord.gg/2GSXcEzPJA
+[Scary Rat (Version 1.0)]
 comment=Made by NiV for the October 2022 Sly Cooper Mod Jam
+//Thanks to the Sly Cooper Modding Discord Server: https://discord.gg/2GSXcEzPJA
 
 patch=1,EE,E00A0001,extended,003E1110	//if map id is main menu
 patch=1,EE,204A43F0,extended,72616353		//The Black Chateau string

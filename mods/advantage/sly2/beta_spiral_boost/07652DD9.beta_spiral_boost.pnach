@@ -1,5 +1,6 @@
-comment=Beta Spire Boost by zami
-// Brings back the old spire jump boost when holding R1
+[Beta Spire Boost]
+author=zami3333
+comment=Brings back the old spire jump boost when holding R1
 // Only in hub worlds (for now)
 // Also works from ropes and sneakable walls
 patch=1,EE,E1050002,extended,003E1110

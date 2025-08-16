@@ -1,4 +1,4 @@
-comment=scary_hand
+[scary_hand]
 patch=1,EE,E0030003,extended,003D3980
 patch=1,EE,603E1574,extended,00000001
 patch=1,EE,00020000,extended,00000030

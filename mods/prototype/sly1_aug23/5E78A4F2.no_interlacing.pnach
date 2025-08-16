@@ -1,4 +1,5 @@
 gametitle= Sly 1 August 23 Review Code [SCUS-97198] [08/23/02 01:19]
-
-comment=No Interlacing by Asasega
+[(OBSOLETE) No Interlacing]
+comment=This patch is now obsolete in latest PCSX2
+author=asasega
 patch=1,EE,20202644,extended,00000000

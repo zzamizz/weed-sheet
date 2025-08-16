@@ -1,4 +1,5 @@
-comment=16:9 by ElHecht
+[16:9 Widescreen]
+author=ElHecht
 patch=1,EE,001438b0,word,08086204
 patch=1,EE,001438b4,word,00000000
 patch=1,EE,00218810,word,3c013f40

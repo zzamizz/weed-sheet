@@ -1,5 +1,4 @@
 gametitle=Sly 3 - Honor Amongst Thieves (NTSC-U) [SCUS-97464]
-comment=No Motion Blur by Meos
-
-//No Motion Blur
+[No Motion Blur]
+author=Meos
 patch=1,EE,201837E8,extended,00000000

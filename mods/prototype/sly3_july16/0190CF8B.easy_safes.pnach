@@ -1,5 +1,6 @@
-comment=Easy Safes by NiV
-// Change sly's outline color to make safe opening easier
+[Easy Safes]
+author=NiV-L-A
+comment=Change sly's outline color to make safe opening easier
 
 patch=1,EE,E0090007,extended,0046BBFC
 patch=1,EE,E0080003,extended,007008B4

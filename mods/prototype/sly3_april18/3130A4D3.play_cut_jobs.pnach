@@ -1,5 +1,6 @@
 gametitle= Sly 3 E3 Demo / Jampack Winter 2005 [SCUS-97484] [04/18/05 17:11]
-Comment=Made By BloxXor (youtube.com/c/BloxXorinPerseilyt)
+[Play Cut Jobs]
+author=BloxXor (youtube.com/c/BloxXorinPerseilyt)
 patch=1,EE,20453F04,extended,FFFFFFFF
 patch=1,EE,20453F08,extended,FFFFFFFF
 patch=1,EE,E0090002,extended,00452380

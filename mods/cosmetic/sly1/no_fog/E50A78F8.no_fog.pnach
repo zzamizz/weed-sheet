@@ -1,3 +1,3 @@
-comment=No Fog
+[No Fog]
 patch=1,EE,60274D0C,extended,00000000
 patch=1,EE,00020000,extended,000001E8

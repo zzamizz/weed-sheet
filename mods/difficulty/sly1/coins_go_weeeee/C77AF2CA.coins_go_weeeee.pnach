@@ -1,7 +1,7 @@
-comment= Coin's Go Weeeee By Cooper
-
+[Coin's Go Weeeee]
+author=Cooper
+comment=For every 10 coins you collect, the faster the game becomes. All thief moves are unlocked from the start. Have fun C:
 // Made for the Sly 1 20th Anniversary Mod Jam
-//For every 10 coins you collect, the faster the game becomes. All thief moves are unlocked from the start. Have fun C:
 
 patch=1,EE,2027DC10,extended,FFFFFFFF // Unlock All Thief Moves
 patch=1,EE,E0010001,extended,0027DC08 // If coin count 1

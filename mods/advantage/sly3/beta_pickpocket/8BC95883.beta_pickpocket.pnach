@@ -1,2 +1,5 @@
-comment=Beta Pickpocket
+[Beta Pickpocket]
+author=Meos
+comment=Makes pickpocketing like the Sly 2 March 2004 prototype
+// Treasure will fall on the ground and Sly has to walk over and pick it up. 
 patch=1,EE,201B4CD0,extended,00000000

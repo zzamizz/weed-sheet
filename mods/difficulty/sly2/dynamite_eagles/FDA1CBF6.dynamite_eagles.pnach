@@ -1,5 +1,6 @@
-comment=Dynamite Eagles by zami
-// Replaces the bombing eagles in Episode 7 to dynamites
+[Dynamite Eagles]
+author=zami3333
+comment=Replaces the bombing eagles in Episode 7's hub to dynamites
 // Report any issues that are not already mentioned:
 // https://discord.gg/gh5xwfj #sly-modding @sami#2055
 patch=1,EE,E0020020,extended,003E8910

@@ -1,5 +1,5 @@
-comment=Disable Event Logs
-// Stops the game from making huge log files into the memory card
+[Disable Event Logs]
+comment=Stops the game from making huge log files into the memory card
 // Code removes the log folder's name string
 patch=1,EE,202CC5B0,extended,00000000
 patch=1,EE,202CC5B8,extended,00000000

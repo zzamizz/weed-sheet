@@ -1,7 +1,7 @@
 gametitle= Sly 2: Band of Thieves (NTSC) [SCUS-97316] [08/13/04 00:32]
 
-comment=Extended Binocucom by zami3333
-// Increases the range of zoom in the binocucom
-
+[Extended Binocucom]
+author=zami3333
+comment=Increases the range of zoom in the binocucom
 patch=1,EE,202DE3BC,extended,3C23D70A
 patch=1,EE,202DE3C0,extended,3FC00000

@@ -1,5 +1,6 @@
-comment=Ruby Hard Mode wip by niaarchangel
-//Gives a new challenge to Mz Ruby's Boss Fight (Phase 1 only)
+[Ruby Hard Mode wip]
+author=niaarchangel
+comment=Gives a new challenge to Mz Ruby's Boss Fight (Phase 1 only)
 patch=1,EE,E11A0003,extended,0027DBF8 // Check if Mz Ruby's Boss Level
 patch=1,EE,E1190008,extended,0027DBFC
 patch=1,EE,2177CED8,extended,3F800000 // Delay Value

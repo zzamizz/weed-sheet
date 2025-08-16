@@ -1,2 +1,4 @@
-// No interlacing
+[(OBSOLETE) No Interlacing]
+comment=This patch is now obsolete in latest PCSX2
+author=asasega
 patch=1,EE,2021EB1C,extended,00000000

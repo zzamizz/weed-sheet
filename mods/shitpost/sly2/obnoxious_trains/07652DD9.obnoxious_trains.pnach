@@ -1,4 +1,5 @@
-comment=obnoxious trains
+[obnoxious trains]
+//
 patch=1,EE,E00A001B,extended,003E1110
 patch=1,EE,21B0C240,extended,461C3C00
 patch=1,EE,21B0C160,extended,461C3C00

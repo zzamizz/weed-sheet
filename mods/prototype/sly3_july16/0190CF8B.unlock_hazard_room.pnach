@@ -1,5 +1,6 @@
-comment=Unlock Hazard Room by NiV
-// Enter Hazard Room with EP4 Cheat Code (up down down down r1 left)
+[Unlock Hazard Room]
+author=NiV-L-A
+comment=Enter Hazard Room with EP4 Cheat Code (up down down down r1 left)
 patch=1,EE,E0110006,extended,00339350
 patch=1,EE,2046BB24,extended,00000001
 patch=1,EE,2046BB2C,extended,08BC7BE4

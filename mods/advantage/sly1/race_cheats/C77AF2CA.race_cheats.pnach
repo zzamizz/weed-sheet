@@ -1,10 +1,8 @@
-Elapsed time: 00:00.444
 gametitle=Sly Cooper and the Thievius Raccoonus (NTSC) [SCUS-97198] [08/24/02 22:06]
 
-[Advantage\Race Cheats] 
+[Race Cheats] 
 comment=Infinite boosts, forced first place, L1 to enable autopilot.
 author=zami3333
-
 
 patch=1,EE,E11B0002,extended,0027DBF8
 patch=1,EE,E11A0004,extended,0027DBFC

@@ -1,4 +1,5 @@
-comment=Disable Guard Grow by NiV-L-A
+[Disable Guard Grow]
+author=NiV-L-A
 patch=1,EE,202CFE1C,extended,0018A1C0
 patch=1,EE,202D00F4,extended,0018A1C0
 patch=1,EE,202D03CC,extended,0018A1C0

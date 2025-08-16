@@ -1,7 +1,8 @@
 gametitle= Sly 3 August 24 Prototype [SCUS-97464] [08/24/05 22:34]
 
-comment=FMV Skipper by zami3333
-// Skip any video cutscene by pressing X
+[FMV Skipper]
+author=zami3333
+comment=Skip any video cutscene by pressing X
 patch=1,EE,E0020020,extended,30390AE0 //if(fmv frame counter > 20)
 patch=1,EE,E10100FF,extended,0037568E //if cross
 patch=1,EE,20390B20,extended,00000000 //skip

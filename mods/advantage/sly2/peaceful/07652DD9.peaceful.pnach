@@ -1,5 +1,6 @@
-comment=Peaceful by zami3333
-// "Peaceful Mode" removes all guards and danger from levels
+[Peaceful]
+author=zami3333
+comment=The "Peaceful Mode" toggle removes all guards and danger from levels
 // Cheat toggle requires 100% savefile (bypass this by setting 0x00091220 to 1)
 // 
 //  Notes:

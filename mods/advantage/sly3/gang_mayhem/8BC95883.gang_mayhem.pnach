@@ -1,10 +1,7 @@
 gametitle=Sly 3: Honor Among Thieves (SCUS_974.64, 8BC95883)
-comment=Sly 3 Gang Mayhem (Version 1.0)
-comment=Thanks to the Sly Cooper Modding Discord Server: https://discord.gg/2GSXcEzPJA
-comment=Made by NiV
-// Spawns the rest of the gang near the player
-// R1+Select to trigger
-// R1+dpad right to switch between characters
+[Gang Mayhem (Version 1.0)]
+author=NiV-L-A
+comment=Spawns the rest of the gang near the player. R1+Select to trigger & R1+dpad right to switch between characters
 // CLPS2C code: https://pastebin.com/QLMyCJ10
 
 patch=1,EE,201CB2C4,extended,08020040

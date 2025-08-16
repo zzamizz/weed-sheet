@@ -1,4 +1,5 @@
-comment=Fixed Framerate by zami
-// Fixes the low framerate for 3D-mode and Two Player
+[Fixed Framerate]
+author=zami3333
+comment=Fixes the low framerate for 3D-mode and Two Player
 // Address originally found by BloxXor
 patch=1,EE,2036DBE0,extended,00000000

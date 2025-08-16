@@ -1,6 +1,6 @@
-comment=Rev Roll by niaarchangel
-// Replaces the vanilla roll move with a charge roll move inspired by Sonic and Pac Man World.
-// The roll can be cancelled with a simple press of the X button.
+[Rev Roll]
+author=niaarchangel
+comment=Replaces the vanilla roll move with a charge roll move inspired by Sonic and Pac Man World. The roll can be cancelled with a simple press of the X button.
 // Credit to TheOnlyZac and sami for a lot of help!
 // Now updated to improve presentation when revving!
 patch=1,EE,2024DB37,extended,98766552
@@ -54,3 +54,4 @@ patch=1,EE,20262E28,extended,447A0000
 patch=1,EE,20262E2C,extended,44548000
 patch=1,EE,E1010007,extended,10262C68
 patch=1,EE,20126A64,extended,AC910268
+

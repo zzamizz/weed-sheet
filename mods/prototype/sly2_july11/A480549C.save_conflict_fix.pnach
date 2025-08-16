@@ -1,5 +1,6 @@
-comment=Save Conflict Fix by SCRC
-//Change Save File Name to Avoid Conflicts (BASCUS-42072)
+[Save Conflict Fix]
+author=SCRC
+comment=Change Save File Name to Avoid Conflicts (BASCUS-42072)
 patch=1,EE,202A90B0,extended,37303234
 patch=1,EE,202A90B4,extended,4F415932
 patch=1,EE,202A90C8,extended,37303234

@@ -1,4 +1,4 @@
 gametitle= Sly Raccoon November Review [SCES-50917] [11/08/02 12:02]
-
-comment=No Motion Blur by Meos
+[No Motion Blur]
+author=Meos
 patch=1,EE,2015F944,extended,24060000

@@ -1,7 +1,8 @@
 gametitle= Sly 3: Honor Among Thieves (NTSC) [SCUS-97464] [08/28/05 02:12]
 
-comment=FMV Skipper by zami3333
-// Skip any video cutscene by pressing X
+[FMV Skipper]
+author=zami3333
+comment=Skip any video cutscene by pressing X
 patch=1,EE,E0020020,extended,30389BE0 //if(fmv frame counter > 20)
 patch=1,EE,E10100FF,extended,0036E78E //if cross
 patch=1,EE,20389C20,extended,00000000 //skip

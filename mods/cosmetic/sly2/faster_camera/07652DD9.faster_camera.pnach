@@ -1,4 +1,5 @@
-comment= Faster Camera by Meos
-// Increases the camera speed 
+[Faster Camera]
+author=Meos
+comment=Increases the camera speed 
 patch=1,EE,2014D138,extended,3C013FC0
 patch=1,EE,2014D158,extended,44810000

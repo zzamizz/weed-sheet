@@ -1,4 +1,9 @@
-comment=Bear Guards (Episode 6) by zami
+[Bear Guards]
+author=zami3333
+comment=Replaces flashlight guards in Episode 6's hub with bears
+// As a crash handler, the bear cave now has patrolling moose guards
+// Report any issues that are not already mentioned:
+// https://discord.gg/gh5xwfj #sly-modding @sami#2055
 patch=1,EE,E003001B,extended,003E1110
 patch=1,EE,2048B1E0,extended,00000002
 patch=1,EE,20489238,extended,00CFAB70

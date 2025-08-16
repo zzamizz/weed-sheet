@@ -1,6 +1,8 @@
-comment=Invisible Bosses by NiV
-// Makes Bosses (dimitri, neyla, rajan, arpeggio, jean bison, contessa, carmelita, tango,
-// murray in ep4 op, neyla's airplane in ep6 op, clockwerk and clock-la, invisible).
+[Invisible Bosses]
+author=NiV-L-A
+commentMakes all bosses invisible
+// (dimitri, neyla, rajan, arpeggio, jean bison, contessa, carmelita, tango,
+// murray in ep4 op, neyla's airplane in ep6 op, clockwerk and clock-la).
 // This makes jobs like Eavesdrop on Contessa much harder.
 // Writes the Invisible's address value to 0xBA83126F, aka -0.001 in float
 patch=1,EE,603E078C,extended,BA83126F //dim inv

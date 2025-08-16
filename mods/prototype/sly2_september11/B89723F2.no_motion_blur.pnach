@@ -1,4 +1,4 @@
 gametitle= Sly 2 September 11 Review Code [SCES-52529] [09/11/04 18:30]
-
-comment=No Motion Blur by Meos
+[No Motion Blur]
+author=Meos
 patch=1,EE,20160FC8,extended,00000000

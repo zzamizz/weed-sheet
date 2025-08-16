@@ -1,6 +1,6 @@
-comment=Skip Intro by zami3333
-// Skips the intro cutscene
-// Boots the game directly to a fully unlocked episode menu
+[Skip Intro]
+author=zami3333
+comment=Skips the intro cutscene and boots the game directly to a fully unlocked episode menu
 
 // Save Kaine Island AOB to codecave
 patch=1,EE,E1020000,extended,0036BBAF //if uptime less than 0x0

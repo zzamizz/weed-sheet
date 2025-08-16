@@ -1,5 +1,6 @@
-comment=Reload Level Powerup by TheOnlyZac
-// Replaces the "Decoy" move with a level reload powerup
+[Reload Level Powerup]
+author=TheOnlyZac
+comment=Replaces the "Decoy" move with a level reload powerup
 patch=1,EE,201d2fc4,extended,0C07949E
 patch=1,EE,201d2fc8,extended,2406FFFF
 patch=1,EE,2024db77,extended,6F6C6552

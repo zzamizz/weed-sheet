@@ -1,14 +1,13 @@
-comment=Ultimate Cheat Patch by zami
-// All Gadgets
-patch=1,EE,203D4AF8,word,FFFFFFFF
-patch=1,EE,203D4AFC,word,FFFFFFFF
-// Infinite Gadget Power
-patch=1,EE,203D4AB4,extended,00000064
+[Ultimate Cheat Patch]
+author=zami3333
+patch=1,EE,203D4AF8,extended,FFFFFFFF // All Gadgets
+patch=1,EE,203D4AFC,extended,FFFFFFFF
+patch=1,EE,E1010001,extended,003E1110 // All Episodes
+patch=1,EE,205975E8,extended,00000008
+patch=1,EE,203D4AB4,extended,00000064 // Infinite Gadget Power
 patch=1,EE,203D4ACC,extended,00000064
 patch=1,EE,203D4AE4,extended,00000064
-// Infinite Hack HP
-patch=1,EE,603E0828,extended,00000064
+patch=1,EE,603E0828,extended,00000064 // Infinite Hack HP
 patch=1,EE,00020000,extended,00000184
-// Infinite Jumps
-patch=1,EE,201963C0,extended,00000000
+patch=1,EE,201963C0,extended,00000000 // Infinite Jumps
 patch=1,EE,201963D4,extended,00000000

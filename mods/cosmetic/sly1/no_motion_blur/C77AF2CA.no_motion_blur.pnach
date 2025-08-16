@@ -1,4 +1,5 @@
-comment=No Motion Blur by Meos
+[No Motion Blur]
+author=Meos
 patch=1,EE,2015EE64,extended,08057B9D
 patch=1,EE,2018F6D0,extended,08063DB8
 patch=1,EE,201E9C60,extended,0807A71B

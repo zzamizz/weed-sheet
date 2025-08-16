@@ -1,5 +1,4 @@
 gametitle=Sly Cooper 2 Band of Thieves (NTSC-K) [SCKA-20044]
-comment=No Motion Blur by Meos
-
-//No Motion Blur
+[No Motion Blur]
+author=Meos
 patch=1,EE,20161CD8,extended,00000000

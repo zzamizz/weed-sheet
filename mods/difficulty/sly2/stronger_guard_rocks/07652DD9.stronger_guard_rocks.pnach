@@ -1,5 +1,6 @@
-comment=Stronger Guard Rocks by zami
-// Replaces smaller guards' rocks with flashlight guards' bullets
+[Stronger Guard Rocks]
+author=zami3333
+comment=Replaces smaller guards' rocks with flashlight guards' bullets
 // Not every map is supported as the bullet entity is not always loaded
 // Some maps have workarounds for this:
 // EP2 has swords, EP3 has chopper bullets and EP7's lighthouse has spotlight bullets

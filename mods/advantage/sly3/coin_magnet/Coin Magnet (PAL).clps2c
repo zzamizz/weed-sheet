@@ -1,5 +1,5 @@
 SR "gametitle=Sly 3: Honor Among Thieves (PAL) [SCES-53409] [09/21/05 18:43]\n\n"
-SR "[Advantage\Coin Magnet] \n"
+SR "[Coin Magnet] \n"
 SR "comment=Greatly increases the coin pickup range.\n"
 SR "author=NiV-L-A, zami3333\n"
 // thanks to niv for finding the coin range stuff in sly 2 and doing the research

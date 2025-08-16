@@ -1,4 +1,5 @@
 gametitle=Sly 3 (September 2, 2005) [Unpatched: 3670B6F9]
-
-comment=No Interlacing by asasega
+[(OBSOLETE) No Interlacing]
+comment=This patch is now obsolete in latest PCSX2
+author=asasega
 patch=1,EE,201A71F8,extended,00000000

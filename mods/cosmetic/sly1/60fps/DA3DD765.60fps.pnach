@@ -4,4 +4,4 @@ comment=Set PAL framerate to 59.94 fps in PCSX2 before using. It's in Properties
 // On OPL, use GSM and set the game to NTSC. Then use Cheat Device to patch the game
 // Note: FMVs are desynced
 
-patch=1,EE,2039A1BC,extended,3F666666
+patch=1,EE,20262B54,extended,3F570A3D

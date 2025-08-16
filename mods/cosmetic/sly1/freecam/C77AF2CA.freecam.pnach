@@ -1,5 +1,7 @@
-gametitle=Sly Cooper and the Thevius Raccoonus
-comment=FreeCam Mod by TheOnlyZac. Special thanks to VelocityRa and NiV-L-A for all their help!
+gametitle=Sly Cooper and the Thievius Raccoonus
+[FreeCam]
+author=TheOnlyZac
+comment=Special thanks to VelocityRa and NiV-L-A for all their help!
 
 // Prevent game writing to cam position
 patch=1,EE,20145768,extended,00000000

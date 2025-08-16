@@ -1,4 +1,5 @@
 gametitle=Sly 3 (September 2, 2005) [Unpatched: 3670B6F9]
 
-comment=Debug Menu by Meos
+[Debug Menu]
+author=Meos
 patch=1,EE,2035F350,extended,00000000

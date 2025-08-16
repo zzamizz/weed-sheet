@@ -1,4 +1,5 @@
 gametitle=Sly 3 (August 2, 2005) [8C146034]
-comment=Debug Menu by ImJustATester and Meos
-//R1+SELECT
+[Debug Menu]
+author=ImJustATester and Meos
+comment=R1+SELECT
 patch=1,EE,203521F0,extended,00000000

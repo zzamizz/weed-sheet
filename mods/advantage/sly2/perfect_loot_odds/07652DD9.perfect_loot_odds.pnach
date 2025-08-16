@@ -1,4 +1,4 @@
-[Cool Mods\Perfect Loot Odds]
+[Perfect Loot Odds]
 
 //100% Chance of Shiny Pockets
 patch=1,EE,202C39AC,extended,3F800000 // Ep1

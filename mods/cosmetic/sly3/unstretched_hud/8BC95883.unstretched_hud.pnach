@@ -1,4 +1,5 @@
-comment=Unstretched HUD by zami
+[Unstretched HUD]
+author=zami3333
 
 // in-game hud stretch
 patch=1,EE,20317FC0,extended,3F400000

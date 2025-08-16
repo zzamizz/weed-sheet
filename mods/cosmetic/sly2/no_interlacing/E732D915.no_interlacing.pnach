@@ -1,2 +1,4 @@
-comment=No Interlacing by Asasega
+[(OBSOLETE) No Interlacing]
+comment=This patch is now obsolete in latest PCSX2
+author=asasega
 patch=1,EE,20240FCC,extended,00000000 // 64420008

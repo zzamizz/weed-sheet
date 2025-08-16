@@ -1,5 +1,6 @@
-comment=Increased cheese by zami3333
-// dedicated to cheese man
+[Increased cheese]
+author=zami3333
+comment=dedicated to cheese man
 patch=1,EE,E010000F,extended,0047989C //if mapid=15
 patch=1,EE,6050C8C0,extended,40800000 //increase cheese size
 patch=1,EE,00020005,extended,00000000

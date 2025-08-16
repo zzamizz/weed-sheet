@@ -1,4 +1,5 @@
-comment=Increased Coin Limit by TheOnlyZac & Velocity
-// Limit raised from 100 to 32766 until you get the next charm
+[Increased Coin Limit]
+author=TheOnlyZac & Velocity
+comment=Limit raised from 100 to 32766 until you get the next charm
 patch=1,EE,201481C8,extended,28437FFE
 patch=1,EE,20148274,extended,24027FFE

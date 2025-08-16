@@ -1,2 +1,3 @@
-comment=Dongle Skip by Meos
+[Dongle Skip]
+author=Meos
 patch=1,EE,20173608,extended,1000005C

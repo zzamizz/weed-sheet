@@ -1,5 +1,6 @@
-comment=Decreased Invincibility by NiV
-// Greatly decreases invincibility frames, so it makes it super difficult to run from enemies
+[Decreased Invincibility]
+author=NiV-L-A
+comment=Greatly decreases invincibility frames, so it makes it super difficult to run from enemies
 // Writes the Invincibility's address value to 0x000080FF, aka -inf in float
 patch=1,EE,602DE1A0,extended,FF800000
 patch=1,EE,00020000,extended,00000E8C
