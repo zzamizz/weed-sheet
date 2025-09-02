@@ -1,0 +1,14 @@
+[Final Job Continuity Error Fix]
+patch=1,EE,E00C002B,extended,003E1110
+patch=1,EE,6048BCD4,extended,40D00000
+patch=1,EE,00020002,extended,00000008
+patch=1,EE,00000690,extended,00000000
+patch=1,EE,6048BCD4,extended,00000C03
+patch=1,EE,00020002,extended,00000008
+patch=1,EE,000006B0,extended,00000000
+patch=1,EE,6048BCD4,extended,3F800000
+patch=1,EE,00020002,extended,00000008
+patch=1,EE,00000750,extended,00000000
+patch=1,EE,6048BCD4,extended,00000BE6
+patch=1,EE,00020002,extended,00000204
+patch=1,EE,00000340,extended,00000000
