@@ -1,0 +1,130 @@
+Set CodeCave 0x246A40
+
+// True and false values
+Set IsTrue 0xFF
+Set IsFalse 0x00
+
+// Sly struct data
+Set SlyPointer 0x262E10
+Set BodyOffset 0x2228
+Set GravityOffset 0x358
+Set ZVelocityOffset 0x158
+
+// Sly's controllable state
+Set SlyControls 0x262C68
+Set IsControllable 0x07
+Set ControllableState CodeCave+2
+
+// Static location in Code Cave to copy Sly's Body State to
+Set SlyBodyState CodeCave
+
+// Body States
+Set FirstJumpState 0x00
+Set RiseState 0x01
+Set FirstFallState 0x02
+Set DoubleJumpState 0x03
+Set BounceState 0x06
+
+// Glide data
+Set GlideButton 0x262D27
+Set GlideState CodeCave+1
+
+// Glide States
+Set GlideNo 0x00
+Set GlideGo 0x0F
+Set GlideCancel 0xFF
+
+// Glide Constants
+Set GlideStartVelocity -150.0
+Set GlideGravity -50.0
+Set NormalGravity -2275.0
+
+// Location of ASM Body State pointer reading code
+Set BodyStateReader CodeCave+4
+
+// Replaced code:
+// LW $a0,0x5710($s3)
+// LW $v0,($a0)
+ASM_START 0x0018589C
+    JAL BodyStateReader
+    LW $a0,0x5710($s3)
+ASM_END
+
+ASM_START BodyStateReader
+    LWU $v1,0x00262E10          // Load Sly's struct address into v1      
+    BEQZ $v1, SlyIsNull         // Check if v1 is a NULL pointer
+    LW $v0,($a0)
+    LBU $t0,0x2228($v1)         // Load Sly's Body state from his struct
+    SlyIsNull: LUI $v1,0x0024   // Get ready to store data into my static BodyState byte
+    JR $ra                      // Jump back to Main Loop
+    SB $t0,0x6A40($v1)          // Store data into my static BodyState byte from t0
+ASM_END
+
+// Writes a float value to an offset of Sly's struct
+Function WriteSlyFloat(offset, value)
+    WritePointerFloat SlyPointer,offset value
+EndFunction
+// Writes a byte value to an offset of Sly's struct
+Function WriteSlyByte(offset, value)
+    WritePointer8 SlyPointer,offset value
+EndFunction
+// Writes a byte value to Glide State
+Function WriteGlideState(value)
+    Write8 GlideState value
+EndFunction
+// Writes a byte value to Body State and Sly's struct offset body state
+Function WriteBodyState(value)
+    Write8 SlyBodyState value
+    Call WriteSlyByte(BodyOffset, value)
+EndFunction
+
+If SlyControls =. IsControllable
+   If GlideButton =. IsTrue
+        If GlideState =. GlideNo
+            // If R1 is held, we should fall through these body states and end up at Double Jump state
+            // unless Sly's body state is incompatible with Gliding
+            If SlyBodyState =. FirstJumpState
+                Call WriteBodyState(DoubleJumpState)
+            EndIf
+            If SlyBodyState =. RiseState
+                Call WriteBodyState(DoubleJumpState)
+            EndIf
+            If SlyBodyState =. FirstFallState
+                Call WriteBodyState(DoubleJumpState)
+            EndIf
+            If SlyBodyState =. BounceState
+                Call WriteBodyState(DoubleJumpState)
+            EndIf
+            If SlyBodyState =. DoubleJumpState
+                Call WriteSlyFloat(ZVelocityOffset, GlideStartVelocity)
+                Call WriteGlideState(GlideGo)
+            EndIf
+            If SlyBodyState !. DoubleJumpState
+                Call WriteGlideState(GlideCancel)
+            EndIf
+        EndIf
+        If GlideState =. GlideGo
+            // While gliding, gravity should be set to Glide, unless we exit Sly's double jump state
+            Call WriteSlyFloat(GravityOffset, GlideGravity)
+            If SlyBodyState !. DoubleJumpState
+                Call WriteGlideState(GlideCancel)
+            EndIf
+        EndIf
+   EndIf
+   If GlideButton =. IsFalse
+        // If we let go of the button, we should no longer glide and gravity should be normal
+        Call WriteGlideState(GlideNo)
+        Call WriteSlyFloat(GravityOffset, NormalGravity)
+   EndIf
+   If GlideState =. GlideCancel
+        // When Glide is cancelled by an invalid Body State, set Gravity to normal
+        Call WriteSlyFloat(GravityOffset, NormalGravity)
+   EndIf
+   // Button is held and Sly is controllable, so set our ControllableState to True
+   Write8 ControllableState IsTrue
+EndIf
+If SlyControls !. IsControllable && ControllableState =. IsTrue
+    // If not controllable but was controllable, set out gravity to normal and ControllableState to True
+    Call WriteSlyFloat(GravityOffset, NormalGravity)
+    Write8 ControllableState IsFalse
+EndIf
