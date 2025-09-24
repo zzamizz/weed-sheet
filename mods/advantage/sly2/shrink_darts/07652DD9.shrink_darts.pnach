@@ -1,4 +1,4 @@
-[Completed\Shrink Darts]
+[Shrink Darts]
 patch=1,EE,2013E380,extended,080B982C // Custom Text for Pause Menu Option
 patch=1,EE,2013E384,extended,00000000
 patch=1,EE,202E60B0,extended,8C820004
@@ -228,4 +228,5 @@ patch=1,EE,203DD050,extended,00000000 // Disable USB Headset
 patch=1,EE,E0030002,extended,003D3980 // If Game Has Reloaded
 patch=1,EE,003C870C,extended,00000000 // Set Flag to 0
 patch=1,EE,003C8700,extended,00000000 // Set Mod Enabled Flag to 0
+
 patch=1,EE,203DD050,extended,00000000 // Disable USB Headset
