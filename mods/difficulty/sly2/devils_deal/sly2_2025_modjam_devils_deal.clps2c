@@ -1,0 +1,846 @@
+SR "[Devil's Deal]\n"
+SR "author=SlyCooperReloadCoded\n"
+SR "comment=2025 Mod Jam Entry\n" 
+
+// Mod description:
+
+// For your completion of the story, the Devil has made you a deal - unlimited power... will you
+// take it? Be warned: there's always a catch, this IS the Devil, you know. If you regret signing
+// the contract, then there's always a way out. When the Devil calls...
+
+Set StoryComplete 0xB3320
+Set Ep1Complete 0xB3321
+Set Ep2Complete 0xB3322
+Set Ep3Complete 0xB3323
+Set Ep4Complete 0xB3324
+Set Ep5Complete 0xB3325
+Set Ep6Complete 0xB3326
+Set Ep7Complete 0xB3327
+Set Ep8Complete 0xB3328
+Set ContractRevoked 0xB3329
+
+W32 0x13E380 0x0802CCB0
+W32 0x13E384 0x00000000
+W32 0xB32C0 0x8C820004
+W32 0xB32C4 0x340800B5
+W32 0xB32C8 0x15050003
+W32 0xB32CC 0x00000000
+W32 0xB32D0 0x3C02000B
+W32 0xB32D4 0x3442F34C
+W32 0xB32D8 0x340800B6
+W32 0xB32DC 0x15050003
+W32 0xB32E0 0x00000000
+W32 0xB32E4 0x3C02000B
+W32 0xB32E8 0x3442F3FC
+W32 0xB32EC 0x03E00008
+W32 0xB32F0 0x00000000
+W32 0xB32F4 0x00000000
+
+If 0x3D6544 =. 0x3 && 0x3D63C8 =. 0x3 && 0x3D5EDC =. 0x3 && 0x3D610C =. 0x3 && 0x3D65BC =. 0x3 && 0x3D5EB4 =. 0x3 && 0x3D633C =. 0x3 && 0x3D6260 =. 0x3 && 0x3D606C =. 0x3 && 0x3D61C0 =. 0x3
+
+    Write8 Ep1Complete 0x1
+
+EndIf
+
+If 0x3D6544 !. 0x3
+
+    Write8 Ep1Complete 0x0
+
+EndIf
+
+If 0x3D63C8 !. 0x3
+
+    Write8 Ep1Complete 0x0
+
+EndIf
+
+If 0x3D5EDC !. 0x3
+
+    Write8 Ep1Complete 0x0
+
+EndIf
+
+If 0x3D610C !. 0x3
+
+    Write8 Ep1Complete 0x0
+
+EndIf
+
+If 0x3D65BC !. 0x3
+
+    Write8 Ep1Complete 0x0
+
+EndIf
+
+If 0x3D5EB4 !. 0x3
+
+    Write8 Ep1Complete 0x0
+
+EndIf
+
+If 0x3D633C !. 0x3
+
+    Write8 Ep1Complete 0x0
+
+EndIf
+
+If 0x3D6260 !. 0x3
+
+    Write8 Ep1Complete 0x0
+
+EndIf
+
+If 0x3D606C !. 0x3
+
+    Write8 Ep1Complete 0x0
+
+EndIf
+
+If 0x3D61C0 !. 0x3
+
+    Write8 Ep1Complete 0x0
+
+EndIf
+
+If 0x3D6B34 =. 0x3 && 0x3D6A44 =. 0x3 && 0x3D6C38 =. 0x3 && 0x3D68A0 =. 0x3 && 0x3D6D00 =. 0x3 && 0x3D6AF8 =. 0x3 && 0x3D6968 =. 0x3 && 0x3D6634 =. 0x3 && 0x3D6698 =. 0x3
+
+    Write8 Ep2Complete 0x1
+
+EndIf
+
+If 0x3D6B34 !. 0x3
+
+    Write8 Ep2Complete 0x0
+
+EndIf
+
+If 0x3D6A44 !. 0x3
+
+    Write8 Ep2Complete 0x0
+
+EndIf
+
+If 0x3D6C38 !. 0x3
+
+    Write8 Ep2Complete 0x0
+
+EndIf
+
+If 0x3D68A0 !. 0x3
+
+    Write8 Ep2Complete 0x0
+
+EndIf
+
+If 0x3D6D00 !. 0x3
+
+    Write8 Ep2Complete 0x0
+
+EndIf
+
+If 0x3D6AF8 !. 0x3
+
+    Write8 Ep2Complete 0x0
+
+EndIf
+
+If 0x3D6968 !. 0x3
+
+    Write8 Ep2Complete 0x0
+
+EndIf
+
+If 0x3D6634 !. 0x3
+
+    Write8 Ep2Complete 0x0
+
+EndIf
+
+If 0x3D6698 !. 0x3
+
+    Write8 Ep2Complete 0x0
+
+EndIf
+
+If 0x3D714C =. 0x3 && 0x3D6E04 =. 0x3 && 0x3D737C =. 0x3 && 0x3D7048 =. 0x3 && 0x3D7340 =. 0x3 && 0x3D6F08 =. 0x3 && 0x3D7200 =. 0x3 && 0x3D72F0 =. 0x3 && 0x3D700C =. 0x3
+
+    Write8 Ep3Complete 0x1
+
+EndIf
+
+If 0x3D714C !. 0x3
+
+    Write8 Ep3Complete 0x0
+
+EndIf
+
+If 0x3D6E04 !. 0x3
+
+    Write8 Ep3Complete 0x0
+
+EndIf
+
+If 0x3D737C !. 0x3
+
+    Write8 Ep3Complete 0x0
+
+EndIf
+
+If 0x3D7048 !. 0x3
+
+    Write8 Ep3Complete 0x0
+
+EndIf
+
+If 0x3D7340 !. 0x3
+
+    Write8 Ep3Complete 0x0
+
+EndIf
+
+If 0x3D6F08 !. 0x3
+
+    Write8 Ep3Complete 0x0
+
+EndIf
+
+If 0x3D7200 !. 0x3
+
+    Write8 Ep3Complete 0x0
+
+EndIf
+
+If 0x3D72F0 !. 0x3
+
+    Write8 Ep3Complete 0x0
+
+EndIf
+
+If 0x3D700C !. 0x3
+
+    Write8 Ep3Complete 0x0
+
+EndIf
+
+If 0x3D7AE8 =. 0x3 && 0x3D7494 =. 0x3 && 0x3D7A5C =. 0x3 && 0x3D741C =. 0x3 && 0x3D73B8 =. 0x3 && 0x3D782C =. 0x3 && 0x3D791C =. 0x3 && 0x3D7B24 =. 0x3 && 0x3D77F0 =. 0x3
+
+    Write8 Ep4Complete 0x1
+
+EndIf
+
+If 0x3D7AE8 !. 0x3
+
+    Write8 Ep4Complete 0x0
+
+EndIf
+
+If 0x3D7494 !. 0x3
+
+    Write8 Ep4Complete 0x0
+
+EndIf
+
+If 0x3D7A5C !. 0x3
+
+    Write8 Ep4Complete 0x0
+
+EndIf
+
+If 0x3D741C !. 0x3
+
+    Write8 Ep4Complete 0x0
+
+EndIf
+
+If 0x3D73B8 !. 0x3
+
+    Write8 Ep4Complete 0x0
+
+EndIf
+
+If 0x3D782C !. 0x3
+
+    Write8 Ep4Complete 0x0
+
+EndIf
+
+If 0x3D791C !. 0x3
+
+    Write8 Ep4Complete 0x0
+
+EndIf
+
+If 0x3D7B24 !. 0x3
+
+    Write8 Ep4Complete 0x0
+
+EndIf
+
+If 0x3D77F0 !. 0x3
+
+    Write8 Ep4Complete 0x0
+
+EndIf
+
+If 0x3D8344 =. 0x3 && 0x3D7E1C =. 0x3 && 0x3D81A0 =. 0x3 && 0x3D7D54 =. 0x3 && 0x3D7F34 =. 0x3 && 0x3D8290 =. 0x3 && 0x3D7C3C =. 0x3 && 0x3D8074 =. 0x3
+
+    Write8 Ep5Complete 0x1
+
+EndIf
+
+If 0x3D8344 !. 0x3
+
+    Write8 Ep5Complete 0x0
+
+EndIf
+
+If 0x3D7E1C !. 0x3
+
+    Write8 Ep5Complete 0x0
+
+EndIf
+
+If 0x3D81A0 !. 0x3
+
+    Write8 Ep5Complete 0x0
+
+EndIf
+
+If 0x3D7D54 !. 0x3
+
+    Write8 Ep5Complete 0x0
+
+EndIf
+
+If 0x3D7F34 !. 0x3
+
+    Write8 Ep5Complete 0x0
+
+EndIf
+
+If 0x3D8290 !. 0x3
+
+    Write8 Ep5Complete 0x0
+
+EndIf
+
+If 0x3D7C3C !. 0x3
+
+    Write8 Ep5Complete 0x0
+
+EndIf
+
+If 0x3D8074 !. 0x3
+
+    Write8 Ep5Complete 0x0
+
+EndIf
+
+If 0x3D88E4 =. 0x3 && 0x3D8484 =. 0x3 && 0x3D8740 =. 0x3 && 0x3D89AC =. 0x3 && 0x3D8808 =. 0x3 && 0x3D8970 =. 0x3 && 0x3D86DC =. 0x3 && 0x3D85B0 =. 0x3
+
+    Write8 Ep6Complete 0x1
+
+EndIf
+
+If 0x3D88E4 !. 0x3
+
+    Write8 Ep6Complete 0x0
+
+EndIf
+
+If 0x3D8484 !. 0x3
+
+    Write8 Ep6Complete 0x0
+
+EndIf
+
+If 0x3D8740 !. 0x3
+
+    Write8 Ep6Complete 0x0
+
+EndIf
+
+If 0x3D89AC !. 0x3
+
+    Write8 Ep6Complete 0x0
+
+EndIf
+
+If 0x3D8808 !. 0x3
+
+    Write8 Ep6Complete 0x0
+
+EndIf
+
+If 0x3D8970 !. 0x3
+
+    Write8 Ep6Complete 0x0
+
+EndIf
+
+If 0x3D86DC !. 0x3
+
+    Write8 Ep6Complete 0x0
+
+EndIf
+
+If 0x3D85B0 !. 0x3
+
+    Write8 Ep6Complete 0x0
+
+EndIf
+
+If 0x3D917C =. 0x3 && 0x3D8A74 =. 0x3 && 0x3D9064 =. 0x3 && 0x3D9280 =. 0x3 && 0x3D89E8 =. 0x3 && 0x3D8BF0 =. 0x3 && 0x3D90F0 =. 0x3 && 0x3D9320 =. 0x3 && 0x3D8DE4 =. 0x3 && 0x3D8D58 =. 0x3
+
+    Write8 Ep7Complete 0x1
+
+EndIf
+
+If 0x3D917C !. 0x3
+
+    Write8 Ep7Complete 0x0
+
+EndIf
+
+If 0x3D8A74 !. 0x3
+
+    Write8 Ep7Complete 0x0
+
+EndIf
+
+If 0x3D9064 !. 0x3
+
+    Write8 Ep7Complete 0x0
+
+EndIf
+
+If 0x3D9280 !. 0x3
+
+    Write8 Ep7Complete 0x0
+
+EndIf
+
+If 0x3D89E8 !. 0x3
+
+    Write8 Ep7Complete 0x0
+
+EndIf
+
+If 0x3D8BF0 !. 0x3
+
+    Write8 Ep7Complete 0x0
+
+EndIf
+
+If 0x3D90F0 !. 0x3
+
+    Write8 Ep7Complete 0x0
+
+EndIf
+
+If 0x3D9320 !. 0x3
+
+    Write8 Ep7Complete 0x0
+
+EndIf
+
+If 0x3D8DE4 !. 0x3
+
+    Write8 Ep7Complete 0x0
+
+EndIf
+
+If 0x3D8D58 !. 0x3
+
+    Write8 Ep7Complete 0x0
+
+EndIf
+
+If 0x3D98AC =. 0x3 && 0x3D9438 =. 0x3 && 0x3D96CC =. 0x3 && 0x3D94D8 =. 0x3 && 0x3D9AB4 =. 0x3 && 0x3D97F8 =. 0x3 && 0x3D9ADC =. 0x3
+
+    Write8 Ep8Complete 0x1
+
+EndIf
+
+If 0x3D98AC !. 0x3
+
+    Write8 Ep8Complete 0x0
+
+EndIf
+
+If 0x3D9438 !. 0x3
+
+    Write8 Ep8Complete 0x0
+
+EndIf
+
+If 0x3D96CC !. 0x3
+
+    Write8 Ep8Complete 0x0
+
+EndIf
+
+If 0x3D94D8 !. 0x3
+
+    Write8 Ep8Complete 0x0
+
+EndIf
+
+If 0x3D9AB4 !. 0x3
+
+    Write8 Ep8Complete 0x0
+
+EndIf
+
+If 0x3D97F8 !. 0x3
+
+    Write8 Ep8Complete 0x0
+
+EndIf
+
+If 0x3D9ADC !. 0x3
+
+    Write8 Ep8Complete 0x0
+
+EndIf
+
+If 0xB3321 =. 0x1 && 0xB3322 =. 0x1 && 0xB3323 =. 0x1 && 0xB3324 =. 0x1 && 0xB3325 =. 0x1 && 0xB3326 =. 0x1 && 0xB3327 =. 0x1 && 0xB3328 =. 0x1
+
+    Write8 StoryComplete 0x1
+
+EndIf
+
+If 0xB3321 !. 0x1
+
+    Write8 StoryComplete 0x0
+
+EndIf
+
+If 0xB3322 !. 0x1
+
+    Write8 StoryComplete 0x0
+
+EndIf
+
+If 0xB3323 !. 0x1
+
+    Write8 StoryComplete 0x0
+
+EndIf
+
+If 0xB3324 !. 0x1
+
+    Write8 StoryComplete 0x0
+
+EndIf
+
+If 0xB3325 !. 0x1
+
+    Write8 StoryComplete 0x0
+
+EndIf
+
+If 0xB3326 !. 0x1
+
+    Write8 StoryComplete 0x0
+
+EndIf
+
+If 0xB3327 !. 0x1
+
+    Write8 StoryComplete 0x0
+
+EndIf
+
+If 0xB3328 !. 0x1
+
+    Write8 StoryComplete 0x0
+
+EndIf
+
+If StoryComplete !. 0x1
+
+    W32 0x2BD110 0xFFFFFFFF
+
+EndIf
+
+If ContractRevoked =. 0x1
+
+    W32 0x2BD110 0xFFFFFFFF
+
+EndIf
+
+If 0x3E1110 =. 0x1B
+
+    W32 0x2BD110 0xFFFFFFFF
+
+EndIf
+
+If 0x3E1110 =. 0x22 && 0x3D9064 =. 0x3
+
+    W32 0xC3545C 0x0
+    W32 0xC3540C 0x0
+
+EndIf
+
+If StoryComplete =. 0x1 && ContractRevoked !. 0x1 && 0x3E1110 !. 0x1B
+
+    W32 0x2BD110 0x0
+
+EndIf
+
+If ContractRevoked =. 0x1 && StoryComplete =. 0x1 && 0x3E1110 =. 0x1B
+
+    Write32 0x3D88E4 0x3
+    Write32 0x3D8484 0x3
+    Write32 0x3D8740 0x3
+    Write32 0x3D89AC 0x3
+    Write32 0x3D8808 0x3
+    Write32 0x3D8970 0x3
+    Write32 0x3D86DC 0x3
+    Write32 0x3D85B0 0x3
+
+EndIf
+
+W32 0x2BD108 0x29A
+W32 0x2BD104 0x7
+
+WS 0xBF34C "Devil's Deal\0"
+WS 0xBF3FC "Grants the owner unlimited* power..\0"
+
+If 0x3D4AFC &. 1
+
+    If 0x2E0C46 !: 0x0 && 0x2DE2F0 !: 0x0
+
+        WritePointer16 0x2E1E40,0xE4,0xA64 0xFFFF
+        WritePointer16 0x2E1E40,0xE4,0xB14 0xFFFF
+        WritePointer16 0x2E1E40,0xE4,0xBC4 0xFFFF
+        WritePointer16 0x2E1E40,0xE4,0xC74 0xFFFF
+        WritePointer16 0x2E1E40,0xE4,0xD24 0xFFFF
+        WritePointer16 0x2DD5BC,0xE4,0x224 0xFFFF
+        WritePointer16 0x2F7900,0xE4,0x594 0xFFFF
+        WritePointer16 0x2F7900,0xE4,0x644 0xFFFF
+        WritePointer16 0x2F7900,0xE4,0x6F4 0xFFFF
+        WritePointer16 0x2F7900,0xE4,0x7A4 0xFFFF
+        WritePointer16 0x2E1E40,0xE4,0x904 0x0
+        WritePointer16 0x2E1E40,0xE4,0x908 0x0
+        WritePointer32 0x2E1E40,0xE8C 0x0
+        WritePointer32 0x2DD5BC,0xE8C 0x0
+        WritePointer32 0x2F7900,0xE8C 0x0
+        WritePointer32 0x2E1E40,0x2E8 0x0
+        WritePointer32 0x2DD5BC,0x2E8 0x0
+        WritePointer32 0x2F7900,0x2E8 0x0
+        Write32 0x3D4AB4 0x0
+        Write32 0x3D4ACC 0x0
+        Write32 0x3D4AE4 0x0
+        Write32 0x3DD09C 0x1
+
+    EndIf
+
+    If 0x2E0C46 =: 0x0 && 0x2DE2F0 !: 0x0
+
+        WritePointer16 0x2E1E40,0xE4,0xA64 0xD8F1
+        WritePointer16 0x2E1E40,0xE4,0xB14 0xD8F1
+        WritePointer16 0x2E1E40,0xE4,0xBC4 0xD8F1
+        WritePointer16 0x2E1E40,0xE4,0xC74 0xD8F1
+        WritePointer16 0x2E1E40,0xE4,0xD24 0xD8F1
+        WritePointer16 0x2DD5BC,0xE4,0x224 0xD8F1
+        WritePointer16 0x2F7900,0xE4,0x594 0xD8F1
+        WritePointer16 0x2F7900,0xE4,0x644 0xD8F1
+        WritePointer16 0x2F7900,0xE4,0x6F4 0xD8F1
+        WritePointer16 0x2F7900,0xE4,0x7A4 0xD8F1
+        WritePointer16 0x2E1E40,0xE4,0x904 0x0
+        WritePointer16 0x2E1E40,0xE4,0x908 0x0
+        WritePointer32 0x2E1E40,0xE8C 0x40000000
+        WritePointer32 0x2DD5BC,0xE8C 0x40000000
+        WritePointer32 0x2F7900,0xE8C 0x40000000
+        Write32 0x3D4AB4 0x64
+        Write32 0x3D4ACC 0x64
+        Write32 0x3D4AE4 0x64
+        Write32 0x3DD09C 0x0
+
+    EndIf
+
+    If 0x2DFC11 !. 0x0 && 0x2E0C46 !: 0x0 && 0x2DE2F0 !: 0x0
+
+        WritePointer32 0x3E0ABC,0x64 0x2
+
+    EndIf
+
+    AND8 3D4AFB 0x7F
+
+    If 0x3E1110 =. 0x1B
+
+        Write32 0xF98C8C 0x013FFF00
+        Write32 0xF98D74 0xEFAC90
+        Write32 0xF98D5C 0x1
+
+    EndIf
+
+    If 0x3E1110 =. 0x1D
+
+        Write32 0x11749DC 0x110FFF00
+        WritePointer32 0x1214298,0x1B8 0x7F800000
+        WritePointer32 0x121429C,0x1B8 0x7F800000
+        WritePointer32 0x120A440,0x1B8 0x7F800000
+        Write32 0x1174770 0x3E1FAD50
+        Write32 0x1174774 0x3F7CDE52
+        Write32 0x1174778 0x389ADD0A
+        Write32 0x1174780 0xBF7CDE52
+        Write32 0x1174784 0x3E1FAD4F
+        Write32 0x1174788 0x38DC6863
+        Write32 0x1174790 0x38C19024
+        Write32 0x1174794 0xB8BB5697
+        Write32 0x1174798 0x3F7FFFFF
+        Write32 0x11747A0 0x4275FD60
+        Write32 0x11747A4 0x46A3038B
+        Write32 0x11747A8 0x42FDCCCA
+        Write32 0xAEC5C0 0x3F12345B
+        Write32 0xAEC5C4 0x3F5224B4
+        Write32 0xAEC5C8 0x37F1B19F
+        Write32 0xAEC5D0 0xBF5224B4
+        Write32 0xAEC5D4 0x3F12345B
+        Write32 0xAEC5D8 0xB7A0513D
+        Write32 0xAEC5E0 0xB806D12E
+        Write32 0xAEC5E4 0xB755AE7B
+        Write32 0xAEC5E8 0x3F7FFFFF
+        Write32 0xAEC5F0 0xC3658755
+        Write32 0xAEC5F4 0x46A0C527
+        Write32 0xAEC5F8 0x43309579
+        Write32 0x1174690 0xBEA1031A
+        Write32 0x1174694 0x3F73030A
+        Write32 0x1174698 0xB7E1B4A1
+        Write32 0x11746A0 0xBF73030A
+        Write32 0x11746A4 0xBEA10319
+        Write32 0x11746A8 0x372EE114
+        Write32 0x11746B0 0x35C06329
+        Write32 0x11746B4 0x37F1C08D
+        Write32 0x11746B8 0x3F7FFFFF
+        Write32 0x11746C0 0x437BE073
+        Write32 0x11746C4 0x46A0E85A
+        Write32 0x11746C8 0x432F4946
+        Write32 0x1174F30 0x3B1F21CB
+        Write32 0x1174F34 0x3F7FFFCF
+        Write32 0x1174F38 0xB861AA69
+        Write32 0x1174F40 0xBF7FFFCF
+        Write32 0x1174F44 0x3B1F21D0
+        Write32 0x1174F48 0x37B49936
+        Write32 0x1174F50 0x37B5B1A1
+        Write32 0x1174F54 0x3861721B
+        Write32 0x1174F58 0x3F800000
+        Write32 0x1174F60 0x417533B8
+        Write32 0x1174F64 0x46A7C62E
+        Write32 0x1174F68 0x42F7328A
+        Write32 0x1174850 0x3F05D2BF
+        Write32 0x1174854 0x3F5A3CA6
+        Write32 0x1174858 0x37FAD7BF
+        Write32 0x1174860 0xBF5A3CA6
+        Write32 0x1174864 0x3F05D2BF
+        Write32 0x1174868 0xB834E175
+        Write32 0x1174870 0xB85BC323
+        Write32 0x1174874 0xB645D893
+        Write32 0x1174878 0x3F800000
+        Write32 0x1174880 0xC3160000
+        Write32 0x1174884 0x46A7C907
+        Write32 0x1174888 0x42B369DF
+        Write32 0x1174930 0xBED59A54
+        Write32 0x1174934 0x3F68A84A
+        Write32 0x1174938 0xB6E59707
+        Write32 0x1174940 0xBF68A849
+        Write32 0x1174944 0xBED59A54
+        Write32 0x1174948 0xB7916B4A
+        Write32 0x1174950 0xB79C1AF6
+        Write32 0x1174954 0xB588104D
+        Write32 0x1174958 0x3F7FFFFF
+        Write32 0x1174960 0x43480000
+        Write32 0x1174964 0x46A7DF33
+        Write32 0x1174968 0x42F9166B
+
+        If 0x3D3980 =. 0x2
+
+            Write32 0x12A8DC4 0x1
+            Fill32 0x12ABD80 0x0 0xE4C
+
+        EndIf
+
+        If 0x3D3980 =. 0x3 && 0x2DDED0 >. 0x3A && 0x12AC5A2 =: 0x0
+
+            WriteBytes 0x12ABD40 "00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABD50 "FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABD90 "12 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABDA0 "01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABDE0 "2C 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABDF0 "08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABE30 "2C 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABE40 "09 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABE80 "16 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABE90 "7A C2 00 00 00 00 00 00 07 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABED0 "16 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABEE0 "6E C2 00 00 00 00 00 00 08 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABF20 "16 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABF30 "7B C2 00 00 00 00 00 00 09 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABF70 "38 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABF80 "00 00 20 41 C3 64 AB 46 00 00 48 43 00 00 00 00"
+            WriteBytes 0x12ABF90 "00 00 00 00 00 00 00 00 66 66 96 40 00 00 00 00"
+            WriteBytes 0x12ABFA0 "CD CC 8C 3F 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABFB0 "00 00 80 3F 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABFC0 "24 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12ABFD0 "77 C2 00 00 00 00 80 3F 00 00 C8 41 07 00 00 00"
+            WriteBytes 0x12ABFE0 "FF FF FF FF 01 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC010 "24 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC020 "79 C2 00 00 00 00 80 3F 00 00 C8 41 08 00 00 00"
+            WriteBytes 0x12AC030 "FF FF FF FF 01 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC060 "24 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC070 "78 C2 00 00 00 00 80 3F 00 00 C8 41 09 00 00 00"
+            WriteBytes 0x12AC080 "FF FF FF FF 01 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC0B0 "47 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC0C0 "07 00 00 00 3E 00 00 00 01 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC100 "47 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC110 "08 00 00 00 3F 00 00 00 01 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC150 "47 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC160 "09 00 00 00 3F 00 00 00 01 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC1A0 "16 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC1B0 "79 C2 00 00 00 00 00 00 08 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC1F0 "16 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC200 "78 C2 00 00 00 00 00 00 09 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC240 "23 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC250 "00 00 00 3F FF FF FF FF FF FF FF FF 00 00 00 00"
+            WriteBytes 0x12AC290 "36 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC2A0 "12 00 00 00 FF FF FF FF 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC2B0 "00 00 00 00 00 00 00 00 00 00 80 3F 00 00 00 00"
+            WriteBytes 0x12AC2E0 "23 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC2F0 "00 00 00 3F FF FF FF FF FF FF FF FF 00 00 00 00"
+            WriteBytes 0x12AC330 "45 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC340 "41 0A 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC380 "23 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC390 "00 00 00 30 FF FF FF FF FF FF FF FF 00 00 00 00"
+            WriteBytes 0x12AC3D0 "45 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC3E0 "C4 09 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC420 "23 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC430 "00 00 00 30 FF FF FF FF FF FF FF FF 00 00 00 00"
+            WriteBytes 0x12AC470 "45 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC480 "1F 0A 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC4C0 "23 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC4D0 "00 00 00 00 FF FF FF FF FF FF FF FF 00 00 00 00"
+            WriteBytes 0x12AC510 "16 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC520 "07 00 00 00 00 00 00 00 D2 86 00 00 00 00 00 00"
+            WriteBytes 0x12AC560 "39 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC570 "00 00 20 41 C3 64 AB 46 00 00 48 43 00 00 00 00"
+            WriteBytes 0x12AC580 "00 00 00 00 00 00 00 00 66 66 96 40 00 00 00 00"
+            WriteBytes 0x12AC590 "CD CC 8C 3F 00 00 00 00 00 00 00 00 00 00 00 00"
+            WriteBytes 0x12AC5A0 "00 00 80 3F 00 00 00 00 00 00 00 00 00 00 00 00"
+            Write32 0x12ABCE0 0x1B
+            Write32 0x12ABCE8 0x1C
+
+        EndIf
+
+        If 0x1174B8B =. 0x0 && 0x1174B88 !: 0x0
+
+            XOR8 0x3D4AFC 0x1
+            Write8 ContractRevoked 0x1
+
+        EndIf
+
+    EndIf
+
+EndIf

@@ -1,0 +1,164 @@
+SR "[Metal Detector]\n"
+SR "comment=Custom gadget, which lets you find buried coin caches around the world.\n"
+SR "author=zami3333\n"
+
+// TODO - fix picking up pedestal treasure at the same time as cache glitch (force timer to 0 seconds when cache ready?) 
+// TODO - add a way to see stats ingame (thiefnet third tab? use text element in e.g. disc eject?)
+// TODO - add submap support (just need to get those gui pointers)
+
+Include "MetalDetectorVars.clps2c"
+
+// lore accurate pedestal treasure flag
+IF slyCarryingTreasure =: 0xFFFF
+    W8 ccIsCarrying 0xFF
+EI
+IF slyCarryingTreasure =: 0x0
+    W8 ccIsCarrying 0xFF
+EI
+IF slyCarryingTreasure <: 0xFFFF && slyCarryingTreasure >: 0x0
+    W8 ccIsCarrying 1
+EI
+
+IF isLoading =. 2 
+    Call ResetEverything()
+EI
+
+IF ccIsCarrying =. 1 
+    Call ResetEverything()
+EI
+
+// keep step count inside 0-104
+IF ccStepCount >: 104
+    Call ResetEverything()
+EI
+
+// gadget bought      // has control     // not carrying         // in a hub           // sly              // not in binoc
+IF tornadoStrike &. 1 && hasControl =. 7 && ccIsCarrying =. 0xFF && isInSubMap =. 0x1E && currentChar =. 7 && ccBinocState =. 0xFF
+
+    IF ccAnimState =. 0x1
+    I8 ccRunTimer 1
+        IF ccRunTimer >. 0xC // this timer is synced with how fast sly is running
+            I8 ccStepCount 1 // add steps even when running
+            W8 ccRunTimer 0
+        EI
+    EI
+
+    IF ccCacheAvailable =. 1 && ccCacheFound =. 0 && ccStepCount >: 104
+        Call ResetEverything() // abandon cache after 7 extra steps
+        WP32 guiClock,64 1 
+    EI
+
+    IF ccStepCount >. 0 && ccStepCount <. 100
+        Call ClockGUIVariables(1792, 1938.90918, 1, 1, 1, 30, 30) // ensure clock gui stays normal
+    EI
+
+    IF ccStepCount =: 100
+        W8 ccCacheAvailable 1 // find a cache every 100 steps
+    EI
+
+    IF random >. 0x10 && random <. 0x2D  && ccStepCount2 >. 1
+        D32 ccStepCount2 1 // Rare chance generator lol
+    EI
+
+    IF ccStepCount2 >. 3 //  && ccStepCount >. 60
+        W8 ccRareAvailable 1 // if rare generator ever hits 4
+    EI
+
+    IF ccStepCount2 >. 4 // && ccStepCount >. 60
+        W8 ccMegaRareAvailable 1 // if rare generator ever hits 5 (never)
+    EI
+
+    IF ccCacheAvailable =. 1 && ccCacheFound =. 0
+        WP32 guiCoins,64 2
+
+        IF ccRareAvailable =. 0
+            WP32 slyStepSound 0x11 // new step sound when normal cache available
+            WP32 slyRunSound 0x11  // 
+        EI
+        IF ccRareAvailable =. 1
+            WP32 slyStepSound 0x2A // new step sound when rare available
+            WP32 slyRunSound 0x2A  // 
+        EI
+        IF ccMegaRareAvailable =. 1
+            WP32 slyStepSound 0x52 // new step sound when mega rare available
+            WP32 slyRunSound 0x52  // 
+        EI
+
+        WP32 guiClock,64 2
+        Call ClockGUIVariables(1795, 2090, 0, 0, 0, 0, 0)
+        Call ChangeClockSprite(mapParisExt, 0x86D580) // this is why its hubs only
+        Call ChangeClockSprite(mapIndiaExt, 0x8DBA50)
+        Call ChangeClockSprite(mapIndia2Ext, 0xAB14A0)
+        Call ChangeClockSprite(mapPragueExt, 0xF50BA0)
+        Call ChangeClockSprite(mapPrague2Ext, 0x5B1AB0)
+        Call ChangeClockSprite(mapCanadaExt, 0x511E40)
+        Call ChangeClockSprite(mapCanada2Ext, 0xEB30B0)
+        Call ChangeClockSprite(mapBlimpExt, 0x60E520)
+
+        ASM_START 0020F904
+            slti $v0,$s4,0x0003 // stop clock moving from compass
+        ASM_END
+    EI
+                                                                         // is standing
+    IF ccCacheAvailable =. 1 && padTriangle =. 0xFF && padCircle =. 0xFF && ccAnimState =. 0
+        WP32 slyStepSound 0x6F // return stepsound to normal
+        WP32 slyRunSound 0x6F  // 
+        W8 ccCacheFound 1 // get cache with square+circle
+    EI
+
+    Function Money()
+        I8 ccTimer 1
+            IF ccRareAvailable =. 0
+                Call GetMoney(1) // normal money increment for 2 seconds
+                Call AddCacheStat(statCommonCaches)
+            EI
+            IF ccRareAvailable =. 1 && ccMegaRareAvailable =. 0 // prioritize megarare over rare
+                W8 ccMegaRareAvailable 0
+                Call GetMoney(4) // rare money for 2 seconds
+                Call AddCacheStat(statRareCaches)
+            EI
+            IF ccMegaRareAvailable =. 1
+                W8 ccRareAvailable 0
+                Call GetMoney(6) // mega rare money for 2 seconds
+                Call AddCacheStat(statMegaRareCaches)
+            EI
+
+        WP32 guiClock,64 1
+
+        Call ClockGUIVariables(4792, 6938.90918, 1, 1, 1, 30, 30) // move the clock very far away for 2 seconds
+        Call ChangeClockSprite(mapParisExt, 0x86D580)
+        Call ChangeClockSprite(mapIndiaExt, 0x8C67F0)
+        Call ChangeClockSprite(mapIndia2Ext, 0xA9C240)
+        Call ChangeClockSprite(mapPragueExt, 0xF3B940)
+        Call ChangeClockSprite(mapPrague2Ext, 0x59C850)
+        Call ChangeClockSprite(mapCanadaExt, 0x4FCBE0)
+        Call ChangeClockSprite(mapCanada2Ext, 0xE9DE50)
+        Call ChangeClockSprite(mapBlimpExt, 0x5F92C0)
+        ASM_START 0020F904
+            slti $v0,$s4,0x0004 // make clock move from compass agane
+        ASM_END
+    EndFunction
+
+    Function MegaFunc(time, map)
+        IF ccTimer <. time && mapID =. map
+            Call Money() 
+        EI
+
+        IF ccTimer =. time && mapID =. mapParisExt
+            Call ResetEverything()
+            WP32 guiClock,64 1
+            Call ClockGUIVariables(1792, 1938.90918, 1, 1, 1, 30, 30)
+        EI
+    EndFunction
+    
+    IF ccCacheFound =. 1 // when cache has been collected with circle+triangle
+        Call MegaFunc(parisTime, mapParisExt)
+        Call MegaFunc(indiaTime, mapIndiaExt)
+        Call MegaFunc(india2Time, mapIndia2Ext)
+        Call MegaFunc(pragueTime, mapPragueExt)
+        Call MegaFunc(prague2Time, mapPrague2Ext)
+        Call MegaFunc(canadaTime, mapCanadaExt)
+        Call MegaFunc(canada2Time, mapCanada2Ext)
+        Call MegaFunc(blimpTime, mapBlimpExt)
+    EI
+EI

@@ -1,0 +1,164 @@
+// Codecave
+Set ccCacheFound 3D0E80
+Set ccCacheAvailable 3D0E9F
+Set ccRareAvailable 3D0DDD
+Set ccMegaRareAvailable 3D0DDE
+Set ccTimer 3D0E9A
+Set ccStepCount 3D0DF0
+Set ccStepCount2 3D0DF4
+Set ccRunTimer 3D0DFF
+Set ccAnimState 3D0DEC
+Set ccIsCarrying 3D0DD3 // ugh
+Set ccBinocState 3D0DFC // 0xFF = no binoc
+
+// Controller
+Set padTriangle 2DFC0C
+Set padCircle 2DFC0D
+
+// Global
+Set sly 2E1E40
+Set guiClock 3E1054
+Set isLoading 3D3980
+Set isInSubMap 3E1BF0 // 0 = submap | 30 = hub (bottle count)
+Set slyStepSound 2E1E40,1CC0
+Set slyRunSound 2E1E40,13b0
+Set guiCoins 3E103C
+Set hasControl 2DFBC0
+Set coinCount 3D4B00
+Set mapID 3E1110
+Set slyCarryingTreasure 3D4AB8
+Set tornadoStrike 3D4AFC
+Set currentChar 3D4A6C
+Set random 2DE1FC // idk what it is
+
+// Unused savefile bytes
+Set statCommonCaches 3D9E54
+Set statRareCaches 3D9E58
+Set statMegaRareCaches 3D9E5C
+
+// Map IDs
+Set mapParisExt 0x2
+Set mapIndiaExt 0x8
+Set mapIndia2Ext 0xC
+Set mapPragueExt 0xE
+Set mapPrague2Ext 0x11
+Set mapCanadaExt 0x1B
+Set mapCanada2Ext 0x20
+Set mapBlimpExt 0x26
+
+// progressively longer increment timers in later episodes
+Set parisTime 0x10
+Set indiaTime 0x20
+Set india2Time 0x30
+Set pragueTime 0x40
+Set prague2Time 0x50
+Set canadaTime 0x60
+Set canada2Time 0x70
+Set blimpTime 0x80
+
+// Sly String Toolkit
+W32 13E380 0x0802CCB0
+W32 13E384 0x00000000
+W32 B32C0 0x8C820004
+W32 B32C4 0x340800B5
+W32 B32C8 0x15050003
+W32 B32CC 0x00000000
+W32 B32D0 0x3C02000B
+W32 B32D4 0x3442F34C
+W32 B32D8 0x340800B6
+W32 B32DC 0x15050003
+W32 B32E0 0x00000000
+W32 B32E4 0x3C02000B
+W32 B32E8 0x3442F3FC
+W32 B32EC 0x03E00008
+W32 B32F0 0x00000000
+W32 B32F4 0x00000000
+
+// ThiefNet setup
+W32 2BD110 1 // unlocks gadget in paris
+W32 2BD108 1500 // costs 1500 coins
+W32 2BD104 7 // sly icon
+WS BF34C "Metal Detector\0" // Custom gadget name
+WS BF3FC "Collect a buried cache of coins with &2T&. + &2O&.\0" // Custom gadget usage description
+
+Function ResetEverything()
+    W8 ccCacheFound 0
+    W8 ccCacheAvailable 0
+    W32 ccStepCount 0
+    W32 ccStepCount2 0
+    W8 ccRareAvailable 0
+    W8 ccMegaRareAvailable 0
+    W8 ccTimer 0 // reset 2 second timer
+    WP32 slyStepSound 0x6F // return stepsound to normal
+    WP32 slyRunSound 0x6F  // 
+EndFunction
+
+Function GetMoney(increment)
+    I32 coinCount increment
+EndFunction
+
+Function ClockGUIVariables(hor, ver, clockhand1, clockhand2, clockhand3, textScale1, textScale2)
+    WPF guiClock,9C hor                 // horizontal position
+    WPF guiClock,A0 ver                 // vertical position
+    WP32 guiClock,54,84 clockhand1 
+    WP32 guiClock,54,104 clockhand2
+    WP32 guiClock,54,1c4 clockhand3
+    WPF guiClock,54,2A0 textScale1
+    WPF guiClock,54,2E0 textScale2
+EndFunction
+
+Function AddCacheStat(rarity)
+    IF ccTimer =. 0x20
+        I32 rarity 1
+    EI
+EndFunction
+
+Function ChangeClockSprite(map, address)
+    IF mapID =. map
+        WP32 guiClock,54,5C address
+    EI
+EndFunction
+
+ASM_START 256D1C
+    j 0x003D1000
+ASM_END
+
+ASM_START 3D1000
+    lui $t1,0x002E // load sly base at $t1 (0x2E0000 - 0x1D10 = 0x2DE2F0)
+    lw $t1,-0x1D10($t1)
+
+    lui $at,0x003D // codecave starts at 3D0000
+    lb $t6,0x1CCC($t1) // left foot step
+    sb $t6,0x0DE0($at) // store at 3D0DE0
+
+    lb $t7,0x1CD0($t1) // right foot step
+    sb $t7,0x0DE1($at) // store at 3D0DE1
+
+    lb $t8,0x18C8($t1) // animstate
+    sb $t8,0x0DEC($at) // store at 3D0DEC
+
+    lb $t9,0x0F04($t1) // binoc state
+    sb $t9,0x0DFc($at) // store at 3D0DFC
+
+    // sly footstep counter
+    leftfoot: lb $t0,0x0DE0($at) 
+    lb $t3,0x0DE2($at)
+    beq $t0,$t3,rightfoot
+    nop
+    lw $t2,0x0DF0($at)
+    addi $t2,$t2,1
+    sw $t2,0x0DF0($at)
+    sb $t0,0x0DE2($at)
+
+    rightfoot: lb $t0,0x0DE1($at)
+    lb $t4,0x0DE3($at)
+    beq $t0,$t4,end
+    nop
+    lw $t2,0x0DF4($at)
+    addi $t2,$t2,1
+    sw $t2,0x0DF4($at)
+    sb $t0,0x0DE3($at)
+
+    end: jr $ra
+    nop
+ASM_END
