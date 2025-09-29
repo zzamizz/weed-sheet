@@ -1,0 +1,36 @@
+SR "gametitle= Sly 2: Band of Thieves (NTSC) [SCUS-97316] [08/13/04 00:32]\n"
+SR "[Beta Spiral Boost]\n"
+SR "author=zami3333\n"
+SR "comment=Brings back the old spiral jump boost when holding R1\n"
+
+ASM_START 256F3C
+    j 0x000C0070
+ASM_END
+
+ASM_START C0070
+    lui $t1,0x002E // load sly base at $t1 (0x2E0000 - 0x1D10 = 0x2DE2F0)
+    lw $t1,-0x1D10($t1)
+
+    lui $at,0x000C // codecave starts at C0000
+    lb $t6,0x18C8($t1)// animstate
+    sb $t6,0x00C0($at) // store at C00C0
+    lb $t7,0x04c8($t1) // rope/sneak state
+    sb $t7,0x00C1($at) // store at C00C1
+
+    jr $ra
+    nop
+ASM_END
+
+Set padR1 2E0CC9
+Set ccStates C00C0
+Set jumpHeight 2BF738
+
+IF ccStates =: 0x0407 && padR1 =. 0xFF
+    WF jumpHeight 600
+EI
+IF ccStates =: 0xFF02
+    WF jumpHeight 215
+EI
+IF padR1 =. 0x00
+    WF jumpHeight 215
+EI
