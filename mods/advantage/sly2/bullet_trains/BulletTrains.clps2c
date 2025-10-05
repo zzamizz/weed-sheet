@@ -1,0 +1,65 @@
+SR "gametitle=Sly 2: Band of Thieves (NTSC) [SCUS-97316] [08/13/04 00:32]\n\n"
+SR "[Bullet Trains] \n"
+SR "comment=Controllable bullet trains in Canada.\n"
+SR "author=zami3333\n\n"
+
+Set mapID 3E1110
+Set ccForward B0002
+Set ccBackward B0003
+Set ccPipe B0004
+Set padR2 2DFC13
+Set padL2 2DFC12
+Set train1speed 1AB4FE0
+Set train2speed 1AB4F80
+Set train3speed 1AB4F20
+
+ASM_START 256DC4
+    j 0x000CC000
+ASM_END
+
+ASM_START CC000
+    lui $t1,0x002E // load sly base at $t1 (0x2E0000 - 0x1D10 = 0x2DE2F0)
+    lw $t1,-0x1D10($t1)
+
+    lui $at,0x000B // codecave starts at B0000
+    lw $t6,0xF5C($t1) // currently grabbed pipe
+    sw $t6,0x004($at) // store at B0004
+
+    jr $ra
+    nop
+ASM_END
+
+Function ControlTrain(pipe, speed)
+    IF ccPipe =: pipe
+        IF padR2 >. 0x20 && padL2 <. 0x19
+            WF speed 5
+            W8 ccForward 1
+            W8 ccBackward 0
+        EI
+        IF padL2 >. 0x20 && padR2 <. 0x19
+            WF speed -5
+            W8 ccForward 0
+            W8 ccBackward 1
+        EI
+        IF padL2 >. 0x19 && padR2 >. 0x19
+            IF ccForward =. 1
+                WF speed 0.5
+            EI
+            IF ccBackward =. 1
+                WF speed -0.5
+            EI
+        EI
+    EI
+EndFunction
+
+IF mapID =. 0x1B
+    Call ControlTrain(0xFDE0, train1speed)
+    Call ControlTrain(0xC4A0, train2speed)
+    Call ControlTrain(0xE1F0, train3speed)
+
+    IF ccPipe =: 0
+        WF train1speed 1
+        WF train2speed 1
+        WF train3speed 1
+    EI
+EI
