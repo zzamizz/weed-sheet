@@ -1,0 +1,237 @@
+SR "[Gadget Mod Jam (2025)\Shell of a Mod]\n"
+SR "author=niaarchangel\n"
+SR "comment=Shell of a Mod, a mod that gives Bentley a new Defensive Ability! When purchased in Prague, Bentley will be able to hide in his shell and defend from damage. (You might even fool the guards!)\n" 
+
+W32 13E380 0x0802CCB0 // sly-string-toolkit (do not touch)
+W32 13E384 0x00000000
+W32 B32C0 0x8C820004
+W32 B32C4 0x340800B5
+W32 B32C8 0x15050003
+W32 B32CC 0x00000000
+W32 B32D0 0x3C02000b
+W32 B32D4 0x3442F34C
+W32 B32D8 0x340800B6
+W32 B32DC 0x15050003
+W32 B32E0 0x00000000
+W32 B32E4 0x3C02000b
+W32 B32E8 0x3442F3FC
+W32 B32EC 0x03E00008
+W32 B32F0 0x00000000
+W32 B32F4 0x00000000
+
+W32 2BD110 4 // Set which episode the gadget unlocks in ( 0 = cairo, 1 = paris, etc. )
+W32 2BD108 500 // Set custom price for the gadget
+W32 2BD104 8 // Set a character icon for the gadget ( 7 = sly, 8 = bentley, 9 = murray ) 
+WS BF34C "Shell Retreat\0" // Custom gadget name
+WS BF3FC "Protects with Circle, using Gadget Power.\0" // Custom gadget usage description
+
+Set CodeCave 0x000A0000
+
+Set IsInShell CodeCave
+Set DrainTime IsInShell+1
+Set DamageTaken DrainTime+1
+Set LetterActive DamageTaken+1
+Set DamageState LetterActive+1
+Set AnimationState DamageState+4
+Set GuardsChasing AnimationState+4
+Set VJoyActive GuardsChasing+4
+Set PointerASM VJoyActive+4
+Set DrainSpeed 0x07
+Set DrainSpeedMinusOne 0x06
+
+Set GadgetPower 0x3D4ACC
+Set CircleButton 0x2DFC0D
+Set ButtonActions 0x154
+Set AnimationStop 0x181C
+Set InfiniteHealth 0x29C
+Set TransformOrigin 0x54
+Set TorsoHeightOffset 0x1338
+
+Set JumpHeight 0x2BF738
+Set CanDoubleJump 0x2E8
+
+Set BentleyId 0x08
+Set BentleyPointer 0x002DD5BC
+Set BentleyRunSpeed 0x1380
+Set BentleySlowSpeed 0x1620
+Set BentleyWalkSpeed 0x1660
+Set BentleyDetectable 0x11AC
+
+Include "shell_pose.clps2c" // The bulk of this cheat, all the bone matrices for putting Bentley in his shell
+
+ASM_START 0x0018720C
+    JAL PointerASM
+    LI $s1,0x1                  // Replaced Instruction 1
+ASM_END
+
+// t4 - Bentley/Letterbox Struct
+// t5 - Code Cave
+// t6 - Data Bus
+// t7 - vJoy Struct
+
+ASM_START PointerASM
+    LWU $t4,0x002DD5BC          // Load Bentley's struct address
+    BEQZ $t4,BentleyIsNull      // Check if Bentley exists
+    NOP
+
+    LUI $t5,0x000A              // Get ready to store data into my code cave
+
+    LW $t6,0x0DF4($t4)          // Load Bentley's Damage State from his struct
+    SW $t6,0x0004($t5)          // Store Damage State
+    LW $t6,0x13D0($t4)          // Load Bentley's Animation State from his struct
+    SW $t6,0x0008($t5)          // Store Animation State
+    
+    LWU $t7,0x0150($t4)         // Load the Pointer to Bentley's vjoy component from his struct
+    BEQZ $t7,BentleyIsNull      // Check if Bentley's vjoy component exists
+    NOP
+
+    LW $t6,0x0108($t7)          // Load the Guards Chasing Amount from Bentley's vjoy component
+    SW $t6,0x000C($t5)          // Store Guards Chasing Amount
+    LW $t6,0x0080($t7)          // Load the vJoy active flag from Bentley's vjoy component
+    SW $t6,0x0010($t5)          // Store vJoy active flag
+
+    BentleyIsNull: LWU $t4,0x002E1E60          // Load Letterboxing struct address
+    BEQZ $t4, LetterIsNull
+    NOP
+
+    LBU $t6,0x0064($t4)         // Load Letterboxing Active
+    SB $t6,0x0003($t5)          // Store Letterboxing Active
+
+    LetterIsNull: JR $ra                      // Jump back to Main Loop
+    LW $v1,0x100C($s0)          // Replaced Instruction 2
+ASM_END
+
+Function InShell()
+    WF JumpHeight 215 // Set jump height back to normal
+    WP8 BentleyPointer,ButtonActions 0x00 // Stop forced jumping
+    IF IsInShell =. 0x00
+        WP8 BentleyPointer,CanDoubleJump 0x00 // Prevent double jumping
+        WP32 BentleyPointer,AnimationStop 0x00000001 // Stop Bentley Anims (especially his idle!)
+        W8 IsInShell 0xFF // Now in shell!
+        W8 DamageTaken 0x00 // No damage taken
+        // If Bentley was taking damage when going in shell, we'll set DamageTaken anyway, otherwise he'll lose gadget power!
+        IF DamageState =. 7
+            W8 DamageTaken 0xFF
+        EI
+        IF DamageState =. 4
+            W8 DamageTaken 0xFF
+        EI
+        IF DamageState =. 2
+            W8 DamageTaken 0xFF
+        EI
+        IF DamageState =. 1
+            W8 DamageTaken 0xFF
+        EI
+        WF JumpHeight 100 // Little jump height
+        WP8 BentleyPointer,ButtonActions 0x40 // Do the little jump
+
+        WPF BentleyPointer,BentleyRunSpeed 0 // Freezing Bentley in place (doesn't work completely yet, need combat move speed)
+        WPF BentleyPointer,BentleySlowSpeed 0
+        WPF BentleyPointer,BentleyWalkSpeed 0
+        IF GuardsChasing <. 1
+            WP32 BentleyPointer,BentleyDetectable 0x00000001
+        EI
+    EI
+    WP32 BentleyPointer,InfiniteHealth 0x00000001
+
+    IF DamageTaken =. 0x00
+        Call ShellPose()
+        // Knockback Damage
+        IF DamageState =. 7
+            W8 DamageTaken 0xFF
+            IF GadgetPower <. 39
+                W32 GadgetPower 0
+            EI
+            IF GadgetPower >. 39
+                D32 GadgetPower 40
+            EI
+        EI
+        // Squish Damage
+        IF DamageState =. 4
+            W8 DamageTaken 0xFF
+            IF GadgetPower <. 29
+                W32 GadgetPower 0
+            EI
+            IF GadgetPower >. 29
+                D32 GadgetPower 30
+            EI
+        EI
+        // Fire Damage
+        IF DamageState =. 2
+            W8 DamageTaken 0xFF
+            IF GadgetPower <. 24
+                W32 GadgetPower 0
+            EI
+            IF GadgetPower >. 24
+                D32 GadgetPower 25
+            EI
+        EI
+        // Electric Damage
+        IF DamageState =. 1
+            W8 DamageTaken 0xFF
+            IF GadgetPower <. 39
+                W32 GadgetPower 0
+            EI
+            IF GadgetPower >. 39
+                D32 GadgetPower 40
+            EI
+        EI
+    EI
+    
+
+    IF DamageState =. 0xFF
+        W8 DamageTaken 0x00
+    EI
+    IF DamageState =. 0
+        W8 DamageTaken 0x00
+    EI
+    IF DamageState =. 8
+        W8 DamageTaken 0x00
+    EI
+    
+    // May be used for Level II
+    /*IF DrainTime <. DrainSpeed
+        I8 DrainTime 0x01 // Increment Drain Time
+    EI
+    IF DrainTime >. DrainSpeedMinusOne
+        D32 GadgetPower 0x01 // Drain Gadget Power
+        W8 DrainTime 0x00 // Reset Drain Time
+    EI*/
+EndFunction
+
+Function OutShell()
+    WF JumpHeight 215 // Set jump height back to normal
+    WP8 BentleyPointer,ButtonActions 0x00 // Stop forced jumping
+    IF IsInShell =. 0xFF
+        WP32 BentleyPointer,InfiniteHealth 0x00000000
+        WP8 BentleyPointer,CanDoubleJump 0x00 // Prevent double jumping
+        WP32 BentleyPointer,AnimationStop 0x00000000 // Start Bentley Anims
+        W8 IsInShell 0x00 // Now out of shell!
+        WF JumpHeight 100 // Little jump height
+        WP8 BentleyPointer,ButtonActions 0x40 // Do the little jump
+        WP32 BentleyPointer,TransformOrigin,TorsoHeightOffset 0x00000000 // Set Torso position back to normal (it's set lower in in_shell so Bentley touches the ground)
+
+        WPF BentleyPointer,BentleyRunSpeed 749.999939 // Restore Bentley's movement
+        WPF BentleyPointer,BentleySlowSpeed 164.9999847
+        WPF BentleyPointer,BentleyWalkSpeed 509.999939
+        WP32 BentleyPointer,BentleyDetectable 0x00000000
+    EI
+EndFunction
+
+IF 3D4AFC &. 1 // If custom gadget is purchased
+    IF VJoyActive =. 1 && CircleButton =. 0xFF && GadgetPower >. 0x00 && LetterActive =. 1 // If Bentley is active and o is held and Gadget Power is left and no cutscene
+        Call InShell()
+    EI
+    IF CircleButton !. 0xFF && VJoyActive =. 1 // If Bentley is active and no circle button
+        Call OutShell()
+    EI
+    IF GadgetPower <. 1 && VJoyActive =. 1 // If Bentley is active and no Gadget Power
+        Call OutShell()
+    EI
+    IF LetterActive =. 2 && VJoyActive =. 1
+        Call OutShell()
+    EI
+    IF VJoyActive !. 1  // If Bentley is not active
+        Call OutShell()
+    EI
+EI
