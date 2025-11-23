@@ -1,0 +1,2 @@
+[No Dongle Skip]
+patch=1,EE,202B4BE8,extended,00000000

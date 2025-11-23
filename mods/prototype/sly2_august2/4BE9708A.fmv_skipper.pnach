@@ -1,0 +1,6 @@
+[FMV Skipper]
+author=zami3333
+// Skip any video cutscene by pressing X
+patch=1,EE,E0020020,extended,3030BAF0
+patch=1,EE,E10100FF,extended,002F4F4E
+patch=1,EE,2030BB30,extended,00000000
