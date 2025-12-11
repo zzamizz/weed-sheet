@@ -1,0 +1,7 @@
+[Cabins crash fix]
+author=Meos
+description=Fixes the crash when entering the cabins in the Cabin Crimes job in Episode 6
+patch=1,EE,E101001F,extended,003E8D98
+patch=1,EE,20162F00,extended,00000000
+patch=1,EE,E101001F,extended,103E8D98
+patch=1,EE,20162F00,extended,0C058EC2
