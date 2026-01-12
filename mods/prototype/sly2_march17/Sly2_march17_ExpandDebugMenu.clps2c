@@ -1,0 +1,54 @@
+SR "[Expand Debug Menu]\n"
+SR "author=NiV-L-A & Meos\n"
+SR "description=Restores the \"Jobs/Tasks\" and \"Clock\" options in the debug menu\n"
+
+Set CustomMenuStart 0xA0000
+Set HandleOnJobTasksClick 0xA0280
+
+// Load an extra item and at our offset instead
+ASM_START 001CB6FC
+    li $a3,CustomMenuStart
+    addiu v0,v0,-0x4ca8
+    jalr $v0
+    addiu $a2,$zero,0xA
+ASM_END
+
+ASM_START HandleOnJobTasksClick
+    // Save ra
+    addiu $sp,$sp,-0x10
+    sd $ra,0x0($sp)
+
+    // Build list
+    jal 0x1CAB48
+    nop
+    
+    // Append item
+    // So if we go back in the debug menu
+    // We end up at the start
+    li $a0,0x3E7440
+    li $a1,0x2CC9C0
+    lw $a2,0x31D7B8
+    li $a3,0x31D7C0
+    jal 0x1CB358
+    nop
+    
+    // Load and jump back to ra
+    ld $ra,0x0($sp)
+    addiu $sp,$sp,0x10
+    jr $ra
+    nop
+ASM_END
+
+// Copy default menu entries
+CB 2F29E0 CustomMenuStart 0x200
+
+// Add another at the end
+Set CustomMenuStart CustomMenuStart + 0x200
+WS CustomMenuStart "Jobs/Tasks..."
+W32 CustomMenuStart + 0x30 HandleOnJobTasksClick
+
+Set CustomMenuStart CustomMenuStart + 0x40
+WS CustomMenuStart "Clock..."
+W32 CustomMenuStart + 0x30 0x1CB658 // Callback to add a simple submenu
+W32 CustomMenuStart + 0x34 8 // Number of items
+W32 CustomMenuStart + 0x38 0x2F25E0 // first item
