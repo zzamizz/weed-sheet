@@ -1,0 +1,37 @@
+[Expand Debug Menu]
+author=NiV-L-A & Meos
+description=Restores the "Jobs/Tasks" and "Clock" options in the debug menu
+
+patch=1,EE,201E9524,extended,3C07000A
+patch=1,EE,201E9528,extended,0C07A470
+patch=1,EE,201E952C,extended,24060008
+patch=1,EE,200A0200,extended,27BDFFF0
+patch=1,EE,200A0204,extended,FFBF0000
+patch=1,EE,200A0208,extended,0C079E4E
+patch=1,EE,200A020C,extended,00000000
+patch=1,EE,200A0210,extended,3C04004B
+patch=1,EE,200A0214,extended,34844170
+patch=1,EE,200A0218,extended,3C050035
+patch=1,EE,200A021C,extended,34A54BE0
+patch=1,EE,200A0220,extended,3C06003C
+patch=1,EE,200A0224,extended,8CC6CE78
+patch=1,EE,200A0228,extended,3C07003B
+patch=1,EE,200A022C,extended,34E7CE80
+patch=1,EE,200A0230,extended,0C07A470
+patch=1,EE,200A0234,extended,00000000
+patch=1,EE,200A0238,extended,DFBF0000
+patch=1,EE,200A023C,extended,27BD0010
+patch=1,EE,200A0240,extended,03E00008
+patch=1,EE,200A0244,extended,00000000
+patch=1,EE,5038CE58,extended,00000180
+patch=1,EE,000A0000,extended,00000000
+patch=1,EE,200A0180,extended,73626F4A
+patch=1,EE,200A0184,extended,7361542F
+patch=1,EE,200A0188,extended,2E2E736B
+patch=1,EE,000A018C,extended,0000002E
+patch=1,EE,200A01B0,extended,000A0200
+patch=1,EE,200A01C0,extended,636F6C43
+patch=1,EE,200A01C4,extended,2E2E2E6B
+patch=1,EE,200A01F0,extended,001E9480
+patch=1,EE,200A01F4,extended,00000009
+patch=1,EE,200A01F8,extended,0038A070
