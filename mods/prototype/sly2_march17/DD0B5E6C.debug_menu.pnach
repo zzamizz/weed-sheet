@@ -3,3 +3,7 @@ gametitle=Sly 2 (March 17, 2004) [DD0B5E6C]
 author=Meos
 comment=SELECT
 patch=1,EE,202D3A40,extended,00000000
+
+[Debug Menu\Open the main menu instead of the Demo sub-menu]
+comment=The game by default opens the "Demo..." sub-menu when accessing the debug menu. Enabling this cheat will make it open the main menu instead
+patch=1,EE,201F38CC,extended,00000000
