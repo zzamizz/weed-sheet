@@ -1,0 +1,11 @@
+[Square Boost]
+comment=Adds back the square boost tech from Sly 2
+author=NiV & Cooper
+patch=1,EE,E0030000,extended,00E1DC78 
+patch=1,EE,E0020000,extended,10E1FB80 
+patch=1,EE,2013AAF0,extended,24010000
+patch=1,EE,20139E00,extended,3C01BDCC
+patch=1,EE,E0030000,extended,10E1DC78 
+patch=1,EE,E0020000,extended,00E1FB80 
+patch=1,EE,2013AAF0,extended,3C0144FA
+patch=1,EE,20139E00,extended,3C013DCC
