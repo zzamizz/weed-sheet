@@ -4,7 +4,7 @@ SR "author=Orig: Meos, Disasm: modeco80, Sly3Port: Slynders\n\n"
 
 // SET CODECAVE ADDRESS HERE
 // Needs 0x800 bytes of free memory. This is the only address to edit.
-Set Cave            0xA0000
+Set Cave            0xFE000
 
 // SET YOUR KEYBINDS HERE:
 // Needs to be hex, 0x00-0x0B are pressure sensitive, the rest are either 0 or 1 pressure.
