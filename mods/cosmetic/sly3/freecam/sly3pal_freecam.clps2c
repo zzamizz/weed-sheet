@@ -1,0 +1,864 @@
+SR "[Freecam] \n"
+SR "comment=Freecam. Toggle on/off with L3.\n"
+SR "author=Orig: Meos, Disasm: modeco80, Sly3Port: Slynders\n\n"
+
+// SET CODECAVE ADDRESS HERE
+// Needs 0x800 bytes of free memory. This is the only address to edit.
+Set Cave            0xFE000
+
+// SET YOUR KEYBINDS HERE:
+// Needs to be hex, 0x00-0x0B are pressure sensitive, the rest are either 0 or 1 pressure.
+// 0x00 DPAD-R   0x04 TRIANGLE   0x08 L1    0x0C L3
+// 0x01 DPAD-L   0x05 CIRCLE     0x09 R1    0x0D R3
+// 0x02 DPAD-U   0x06 X          0x0A L2    0x0E SELECT
+// 0x03 DPAD-D   0x07 SQUARE     0x0B R2    0x0F START
+
+Set FC_TOGGLE       0x0C
+Set FC_FORWARD      0x02
+Set FC_BACKWARD     0x03
+Set FC_STRAFE_L     0x01
+Set FC_STRAFE_R     0x00
+Set FC_UP           0x08
+Set FC_DOWN         0x0A
+Set FC_ZOOM_IN      0x09
+Set FC_ZOOM_OUT     0x0B
+Set FC_ROLL_HOLD    0x0D
+Set FC_HUD          0x0E
+Set FC_FREEZE       0x0F
+Set FC_MENU_HOLD    0x09    // R1 +
+Set FC_MENU_PRESS   0x0E    // SELECT combo for fc menu
+Set FC_MENU_CYCLE   0x06    // For insane people, for no reason
+
+//=======================================================================================
+//=======================================================================================
+
+// ASM didn't like Cave+x so these are just plain numbers
+Set OFS_HELDIDX     0x030
+Set OFS_BTNLUT      0x040
+Set OFS_STR_SPEED   0x080
+Set OFS_STR_ZOOM    0x0C0
+
+// CODECAVE MAPPED                              
+Set Vars             Cave                
+Set FcBtnLUT         Cave+OFS_BTNLUT
+Set JumpTemplates    Cave+0x060
+Set MenuStrSpeed     Cave+OFS_STR_SPEED
+Set MenuStrZoom      Cave+OFS_STR_ZOOM
+Set MeosCamMain      Cave+0x100
+Set BtnLocal         Cave+0x600
+Set PadHook          Cave+0x680
+Set PauseOpenHook    Cave+0x700
+Set StringHook       Cave+0x780
+Set SetCmMatUnhooked Cave+0x7E0
+Set MenuRowNoAction  Cave+0x7F0
+
+// Jump words, one per runtime-installed hook (see JumpTemplates block)
+Set JumpToCam        JumpTemplates+0x0
+Set JumpToPauseOpen  JumpTemplates+0x4
+Set JumpToString     JumpTemplates+0x8
+
+// MENU STRINGS
+Set SPEED_WHOLE     MenuStrSpeed+0x1C   // "Camera Speed (1.0x)" ->1
+Set SPEED_FRAC      MenuStrSpeed+0x20   // 0
+Set ZOOM_WHOLE      MenuStrZoom+0x16    // "Fov Speed (1.0x)" ->1
+Set ZOOM_FRAC       MenuStrZoom+0x1A    // the 0
+
+// VARS - FREECAM STATE
+Set FcActive        Vars+0x00
+Set FcWasActive     Vars+0x01
+Set HudShown        Vars+0x02
+Set FreezeTime      Vars+0x03
+// VARS - MENU STATE
+Set FcMenuActive    Vars+0x04
+Set PauseWasOpen    Vars+0x05           // Was open last frame
+Set FcMenuRequest   Vars+0x06           // Do-once flag
+// VARS - BUTTONS
+Set TogglePressed   Vars+0x08
+Set ToggleWasDown   Vars+0x09
+Set HudPressed      Vars+0x0A
+Set HudWasDown      Vars+0x0B
+Set FreezePressed   Vars+0x0C
+Set FreezeWasDown   Vars+0x0D
+Set MenuPressed     Vars+0x0E
+Set MenuWasDown     Vars+0x0F
+Set CyclePressed    Vars+0x10
+Set CycleWasDown    Vars+0x11
+// VARS - SETTINGS
+Set MenuSpeedIdx    Vars+0x14
+Set MenuZoomIdx     Vars+0x15
+Set CamSpeed        Vars+0x18
+Set ZoomRate        Vars+0x1C
+// VARS - INPUT
+Set TrueHeld        Vars+0x20
+Set HeldByIdx       Vars+OFS_HELDIDX
+
+// Resolved HeldByIdx addresses. 
+Set HELD_TOGGLE     HeldByIdx+FC_TOGGLE
+Set HELD_HUD        HeldByIdx+FC_HUD
+Set HELD_FREEZE     HeldByIdx+FC_FREEZE
+Set HELD_MENU_HOLD  HeldByIdx+FC_MENU_HOLD
+Set HELD_MENU_PRESS HeldByIdx+FC_MENU_PRESS
+Set HELD_MENU_CYCLE HeldByIdx+FC_MENU_CYCLE
+
+// VER SPECIFIC - GAME FUNCTIONS
+// Names from modeco80's Sly 2 freecam disasm
+Set LoadRotateMatrixEuler       0x11C9E8
+Set RadNormalize                0x11E3B8
+Set DecomposeRotateMatrixEuler  0x11D3C0
+// Set FFloatsNear              0x11E9F0    // using NEAR_ZERO instead (0.0001), one less addr to find
+
+Set CamSetFovImmediate          0x167958    // was called UnkFunc in Sly 2 disasm
+Set OpenPauseMenu               0x1D4C90
+Set StringLookup                0x150628    // label ID -> UTF-16 string
+Set PadUpdateTimers             0x1A91B0    // notes when each button was pressed.
+
+// VER SPECIFIC - GAME DATA
+Set PadStruct       0x36F1C0
+Set CamPtr          0x370354        // -> CameraMatrix. CM was static in sly 2
+Set HudX            0x318940
+Set HudY            0x31894C
+Set ClockStruct     0x36C618
+Set ClockGame       ClockStruct+0x08
+Set ClockEngine     ClockStruct+0x24
+Set MenuRow0        0x38A708        // pause menu's displayed rows, 0x20 each
+Set MenuRow1        MenuRow0+0x20
+Set MenuCtx         0x470C0C        // +0x00 row count
+Set MenuCursor      MenuCtx+0x14    // selected row
+Set PauseMenuState  0x470C08        // 0 closed, 1 pause open
+
+// VER SPECIFIC - HOOK SITES
+// Camera: SetCmMat's first instruction.
+Set SetCmMat        0x166DE0
+Set SetCmMatResume  SetCmMat+0x04
+Set ORIG_SETCMMAT   0x27BDFFA0      // addiu sp,sp,-0x60
+
+// Pad: the jal to PadUpdateTimers, after held buttons are final.
+Set PadHookSite     0x1A8EB8
+Set PadHookResume   0x1A8EC0        // Instruction after the replaced jal
+Set FC_MASK         0xFD00          // Slick meos mask, d-pad | START | R3 | SELECT hidden while active
+
+// Pause menu: the check right before the game opens its own pause menu.
+Set PauseOpenSite   0x21DE60        // beq v0,zero,0x21DE9C, before the pause open
+Set PauseOpenResume 0x21DE64        // Original START press logic
+Set PauseSkipResume 0x21DEA0        // Skip past the pause open, v0 = 0
+Set ORIG_PAUSEOPEN  0x1040000E
+
+// Strings: StringLookup's first instruction.
+Set StringLookupResume StringLookup+0x04
+Set ORIG_STRLOOKUP  0x2402FFFF      // addiu v0,zero,-0x1
+
+// Cutscene cameras set FOV after SetCmMat. Nopped while freecam is active.
+Set FovCallBinocCs  0x16AC84        // Binoc cutscene camera
+Set FovCallCs       0x16BD98        // Normal cutscene camera
+Set ORIG_FOVCALL    0x0C059E56      // jal 0x167958
+
+// STRUCT OFFSETS
+Set PadPressure     0x1118          // PadStruct: one pressure byte per button index
+Set CmMatrix        0x50
+Set CmFovCurrent    0x118
+Set CmFovTarget     0x11C
+Set CmFovSnap       0x2F4           // Snaps back to player without lerp
+Set ClockDelta      0x10            // ClockStruct: frame delta time
+Set RowFlags        0x1C            // Menu row: bit1 = keep menu open on X
+
+// CONSTANTS
+Set NEAR_ZERO       0x38D1B717      // 0.0001, freeze and near-float check
+Set FOV_DEFAULT     0x3F8CCCCD      // 1.1f
+Set PITCH_MAX       0x3FC7C82D      // +1.5586
+// Set PITCH_MIN    0xBFC7C82D      // -1.5586
+Set ZOOM_MIN        0x3C23D70A      // 0.01
+Set ZOOM_MAX        0x40400000      // 3.0
+// Magic label IDs for our two rows. Outside the real ID space (max ~0x1500BB),
+// so nothing in the game can collide. Byte 1 is the language variant and is
+// masked off before comparison.
+Set STR_ID_SPEED    0x46430000
+Set STR_ID_ZOOM     0x46430001
+
+// SPAM WRITES (multiplier string parts land on top)
+SE UTF-16
+WS MenuStrSpeed "Camera Speed (1.0x)\0"
+WS MenuStrZoom "Fov Speed (1.0x)\0"
+// Button mask LUT, copied and extended from the games own, so digital only buttons (12-15) are included too.
+WB FcBtnLUT "00 20 00 80 00 10 00 40 10 00 20 00 40 00 80 00 04 00 08 00 01 00 02 00 00 02 00 04 00 01 00 08"
+
+// Jump words for the hooks. Copied into place with CopyBytes.
+ASM_START JumpTemplates
+    j       MeosCamMain             // +0x0 JumpToCam
+    j       PauseOpenHook           // +0x4 JumpToPauseOpen
+    j       StringHook              // +0x8 JumpToString
+ASM_END
+
+// Pad hook 
+ASM_START PadHookSite
+    j       PadHook
+ASM_END
+
+
+// ASM
+
+// Original by: Meos, Disassembly by: modeco80
+// MeosCamMain stays mostly similar with disasm version.
+// CHANGES:
+// > Similar sections grouped to one, delay slots have nop and more pseudo have been used in general.
+// > Keybinds use variables, logic slightly modified to fit to that workflow.
+// > Hud toggle and freeze toggle logic converted to clps2c code.
+
+ASM_START MeosCamMain // $s6 = Cave, any offset of $s6 is Cave + that offset
+    // Only our camera, when fc menu is closed, otherwise run SetCmMat
+    lw      $t0,CamPtr
+    bne     $a0,$t0,NotOurCamera
+    nop
+    li      $t1,Cave
+    lbu     $t0,0x04($t1)       // FcMenuActive
+    bnez    $t0,MenuOpen
+    nop
+
+    // MeosCamMain og prologue
+    addiu   $sp,$sp,-0x1A0
+    sq      $s0,0x140($sp)
+    sq      $s1,0x130($sp)
+    sq      $s2,0x120($sp)
+    sq      $s3,0x110($sp)
+    sq      $s4,0x100($sp)
+    sq      $s5,0xF0($sp)
+    sq      $s6,0xE0($sp)
+    sq      $s7,0xD0($sp)
+    sq      $fp,0xC0($sp)
+    sd      $ra,0xB0($sp)
+    swc1    $f29,0x198($sp)
+    swc1    $f28,0x190($sp)
+    swc1    $f27,0x188($sp)
+    swc1    $f26,0x180($sp)
+    swc1    $f25,0x178($sp)
+    swc1    $f24,0x170($sp)
+    swc1    $f23,0x168($sp)
+    swc1    $f22,0x160($sp)
+    swc1    $f21,0x158($sp)
+    swc1    $f20,0x150($sp)
+
+    // This block alters from original cam
+    move    $fp,$a0             // Save CM (CameraMatrix) pointer, sly 2 doesn't need one
+    li      $s4,PadStruct
+    move    $s6,$t1             // Cave base, already loaded by the check above
+
+    lwc1    $f3,0xC($s4)        // RStick X: 36F1CC
+    lwc1    $f1,0x10($s4)       // RStick Y: 36F1D0
+    abs.s   $f2,$f3
+    abs.s   $f0,$f1
+    mul.s   $f23,$f3,$f2        // $f23 = x * |X|
+    mul.s   $f24,$f1,$f0        // $f24 = y * |Y|
+    mtc1    $zero,$f26          // Zero rotation registers
+    mtc1    $zero,$f27
+    mtc1    $zero,$f28
+
+    // Forward/backward
+    move    $a0,$s4
+    addiu   $a1,$zero,FC_FORWARD
+    jal     BtnLocal            // Get current pad pressure in range 1.0-0.0
+    nop
+    mov.s   $f20,$f0
+    move    $a0,$s4
+    addiu   $a1,$zero,FC_BACKWARD
+    jal     BtnLocal
+    nop
+    sub.s   $f20,$f20,$f0
+
+    abs.s   $f0,$f20
+    mul.s   $f25,$f20,$f0       // $f25 = fwd/bwd axis
+
+    // Strafe
+    move    $a0,$s4
+    addiu   $a1,$zero,FC_STRAFE_L
+    jal     BtnLocal
+    nop
+    mov.s   $f20,$f0
+    move    $a0,$s4
+    addiu   $a1,$zero,FC_STRAFE_R
+    jal     BtnLocal
+    nop
+    sub.s   $f20,$f20,$f0
+
+    abs.s   $f0,$f20
+    mul.s   $f22,$f20,$f0       // $f22 = strafe axis
+
+    // Vertical
+    move    $a0,$s4
+    addiu   $a1,$zero,FC_UP
+    jal     BtnLocal
+    nop
+    mov.s   $f20,$f0
+    move    $a0,$s4
+    addiu   $a1,$zero,FC_DOWN
+    jal     BtnLocal
+    nop
+    sub.s   $f20,$f20,$f0
+
+    abs.s   $f0,$f20
+    mul.s   $f21,$f20,$f0       // $f21 = vertical axis
+
+    // Zoom in/out
+    move    $a0,$s4
+    addiu   $a1,$zero,FC_ZOOM_IN
+    jal     BtnLocal
+    nop
+    mov.s   $f20,$f0
+    move    $a0,$s4
+    addiu   $a1,$zero,FC_ZOOM_OUT
+    jal     BtnLocal
+    nop
+    sub.s   $f20,$f20,$f0
+
+    abs.s   $f0,$f20
+    mul.s   $f29,$f20,$f0       // $f29 = zoom axis
+
+    // Movement vector for VU0
+    swc1    $f25,0x0($sp)
+    swc1    $f22,0x4($sp)
+    swc1    $f21,0x8($sp)
+
+    // Yaw/pitch except if roll button is held, then dutch angle type of shiet
+    addiu   $t0,$zero,FC_ROLL_HOLD
+    addu    $t0,$t0,$s6
+    lbu     $t0,OFS_HELDIDX($t0)
+    beqz    $t0,NoRoll
+    nop
+    mov.s   $f28,$f23           // Roll from stick X
+    b       StickDone
+    nop
+NoRoll:
+    neg.s   $f26,$f23           // Yaw = -stick X
+    mov.s   $f27,$f24           // Pitch = stick Y
+StickDone:
+    li      $s7,ClockStruct     // delta time lives at ClockDelta off this
+    move    $s3,$zero           // $s3 = "no movement input" flag
+
+    // Copy matrix rows and put to stack
+    addiu   $v0,$fp,CmMatrix    // CM+0x50 = camera matrix
+    lq      $a0,0x0($v0)        // row 0
+    lq      $a1,0x10($v0)       // row 1
+    lq      $a2,0x20($v0)       // row 2
+    lq      $a3,0x30($v0)       // row 3
+    sq      $a0,0x10($sp)
+    sq      $a1,0x20($sp)
+    sq      $a2,0x30($sp)
+    sq      $a3,0x40($sp)
+
+    lq      $s0,0x0($sp)        // fwd/back, strafe, vertical
+    mtc1    $zero,$f12          // Compare against 0.0
+    li      $at,NEAR_ZERO       // 0.0001 as float bits, instead of FFloatsNear for ease of use
+    mtc1    $at,$f14            // Store to $f14
+
+    // Float near check, I didn't dare to change these much.
+    // Component x
+    mtc1    $s0,$f13
+    abs.s   $f13,$f13
+    c.lt.s  $f14,$f13           // $f13 != 0.0001
+    bc1t    FloatNotNear        // real input -> go move
+    nop
+
+    // Component y
+    prot3w  $v0,$s0             // Parallel Rotate 3 Words, PS2 specific
+    mtc1    $v0,$f13
+    abs.s   $f13,$f13
+    c.lt.s  $f14,$f13
+    bc1t    FloatNotNear
+    nop
+
+    // Component z
+    pextuw  $v0,$zero,$s0       // Parallel Extract Upper Word, PS2 specific
+    mtc1    $v0,$f13
+    abs.s   $f13,$f13
+    c.lt.s  $f14,$f13
+    move    $s3,$zero
+    bc1t    FloatNotNear
+    nop
+    addiu   $s3,$zero,1         // all three near zero -> no input
+
+FloatNotNear:
+    addiu   $s2,$sp,0x10        // $s2 = matrix copy on the stack
+    bnez    $s3,RotationCheck   // no input -> skip the move
+    nop
+
+    // Moving the camera
+    lwc1    $f1,ClockDelta($s7) // Delta time
+    lwc1    $f0,0x18($s6)       // CamSpeed variable from fc menu
+    mul.s   $f0,$f1,$f0         // speed = delta * CamSpeed
+    mfc1    $v0,$f0
+
+    lqc2    $vf5,0x10($sp)      // Row 0
+    lqc2    $vf3,0x20($sp)      // Row 1
+    lqc2    $vf1,0x30($sp)      // Row 2
+    lqc2    $vf6,0x40($sp)      // Row 3
+    lqc2    $vf2,0x0($sp)       // Movement vector
+    qmtc2   $v0,$vf4            // Speed
+                                
+                                // These might be wrong (?):
+    vmulax.xyz  $vf5,$vf2       // ACC  = forward * input.x
+    vmadday.xyz $vf3,$vf2       // ACC  = left * input.y
+    vmaddz.xyz  $vf2,$vf1,$vf2  // vf2  = ACC + up * input.z
+    sqc2        $vf4,0x50($sp)  // ??
+    vadda.xyzw  $vf6,$vf0       // ACC  = position.
+    vmaddx.xyzw $vf1,$vf2,$vf4  // vf1  = position + direction * speed
+    qmfc2       $a1,$vf1        // VU0 -> regular register
+    sq          $a1,0x40($sp)   // New position into row 3
+RotationCheck:
+    mtc1    $zero,$f0           // 0.0 for the comparisons
+    move    $a0,$s2             // Pitch == 0?
+    move    $s0,$fp
+
+    c.eq.s  $f27,$f0            // Pitch == 0?
+    bc1f    DoRotation
+    nop
+    c.eq.s  $f28,$f0            // Yaw == 0?
+    bc1f    DoRotation
+    nop
+    c.eq.s  $f26,$f0            // Roll == 0?
+    bc1t    SetCm               // All three == 0 -> skip rot entirely
+    nop
+DoRotation:
+    jal     DecomposeRotateMatrixEuler
+    nop
+    sq      $v0,0x50($sp)       // Euler: yaw 0x50, pitch 54 roll 58
+    lwc1    $f20,ClockDelta($s7)
+
+    lwc1    $f0,0x50($sp)
+    mul.s   $f12,$f20,$f28
+    add.s   $f12,$f0,$f12
+    jal     RadNormalize
+    nop
+    swc1    $f0,0x50($sp)
+
+    mul.s   $f1,$f20,$f27
+    lwc1    $f12,0x54($sp)
+    add.s   $f12,$f12,$f1
+    jal     RadNormalize
+    nop
+
+    lui     $at,0xBFC7
+    ori     $at,$at,0xC82D      // Was PITCH_MIN (-1.5586), clps2c built wrong value
+    mtc1    $at,$f1
+    li      $at,PITCH_MAX
+    mtc1    $at,$f3
+    mov.s   $f2,$f0
+    c.lt.s  $f0,$f1             // Below min?
+    bc1f    ClampPitchHigh
+    nop
+    mov.s   $f2,$f1             // Clamp low
+    b       PitchDone
+    nop
+ClampPitchHigh:
+    c.lt.s  $f3,$f0             // Above max?
+    bc1f    PitchDone
+    nop
+    mov.s   $f2,$f3             // Clamp high
+PitchDone:
+    swc1    $f2,0x54($sp)
+
+    // Roll
+    mul.s   $f0,$f20,$f26       // delta * roll input
+    lwc1    $f12,0x58($sp)
+    add.s   $f12,$f12,$f0
+    jal     RadNormalize
+    nop
+    swc1    $f0,0x58($sp)
+
+    // Rebuild the matrix from the new angles
+    addiu   $a0,$sp,0x60
+    lq      $a1,0x50($sp)
+    jal     LoadRotateMatrixEuler
+    nop
+
+    // Copy the rebuilt rows back over the stack matrix
+    lq      $v1,0x60($sp)
+    sq      $v1,0x10($sp)
+    lq      $a0,0x70($sp)
+    sq      $a0,0x10($s2)
+    lq      $v0,0x80($sp)
+    sq      $v0,0x20($s2)
+    sw      $zero,0x1C($sp)     // Zeroing w of every 4x4
+    sw      $zero,0x2C($sp)
+    sw      $zero,0x3C($sp)
+SetCm:
+    move    $a0,$s0             // CM
+    move    $a1,$s2             // new matrix
+    jal     SetCmMatUnhooked
+    nop
+
+    // Zoom
+    lwc1    $f0,ClockDelta($s7)
+    neg.s   $f1,$f29            // Invert zoom axis
+    lwc1    $f2,0x1C($s6)       // ZoomRate, from menu
+    nop
+    mul.s   $f1,$f1,$f2
+    mul.s   $f0,$f0,$f1         // delta * axis * rate
+    lwc1    $f3,CmFovCurrent($s0)
+    add.s   $f12,$f3,$f0        // New FOV
+
+    li      $at,ZOOM_MIN
+    mtc1    $at,$f4
+    li      $at,ZOOM_MAX
+    mtc1    $at,$f5
+    c.lt.s  $f12,$f4            // Below min?
+    bc1f    ClampZoomHigh
+    nop
+    mov.s   $f12,$f4
+    b       ZoomDone
+    nop
+ClampZoomHigh:
+    c.lt.s  $f5,$f12            // Above max?
+    bc1f    ZoomDone
+    nop
+    mov.s   $f12,$f5
+ZoomDone:
+    move    $a0,$fp             // CM
+    jal     CamSetFovImmediate
+    nop
+    
+    lq      $s0,0x140($sp)
+    lq      $s1,0x130($sp)
+    lq      $s2,0x120($sp)
+    lq      $s3,0x110($sp)
+    lq      $s4,0x100($sp)
+    lq      $s5,0xF0($sp)
+    lq      $s6,0xE0($sp)
+    lq      $s7,0xD0($sp)
+    lq      $fp,0xC0($sp)
+    ld      $ra,0xB0($sp)
+    lwc1    $f29,0x198($sp)
+    lwc1    $f28,0x190($sp)
+    lwc1    $f27,0x188($sp)
+    lwc1    $f26,0x180($sp)
+    lwc1    $f25,0x178($sp)
+    lwc1    $f24,0x170($sp)
+    lwc1    $f23,0x168($sp)
+    lwc1    $f22,0x160($sp)
+    lwc1    $f21,0x158($sp)
+    lwc1    $f20,0x150($sp)
+    jr      $ra
+    addiu   $sp,$sp,0x1A0
+NotOurCamera:
+    j       SetCmMatUnhooked    // Real SetCmMat for every other camera
+    nop
+MenuOpen:
+    jr      $ra                 // Hold the camera still while our menu is up
+    nop
+ASM_END
+
+ASM_START BtnLocal                  // Uses: a0 = pad struct, a1 = button idx 0-15
+    li      $t5,Cave
+    addu    $t0,$t5,$a1
+    lbu     $t0,OFS_HELDIDX($t0)    // PadHook already resolved held state
+    beqz    $t0,NotPressed
+    nop
+    // 12-15 (L3/R3/SELECT/START) have no pressure
+    sltiu   $t1,$a1,0xC
+    beqz    $t1,FullPress
+    nop
+    addu    $t2,$a0,$a1
+    lbu     $t2,PadPressure($t2)    // 12-byte array, idx order matches ours
+    bnez    $t2,HavePressure
+    nop
+    li      $t2,255                 // Held but no pressure data -> full
+HavePressure:
+    li      $t4,0x3B808081          // 1/255
+    mtc1    $t4,$f1
+    mtc1    $t2,$f0
+    cvt.s.w $f0,$f0
+    mul.s   $f0,$f0,$f1
+    jr      $ra                     // Return press between 0.0f-1.0f
+    nop
+FullPress:
+    lui     $t2,0x3F80              // 1.0f
+    mtc1    $t2,$f0
+    jr      $ra                     // Return full press 1.0f
+    nop
+NotPressed:
+    mtc1    $zero,$f0
+    jr      $ra                     // Return 0.0f
+    nop
+ASM_END
+
+// Calls the real SetCmMat without landing in our hook
+ASM_START SetCmMatUnhooked
+    addiu   $sp,$sp,-0x60           // og
+    j       SetCmMatResume
+    nop
+ASM_END
+
+// Called when X is pressed on a menu row. Return straight away nopping X press.
+ASM_START MenuRowNoAction
+    jr      $ra
+    nop
+ASM_END
+
+// Replaces StringLookup's first instruction. $a1 = label ID.
+// Our two magic IDs return our strings, everything else does normal.
+// Byte 1 = language masked off.
+ASM_START StringHook
+    lui     $t0,0xFFFF
+    ori     $t0,$t0,0x00FF
+    and     $t1,$a1,$t0
+    li      $t0,STR_ID_SPEED
+    beq     $t1,$t0,SpeedRow
+    nop
+    li      $t0,STR_ID_ZOOM
+    beq     $t1,$t0,ZoomRow
+    nop
+    addiu   $v0,$zero,-0x1      // Displaced instruction
+    j       StringLookupResume
+    nop
+SpeedRow:
+    li      $t0,Cave
+    jr      $ra
+    addiu   $v0,$t0,OFS_STR_SPEED   // delay slot
+ZoomRow:
+    li      $t0,Cave
+    jr      $ra
+    addiu   $v0,$t0,OFS_STR_ZOOM    // delay slot
+ASM_END
+
+
+// Replaces the jal to PadUpdateTimers at PadHookSite. The delay slot (move a0,s0) still runs.
+ASM_START PadHook
+    li      $t1,Cave
+    lw      $t0,0x18($s0)       // held, after the game's own consume pass
+    sw      $t0,0x20($t1)       // TrueHeld, raw value for our own reads
+    addiu   $t3,$t1,OFS_BTNLUT  // -> mask table
+    addiu   $t4,$t1,OFS_HELDIDX // -> output array
+    addiu   $t7,$t4,0x10        // end of output array
+ExpandLoop:
+    lhu     $t6,0x0($t3)        // this index's button mask
+    and     $t6,$t6,$t0
+    sltu    $t6,$zero,$t6       // collapse to 0/1
+    sb      $t6,0x0($t4)
+    addiu   $t3,$t3,0x2
+    addiu   $t4,$t4,0x1
+    bne     $t4,$t7,ExpandLoop
+    nop
+
+    // Hide the freecam buttons from the game.
+    lbu     $t2,0x00($t1)       // FcActive
+    beqz    $t2,PadDone
+    nop
+    lbu     $t2,0x04($t1)       // FcMenuActive
+    bnez    $t2,PadDone         // menu open, the game needs the d-pad back
+    nop
+    li      $t2,FC_MASK
+    nor     $t2,$zero,$t2
+    and     $t0,$t0,$t2
+    sw      $t0,0x18($s0)
+PadDone:
+    li      $ra,PadHookResume   // the j didn't set $ra, the original jal did
+    j       PadUpdateTimers
+    nop
+ASM_END
+
+// Replaces the beq at PauseOpenSite. $v0 = game's own "open pause menu" result.
+ASM_START PauseOpenHook
+    li      $t1,Cave
+    lbu     $t0,0x00($t1)       // FcActive
+    beqz    $t0,Original
+    nop
+    lbu     $t0,0x06($t1)       // FcMenuRequest
+    beqz    $t0,Skip
+    nop
+    sb      $zero,0x06($t1)
+    li      $a0,0               // Pad slot 0
+    jal     OpenPauseMenu
+    nop
+Skip:
+    move    $v0,$zero           // Match the original
+    j       PauseSkipResume
+    nop
+Original:
+    bnez    $v0,GameStart
+    nop
+    move    $v0,$zero
+    j       PauseSkipResume
+    nop
+GameStart:
+    j       PauseOpenResume
+    nop
+ASM_END
+
+// General do-once func for buttons
+Function PadDetect(heldAddr, wasDown, pressed)
+    W8 pressed 0
+    IF heldAddr =. 1
+        IF wasDown =. 0
+            W8 pressed 1
+        EI
+        W8 wasDown 1
+    EI
+    IF heldAddr =. 0
+        W8 wasDown 0
+    EI
+EndFunction
+
+Call PadDetect(HELD_TOGGLE, ToggleWasDown, TogglePressed)
+Call PadDetect(HELD_HUD, HudWasDown, HudPressed)
+Call PadDetect(HELD_FREEZE, FreezeWasDown, FreezePressed)
+Call PadDetect(HELD_MENU_PRESS, MenuWasDown, MenuPressed)
+Call PadDetect(HELD_MENU_CYCLE, CycleWasDown, CyclePressed)
+
+// Freecam trigger
+IF TogglePressed =. 1 && FcMenuActive =. 0
+    XOR8 FcActive 1
+EI
+
+// Activate Freecam
+IF FcActive =. 1 && FcWasActive =. 0
+    W8 FcWasActive 1
+    W8 HudShown 1
+    W8 FreezeTime 0
+    W8 FcMenuActive 0
+    W8 FcMenuRequest 0
+    W8 PauseWasOpen 0
+    CB JumpToPauseOpen PauseOpenSite 4
+    CB JumpToString StringLookup 4
+    W32 FovCallBinocCs 0
+    W32 FovCallCs 0
+    CB JumpToCam SetCmMat 4
+EI
+
+// Deactivate Freecam
+IF FcActive =. 0 && FcWasActive =. 1
+    W8 FcWasActive 0
+    W8 FcMenuActive 0
+    W8 FcMenuRequest 0
+    W8 PauseWasOpen 0
+    W32 SetCmMat ORIG_SETCMMAT
+    W32 FovCallBinocCs ORIG_FOVCALL
+    W32 FovCallCs ORIG_FOVCALL
+    W32 PauseOpenSite ORIG_PAUSEOPEN
+    W32 StringLookup ORIG_STRLOOKUP
+    WF HudX 1
+    WF HudY 1
+    WF ClockGame 1
+    WF ClockEngine 1
+    WP32 CamPtr,CmFovTarget FOV_DEFAULT  // restore default fov
+    WP32 CamPtr,CmFovSnap 1              // snap the fov
+EI
+
+// Freecam active logic
+IF FcActive =. 1
+
+    IF HudPressed =. 1 && HELD_MENU_HOLD =. 0 && FcMenuActive =. 0
+        XOR8 HudShown 1
+        IF HudShown =. 1
+            WF HudX 1
+            WF HudY 1
+        EI
+        IF HudShown =. 0
+            WF HudX 0
+            WF HudY 0
+        EI
+    EI
+
+    IF FreezePressed =. 1 && FcMenuActive =. 0
+        XOR8 FreezeTime 1
+        IF FreezeTime =. 1
+            W32 ClockGame NEAR_ZERO
+            W32 ClockEngine NEAR_ZERO
+        EI
+        IF FreezeTime =. 0
+            WF ClockGame 1
+            WF ClockEngine 1
+        EI
+    EI
+
+    // Open the freecam menu
+    IF MenuPressed =. 1 && HELD_MENU_HOLD =. 1 && FcMenuActive =. 0
+        W8 FcMenuRequest 1
+        W8 FcMenuActive 1
+    EI
+
+    IF FcMenuActive =. 1
+        W32 MenuCtx 2
+        W32 MenuRow0 STR_ID_SPEED
+        W32 MenuRow0+0x4 MenuRowNoAction
+        W32 MenuRow0+RowFlags 2
+        W32 MenuRow1 STR_ID_ZOOM
+        W32 MenuRow1+0x4 MenuRowNoAction
+        W32 MenuRow1+RowFlags 2
+        WF HudX 1               // Force menu visible
+        WF HudY 1
+
+        // Scroller buttons
+        IF CyclePressed =. 1 && MenuCursor =. 0
+            I8 MenuSpeedIdx 1
+        EI
+        IF CyclePressed =. 1 && MenuCursor =. 1
+            I8 MenuZoomIdx 1
+        EI
+        IF MenuSpeedIdx >. 3
+            W8 MenuSpeedIdx 0
+        EI
+        IF MenuZoomIdx >. 3
+            W8 MenuZoomIdx 0
+        EI
+
+        // Menu closed/map changed. Put back what the menu overrode.
+        IF PauseMenuState =. 1
+            W8 PauseWasOpen 1
+        EI
+        IF PauseMenuState =. 0 && PauseWasOpen =. 1
+            W8 FcMenuActive 0
+            W8 PauseWasOpen 0
+            IF FreezeTime =. 1
+                W32 ClockGame NEAR_ZERO
+            EI
+            IF FreezeTime =. 0
+                WF ClockGame 1
+            EI
+            IF HudShown =. 0
+                WF HudX 0
+                WF HudY 0
+            EI
+        EI
+    EI
+
+    // Speed/zoom derived from the index every frame. 
+    // The index doesn't reset on activate, so settings survive.
+    IF MenuSpeedIdx =. 0
+        WF CamSpeed 1600
+        W16 SPEED_WHOLE 0x0031      // "1"
+        W16 SPEED_FRAC 0x0030       // "0"
+    EI
+    IF MenuSpeedIdx =. 1
+        WF CamSpeed 3200
+        W16 SPEED_WHOLE 0x0032      // "2"
+        W16 SPEED_FRAC 0x0030
+    EI
+    IF MenuSpeedIdx =. 2
+        WF CamSpeed 6400
+        W16 SPEED_WHOLE 0x0034      // "4"
+        W16 SPEED_FRAC 0x0030
+    EI
+    IF MenuSpeedIdx =. 3
+        WF CamSpeed 800
+        W16 SPEED_WHOLE 0x0030      // "0"
+        W16 SPEED_FRAC 0x0035       // "5"
+    EI
+
+    IF MenuZoomIdx =. 0
+        WF ZoomRate 0.25
+        W16 ZOOM_WHOLE 0x0031
+        W16 ZOOM_FRAC 0x0030
+    EI
+    IF MenuZoomIdx =. 1
+        WF ZoomRate 0.5
+        W16 ZOOM_WHOLE 0x0032
+        W16 ZOOM_FRAC 0x0030
+    EI
+    IF MenuZoomIdx =. 2
+        WF ZoomRate 1
+        W16 ZOOM_WHOLE 0x0034
+        W16 ZOOM_FRAC 0x0030
+    EI
+    IF MenuZoomIdx =. 3
+        WF ZoomRate 0.125
+        W16 ZOOM_WHOLE 0x0030
+        W16 ZOOM_FRAC 0x0035
+    EI
+EI
