@@ -1,4 +1,4 @@
-[Skip Hazard Room
+[Skip Hazard Room]
 comment=zami3333
 patch=1,EE,E0020000,extended,0047989C
 patch=1,EE,E0010002,extended,0056AEC8
