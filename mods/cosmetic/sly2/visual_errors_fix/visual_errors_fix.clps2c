@@ -67,6 +67,14 @@ If Map =. 0xC && LoadingState =. 0x3
 
 EndIf
 
+// Duplicated mesh near tilty tower
+
+If Map =. 0xC && LoadingState =. 0x3
+
+    WritePointer32 0x3E12EC,0x23D0 0x0
+
+EndIf
+
 // Red attack robot eyes peeking through textures fixed, mesh only renders during the job
 
 If Map =. 0xE && LoadingState =. 0x3
