@@ -1,0 +1,53 @@
+Set Hook 002BA81C
+Set Cave 0034A390
+
+ASM_START Hook
+    j Cave
+ASM_END
+
+ASM_START Cave
+    // Go to the active character's transformation component
+    lw $t0,0x36F84C // read active character pointer
+    lw $t1,0x48($t0) // read the transformation pointer
+    lui $at,0x35 // All of our custom addresses are at 0034a400. Load 00350000
+    lw $t2,0x30($t1) // get x coord
+    lw $t3,0x34($t1) // get y coord
+    lw $t4,0x38($t1) // get z coord
+    sw $t2,-0x5C90($at) // store x coord at custom address
+    sw $t3,-0x5C8C($at) // store y coord at custom address
+    sw $t4,-0x5C88($at) // store z coord at custom address
+    
+    // Don't copy the collision pointer if it's 0
+    lw $t5,0xD8($t0) // load collision pointer
+    bne $t5,$zero,SaveCollisionPointer
+        nop
+    b CheckFlags
+        nop
+    SaveCollisionPointer: sw $t5,-0x5C84($at)
+    
+    // Check flag
+    CheckFlags: li $t7,0x1
+        lb $t6,-0x5C74($at)
+        beq $t6,$t7,CopyCustomCoordsToActChar
+            nop
+        lb $t6,-0x5C73($at)
+        beq $t6,$t7,CopyCollisionPointerToActChar
+            nop
+        b Exit
+            nop
+
+    CopyCustomCoordsToActChar: sb $zero,-0x5C74($at)
+        lw $t2,-0x5C80($at) // load custom x coord
+        lw $t3,-0x5C7C($at) // load custom y coord
+        lw $t4,-0x5C78($at) // load custom z coord
+        sw $t2,0x30($t1) // store x coord
+        sw $t3,0x34($t1) // store y coord
+        sw $t4,0x38($t1) // store z coord
+        b Exit
+        nop
+    CopyCollisionPointerToActChar: sb $zero,-0x5C73($at)
+        lw $t5,-0x5C84($at)
+        sw $t5,0xD8($t0)
+    Exit: jr $ra // return
+        nop // delay slot
+ASM_END

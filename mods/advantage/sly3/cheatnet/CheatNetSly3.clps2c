@@ -1,0 +1,1405 @@
+SR "gametitle=Sly 3: Honor Among Thieves (NTSC)\n\n"
+SR "[CheatNet] \n"
+SR "comment=Press R1+Select to open the menu.\n"
+SR "author=zami3333\n"
+
+Include "CheatNetSly3_Vars.clps2c"
+Include "CheatNetSly3_Zac.clps2c"
+Include "CheatNetSly3_General.clps2c"
+Include "CheatNetSly3_Strings.clps2c"
+
+SetEncoding UTF-16
+
+// tofix: 
+// - what is wrong with grapplecam
+// - carmelita playabl
+
+// The menu
+    // Button combo (Select+R1)
+    IF tnStatus =: 0xFFFF
+        IF isPaused =. 0 && isGadgets =: 0xFFFF
+            IF tnOpenP2 =. 0
+                Call MenuCombo(pad_SelectR1)
+                    W8 tnOpenP1 1
+                    W8 openTN 1
+                EI
+            EI
+            IF tnOpenP1 =. 0 && multiFlag =. 1
+                Call MenuCombo(pad2_SelectR1)
+                    W8 tnOpenP2 1
+                    W8 openTN 1
+                EI
+            EI
+        EI
+    EI
+
+// ThiefNet shortcuts
+    If tnStatus !: 0xFFFF
+        // Reload (L1)
+        If pad_L1 =. 0xFF
+            Call Reload(full)
+        EI
+
+        // Loading position (L3)
+        IF pad_L3R3 =. 0xFD
+            IF pad_R1 !. 0xFF 
+                WP8 camera,reset 1
+                W8 ccflag_zacTele 1
+                W8 ccflag_zacCollider 1
+                WF clockGame 0.01
+                CB 34A380 34A370 0xC // save from cc into current
+            EI
+        EI
+
+        // Saving position (R3)
+        If pad_L3R3 =. 0xFB
+            CB 34A370 34A380 0xC // save from current into cc
+        EI
+
+        // Warp to map centre (R1+L3)
+        If pad_L3R3 =. 0xFD && pad_R1 =. 0xFF
+            WF clockGame 0.01
+            Call Teleport(0, 0, 2000)
+        EI
+
+        // Save initial position
+        Call MapUptimeCheck()
+            CB 34A370 34A380 0xC // save from current into cc
+        EI
+    EI
+
+// Remove ThiefNet loading animation
+    WP32 gui_ThiefNet,0x64 0
+    WP32 gui_ThiefNet,0x68 0
+
+// Reset some cheats during loading
+    IF isLoading =. 2
+        W8 ccflag_cheat11 0
+        W8 ccflag_cheat17 0
+        W8 ccflag_cheat28 0
+    EI
+
+// Keep music & ambience in ThiefNet
+    IF tnStatus =: 0xFFFF
+        W8 475058 3 // normal audio
+    EI
+    IF tnStatus !: 0xFFFF
+        W8 475058 5 // audio in menu
+    EI
+
+// Disable buying prompt
+    IF tnStatus !: 0xFFFF
+        W32 tnBuying 0xFFFFFFFF // disable buying
+        W8 tnMaxItems 24 // increase with how many cheats you add
+    EI 
+
+// Reset menu item index
+    IF isLoading =. 2
+        W32 tnHoverItem 0
+    EI
+    IF tnHoverItem =: 0xFFFF
+        W32 tnHoverItem 0
+    EI
+    SR "\n"
+
+// Sound effect swaps
+    IF tnStatus =: 0xFFFF
+        WP8 sfxPtr,0xA4 41 // sell sound
+        WP8 sfxPtr,0xD4 53 // bass sound
+        WP8 sfxPtr,0xD8 54 //error sound
+    EI
+    IF tnStatus !: 0xFFFF
+        WP8 sfxPtr,0xA4 0x34
+        WP8 sfxPtr,0xD4 0x28
+        WP8 sfxPtr,0xD8 0x28
+    EI
+
+// Infinite scrolling (goofy)
+    If tnHoverItem =. 0 && pad_DPadUp =. 0xFF && ccflag_InfScr1 =. 0
+        W8 ccflag_InfScr1 1
+        W8 tnHoverItem 0x17
+        W8 tnScroll 0x12
+    EI
+    If pad_DPadUp !. 0xFF && ccflag_InfScr1 =. 1
+        W8 ccflag_InfScr1 0
+    EI
+
+    If tnHoverItem =. 0x17 && pad_DPadDown =. 0xFF && ccflag_InfScr2 =. 0
+        W8 ccflag_InfScr2 1
+        W8 tnHoverItem 0x0
+        W8 tnScroll 0x0
+    EI
+    If pad_DPadDown !. 0xFF && ccflag_InfScr2 =. 1
+        W8 ccflag_InfScr2 0
+    EI
+
+// Fast scroll (Hold Circle)
+    Call FastScroll(0x1, 0x6, 0x6)
+    Call FastScroll(0x5, 0x0, 0x0)
+    Call FastScroll(0x7, 0xC, 0xC)
+    Call FastScroll(0xB, 0x6, 0x6)
+    Call FastScroll(0xD, 0x12, 0x12)
+    Call FastScroll(0x11, 0xC, 0xC)
+    Call FastScroll(0x13, 0x18, 0x18)
+    Call FastScroll(0x17, 0x12, 0x12)
+    IF tnHoverItem =. 0x18 //fix backrooms glitch
+        W8 tnHoverItem 0
+        W8 tnScroll 0
+    EI
+
+// Multiplayer support
+ //     //Write the "Player" string if multiplayer is enabled
+ //         IF multiFlag =. 1
+ //             WB playerString "00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 20 00 50 00 6C 00 61 00 79 00 65 00 72 00 20 00"
+ //         EI
+ // 
+ //     // Give player 2 ThiefNet control
+ //         IF tnOpenP2 =. 1
+ //             W32 tnControl player2Pad
+ //         EI
+ // 
+ //     // Check which player opens the menu, write appropriate player number
+ //         IF multiFlag =. 1 && pad_SelectR1 =: 0xF7FE
+ //             W8 playerNumString 0x31 // 1
+ //         EI
+ //         IF multiFlag =. 1 && pad2_SelectR1 =: 0xF7FE
+ //             W8 playerNumString 0x32 // 2
+ //         EI
+ // 
+ //     // Clear player flags by pressing triangle
+ //         IF pad_Triangle =. 0xFF && tnOpenP1 =. 1
+ //             W8 tnOpenP1 0
+ //         EI
+ //         IF pad2_Triangle =. 0xFF && tnOpenP2 =. 1
+ //             W8 tnOpenP2 0
+ //             W32 tnControl player1Pad
+ //         EI
+
+// Populate buy menu with gadget IDs (cheats)
+    W32 46F86C 6 // Trigger Bomb // Reload as Sly                
+    W32 46F874 7 // Fishing // Reload as Bentley            
+    W32 46F87C 8 // Alarm Clock // Reload as Murray             
+    W32 46F884 9 // Adrenaline // Reload as -- (Special character)                       
+    W32 46F88C 10 // Health Extract // Map               
+    W32 46F894 11 // Hover // Infinite Jumps                          
+    W32 46F89C 12 // Insanity // Warp                         
+    W32 46F8A4 13 // Grapple // X-Ray
+    W32 46F8AC 14 // Size Destab // Flyable Glider         
+    W32 46F8B4 15 // Rage Bomb // Undetectable         
+    W32 46F8BC 16 // Reduct // Godmode         
+    W32 46F8C4 17 // Ball // Damage Type         
+    W32 46F8CC 18 // Berserker // Infinite HP+MP         
+    W32 46F8D4 19 // Juggernaut // SUPERHOT         
+    W32 46F8DC 20 // Guttural // Max Draw Distance         
+    W32 46F8E4 21 // Fists of flame // Claustrophobia         
+    W32 46F8EC 22 // Temporal // Despawn All Guards         
+    W32 46F8F4 23 // Raging Inferno // Chase         
+    W32 46F8FC 24 // Diablo Fire // Toggle Guard AI         
+    W32 46F904 25 // Smoke Bomb // Dance Break    
+    W32 46F90C 26 // Combat Doge // Crash     
+    W32 46F914 27 // Paraglide // Time         
+    W32 46F91C 28 // Silent Obl // Toggle Skybox         
+    W32 46F924 29 // Feral // Hide Flash         
+    W32 46F92C 30 // Mega Jump // 
+    W32 46F934 31 // Knockout // 
+    W32 46F93C 32 // Shadow 1 // 
+    W32 46F944 33 // Thief Reflex // 
+    W32 46F94C 34 // Shadow 2 // 
+    W32 46F954 35 // Rocket // 
+    W32 46F95C 36 // Treasure // 
+    W32 46F964 37 // ENGLISH // 
+    W32 46F96C 38 // Venice // 
+    W32 46F974 39 // Photo // 
+    W32 46F97C 40 // Pirate // 
+    W32 46F984 41 // Spin 1 // 
+    W32 46F98C 42 // Spin 2 // 
+    W32 46F994 43 // Spin 3 // 
+    W32 46F99C 44 // Jump 1 // 
+    W32 46F9A4 45 // Jump 2 // 
+    W32 46F9AC 46 // Jump 3 // 
+    W32 46F9B4 47 // Push 1 // 
+    W32 46F9BC 48 // Push 2 // 
+    W32 46F9C4 49 // Push 3 // 
+
+// Remove character icons from gadgets
+    W32 343498 25 // Murray
+    W32 3434D4 25
+    W32 343510 25
+    W32 34354C 25
+    W32 343588 25
+    W32 3435C4 25
+    W32 343600 25
+    W32 34363C 25
+
+// ThiefNet visual changes
+    IF tnStatus !: 0xFFFF
+
+        // Remove ThiefNet parts completely
+        WP32 46F844,0xB4,0x8A4 0 // blue bg
+        WP32 46F844,0xB4,0xAB4 0 // menu border
+        WP32 46F844,0xB4,0xB44 0 // menu bg
+        WP32 46F844,0xB4,0xC34 0 // coin bg
+        WP32 46F844,0xB4,0xCC4 0 // coin
+        WP32 46F844,0xB4,0xD84 0 // green arrow
+        WP32 46F844,0xB4,0xF04 0 // side arrows
+        WP32 46F844,0xB4,0x1024 0 // bentley icon shadow
+        WP32 46F844,0xB4,0x1054 0 // bentley icon
+        WP32 46F844,0xB4,0xF94 0 // sly icon shadow
+        WP32 46F844,0xB4,0xFC4 0 // sly icon
+        WP32 46F844,0xB4,0x10B4 0 // mur icon shadow
+        WP32 46F844,0xB4,0x10E4 0 // mur icon
+        WP32 46F844,0xB4,0x1474 0 // orange buying effect
+
+        // Text scales and positions
+        WF 47FAE0 30 // buy gadgets text x position
+        WF 47FA80 289 // description x
+        WF 47FA84 350.95 // description y
+        W32 47B024 0xFFE0CCA0 // description color
+        WF 47FA70 0.85 // desc scale x
+        WF 47FA80 245 // desc pos X
+        WF 47FA84 355 // desc pos Y
+        WF 47FA7C 0.85 // desc scale y
+        WF 47FAE4 42 // cheatnet text y
+        W32 47B204 0xFFE0CCA0 // cheatnet text color
+        W32 47B084 0x44D0BC90  //coin text color 
+        W32 47B080 1449  //coin text var
+        W32 47B094 0 //coin text anchor left 
+        WF 47B088 30  //coin text scale 
+        WF 47FAA0 0.60  //coin text scale x 
+        WF 47FAAC 0.60  //coin text scale y 
+        WF 47FAB0 188  //coin text x 
+        WF 47FAB4 394  //coin text y 
+        WF 47FB90 502 // selector bar x scale
+        WF 47FBA4 143 // selector bar y scale
+        WF 47FBA0 4444 // selector bar x pos (fixes for 16:9)
+        W32 47C7A0 0x44D0BC90 // selector color
+        WF 47FE10 45 // gadget item x
+        WF 47FE40 45 // gadget item x
+        WF 47FEA0 45 // gadget item x
+        WF 47FED0 45 // gadget item x
+        WF 47FF00 45 // gadget item x
+        WF 47FF30 45 // gadget item x
+        WF 47FF50 0 // price scale
+        WF 47FFE0 0 // price scale
+        WF 47FFB0 0 // price scale
+        WF 480010 0 // price scale
+        WF 47FE60 0 // price scale
+        WF 47FF80 0 // price scale
+        WF 480040 0 // gadget description scale
+        WF 480070 0 // "available gadgets" scale
+
+    Function HighlightCheck(check, index, value, value2)
+        IF 484F66 =. check //if selector is 1-6
+            W32 index value //make selector bright/transparent
+        EI
+        IF 484F66 !. check //if selector is 1-6
+            W32 index value2 //make selector bright/transparent
+        EI
+    EndFunction
+    Call HighlightCheck(0x0D, 47B684, 0xFFF0DCB0, 0x44D0BC90)
+    Call HighlightCheck(0x35, 47B6B4, 0xFFF0DCB0, 0x44D0BC90)
+    Call HighlightCheck(0x5D, 47B714, 0xFFF0DCB0, 0x44D0BC90)
+    Call HighlightCheck(0x82, 47B744, 0xFFF0DCB0, 0x44D0BC90)
+    Call HighlightCheck(0x96, 47B774, 0xFFF0DCB0, 0x44D0BC90)
+    Call HighlightCheck(0xAA, 47B7A4, 0xFFF0DCB0, 0x44D0BC90)
+    EI
+
+Function RespawnAsCharacter(charid, cheat)
+    IF 36F7C2 =: 0xFF7F && ccflag_forceOnce =. 1 && cheat =. 1
+        W32 actID charid 
+        W32 mapSpawn 0xAE87
+        Call Reload(soft)
+        W8 cheat 0
+        W8 ccflag_forceOnce 0
+    EI
+    IF cheat =. 1
+        IF ccflag_forceOnce =. 0
+            W32 force_Triangle 0x7F7FFFFF
+            W8 ccflag_forceOnce 1
+        EI
+    EI
+EndFunction
+
+// ID 6: Respawn as Sly
+    Call RespawnAsCharacter(24, ccflag_cheat6)
+    Call CheatToggle(0x0, ccflag_cheat6, ccflag_cheat6tgl)
+
+// ID 7: Respawn as Bentley
+    Call RespawnAsCharacter(25, ccflag_cheat7)
+    Call CheatToggle(0x1, ccflag_cheat7, ccflag_cheat7tgl)
+
+// ID 8: Respawn as Murray
+    Call RespawnAsCharacter(26, ccflag_cheat8)
+    Call CheatToggle(0x2, ccflag_cheat8, ccflag_cheat8tgl)
+
+// ID 9: Respawn as Special characters  // TODO - figure out how to spawn carmelita
+    IF mapID =. map_AustraliaHub
+        IF ccflag_charScroll =. 0 
+            WS specialCharString "Guru\0"
+            IF pad_Cross =. 0xFF
+                Call RespawnAsCharacter(29, ccflag_cheat9)
+            EI
+        EI
+        IF ccflag_charScroll >. 0
+            W8 ccflag_charScroll 0
+        EI
+    EI
+    IF mapID =. map_HollandHub
+        IF ccflag_charScroll =. 0 
+            WS specialCharString "Guru\0"
+            IF pad_Cross =. 0xFF
+                Call RespawnAsCharacter(29, ccflag_cheat9)
+            EI
+        EI
+        IF ccflag_charScroll >. 0
+            W8 ccflag_charScroll 0
+        EI
+    EI
+    IF mapID =. map_ChinaHub
+        IF ccflag_charScroll =. 0 
+            WS specialCharString "Guru\0"
+            IF pad_Cross =. 0xFF
+                Call RespawnAsCharacter(29, ccflag_cheat9)
+            EI
+        EI
+        IF ccflag_charScroll =. 1
+            WS specialCharString "Panda King\0"
+            IF pad_Cross =. 0xFF
+                Call RespawnAsCharacter(30, ccflag_cheat9)
+            EI
+        EI
+        IF ccflag_charScroll =. 2
+            WS specialCharString "Penelope\0"
+            IF pad_Cross =. 0xFF
+                Call RespawnAsCharacter(31, ccflag_cheat9)
+            EI
+        EI
+        IF ccflag_charScroll >. 3
+            W8 ccflag_charScroll 0
+        EI
+    EI
+    IF mapID =. map_PirateHub
+        IF ccflag_charScroll =. 0
+            WS specialCharString "Penelope\0"
+            IF pad_Cross =. 0xFF
+                Call RespawnAsCharacter(31, ccflag_cheat9)
+            EI
+        EI
+        IF ccflag_charScroll =. 0
+            WS specialCharString "RC Car\0"
+            IF pad_Cross =. 0xFF
+                Call RespawnAsCharacter(15063, ccflag_cheat9) 
+            EI
+        EI
+        IF ccflag_charScroll >. 2
+            W8 ccflag_charScroll 0
+        EI
+    EI
+    IF tnHoverItem =. 3
+        IF ccflag_scroll2Temp =. 0 && pad_DPadRight =. 0xFF
+            W8 ccflag_scroll2Temp 1
+            I8 ccflag_charScroll 1
+        EI
+        IF pad_DPadRight !. 0xFF && ccflag_scroll2Temp =. 1
+            W8 ccflag_scroll2Temp 0
+        EI
+        IF ccflag_scroll5Temp =. 0 && pad_DPadLeft =. 0xFF && ccflag_charScroll !. 0
+            W8 ccflag_scroll5Temp 1
+            D8 ccflag_charScroll 1
+        EI
+        IF pad_DPadLeft !. 0xFF && ccflag_scroll5Temp =. 1
+            W8 ccflag_scroll5Temp 0
+        EI
+    EI
+    Call CheatToggle(0x3, ccflag_cheat9, ccflag_cheat9tgl)
+
+// ID 10: Map
+    Call ShowCurrentMap(2, 0)       // Hazard Room
+    Call ShowCurrentMap(3, 1)       // Venice Hub
+    Call ShowCurrentMap(4, 2)       // Canal
+    Call ShowCurrentMap(5, 3)       // Coffeehouses
+    Call ShowCurrentMap(6, 4)       // Opera House
+    Call ShowCurrentMap(7, 5)       // Police HQ
+    Call ShowCurrentMap(8, 6)       // Outback Hub
+    Call ShowCurrentMap(9, 7)       // Ayer's Rock
+    Call ShowCurrentMap(10, 8)      // Oil Field
+    Call ShowCurrentMap(11, 9)      // Cave (Sly)
+    Call ShowCurrentMap(12, 10)     // Cave (Guru)
+    Call ShowCurrentMap(13, 11)     // Lemonade Bar
+    Call ShowCurrentMap(14, 12)     // Cave (Murray)
+    Call ShowCurrentMap(15, 13)     // Holland Hub
+    Call ShowCurrentMap(16, 14)     // Hotel
+    Call ShowCurrentMap(17, 15)     // Hangar (Team Iceland)
+    Call ShowCurrentMap(18, 16)     // Hangar (Team Black Baron)
+    Call ShowCurrentMap(19, 17)     // Hangar (Team Cooper)
+    Call ShowCurrentMap(20, 18)     // Sewers
+    Call ShowCurrentMap(21, 19)     // Dogfight / Biplane Battlefield
+    Call ShowCurrentMap(23, 20)     // China Hub
+    Call ShowCurrentMap(24, 21)     // China Intro
+    Call ShowCurrentMap(25, 22)     // Flashback Arena
+    Call ShowCurrentMap(26, 23)     // Tsao's Battleground
+    Call ShowCurrentMap(27, 24)     // Panda King Apartment
+    Call ShowCurrentMap(28, 25)     // Grapplecam Hall
+    Call ShowCurrentMap(29, 26)     // Tsao's Palace
+    Call ShowCurrentMap(30, 27)     // Tsao's Treasure Temple
+    Call ShowCurrentMap(31, 28)     // Pirate Hub
+    Call ShowCurrentMap(32, 29)     // Sailing Map
+    Call ShowCurrentMap(33, 30)     // Underwater
+    Call ShowCurrentMap(34, 31)     // Dagger Island
+    Call ShowCurrentMap(35, 32)     // Kaine Island
+    Call ShowCurrentMap(36, 33)     // Underwater Tunnel
+    Call ShowCurrentMap(37, 34)     // Vault (Entrance)
+    Call ShowCurrentMap(38, 35)     // Vault (Gauntlet)
+    Call ShowCurrentMap(39, 36)     // Dr. M's Arena
+
+    IF tnStatus !: 0xFFFF
+        Call LoadMap(0, " Hazard Room\0", 2EE058)
+        Call LoadMap(1, " Venice Hub\0", 2EE098)
+        Call LoadMap(2, " Canal\0", 2EE0D8)
+        Call LoadMap(3, " Coffeehouse\0", 2EE118)
+        Call LoadMap(4, " Opera House\0", 2EE158)
+        Call LoadMap(5, " Police HQ\0", 2EE198)
+        Call LoadMap(6, " Outback Hub\0", 2EE1D8)
+        Call LoadMap(7, " Ayer's Rock\0", 2EE218)
+        Call LoadMap(8, " Oil Field\0", 2EE258)
+        Call LoadMap(9, " Cave (Sly)\0", 2EE298)
+        Call LoadMap(10, " Cave (Guru)\0", 2EE2D8)
+        Call LoadMap(11, " Lemonade Bar\0", 2EE318)
+        Call LoadMap(12, " Cave (Murray)\0", 2EE358)
+        Call LoadMap(13, " Holland Hub\0", 2EE398)
+        Call LoadMap(14, " Hotel\0", 2EE3D8)
+        Call LoadMap(15, " Iceland Hangar\0", 2EE418)
+        Call LoadMap(16, " Baron Hangar\0", 2EE458)
+        Call LoadMap(17, " Cooper Hangar\0", 2EE498)
+        Call LoadMap(18, " Sewers\0", 2EE4D8)
+        Call LoadMap(19, " Biplane Arena\0", 2EE518)
+        Call LoadMap(20, " China Hub\0", 2EE598)
+        Call LoadMap(21, " China Intro\0", 2EE5D8)
+        Call LoadMap(22, " Flashback Arena\0", 2EE618)
+        Call LoadMap(23, " Tsao Arena\0", 2EE658)
+        Call LoadMap(24, " Panda's Apartment\0", 2EE698)
+        Call LoadMap(25, " Grapplecam Hall\0", 2EE6D8)
+        Call LoadMap(26, " Tsao's Palace\0", 2EE718)
+        Call LoadMap(27, " Tsao's Temple\0", 2EE758)
+        Call LoadMap(28, " Pirate Hub\0", 2EE798)
+        Call LoadMap(29, " Sailing Map\0", 2EE7D8)
+        Call LoadMap(30, " Underwater\0", 2EE818)
+        Call LoadMap(31, " Dagger Island\0", 2EE858)
+        Call LoadMap(32, " Kaine Island\0", 2EE898)
+        Call LoadMap(33, " Underwater Tunnel\0", 2EE8D8)
+        Call LoadMap(34, " Vault Entrance\0", 2EE918)
+        Call LoadMap(35, " Gauntlet\0", 2EE958)
+        Call LoadMap(36, " Dr. M's Arena\0", 2EE998)
+    EI
+
+    IF tnHoverItem =. 4
+        IF ccflag_mapNum >. 36 // scroll up to 36
+            W8 ccflag_mapNum 0
+        EI
+
+
+        If pad_DPadRight =. 0xFF
+            If ccflag_mapScrollOnce =. 0
+                W8 ccflag_mapScrollOnce 1
+                I8 ccflag_mapNum 1
+            EI
+        EI
+        If pad_DPadRight !. 0xFF
+            IF ccflag_mapScrollOnce =. 1
+                W8 ccflag_mapScrollOnce 0
+            EI
+        EI
+
+        If pad_DPadLeft =. 0xFF && ccflag_mapNum !. 0
+            If ccflag_mapScrollOnce2 =. 0
+                W8 ccflag_mapScrollOnce2 1
+                D8 ccflag_mapNum 1
+            EI
+        EI
+        If pad_DPadLeft !. 0xFF
+            IF ccflag_mapScrollOnce2 =. 1
+                W8 ccflag_mapScrollOnce2 0
+            EI
+        EI
+
+        IF pad_DPadLeft =. 0xFF && ccflag_mapNum =. 0
+            W8 ccflag_mapNum 36
+        EI
+
+        IF pad_Cross =. 0xFF
+            Call Reload(full)
+        EI
+    EI
+
+    Call CheatToggle(0x4, ccflag_cheat10, ccflag_cheat10tgl)
+
+// ID 11: Infinite Jumps
+  // TODO - add better method, with horizontal movement
+    IF ccflag_cheat11 =. 1
+        WP32 actChar,infJumps 0
+    EI
+    Call CheatToggle(0x5, ccflag_cheat11, ccflag_cheat11tgl)
+    Call ToggleMask(infJumpStringEnd, ccflag_cheat11)
+
+// ID 12: Warps
+    Call MapUptimeCheck()
+        WS warpCharString " --\0"
+    EI
+
+    IF tnHoverItem =. 0x6
+        IF ccflag_warpTemp =. 0 && pad_DPadRight =. 0xFF
+            W8 ccflag_warpTemp 1
+            I8 ccflag_warpScroll 1
+        EI
+        IF pad_DPadRight !. 0xFF && ccflag_warpTemp =. 1
+            W8 ccflag_warpTemp 0
+        EI
+
+        IF ccflag_warpTemp2 =. 0 && pad_DPadLeft =. 0xFF
+            W8 ccflag_warpTemp2 1
+            D8 ccflag_warpScroll 1
+        EI
+        IF pad_DPadLeft !. 0xFF && ccflag_warpTemp2 =. 1
+            W8 ccflag_warpTemp2 0
+        EI
+        
+        Call FillWarps(" World Origin\0", 0, 0, 0, 0)
+        IF tnStatus !: 0xFFFF
+            IF pad_DPadLeft =. 0xFF && ccflag_warpScroll =. 0
+                CB currentMaxWarp ccflag_warpScroll 1 
+            EI
+
+            IF pad_DPadRight =. 0xFF && ccflag_warpTemp =. 0
+                W8 ccflag_warpScroll 0
+            EI
+
+            IF mapID =. map_Hazard
+                // Hazard Room
+                Call SetMaxWarps(map_Hazard, 3)
+                Call FillWarps(" Center\0", 1, 3550, 440, 100)
+                Call FillWarps(" Top\0", 2, 3580, 630, 3440)
+                Call FillWarps(" Safehouse\0", 3, 6640, 680, 90)
+            EI
+            IF mapID =. map_VeniceHub
+                // Venice Hub
+                Call SetMaxWarps(map_VeniceHub, 7)
+                Call FillWarps(" Safehouse\0", 1, 200, -2090, 173)
+                Call FillWarps(" Safehouse Roof\0", 2, 863, -1420, 1266)
+                Call FillWarps(" Dome\0", 3, -7570, 1670, 1962)
+                Call FillWarps(" Ferris\0", 4, 6900, 1480, 160)
+                Call FillWarps(" Opera\0", 5, 6250, 8210, 260)
+                Call FillWarps(" Fountain\0", 6, -6670, 8550, 700)
+                Call FillWarps(" Aquarium\0", 7, 8040, -4365, 160)
+            EI
+            IF mapID =. map_Canal
+                // Canal
+                Call SetMaxWarps(map_Canal, 3)
+                Call FillWarps(" Boat\0", 1, 0, 0, 130)
+                Call FillWarps(" Intersection 1\0", 2, 665, -12555, 140)
+                Call FillWarps(" Intersection 2\0", 3, 27250, 28580, 140)
+            EI
+            IF mapID =. map_Coffee
+                // Coffee
+                Call SetMaxWarps(map_Coffee, 7)
+                Call FillWarps(" Entrance 1\0", 1, 710, -5000, 125)
+                Call FillWarps(" Entrance 2\0", 2, 1070, 100, 125)
+                Call FillWarps(" Entrance 3\0", 3, 1160, 5000, 125)
+                Call FillWarps(" Safe 1\0", 4, -1710, -4990, 125)
+                Call FillWarps(" Safe 2\0", 5, -1750, 10, 125)
+                Call FillWarps(" Safe 3\0", 6, 3245, 4990, 125)
+                Call FillWarps(" Roof\0", 7, -1780, -4540, 1175)
+            EI
+            IF mapID =. map_OperaHouse
+                // Opera
+                Call SetMaxWarps(map_OperaHouse, 6)
+                Call FillWarps(" Entrance\0", 1, -7130, -11340, 1030)
+                Call FillWarps(" Basement\0", 2, 14440, -4000, 1015)
+                Call FillWarps(" Pumps\0", 3, -885, -2230, 180)
+                Call FillWarps(" Worlitzer\0", 4, -2100, 4890, 630)
+                Call FillWarps(" Depths\0", 5, 8720, -6490, 75)
+                Call FillWarps(" Top\0", 6, 8770, -5830, 1650)
+            EI
+            IF mapID =. map_PoliceHQ
+                // Police
+                Call SetMaxWarps(map_PoliceHQ, 2)
+                Call FillWarps(" Dimitri\0", 1, -60, 7600, 120)
+                Call FillWarps(" Cell Key\0", 2, -685, 3250, 125)
+            EI
+            IF mapID =. map_AustraliaHub
+                // Australia
+                Call SetMaxWarps(map_AustraliaHub, 8)
+                Call FillWarps(" Safehouse\0", 1, -4570, -7190, 1525)
+                Call FillWarps(" Safehouse Roof\0", 2, -4590, -7820, 2650)
+                Call FillWarps(" Crane\0", 3, 700, -1290, 4320)
+                Call FillWarps(" Truck\0", 4, 9820, -550, 1240)
+                Call FillWarps(" Guru's Hut\0", 5, -8230, 4365, 2760)
+                Call FillWarps(" Guru's Cell\0", 6, 8665, 5620, 2820)
+                Call FillWarps(" Treeline\0", 7, -8360, -3400, 5060)
+                Call FillWarps(" Plateau\0", 8, 6360, 7645, 6930)
+            EI
+            IF mapID =. map_Ayers
+                // Ayers
+                Call SetMaxWarps(map_Ayers, 5)
+                Call FillWarps(" Drill\0", 1, 270, 160, 240)
+                Call FillWarps(" Top of Drill\0", 2, 420, 15, 2190)
+                Call FillWarps(" Truck Spawn\0", 3, -16350, 8310, 4230)
+                Call FillWarps(" Mine\0", 4, 3830, 13920, 70)
+                Call FillWarps(" Clifftop\0", 5, 16260, 12890, 12660)
+            EI
+            IF mapID =. map_Oil
+                // oilfield
+                Call SetMaxWarps(map_Oil, 3)
+                Call FillWarps(" The Claw\0", 1, 320, 10000, 70)
+                Call FillWarps(" Catapult\0", 2, 4820, -4470, 70)
+                Call FillWarps(" Drill Platform\0", 3, -360, 620, 1235)
+            EI
+            IF mapID =. map_CaveSly
+                // cave moonst
+                Call SetMaxWarps(map_CaveSly, 3)
+                Call FillWarps(" Entrance\0", 1, -9345, 330, 20)
+                Call FillWarps(" Safe\0", 2, 6545, 125, 1111)
+                Call FillWarps(" Drills\0", 3, -780, -3420, 1120)
+            EI
+            IF mapID =. map_CaveGuru
+                // cave staff
+                Call SetMaxWarps(map_CaveGuru, 3)
+                Call FillWarps(" Entrance\0", 1, -8945, 370, -1860)
+                Call FillWarps(" Safe\0", 2, -100, -4960, -610)
+                Call FillWarps(" Conveyor Belt\0", 3, -5970, -1800, -1335)
+            EI
+            IF mapID =. map_CaveMurray
+                // cave spunky
+                Call SetMaxWarps(map_CaveMurray, 4)
+                Call FillWarps(" Entrance\0", 1, -10230, -1445, -1140)
+                Call FillWarps(" Piston\0", 2, 3380, -1870, -1020)
+                Call FillWarps(" Triple Piston\0", 3, -2300, -8000, 150)
+                Call FillWarps(" Drilling Area\0", 4, 200, -9200, 320)
+            EI
+            IF mapID =. map_HollandHub
+                // holland hub
+                Call SetMaxWarps(map_HollandHub, 6)
+                Call FillWarps(" Safehouse\0", 1, 12180, -540, 1180)
+                Call FillWarps(" Baron's Hangar\0", 2, -6075, 6950, 2855)
+                Call FillWarps(" Forest\0", 3, -2770, 3020, 430)
+                Call FillWarps(" Ramp\0", 4, -4645, -9100, 1680)
+                Call FillWarps(" Barn\0", 5, 3680, -6000, 600)
+                Call FillWarps(" Well\0", 6, 4330, 3490, 120)
+            EI
+            IF mapID =. map_Hotel
+                // holland hotel
+                Call SetMaxWarps(map_Hotel, 4)
+                Call FillWarps(" Safehouse Door\0", 1, 2620, 280, 600)
+                Call FillWarps(" Ham\0", 2, -535, 420, 0)
+                Call FillWarps(" Viking Helmet\0", 3, 830, 2950, 590)
+                Call FillWarps(" Outside Door\0", 4, 60, -6590, -545)
+            EI
+            IF mapID =. map_HangarCooper
+                // hangar cooper
+                Call SetMaxWarps(map_HangarCooper, 5)
+                Call FillWarps(" Center\0", 1, -180, -125, 75)
+                Call FillWarps(" Control Room\0", 2, -1890, -130, 75)
+                Call FillWarps(" Truck\0", 3, -340, 2220, 1030)
+                Call FillWarps(" Left Sewer\0", 4, 4259, -9167, 26171)
+                Call FillWarps(" Right Sewer\0", 5, -4903, -9205, 26166)
+            EI
+            IF mapID =. map_Sewers
+                // sewer
+                Call SetMaxWarps(map_Sewers, 4)
+                Call FillWarps(" Entrance\0", 1, 20150, -9850, 210)
+                Call FillWarps(" Iceland Hotel Path\0", 2, 16490, 7280, 210)
+                Call FillWarps(" Exit to Surface\0", 3, 7960, -12750, 210)
+                Call FillWarps(" Hotel Entrance\0", 4, 7425, 9500, 210)
+            EI
+            IF mapID =. map_Dogfight
+                // biplane
+                Call SetMaxWarps(map_Dogfight, 6)
+                Call FillWarps(" Barn\0", 1, -1890, 380, 870)
+                Call FillWarps(" Crop Squares\0", 2, 17800, 3210, 900)
+                Call FillWarps(" Bridge 1\0", 3, -140, -14670, 620)
+                Call FillWarps(" Bridge 2\0", 4, -4444, 16170, 450)
+                Call FillWarps(" Bridge 3\0", 5, 10460, 13260, 500)
+                Call FillWarps(" Boss Arena\0", 6, 251764, -186, 0)
+            EI
+            IF mapID =. map_ChinaHub
+                // china
+                Call SetMaxWarps(map_ChinaHub, 6)
+                Call FillWarps(" Safehouse\0", 1, -5440, -7500, 2020)
+                Call FillWarps(" Turret Tower\0", 2, -5330, -8415, 3500)
+                Call FillWarps(" Heavens\0", 3, 7310, -8370, 4980)
+                Call FillWarps(" Graveyard\0", 4, 8570, 10150, 5840)
+                Call FillWarps(" Statue\0", 5, 795, -2980, 1915)
+                Call FillWarps(" Palace\0", 6, 940, 2255, 4790)
+            EI
+            IF mapID =. map_ChinaIntro
+                // china intr
+                Call SetMaxWarps(map_ChinaIntro, 4)
+                Call FillWarps(" Spawn\0", 1, -2085, -54630, 850)
+                Call FillWarps(" Panda King\0", 2, 400, -50485, 1888)
+                Call FillWarps(" Fireworks\0", 3, 3470, -51845, 820)
+                Call FillWarps(" Clifftop\0", 4, -2820, -57675, 5420)
+            EI
+            IF mapID =. map_TsaoArena
+                // bamboo
+                Call SetMaxWarps(map_TsaoArena, 3)
+                Call FillWarps(" Spawn\0", 1, -50, 3060, 840)
+                Call FillWarps(" Ground Level\0", 2, 130, 30410, -50)
+                Call FillWarps(" Top\0", 3, -4545, 35970, 4675)
+            EI
+            IF mapID =. map_PandaKing
+                // panda apt
+                Call SetMaxWarps(map_PandaKing, 2)
+                Call FillWarps(" Yang\0", 1, -240, -100, 19995)
+                Call FillWarps(" Yin\0", 2, -1855, -100, 19995)
+            EI
+            IF mapID =. map_Grapplecam
+                // grapple
+                Call SetMaxWarps(map_Grapplecam, 5)
+                Call FillWarps(" Laser Wall\0", 1, -2930, 0, -50)
+                Call FillWarps(" Second Floor\0", 2, 1050, 1580, 645)
+                Call FillWarps(" Computer\0", 3, 1075, -1515, 645)
+                Call FillWarps(" Outside\0", 4, -4210, -140, -185)
+                Call FillWarps(" Top\0", 5, -10480, -4100, 2760)
+            EI
+            IF mapID =. map_TsaosPalace
+                // palace
+                Call SetMaxWarps(map_TsaosPalace, 4)
+                Call FillWarps(" Vases\0", 1, -5270, -60, -190)
+                Call FillWarps(" Computer\0", 2, -2250, 1445, 0)
+                Call FillWarps(" Jing King\0", 3, 470, -1500, 0)
+                Call FillWarps(" Drill Site\0", 4, 2075, 15000, 545)
+            EI
+            IF mapID =. map_TsaosTemple
+                // treasure temple
+                Call SetMaxWarps(map_TsaosTemple, 3)
+                Call FillWarps(" Entrance\0", 1, -6300, -130, 330)
+                Call FillWarps(" Treasure\0", 2, 1725, 730, -330)
+                Call FillWarps(" Crawlspace\0", 3, -560, 140, 1640)
+            EI
+            IF mapID =. map_PirateHub
+                // pirate hub
+                Call SetMaxWarps(map_PirateHub, 8)
+                Call FillWarps(" Safehouse\0", 1, 4900, 1345, 1125)
+                Call FillWarps(" Safehouse Roof)\0", 2, 5590, 2310, 2680)
+                Call FillWarps(" Skull Keep)\0", 3, -9600, -1880, 4410)
+                Call FillWarps(" Waterfall\0", 4, 3625, 16360, 4435)
+                Call FillWarps(" Fireplace\0", 5, -530, 7030, 1970)
+                Call FillWarps(" Monkeys?\0", 6, -7415, 11565, 1520)
+                Call FillWarps(" Sly's Ship\0", 7, 11390, -9290, 1550)
+                Call FillWarps(" Archipelago\0", 8, -26550, -19930, 2100)
+            EI
+            IF mapID =. map_SailingMap
+                // sailing map
+                Call SetMaxWarps(map_SailingMap, 4)
+                Call FillWarps(" Safehouse\0", 1, 91800, -30700, 1200)
+                Call FillWarps(" Map Centre\0", 2, 80444, 55088, 818)
+                Call FillWarps(" Operation\0", 3, 94855, 404446, 1331)
+                Call FillWarps(" Crusher\0", 4, 397650, 177922, 118)
+            EI
+            IF mapID =. map_Underwater
+                // underwater
+                Call SetMaxWarps(map_Underwater, 5)
+                Call FillWarps(" Spawn\0", 1, 28980, -100, 2600)
+                Call FillWarps(" Ship\0", 2, 21020, 14180, 6030)
+                Call FillWarps(" Shipwreck\0", 3, 22460, 12380, -3480)
+                Call FillWarps(" Depths\0", 4, 21910, 8690, -7285)
+                Call FillWarps(" Ocean Current\0", 5, 20860, 22410, -7120)
+            EI
+            IF mapID =. map_DaggerIsland
+                // dagger
+                Call SetMaxWarps(map_DaggerIsland, 5)
+                Call FillWarps(" Sly's Ship\0", 1, -16760, 2940, 1000)
+                Call FillWarps(" Palm Trees\0", 2, -8040, -970, 1100)
+                Call FillWarps(" Shipwreck\0", 3, 1620, -5250, 1140)
+                Call FillWarps(" Pirate Ship\0", 4, 15680, 5290, 770)
+                Call FillWarps(" Mountain Peak\0", 5, 2215, 10860, 7940)
+            EI
+            IF mapID =. map_KaineIsland
+                // kaine
+                Call SetMaxWarps(map_KaineIsland, 8)
+                Call FillWarps(" Spawn\0", 1, -6715, -14380, -2900)
+                Call FillWarps(" Wall Sneak\0", 2, -6285, -2220, -2180)
+                Call FillWarps(" Ventilation Shaft\0", 3, -1870, 4765, -3855)
+                Call FillWarps(" Vault Entrance\0", 4, -1085, -100, 2360)
+                Call FillWarps(" Ship Dock\0", 5, 7855, -24360, -3770)
+                Call FillWarps(" RC Car Track\0", 6, -13650, -14110, -2190)
+                Call FillWarps(" Random Rope\0", 7, -16480, 1520, -2830)
+                Call FillWarps(" Rock Formation\0", 8, 13730, 20650, 2100)
+            EI
+            IF mapID =. map_UnderwaterTunnel
+                // underwater
+                Call SetMaxWarps(map_UnderwaterTunnel, 3)
+                Call FillWarps(" Spawn\0", 1, 51570, 23850, -5745)
+                Call FillWarps(" Water Tube\0", 2, 745, -34265, -820)
+                Call FillWarps(" Boss Arena\0", 3, 10200, -59780, -550)
+            EI
+            IF mapID =. map_Vault_Entrance
+                // vault entrance
+                Call SetMaxWarps(map_Vault_Entrance, 2)
+                Call FillWarps(" Center\0", 1, 0, 0, 40)
+                Call FillWarps(" Entrance Door\0", 2, 4350, -45, 460)
+            EI
+            IF mapID =. map_Gauntlet
+                // vault gauntlet
+                Call SetMaxWarps(map_Gauntlet, 11)
+                Call FillWarps(" Slytunkhamen\0", 1, -28690, 21665, -2175)
+                Call FillWarps(" Sir Galleth\0", 2, -24715, 13995, -2260)
+                Call FillWarps(" Salim\0", 3, -13760, 12485, -2200)
+                Call FillWarps(" Slaigh\0", 4, -15325, 24680, -2190)
+                Call FillWarps(" Rioichi\0", 5, -21130, 19955, -180)
+                Call FillWarps(" Henriette\0", 6, -10530, 13200, 120)
+                Call FillWarps(" Tennesee\0", 7, 2010, 13275, -2280)
+                Call FillWarps(" Thaddeus\0", 8, 9360, 1820, -2185)
+                Call FillWarps(" Otto\0", 9, -2050, 2740, 0)
+                Call FillWarps(" Conner\0", 10, 7515, 5030, 150)
+                Call FillWarps(" Inner Sanctum\0", 11, 16645, -2260, 120)
+            EI
+        EI
+    EI
+
+// ID 13: X-Ray
+ // TODO - increase sly's brightness or smth
+    IF ccflag_cheat13 =. 1
+        WF 479350 0.23
+    EI
+    IF ccflag_cheat13 =. 0
+        WF 479350 1
+    EI
+    Call CheatToggle(0x7, ccflag_cheat13, ccflag_cheat13tgl)
+    Call ToggleMask(slipperyStringEnd, ccflag_cheat13)
+
+// ID 14: Flyable Glider
+    If ccflag_cheat14 =. 1 //cheat on
+        WF 323110 2000 // pull fly speed
+        WF 323114 2000 // push fly speed
+        WF 323118 -800 // pull vertical speed
+        WF 32311C 800 // push vertical speed
+    EI
+
+    If ccflag_cheat14 =. 0 //cheat on
+        WF 323110 300 // pull fly speed
+        WF 323114 800 // push fly speed
+        WF 323118 -200 // pull vertical speed
+        WF 32311C -400  // push vertical speed
+    EI
+    Call CheatToggle(0x8, ccflag_cheat14, ccflag_cheat14tgl)
+    Call ToggleMask(flyableStringEnd, ccflag_cheat14)
+
+// ID 15: Undetectable
+    IF ccflag_cheat15 =. 1
+        WP32 actChar,undetectable 1
+    EI
+    IF ccflag_cheat15 =. 0
+        WP32 actChar,undetectable 0
+    EI
+    Call CheatToggle(0x9, ccflag_cheat15, ccflag_cheat15tgl)
+    Call ToggleMask(undetectableStringEnd, ccflag_cheat15)
+
+// ID 16: Godmode
+    IF ccflag_cheat16 =. 1
+        WP32 actChar,godmode 1
+        
+        // death barriers
+        WPF 478588,C0 0 // X scale
+        WPF 478BF0,20,1E0 0
+        WPF 478588,A4 0 // Y scale
+        WPF 478588,A8 0
+        WPF 478BF0,20,1F4 0
+        WPF 478BF0,20,1F8 0
+        WPF 478588,B8 0 // Z scale
+        WPF 478BF0,20,208 0
+    EI
+    IF ccflag_cheat16 =. 0
+        WP32 actChar,godmode 0
+    EI
+    Call CheatToggle(0xA, ccflag_cheat16, ccflag_cheat16tgl)
+    Call ToggleMask(godmodeStringEnd, ccflag_cheat16)
+
+// ID 17: Damage Type
+    Call MapUptimeCheck()
+        WS damageCharString " Normal\0"
+    EI
+
+    IF tnHoverItem =. 0xB
+        IF ccflag_dmgScroll >. 8 // scroll up to 8
+            W8 ccflag_dmgScroll 0
+        EI
+
+        IF ccflag_scrollTemp2 =. 0 && pad_DPadRight =. 0xFF
+            W8 ccflag_scrollTemp2 1
+            I8 ccflag_dmgScroll 1
+        EI
+        IF pad_DPadRight !. 0xFF && ccflag_scrollTemp2 =. 1
+            W8 ccflag_scrollTemp2 0
+        EI
+
+        IF ccflag_scrollTemp3 =. 0 && pad_DPadLeft =. 0xFF
+            W8 ccflag_scrollTemp3 1
+            D8 ccflag_dmgScroll 1
+        EI
+        IF pad_DPadLeft !. 0xFF && ccflag_scrollTemp3 =. 1
+            W8 ccflag_scrollTemp3 0
+        EI
+
+        IF pad_DPadLeft =. 0xFF && ccflag_dmgScroll =. 0
+            W8 ccflag_dmgScroll 8
+        EI
+    EI
+
+    IF ccflag_dmgScroll =. 0 // Normal
+    // this makes triangle attacks for sly mur broken
+        WS damageCharString " Normal\0"
+        Call DamageType(sly, 0x11FC, type_Knockout)
+        Call DamageType(sly, 0x12CC, type_Normal2)
+        Call DamageType(sly, 0x146C, type_Normal)
+        Call DamageType(bentley, 0x1BC, type_Normal)
+        Call DamageType(murray, 0xAAC, type_Normal)
+        Call DamageType(murray, 0x9DC, type_Normal2)
+    EI
+    IF ccflag_dmgScroll =. 1 // Fire
+        WS damageCharString " Fire\0"
+        Call DamageType(sly, 0x11FC, type_Fire)
+        Call DamageType(sly, 0x12CC, type_Fire)
+        Call DamageType(sly, 0x146C, type_Fire)
+        Call DamageType(bentley, 0x1BC, type_Fire)
+        Call DamageType(murray, 0xAAC, type_Fire)
+        Call DamageType(murray, 0x9DC, type_Fire)
+    EI
+    IF ccflag_dmgScroll =. 2 // Electric
+        WS damageCharString " Electric\0"
+        Call DamageType(sly, 0x11FC, type_Electric)
+        Call DamageType(sly, 0x12CC, type_Electric)
+        Call DamageType(sly, 0x146C, type_Electric)
+        Call DamageType(bentley, 0x1BC, type_Electric)
+        Call DamageType(murray, 0xAAC, type_Electric)
+        Call DamageType(murray, 0x9DC, type_Electric)
+    EI
+    IF ccflag_dmgScroll =. 3 // Knockout
+        WS damageCharString " Knockout\0"
+        Call DamageType(sly, 0x11FC, type_Knockout)
+        Call DamageType(sly, 0x12CC, type_Knockout)
+        Call DamageType(sly, 0x146C, type_Knockout)
+        Call DamageType(bentley, 0x1BC, type_Knockout)
+        Call DamageType(murray, 0xAAC, type_Knockout)
+        Call DamageType(murray, 0x9DC, type_Knockout)
+    EI
+    IF ccflag_dmgScroll =. 4 // Void
+        WS damageCharString " Void\0"
+        Call DamageType(sly, 0x11FC, type_Void)
+        Call DamageType(sly, 0x12CC, type_Void)
+        Call DamageType(sly, 0x146C, type_Void)
+        Call DamageType(bentley, 0x1BC, type_Void)
+        Call DamageType(murray, 0xAAC, type_Void)
+        Call DamageType(murray, 0x9DC, type_Void)
+    EI
+    IF ccflag_dmgScroll =. 5 // Sleep
+        WS damageCharString " Sleep\0"
+        Call Damage(sly, 0x11F8, 0x32)
+        Call Damage(sly, 0x12C8, 0x32)
+        Call Damage(sly, 0x1468, 0x32)
+        Call Damage(bentley, 0x1B8, 0x32)
+        Call Damage(murray, 0x9D8, 0x32)
+        Call Damage(murray, 0xAA8, 0x32)
+        Call DamageType(sly, 0x11FC, type_Sleep)
+        Call DamageType(sly, 0x12CC, type_Sleep)
+        Call DamageType(sly, 0x146C, type_Sleep)
+        Call DamageType(bentley, 0x1BC, type_Sleep)
+        Call DamageType(murray, 0xAAC, type_Sleep)
+        Call DamageType(murray, 0x9DC, type_Sleep)
+    EI
+    IF ccflag_dmgScroll !. 5 //restore damage
+        Call Damage(sly, 0x11F8, 0x9)
+        Call Damage(sly, 0x12C8, 0xA)
+        Call Damage(sly, 0x1468, 0xA)
+        Call Damage(bentley, 0x1B8, 0xA)
+        Call Damage(murray, 0x9D8, 0xA)
+        Call Damage(murray, 0xAA8, 0xA)
+    EI
+    IF ccflag_dmgScroll =. 6 // Shrink
+        WS damageCharString " Shrink\0"
+        Call DamageType(sly, 0x11FC, type_Shrink)
+        Call DamageType(sly, 0x12CC, type_Shrink)
+        Call DamageType(sly, 0x146C, type_Shrink)
+        Call DamageType(bentley, 0x1BC, type_Shrink)
+        Call DamageType(murray, 0xAAC, type_Shrink)
+        Call DamageType(murray, 0x9DC, type_Shrink)
+    EI
+    IF ccflag_dmgScroll =. 7 // Rage
+        WS damageCharString " Rage\0"
+        Call DamageType(sly, 0x11FC, type_Rage)
+        Call DamageType(sly, 0x12CC, type_Rage)
+        Call DamageType(sly, 0x146C, type_Rage)
+        Call DamageType(bentley, 0x1BC, type_Rage)
+        Call DamageType(murray, 0xAAC, type_Rage)
+        Call DamageType(murray, 0x9DC, type_Rage)
+    EI
+    IF ccflag_dmgScroll =. 8 // Instakill
+        WS damageCharString " Instakill\0"
+        Call DamageType(sly, 0x11FC, type_Instakill)
+        Call DamageType(sly, 0x12CC, type_Instakill)
+        Call DamageType(sly, 0x146C, type_Instakill)
+        Call DamageType(bentley, 0x1BC, type_Instakill)
+        Call DamageType(murray, 0xAAC, type_Instakill)
+        Call DamageType(murray, 0x9DC, type_Instakill)
+    EI
+    Call CheatToggle(0xB, ccflag_cheat17, ccflag_cheat17tgl)
+
+// ID 18: Infinite HP+MP
+    IF ccflag_cheat18 =. 1
+        IF actID !. 26
+            WP32 actChar,health 40
+        EI
+        IF actID =. 26
+            WP32 actChar,health 60
+        EI
+        WP32 actChar,gadgetpower 100
+    EI
+    Call CheatToggle(0xC, ccflag_cheat18, ccflag_cheat18tgl)
+    Call ToggleMask(infMPStringEnd, ccflag_cheat18)
+
+// ID 19: SUPERHOT
+    IF ccflag_cheat19 =. 1 && tnStatus =: 0xFFFF
+        CB pad_LS clockGame 4
+        W8 475058 5
+    EI
+    IF pad_Triangle =. 0xFF && ccflag_cheat19 =. 0 && tnStatus =: 0xFFFF
+        WF clockGame 1
+        W8 475058 3
+    EI
+    Call CheatToggle(0xD, ccflag_cheat19, ccflag_cheat19tgl)
+    Call ToggleMask(superhotStringEnd, ccflag_cheat19)
+
+// ID 20: Max Draw Distance
+    IF ccflag_cheat20 =. 1
+        WPF camera,setDrawDist -9
+        WPF camera,currentDrawDist -9
+    EI
+    IF ccflag_cheat20 =. 0 && pad_Triangle =. 0xFF
+        WPF camera,setDrawDist 1
+        WPF camera,currentDrawDist 1
+    EI
+    Call CheatToggle(0xE, ccflag_cheat20, ccflag_cheat20tgl)
+    Call ToggleMask(maxdrawStringEnd, ccflag_cheat20)
+
+// ID 21: Claustrophobia
+    IF ccflag_cheat21 =. 1
+        WPF camera,claustro 0.03
+    EI
+    // instead of saving & returning original camera stretch, reopening the binoc sets it automatically
+    Call CheatToggle(0xF, ccflag_cheat21, ccflag_cheat21tgl)
+    Call ToggleMask(clausStringEnd, ccflag_cheat21)
+
+Function TouchPeople(map, entity, poolindex, offsets, value)
+    IF mapID =. map
+        WP32 fkx,entity,poolindex,offsets value
+    EI
+EndFunction
+
+Function TouchVenice(offsets, value)
+    Call TouchPeople(map_VeniceHub, v_doberman, 0, offsets, value)
+    Call TouchPeople(map_VeniceHub, v_doberman, 4, offsets, value)
+    Call TouchPeople(map_VeniceHub, v_ectoswarmer, 0, offsets, value)
+    Call TouchPeople(map_VeniceHub, v_ectoswarmer, 4, offsets, value)
+    Call TouchPeople(map_VeniceHub, v_ectoswarmer, 8, offsets, value)
+    Call TouchPeople(map_VeniceHub, v_endoswarmer, 0, offsets, value)
+    Call TouchPeople(map_VeniceHub, v_endoswarmer, 4, offsets, value)
+    Call TouchPeople(map_VeniceHub, v_endoswarmer, 8, offsets, value)
+EndFunction
+
+Function TouchOpera(offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_ectoswarmer, 0, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_ectoswarmer, 4, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_ectoswarmer, 8, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_ectoswarmer, C, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_ectoswarmer, 10, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_ectoswarmer, 14, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_ectoswarmer, 18, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_ectoswarmer, 1C, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_endoswarmer, 0, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_endoswarmer, 4, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_endoswarmer, 8, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_endoswarmer, C, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_endoswarmer, 10, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_endoswarmer, 14, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_endoswarmer, 18, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_doberman, 0, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_doberman, 4, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_doberman, 8, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_doberman, C, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_doberman, 10, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_doberman, 14, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_doberman, 18, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_doberman, 1C, offsets, value)
+    Call TouchPeople(map_OperaHouse, opera_doberman, 20, offsets, value)
+EndFunction
+
+Function TouchCaveSly(offsets, value)
+    Call TouchPeople(map_CaveSly, cavesly_dingo, 0, offsets, value)
+    Call TouchPeople(map_CaveSly, cavesly_dingo, 4, offsets, value)
+    Call TouchPeople(map_CaveSly, cavesly_dingo, 8, offsets, value)
+    Call TouchPeople(map_CaveSly, cavesly_dingo, C, offsets, value)
+    Call TouchPeople(map_CaveSly, cavesly_kangaroo, 0, offsets, value)
+    Call TouchPeople(map_CaveSly, cavesly_kangaroo, 4, offsets, value)
+EndFunction
+
+Function TouchCaveMur(offsets, value)
+    Call TouchPeople(map_CaveMurray, cavemur_dingo, 0, offsets, value)
+    Call TouchPeople(map_CaveMurray, cavemur_dingo, 4, offsets, value)
+    Call TouchPeople(map_CaveMurray, cavemur_dingo, 8, offsets, value)
+    Call TouchPeople(map_CaveMurray, cavemur_dingo, C, offsets, value)
+    Call TouchPeople(map_CaveMurray, cavemur_dingo, 10, offsets, value)
+    Call TouchPeople(map_CaveMurray, cavemur_kangaroo, 0, offsets, value)
+    Call TouchPeople(map_CaveMurray, cavemur_kangaroo, 4, offsets, value)
+    Call TouchPeople(map_CaveMurray, cavemur_kangaroo, 8, offsets, value)
+EndFunction
+
+Function TouchOutback(offsets, value)
+    Call TouchPeople(map_AustraliaHub, o_dingo, 0, offsets, value)
+    Call TouchPeople(map_AustraliaHub, o_dingo, 4, offsets, value)
+    Call TouchPeople(map_AustraliaHub, o_dingo, 8, offsets, value)
+    Call TouchPeople(map_AustraliaHub, o_dingo, C, offsets, value)
+    Call TouchPeople(map_AustraliaHub, o_dingo, 10, offsets, value)
+    Call TouchPeople(map_AustraliaHub, o_kangaroo, 0, offsets, value)
+    Call TouchPeople(map_AustraliaHub, o_kangaroo, 4, offsets, value)
+    Call TouchPeople(map_AustraliaHub, o_kangaroo, 8, offsets, value)
+EndFunction
+
+Function TouchHolland(offsets, value)
+    Call TouchPeople(map_HollandHub, h_bunnyswarmer, 0, offsets, value)
+    Call TouchPeople(map_HollandHub, h_bunnyswarmer, 4, offsets, value)
+    Call TouchPeople(map_HollandHub, h_bunnyswarmer, 8, offsets, value)
+    Call TouchPeople(map_HollandHub, h_pigswarmer, 0, offsets, value)
+    Call TouchPeople(map_HollandHub, h_pigswarmer, 4, offsets, value)
+    Call TouchPeople(map_HollandHub, h_pigswarmer, 8, offsets, value)
+    Call TouchPeople(map_HollandHub, h_ramguard, 0, offsets, value)
+    Call TouchPeople(map_HollandHub, h_ramguard, 4, offsets, value)
+    Call TouchPeople(map_HollandHub, h_ramguard, 8, offsets, value)
+    Call TouchPeople(map_HollandHub, h_wolf, 0, offsets, value)
+EndFunction
+
+Function TouchChina(offsets, value)
+    Call TouchPeople(map_ChinaHub, c_hoppingvampire, 0, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_hoppingvampire, 4, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_hoppingvampire, 8, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_hoppingvampire, C, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_hoppingvampire, 10, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_hoppingvampire, 14, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_hoppingvampire, 18, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_hoppingvampire, 1C, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_hoppingvampire, 20, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_hoppingvampire, 24, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_monkeyswarmer, 0, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_monkeyswarmer, 4, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_monkeyswarmer, 8, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_squatswarmer, 0, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_squatswarmer, 4, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_squatswarmer, 8, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_smalldragon, 0, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_smalldragon, 4, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_tigerguard, 0, offsets, value)
+    Call TouchPeople(map_ChinaHub, c_tigerguard, 4, offsets, value)
+EndFunction
+
+Function TouchPirate(offsets, value)
+    Call TouchPeople(map_PirateHub, p_ectoswarmer, 0, offsets, value)
+    Call TouchPeople(map_PirateHub, p_ectoswarmer, 4, offsets, value)
+    Call TouchPeople(map_PirateHub, p_dingo, 0, offsets, value)
+    Call TouchPeople(map_PirateHub, p_dingo, 4, offsets, value)
+    Call TouchPeople(map_PirateHub, p_dingo, 8, offsets, value)
+    Call TouchPeople(map_PirateHub, p_hound, 0, offsets, value)
+    Call TouchPeople(map_PirateHub, p_hound, 4, offsets, value)
+EndFunction
+
+Function TouchSail(offsets, value)
+    Call TouchPeople(map_SailingMap, sail_ectoswarmer, 0, offsets, value)
+    Call TouchPeople(map_SailingMap, sail_ectoswarmer, 4, offsets, value)
+    Call TouchPeople(map_SailingMap, sail_ectoswarmer, 8, offsets, value)
+    Call TouchPeople(map_SailingMap, sail_ectoswarmer, C, offsets, value)
+    Call TouchPeople(map_SailingMap, sail_dingo, 0, offsets, value)
+    Call TouchPeople(map_SailingMap, sail_dingo, 4, offsets, value)
+    Call TouchPeople(map_SailingMap, sail_dingo, 8, offsets, value)
+    Call TouchPeople(map_SailingMap, sail_dingo, C, offsets, value)
+EndFunction
+
+Function TouchDagger(offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_dingo, 0, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_dingo, 4, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_dingo, 8, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_dingo, C, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_croc, 0, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_croc, 4, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_croc, 8, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_croc, C, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_croc, 10, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_croc, 14, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_croc, 18, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_croc, 1C, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_hound, 0, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_hound, 4, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_hound, 8, offsets, value)
+    Call TouchPeople(map_DaggerIsland, dagger_hound, C, offsets, value)
+EndFunction
+
+// ID 22: Despawn All Guards
+    IF tnHoverItem =. 16
+        IF ccflag_cheat22 =. 1
+            Call TouchVenice(despawn, 4)
+            Call TouchOpera(despawn, 4)
+            Call TouchOutback(despawn, 4)
+            Call TouchCaveSly(despawn, 4)
+            Call TouchCaveMur(despawn, 4)
+            Call TouchHolland(despawn, 4)
+            Call TouchChina(despawn, 4)
+            Call TouchPirate(despawn, 4)
+            Call TouchDagger(despawn, 4)
+            Call TouchPeople(map_VeniceHub, v_carmelita, 0, despawn, 4)
+            Call TouchPeople(map_HollandHub, h_carmelita, 0, despawn, 4)
+            Call TouchPeople(map_ChinaHub, c_carmelita, 0, despawn, 4)
+            WF clockGame 0.01
+
+            IF pad_Cross =. 0
+                W8 ccflag_cheat22 0
+            EI
+        EI
+        IF ccflag_cheat22 =. 0
+            Call TouchVenice(despawn, 0)
+            Call TouchOpera(despawn, 0)
+            Call TouchOutback(despawn, 0)
+            Call TouchCaveSly(despawn, 0)
+            Call TouchCaveMur(despawn, 0)
+            Call TouchHolland(despawn, 0)
+            Call TouchChina(despawn, 0)
+            Call TouchPirate(despawn, 0)
+            Call TouchDagger(despawn, 0)
+            Call TouchPeople(map_VeniceHub, v_carmelita, 0, despawn, 0)
+            Call TouchPeople(map_HollandHub, h_carmelita, 0, despawn, 0)
+            Call TouchPeople(map_ChinaHub, c_carmelita, 0, despawn, 0)
+        EI
+    EI
+    Call CheatToggle(0x10, ccflag_cheat22, ccflag_cheat22tgl)
+
+// ID 23: Chase
+    IF tnHoverItem =. 17
+        IF ccflag_cheat23 =. 1
+            Call TouchVenice(slychase, 1)
+            Call TouchVenice(murraychase, 1)
+            Call TouchVenice(bentleychase, 1)
+            Call TouchOpera(slychase, 1)
+            Call TouchOpera(murraychase, 1)
+            Call TouchOpera(bentleychase, 1)
+            Call TouchOutback(slychase, 1)
+            Call TouchOutback(murraychase, 1)
+            Call TouchOutback(bentleychase, 1)
+            Call TouchCaveSly(slychase, 1)
+            Call TouchCaveSly(murraychase, 1)
+            Call TouchCaveSly(bentleychase, 1)
+            Call TouchCaveMur(slychase, 1)
+            Call TouchCaveMur(murraychase, 1)
+            Call TouchCaveMur(bentleychase, 1)
+            Call TouchHolland(slychase, 1)
+            Call TouchHolland(murraychase, 1)
+            Call TouchHolland(bentleychase, 1)
+            Call TouchChina(slychase, 1)
+            Call TouchChina(murraychase, 1)
+            Call TouchChina(bentleychase, 1)
+            Call TouchPirate(slychase, 1)
+            Call TouchPirate(murraychase, 1)
+            Call TouchPirate(bentleychase, 1)
+            Call TouchDagger(slychase, 1)
+            Call TouchDagger(murraychase, 1)
+            Call TouchDagger(bentleychase, 1)
+            Call TouchPeople(map_VeniceHub, v_carmelita, 0, carmChase, 1)
+            Call TouchPeople(map_HollandHub, h_carmelita, 0, carmChase, 1)
+            Call TouchPeople(map_ChinaHub, c_carmelita, 0, carmChase, 1)
+            WF clockGame 0.01
+
+            IF pad_Cross =. 0
+                W8 ccflag_cheat23 0
+            EI            
+        EI
+    EI
+    IF tnHoverItem !. 17
+        W8 ccflag_cheat23 0
+    EI
+    Call CheatToggle(0x11, ccflag_cheat23, ccflag_cheat23tgl)
+
+// ID 24: Disable Guard AI
+    IF ccflag_cheat24 =. 1
+        W32 guardAI 1
+    EI
+    IF ccflag_cheat24 =. 0
+        W32 guardAI 0
+    EI
+    Call CheatToggle(0x12, ccflag_cheat24, ccflag_cheat24tgl)
+    Call ToggleMask(guardAIStringEnd, ccflag_cheat24)
+
+// ID 25: Dance Break
+    IF ccflag_cheat25 =. 0
+        WF 36B1B8 0
+        WF 36B1BC 0.98491400
+        WF 36B1C0 1.9891235
+    EI
+    IF ccflag_cheat25 =. 1
+        WF 36B1B8 7
+        WF 36B1BC 5.98
+        WF 36B1C0 76.9899978
+    EI
+    Call CheatToggle(0x13, ccflag_cheat25, ccflag_cheat25tgl)
+    Call ToggleMask(danceStringEnd, ccflag_cheat25)
+
+// ID 26: Crash
+    IF ccflag_cheat26 =. 1
+        WP32 skybox,34 055677
+        W32 36DBE8 12312312
+        IF pad_Triangle =. 0xFF
+            W32 36DBE4 12314477
+        EI
+    EI
+    Call CheatToggle(0x14, ccflag_cheat26, ccflag_cheat26tgl)
+    Call ToggleMask(skyboxStringEnd, ccflag_cheat26)
+
+// ID 27: Time
+    IF ccflag_cheat27 =. 1 && pad_Cross =. 0xFF
+        Call Reload(full)
+        W8 ccflag_cheat27 0
+    EI
+    Call CheatToggle(0x15, ccflag_cheat27, ccflag_cheat27tgl)
+    IF tnHoverItem =. 21
+        IF pad_DPadRight =. 0xFF && ccflag_timeScroll =. 0
+            W8 ccflag_timeScroll 1
+        EI
+
+        IF pad_DPadLeft =. 0xFF && ccflag_timeScroll =. 1
+            W8 ccflag_timeScroll 0
+        EI
+    EI
+    Call SetTime(3, 23, 15, 22, 14) // venice
+    Call SetTime(8, 14, 14, 15, 14) // australia (fix nighttime rain)
+    Call SetTime(15, 15, 14, 14, 0x000175BD) // HOLLnd
+    Call SetTime(23, 14, 14, 15, 14) // CHIN
+    Call SetTime(31, 14, 14, 15, 14) // pirate
+
+// ID 28: Toggle Skybox
+    IF ccflag_cheat28 =. 1
+        WP32 skybox,34 0
+    EI
+    IF ccflag_cheat28 =. 0
+        WP32 skybox,34 0x501502F9
+    EI
+    Call CheatToggle(0x16, ccflag_cheat28, ccflag_cheat28tgl)
+    Call ToggleMask(skyboxStringEnd, ccflag_cheat28)
+
+// ID 29: Hide Flash
+    IF ccflag_cheat29 =. 1 && tnStatus =: 0xFFFF
+        WF hudScaleX 0
+        WF hudScaleY 0
+    EI
+    IF ccflag_cheat29 =. 1 && tnStatus !: 0xFFFF
+        WF hudScaleX 1
+        WF hudScaleY 1
+    EI
+    IF ccflag_cheat29 =. 0 && tnStatus =: 0xFFFF
+        WF hudScaleX 1
+        WF hudScaleY 1
+    EI
+    Call CheatToggle(0x17, ccflag_cheat29, ccflag_cheat29tgl)
+    Call ToggleMask(flashStringEnd, ccflag_cheat29)

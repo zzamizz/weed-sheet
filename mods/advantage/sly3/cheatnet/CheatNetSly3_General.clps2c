@@ -1,0 +1,13 @@
+// general stuff
+
+// Unlock all gadgets
+    WB gadgets "FF FF FF FF FF FF FF FF"
+
+// Unlock all episodes
+    W8 3448E0 1
+
+//Allow pause during cutscenes
+    W32 36F8C4 0
+
+// Fixed Framerate
+    W32 36DBE0 0

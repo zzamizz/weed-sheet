@@ -1,0 +1,455 @@
+// Open thiefnet with a flag (000F0000) (ty NiV-L-A)
+ASM_START 001cb2c4
+    j 0x000F1000
+    nop
+ASM_END
+ASM_START 000F1000
+    lui $t0,0x000F
+    lb $t1,0x0($t0)
+    li $at,1
+    beq $t1,$at,call
+    nop
+    b ret
+    nop
+        call: sb $zero,0x0($t0)
+        li $a0,0x46f810
+        li $a1,0
+        jal 0x0021ddc0
+        nop
+        li $a0,0x46f810
+        li $a1,0
+        jal 0x00220590
+        nop
+    ret: lui $v1,0x37 // og instruction
+    lw $v0,-0x39b0($v1)
+    j 0x001cb2cc
+    nop
+ASM_END
+
+// Thiefnet
+Set openTN F0000
+Set tnControl 46F82C
+Set player1Pad 0x0036E740
+Set player2Pad 0x0036F900
+Set tnHoverItem 46FA84
+Set tnScroll 46FA88
+Set tnBuying 46F850
+Set tnStatus 46F860
+Set tnMaxItems 46F868
+
+// Player
+Set actID 36C710
+Set actChar 36F84C
+Set gadgets 468DCC
+
+// FK$X offsets
+Set fkx 479AB0
+Set v_doberman 0x1294
+Set v_ectoswarmer 0x1D20
+Set v_endoswarmer 0x1B04
+Set v_carmelita 0x24B8
+Set opera_ectoswarmer 0x2B78
+Set opera_endoswarmer 0x18E8
+Set opera_doberman 0x10E4
+Set o_dingo 0x5320
+Set o_kangaroo 0x38F8
+Set cavesly_dingo 0x2B0C
+Set cavesly_kangaroo 0x3748
+Set cavemur_dingo 0x2CBC
+Set cavemur_kangaroo 0x301C
+Set sail_ectoswarmer 0x3820
+Set sail_dingo 0x301C
+Set dagger_dingo 0x2E00
+Set dagger_croc 0x13D8
+Set dagger_hound 0x31CC
+Set h_carmelita 0x3C58
+Set h_bunnyswarmer 0x17A4
+Set h_pigswarmer 0x1DF8
+Set h_ramguard 0x2590
+Set h_wolf 0x44C8
+Set c_carmelita 0x5974
+Set c_hoppingvampire 0x2740
+Set c_monkeyswarmer 0x20EC
+Set c_smalldragon 0x4EE8
+Set c_tigerguard 0x1810
+Set c_squatswarmer 0x2230
+Set p_ectoswarmer 0x55A8
+Set p_dingo 0x3748
+Set p_hound 0x39D0
+
+// Offsets
+Set godmode 0x180
+Set undetectable 0x1280
+Set infJumps 0x348
+Set health 0x16C 	
+Set gadgetpower 0x174
+Set nextSame 0x20
+Set trans 0x44
+Set despawn 0x44,0x98
+//Set chase 0x18C8
+Set slychase 0x10D0,0xF8
+Set murraychase 0x10D0,0x10C
+Set bentleychase 0x10D0,0x120
+Set carmChase 0x19A4
+Set collider 0xD8
+
+// Global
+Set isPaused 46F588
+Set isGadgets 46F7F0
+Set clockGame 36BBA0
+Set isLoading 467B00
+Set reload 4797C4
+Set reloadFull 4797C8
+Set guardAI 370A8C
+Set mapTime 36BC20
+Set skyTime 36BCF0
+Set mapSpawn 47980C
+Set mapValues 4797CC
+Set mapUptime 2DDED3
+Set mapID 47989C
+
+// Joker
+Set pad_SelectR1 36E782
+Set pad_L3R3 36E782
+Set pad_Cross 36E78E
+Set pad_Circle 36E78D
+Set pad_Triangle 36E78C
+Set pad_DPadRight 36E788
+Set pad_DPadLeft 36E789
+Set pad_DPadUp 36E78A
+Set pad_DPadDown 36E78B
+Set pad_L1 36E790
+Set pad_R1 36E791
+Set pad_LS 36E748
+
+Set pad2_SelectR1 36F9C2
+Set pad2_L3R3 36F9C2
+Set pad2_Cross 36F94E
+Set pad2_Square 36F94F
+Set pad2_Triangle 36F94C
+Set pad2_Circle 36F94D
+Set pad2_R1 36F951
+Set pad2_L1 36F950
+
+// Force inputs
+Set ccflag_forceOnce 36E8BF
+Set force_Triangle 36F7C0
+
+// Codecaves
+Set ccflag_cheat6 36E900 // Reload as Sly
+Set ccflag_cheat6tgl 36E901
+Set ccflag_cheat7 36E902 // Reload as Bentley
+Set ccflag_cheat7tgl 36E903
+Set ccflag_cheat8 36E904 // Reload as Murray
+Set ccflag_cheat8tgl 36E905
+Set ccflag_cheat9 36E906 // Reload as Special
+Set ccflag_cheat9tgl 36E907
+Set ccflag_cheat10 36E908 // Map: 
+Set ccflag_cheat10tgl 36E909
+Set ccflag_cheat11 36E90A // Infinite Jumps
+Set ccflag_cheat11tgl 36E90B
+Set ccflag_cheat12 36E90C
+Set ccflag_cheat12tgl 36E90D
+Set ccflag_cheat13 36E90E
+Set ccflag_cheat13tgl 36E90F
+Set ccflag_cheat14 36E910
+Set ccflag_cheat14tgl 36E911
+Set ccflag_cheat15 36E912
+Set ccflag_cheat15tgl 36E913
+Set ccflag_cheat16 36E914
+Set ccflag_cheat16tgl 36E915
+Set ccflag_cheat17 36E916
+Set ccflag_cheat17tgl 36E917
+Set ccflag_cheat18 36E918
+Set ccflag_cheat18tgl 36E919
+Set ccflag_cheat19 36E91A
+Set ccflag_cheat19tgl 36E91B
+Set ccflag_cheat20 36E91C
+Set ccflag_cheat20tgl 36E91D
+Set ccflag_cheat21 36E91E
+Set ccflag_cheat21tgl 36E91F
+Set ccflag_cheat22 36E920
+Set ccflag_cheat22tgl 36E921
+Set ccflag_cheat23 36E922
+Set ccflag_cheat23tgl 36E923
+Set ccflag_cheat24 36E924
+Set ccflag_cheat24tgl 36E925
+Set ccflag_cheat25 36E926
+Set ccflag_cheat25tgl 36E927
+Set ccflag_cheat26 36E928
+Set ccflag_cheat26tgl 36E929
+Set ccflag_cheat27 36E92A
+Set ccflag_cheat27tgl 36E92B
+Set ccflag_cheat28 36E92C // Toggle Skybox
+Set ccflag_cheat28tgl 36E92D
+Set ccflag_cheat29 36E92E // Hide Flash
+Set ccflag_cheat29tgl 36E92F
+
+Set ccflag_InfScr1 36E930
+Set ccflag_InfScr2 36E931
+Set ccflag_mapNum 36E935 // map int
+Set ccflag_mapScrollOnce 36E936
+Set ccflag_mapScrollOnce2 36E937
+Set ccflag_zacTele 34A38C //tp
+Set ccflag_zacCollider 34A38D
+
+// Mask toggle stringends
+Set undetectableStringEnd E02BC
+Set slipperyStringEnd E02FE
+Set skyboxStringEnd E0240
+Set maxdrawStringEnd E01E6
+Set infMPStringEnd E01A0
+Set guardAIStringEnd E0164
+Set superhotStringEnd E0114
+Set clausStringEnd E00E0
+Set godmodeStringEnd E0092
+Set infJumpStringEnd E0060
+Set flyableStringEnd E0020
+Set flashStringEnd E0278
+Set danceStringEnd E034A
+
+// GUI
+Set hudScaleX 317FC0
+Set hudScaleY 317FCC
+Set gui_ThiefNet 46F844
+Set gui_JobFail 476878 // or 4797C0, if it ever fails
+
+// Camera pointer
+Set camera 47933C
+Set reset 0x2f4
+Set setDrawDist 0x110
+Set currentDrawDist 0x114
+Set claustro 0x1a0
+
+// Misc pointers
+Set skybox 4789CC
+Set mapList 2EE598 // not a pointer
+Set sfxPtr 4750F0
+Set npcSwarmer 4754B8 // probably doesnt work
+Set npcFlashlight 478758
+
+Set sly 370AC0
+Set bentley 36B250
+Set murray 38AE90
+
+// Multiplayer
+Set multiFlag 47A424
+Set playerString F4274
+Set playerNumString F42D9
+Set tnOpenP1 F42DB
+Set tnOpenP2 F42DC
+
+// Damage types
+Set type_Normal 0x00000002
+Set type_Normal2 0x00200000
+Set type_Fire 0x00001000
+Set type_Electric 0x00000800
+Set type_Knockout 0x00000080
+Set type_Void 0x00008000
+Set type_Sleep 0x00080000
+Set type_Shrink 0x00400000
+Set type_Rage 0x00800000
+Set type_Instakill 0xFFFFFFFF
+
+// Maps
+Set map_DVD 0x0
+Set map_Sampler 0x1
+Set map_Hazard 0x2
+Set map_VeniceHub 0x3
+Set map_Canal 0x4
+Set map_Coffee 0x5
+Set map_OperaHouse 0x6
+Set map_PoliceHQ 0x7
+Set map_AustraliaHub 0x8
+Set map_Ayers 0x9
+Set map_Oil 0xA
+Set map_CaveSly 0xB
+Set map_CaveGuru 0xC
+Set map_Lemonade 0xD
+Set map_CaveMurray 0xE
+Set map_HollandHub 0xF
+Set map_Hotel 0x10
+Set map_HangarIceland 0x11
+Set map_HangarBaron 0x12
+Set map_HangarCooper 0x13
+Set map_Sewers 0x14
+Set map_Dogfight 0x15
+Set map_Hackathon 0x16
+Set map_ChinaHub 0x17
+Set map_ChinaIntro 0x18
+Set map_Flashback 0x19
+Set map_TsaoArena 0x1A
+Set map_PandaKing 0x1B
+Set map_Grapplecam 0x1C
+Set map_TsaosPalace 0x1D
+Set map_TsaosTemple 0x1E
+Set map_PirateHub 0x1F
+Set map_SailingMap 0x20
+Set map_Underwater 0x21
+Set map_DaggerIsland 0x22
+Set map_KaineIsland 0x23
+Set map_UnderwaterTunnel 0x24
+Set map_Vault_Entrance 0x25
+Set map_Gauntlet 0x26
+Set map_DrM 0x27
+
+Function MapUptimeCheck()
+    IF mapUptime <: 0x3E
+EndFunction
+
+Function BuyBackwards(menuitem, ccflag, treasure)
+    If tnHoverItem =. menuitem
+        If pad_DPadRight =. 0xFF
+            If ccflag =. 0
+                W8 ccflag 1
+                I8 treasure 1
+            EndIf
+        EndIf
+        If pad_DPadRight !. 0xFF
+            If ccflag =. 1
+                W8 ccflag 0
+            EndIf
+        EndIf
+    EndIf
+EndFunction
+
+Function Teleport(x, y, z)
+    WF 34A380 x
+    WF 34A384 y
+    WF 34A388 z
+    WP8 camera,reset 1
+    W8 ccflag_zacTele 1
+    W8 ccflag_zacCollider 1
+    WF clockGame 0.01
+EndFunction
+
+Function MenuCombo(player) // remember to write EI after calling this
+    If player =: 0xF7FE
+EndFunction
+
+Function ToggleGUI(gui, value)
+    WP32 gui,0x54 value
+EndFunction
+
+Function CheatToggle(item, ccflag_cheat, ccflag_cheattgl)
+    If tnStatus !: 0xFFFF
+        If tnHoverItem =. item // when hovering a menu item
+            If pad_Cross =. 0xFF && ccflag_cheattgl =. 0
+                W8 ccflag_cheattgl 1
+                I8 ccflag_cheat 1
+            EI
+            If pad_Cross !. 0xFF && ccflag_cheattgl =. 1
+                W8 ccflag_cheattgl 0
+            EI
+            If ccflag_cheat =. 2
+                W8 ccflag_cheat 0
+            EI
+        EI
+    EI    
+EndFunction
+
+Function ToggleMask(stringend, cheat)
+    IF cheat =. 1
+        WB stringend "26 00 32 00 6D 00 26 00"
+    EI
+    IF cheat =. 0
+        WB stringend "00"
+    EI
+EndFunction
+
+Function FastScroll(val1, val2, val3)
+    If tnStatus !: 0xFFFF
+        If tnHoverItem =. val1
+            If pad_Circle =. 0xFF
+                W8 tnHoverItem val2
+                W8 tnScroll val3
+            EndIf
+        EndIf
+    EndIf
+EndFunction
+
+Function ShowCurrentMap(map, val)
+    If mapID =. map && tnHoverItem !. 4
+        W8 ccflag_mapNum val
+    EndIf
+EndFunction
+
+Function LoadMap(val, string, aob)
+    If ccflag_mapNum =. val
+        WS F1FDA string
+        If tnHoverItem =. 4
+            CB aob mapValues 0x40
+        EndIf
+    EndIf
+EndFunction
+
+Set full 0xE
+Set soft 0
+Function Reload(bool)
+    W32 reload 1
+    W32 reloadFull bool
+EndFunction
+
+Set timeString F1F3C
+Set ccflag_timeScroll 36E8B1
+Function SetTime(map, mapDay, skyDay, mapNight, skyNight)
+    IF mapID =. map 
+        IF ccflag_timeScroll >. 1
+            W8 ccflag_timeScroll 0
+        EI
+        IF ccflag_timeScroll =. 0
+            WS timeString " Day\0"
+            W32 mapTime mapDay
+            W32 skyTime skyDay
+        EI
+        IF ccflag_timeScroll =. 1
+            WS timeString " Night\0"
+            W32 mapTime mapNight
+            W32 skyTime skyNight
+        EI
+    EI
+EndFunction
+
+Set specialCharString F3F98
+Set damageCharString F1F6A
+Set ccflag_dmgScroll 36EBA0
+Set ccflag_charScroll 36E8C1
+Set ccflag_scrollTemp 36E8C2
+Set ccflag_scroll2Temp 36E8C0
+Set ccflag_scroll5Temp 36E8C4
+Set ccflag_scrollTemp2 36EBA1
+Set ccflag_scrollTemp3 36EBA2
+
+Function DamageType(character, offset, type)
+    WP32 character,0xD4,offset type
+EndFunction
+
+Function Damage(character, offset, damage)
+    WP16 character,0xD4,offset damage
+EndFunction
+
+Set warpCharString F1FAC
+Set ccflag_warpTemp 36EBA3
+Set ccflag_warpTemp2 36EBA4
+Set ccflag_warpScroll 36EBA5
+
+Function FillWarps(string, value, x, y, z)
+    IF ccflag_warpScroll =. value
+        WS warpCharString string
+        IF pad_L3R3 =. 0xFD
+            Call Teleport(x, y, z)
+        EI
+        IF tnHoverItem =. 6 && pad_Cross =. 0xFF
+            Call Teleport(x, y, z)
+        EI
+    EI
+EndFunction
+
+Set currentMaxWarp 36EBA6
+Function SetMaxWarps(map, max)
+    IF mapID =. map && ccflag_warpScroll >. max
+        W8 ccflag_warpScroll 0
+    EI
+    W8 currentMaxWarp max
+    Set currentMax max
+EndFunction
