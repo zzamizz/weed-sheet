@@ -1,3 +1,3 @@
 # Utilities
 
-This folder is dedicated to both utility mods that do nothing without user input or mod templates for use with CLPS2C.
+The utility category is for helper mods and utilites/templates that assist in creating mods.
