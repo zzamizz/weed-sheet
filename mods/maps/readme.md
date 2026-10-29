@@ -1,3 +1,3 @@
 # Maps
 
-Custom map mods made with the workshop.
+This category is for custom map mods made with the workshop.
