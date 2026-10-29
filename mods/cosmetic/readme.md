@@ -1,3 +1,3 @@
 # Cosmetic
 
-Visual mods are purely for cosmetics and won't affect game's progression. If a visual mod makes the game harder, then it belongs to the difficulty category.
+Mods in this category modify the games' visuals and are purely for cosmetics, not affecting progression. If a visual mod makes the game harder, then it belongs to the difficulty category.
