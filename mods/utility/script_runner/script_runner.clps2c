@@ -1,0 +1,34 @@
+SR "[Script Runner]"
+
+Set Hook 0x1A761C
+Set ScriptCave 0xA0000
+Set PastTheScriptCave 0xA1000
+
+ASM_START Hook
+    j ScriptCave
+    nop
+ASM_END
+
+ASM_START ScriptCave
+    li $t0,PastTheScriptCave
+    lw $t1,0x0($t0)
+    lw $t2,0x4($t0)
+    beq $t2,$zero,ret
+    nop
+    beq $t1,$t2,call_script
+    nop
+    b ret
+    nop
+    call_script:
+        sw $zero,0x0($t0)
+        li $a0,0
+        lw $a1,0x8($t0)
+        li $a2,0
+        li $a3,0
+        jal 0x106710 // 0x1DFD58 // 0x1DFE80
+        nop
+    ret:
+        lw $v0,-0x1AC8($s1) // Original instructions. Increases the game's frame counter.
+        j Hook + 8
+        addiu $v0,1
+ASM_END
