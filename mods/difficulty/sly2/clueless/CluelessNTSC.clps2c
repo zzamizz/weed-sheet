@@ -1,0 +1,479 @@
+SRW "[Clueless]"
+SRW "author=zami3333"
+SRW "comment=A custom clue bottle hunt experience. (Glitch High Jump and gadgets required.)\n"
+
+Function DontSaveClues()
+    IF 2DD316 =: 0  // if end of loading
+        W32 3D4CD8 0 // clear bottle bitfields
+        W32 3D4E78 0 
+        W32 3D4F90 0 
+        W32 3D5020 0 
+        W32 3D50F4 0 
+        W32 3D53A4 0 
+        W32 3D5500 0 
+        W32 3D56A0 0 
+    EI
+EndFunction
+
+Function SetClueXYZ(clueX, clueY, clueZ, X, Y, Z)
+    WPF clues,clueX X
+    WPF clues,clueY Y
+    WPF clues,clueZ Z
+EndFunction
+
+Set mapID 3E1110
+Set mapParisExt 0x2
+Set mapIndiaExt 0x8
+Set mapIndia2Ext 0xC
+Set mapPragueExt 0xE
+Set mapPrague2Ext 0x11
+Set mapCanadaExt 0x1B
+Set mapCanada2Ext 0x20
+Set mapBlimpExt 0x26
+Set requiredBottles 3E1BF8
+Set fklist 3E1398
+Set clues 3E051C  // ptr to list of clue bottle coordinates
+Set pclue01x 0x90 // paris clue struct sizes are larger than the rest of the hubs (pclue = paris clue)
+Set pclue01y 0x94
+Set pclue01z 0x98
+Set pclue02x 0x1D0
+Set pclue02y 0x1D4
+Set pclue02z 0x1D8
+Set pclue03x 0x310
+Set pclue03y 0x314
+Set pclue03z 0x318
+Set pclue04x 0x450
+Set pclue04y 0x454
+Set pclue04z 0x458
+Set pclue05x 0x590
+Set pclue05y 0x594
+Set pclue05z 0x598
+Set pclue06x 0x6D0
+Set pclue06y 0x6D4
+Set pclue06z 0x6D8
+Set pclue07x 0x810
+Set pclue07y 0x814
+Set pclue07z 0x818
+Set pclue08x 0x950
+Set pclue08y 0x954
+Set pclue08z 0x958
+Set pclue09x 0xA90
+Set pclue09y 0xA94
+Set pclue09z 0xA98
+Set pclue10x 0xBD0
+Set pclue10y 0xBD4
+Set pclue10z 0xBD8
+Set pclue11x 0xD10
+Set pclue11y 0xD14
+Set pclue11z 0xD18
+Set pclue12x 0xE50
+Set pclue12y 0xE54
+Set pclue12z 0xE58
+Set pclue13x 0xF90
+Set pclue13y 0xF94
+Set pclue13z 0xF98
+Set pclue14x 0x10D0
+Set pclue14y 0x10D4
+Set pclue14z 0x10D8
+Set pclue15x 0x1210
+Set pclue15y 0x1214
+Set pclue15z 0x1218
+Set pclue16x 0x1350
+Set pclue16y 0x1354
+Set pclue16z 0x1358
+Set pclue17x 0x1490
+Set pclue17y 0x1494
+Set pclue17z 0x1498
+Set pclue18x 0x15D0
+Set pclue18y 0x15D4
+Set pclue18z 0x15D8
+Set pclue19x 0x1710
+Set pclue19y 0x1714
+Set pclue19z 0x1718
+Set pclue20x 0x1850
+Set pclue20y 0x1854
+Set pclue20z 0x1858
+Set pclue21x 0x1990
+Set pclue21y 0x1994
+Set pclue21z 0x1998
+Set pclue22x 0x1AD0
+Set pclue22y 0x1AD4
+Set pclue22z 0x1AD8
+Set pclue23x 0x1C10
+Set pclue23y 0x1C14
+Set pclue23z 0x1C18
+Set pclue24x 0x1D50
+Set pclue24y 0x1D54
+Set pclue24z 0x1D58
+Set pclue25x 0x1E90
+Set pclue25y 0x1E94
+Set pclue25z 0x1E98
+Set pclue26x 0x1FD0
+Set pclue26y 0x1FD4
+Set pclue26z 0x1FD8
+Set pclue27x 0x2110
+Set pclue27y 0x2114
+Set pclue27z 0x2118
+Set pclue28x 0x2250
+Set pclue28y 0x2254
+Set pclue28z 0x2258
+Set pclue29x 0x2390
+Set pclue29y 0x2394
+Set pclue29z 0x2398
+Set pclue30x 0x24D0
+Set pclue30y 0x24D4
+Set pclue30z 0x24D8
+Set clue01x 0x90
+Set clue01y 0x94
+Set clue01z 0x98
+Set clue02x 0x1A0
+Set clue02y 0x1A4
+Set clue02z 0x1A8
+Set clue03x 0x2B0
+Set clue03y 0x2B4
+Set clue03z 0x2B8
+Set clue04x 0x3C0
+Set clue04y 0x3C4
+Set clue04z 0x3C8
+Set clue05x 0x4D0
+Set clue05y 0x4D4
+Set clue05z 0x4D8
+Set clue06x 0x5E0
+Set clue06y 0x5E4
+Set clue06z 0x5E8
+Set clue07x 0x6F0
+Set clue07y 0x6F4
+Set clue07z 0x6F8
+Set clue08x 0x800
+Set clue08y 0x804
+Set clue08z 0x808
+Set clue09x 0x910
+Set clue09y 0x914
+Set clue09z 0x918
+Set clue10x 0xA20
+Set clue10y 0xA24
+Set clue10z 0xA28
+Set clue11x 0xB30
+Set clue11y 0xB34
+Set clue11z 0xB38
+Set clue12x 0xC40
+Set clue12y 0xC44
+Set clue12z 0xC48
+Set clue13x 0xD50
+Set clue13y 0xD54
+Set clue13z 0xD58
+Set clue14x 0xE60
+Set clue14y 0xE64
+Set clue14z 0xE68
+Set clue15x 0xF70
+Set clue15y 0xF74
+Set clue15z 0xF78
+Set clue16x 0x1080
+Set clue16y 0x1084
+Set clue16z 0x1088
+Set clue17x 0x1190
+Set clue17y 0x1194
+Set clue17z 0x1198
+Set clue18x 0x12A0
+Set clue18y 0x12A4
+Set clue18z 0x12A8
+Set clue19x 0x13B0
+Set clue19y 0x13B4
+Set clue19z 0x13B8
+Set clue20x 0x14C0
+Set clue20y 0x14C4
+Set clue20z 0x14C8
+Set clue21x 0x15D0
+Set clue21y 0x15D4
+Set clue21z 0x15D8
+Set clue22x 0x16E0
+Set clue22y 0x16E4
+Set clue22z 0x16E8
+Set clue23x 0x17F0
+Set clue23y 0x17F4
+Set clue23z 0x17F8
+Set clue24x 0x1900
+Set clue24y 0x1904
+Set clue24z 0x1908
+Set clue25x 0x1A10
+Set clue25y 0x1A14
+Set clue25z 0x1A18
+Set clue26x 0x1B20
+Set clue26y 0x1B24
+Set clue26z 0x1B28
+Set clue27x 0x1C30
+Set clue27y 0x1C34
+Set clue27z 0x1C38
+Set clue28x 0x1D40
+Set clue28y 0x1D44
+Set clue28z 0x1D48
+Set clue29x 0x1E50
+Set clue29y 0x1E54
+Set clue29z 0x1E58
+Set clue30x 0x1F60
+Set clue30y 0x1F64
+Set clue30z 0x1F68
+
+//Call DontSaveClues() // for testing
+
+// Note: When copying Sly's XYZ from SlyMultiTrainer, you have to decrement the Z by like -70 units)
+IF 2DD316 =: 0 // if end of loading
+    IF mapID =. mapParisExt // Paris
+        // Paris clue structs are larger than other hubs, make sure to use the Paris offsets (pclue) below) 
+        Call SetClueXYZ(pclue01x, pclue01y, pclue01z, -6824, -6322, -427)   // inside dimitri's boat
+        Call SetClueXYZ(pclue02x, pclue02y, pclue02z, -1186, 7596, -139)    // bush in dimitri's courtyard
+        Call SetClueXYZ(pclue03x, pclue03y, pclue03z, 1579, 6099, 290)      // inside courtyard water statue
+        Call SetClueXYZ(pclue04x, pclue04y, pclue04z, 1569, 3816, 289)      // on top of whale statue in courtyard
+        Call SetClueXYZ(pclue05x, pclue05y, pclue05z, 4523, 6514, 669)      // truck house roof
+        Call SetClueXYZ(pclue06x, pclue06y, pclue06z, 9693, 1652, 122)      // windowsill
+        Call SetClueXYZ(pclue07x, pclue07y, pclue07z, 7212, 4163, -220)     // sneaky corner near truck
+        Call SetClueXYZ(pclue08x, pclue08y, pclue08z, -1582, 7519, 871)     // courtyard speaker ghj
+        Call SetClueXYZ(pclue09x, pclue09y, pclue09z, 3941, 4313, 946)      // ghj from courtyard balcony
+        Call SetClueXYZ(pclue10x, pclue10y, pclue10z, -5457, 724, -278)     // under bridge near satellite sabotage
+        Call SetClueXYZ(pclue11x, pclue11y, pclue11z, 5484, -8057, 1755)    // under hotel sign
+        Call SetClueXYZ(pclue12x, pclue12y, pclue12z, 8812, 2758, 127)      // windowsill 2
+        Call SetClueXYZ(pclue13x, pclue13y, pclue13z, 1947, -2591, 16)      // outside cafe near fountain
+        Call SetClueXYZ(pclue14x, pclue14y, pclue14z, 5001, -3961, 876)     // tightrope
+        Call SetClueXYZ(pclue15x, pclue15y, pclue15z, 9013, -1115, -30)     // sewer pipe
+        Call SetClueXYZ(pclue16x, pclue16y, pclue16z, -3533, 3675, 387)     // below backwindow crawl
+        Call SetClueXYZ(pclue17x, pclue17y, pclue17z, -4301, 500, 435)      // random roof crawl
+        Call SetClueXYZ(pclue18x, pclue18y, pclue18z, -2478, -2710, 15)     // bush near safehouse
+        Call SetClueXYZ(pclue19x, pclue19y, pclue19z, -4749, -2958, 476)    // tightrope near safehouse
+        Call SetClueXYZ(pclue20x, pclue20y, pclue20z, 8544, 1870, 2000)     // clocktower
+        Call SetClueXYZ(pclue21x, pclue21y, pclue21z, 4941, -2539, 0)       // risteys
+        Call SetClueXYZ(pclue22x, pclue22y, pclue22z, 6156, 1113, 0)        // risteys2
+        Call SetClueXYZ(pclue23x, pclue23y, pclue23z, 8169, -4635, -219)    // door near breaking
+        Call SetClueXYZ(pclue24x, pclue24y, pclue24z, 2294, -6534, 1389)    // le stinky tourist
+        Call SetClueXYZ(pclue25x, pclue25y, pclue25z, 6672, 2558, 600)      // roof bistro
+        Call SetClueXYZ(pclue26x, pclue26y, pclue26z, -6025, 4821, 29)      // next to watertower
+        Call SetClueXYZ(pclue27x, pclue27y, pclue27z, -2948, -1557, 969)    // house roof next to safehouse
+        Call SetClueXYZ(pclue28x, pclue28y, pclue28z, 5056, -430, 840)      // middle of swarmer roof
+        Call SetClueXYZ(pclue29x, pclue29y, pclue29z, -684, -437, 560)      // other side of peacock
+        Call SetClueXYZ(pclue30x, pclue30y, pclue30z, 2538, 1049, 40)       // bush near threatre entrance
+    EI
+    IF mapID =. mapIndiaExt // India
+        Call SetClueXYZ(clue01x, clue01y, clue01z, -2978, 3344, 1470)       // arch near safehouse
+        Call SetClueXYZ(clue02x, clue02y, clue02z, 1040, 2256, 651)         // rajan statue
+        Call SetClueXYZ(clue03x, clue03y, clue03z, 2379, -1011, -451)       // inside barrel
+        Call SetClueXYZ(clue04x, clue04y, clue04z, 3160, -10418, 1690)      // guesthouse roof
+        Call SetClueXYZ(clue05x, clue05y, clue05z, 691, -12062, 828)        // sneak fire near guesthouse
+        Call SetClueXYZ(clue06x, clue06y, clue06z, 6834, 6137, 273)         // rats
+        Call SetClueXYZ(clue07x, clue07y, clue07z, 3866, -865, 2104)        // high spot near murrayturret
+        Call SetClueXYZ(clue08x, clue08y, clue08z, 8165, 4370, 1390)        // sneakspot above rats
+        Call SetClueXYZ(clue09x, clue09y, clue09z, 10450, 2133, 2314)       // above dance door ghj
+        Call SetClueXYZ(clue10x, clue10y, clue10z, -378, -10181, 1197)      // guesthouse roof inside glass
+        Call SetClueXYZ(clue11x, clue11y, clue11z, 3510, -9085, 272)        // above hotel entrance
+        Call SetClueXYZ(clue12x, clue12y, clue12z, -3399, 5390, 970)        // above van snakehead
+        Call SetClueXYZ(clue13x, clue13y, clue13z, -1380, 7277, 2027)       // tree from safehouse mountain (tricky)
+        Call SetClueXYZ(clue14x, clue14y, clue14z, 11783, 7976, 1340)       // behind bush near recon
+        Call SetClueXYZ(clue15x, clue15y, clue15z, 13884, 2130, 1302)       // above brawl sewer
+        Call SetClueXYZ(clue16x, clue16y, clue16z, 4801, 3323, 1323)        // tightrope
+        Call SetClueXYZ(clue17x, clue17y, clue17z, 5824, 4172, 2273)        // roof spire tricky
+        Call SetClueXYZ(clue18x, clue18y, clue18z, -5912, 128, 90)          // behind bush near safehouse
+        Call SetClueXYZ(clue19x, clue19y, clue19z, 5107, -1143, 1248)       // one of tree yellow spires
+        Call SetClueXYZ(clue20x, clue20y, clue20z, 4281, -3685, -1720)      // bomb the bridge
+        Call SetClueXYZ(clue21x, clue21y, clue21z, 10257, 59, 670)          // arch entrance before long upstairs
+        Call SetClueXYZ(clue22x, clue22y, clue22z, -4673, 1959, 2340)       // on top of safehouse cliff
+        Call SetClueXYZ(clue23x, clue23y, clue23z, 4310, -12818, 955)       // guesthouse roof inside glass 2
+        Call SetClueXYZ(clue24x, clue24y, clue24z, 986, -11925, -758)       // corner near large vase
+        Call SetClueXYZ(clue25x, clue25y, clue25z, 7623, 6941, 696)         // inside a water container
+        Call SetClueXYZ(clue26x, clue26y, clue26z, 10769, 3729, 1266)       // near dance door corner
+        Call SetClueXYZ(clue27x, clue27y, clue27z, 1260, -1699, 2112)       // top of large dome and inanimate flag
+        Call SetClueXYZ(clue28x, clue28y, clue28z, 2752, 6930, 1720)        // house roof near river
+        Call SetClueXYZ(clue29x, clue29y, clue29z, 7114, 8874, 2338)        // snake statue
+        Call SetClueXYZ(clue30x, clue30y, clue30z, 8879, 2162, 1220)        // arch entrance before long downstairs
+    EI
+    IF mapID =. mapIndia2Ext // India 2
+        Call SetClueXYZ(clue01x, clue01y, clue01z, -254, -193, 1183)        // beta lilypad
+        Call SetClueXYZ(clue02x, clue02y, clue02z, -6290, 7016, 1755)       // in the dark behind rocks
+        Call SetClueXYZ(clue03x, clue03y, clue03z, 50, 5285, 2927)          // behind ruby
+        Call SetClueXYZ(clue04x, clue04y, clue04z, 7081, 2145, 1091)        // inside sneakable fire
+        Call SetClueXYZ(clue05x, clue05y, clue05z, 8130, 5303, 1389)        // behind waterfall near white treasure 
+        Call SetClueXYZ(clue06x, clue06y, clue06z, 5910, 7471, 2250)        // above white treasure ghj
+        Call SetClueXYZ(clue07x, clue07y, clue07z, 4786, 5060, 2252)        // above arch of rajanmelon bridge
+        Call SetClueXYZ(clue08x, clue08y, clue08z, 1, -1969, 2349)          // above door that bentley blows up
+        Call SetClueXYZ(clue09x, clue09y, clue09z, 3701, 5880, 3850)        // high tree above rajanoffice
+        Call SetClueXYZ(clue10x, clue10y, clue10z, 6793, 880, 560)          // inside undamageable fire
+        Call SetClueXYZ(clue11x, clue11y, clue11z, 11686, 1711, 597)        // unused massive bridge
+        Call SetClueXYZ(clue12x, clue12y, clue12z, 9195, 2272, 2595)        // above unused massive bridge hiddensneakywow
+        Call SetClueXYZ(clue13x, clue13y, clue13z, -697, -8387, 1220)       // very sneaky tree from safehouse rope
+        Call SetClueXYZ(clue14x, clue14y, clue14z, 8254, 1006, 3253)        // treebranch above elephant circling fire
+        Call SetClueXYZ(clue15x, clue15y, clue15z, -2983, 4460, 424)        // sneaky spot below neylas entrance
+        Call SetClueXYZ(clue16x, clue16y, clue16z, -9763, 2432, 674)        // on an old tree, above path to recon
+        Call SetClueXYZ(clue17x, clue17y, clue17z, -8542, 7578, 1611)       // above recon sewer
+        Call SetClueXYZ(clue18x, clue18y, clue18z, -1046, 1781, -20)        // on an elephant that spews water 
+        Call SetClueXYZ(clue19x, clue19y, clue19z, -6466, 748, 381)         // behind bush near center tall tower
+        Call SetClueXYZ(clue20x, clue20y, clue20z, 2510, -803, -463)        // behind watermill
+        Call SetClueXYZ(clue21x, clue21y, clue21z, 3543, -5427, 1179)       // behind sneakable fire near helitower
+        Call SetClueXYZ(clue22x, clue22y, clue22z, 6863, -6256, 880)        // behind helitower
+        Call SetClueXYZ(clue23x, clue23y, clue23z, 8080, -1211, 450)        // on helitruck wheel
+        Call SetClueXYZ(clue24x, clue24y, clue24z, -6828, 3964, 386)        // above neylas secret
+        Call SetClueXYZ(clue25x, clue25y, clue25z, 1249, -8516, 1380)       // behind some tree
+        Call SetClueXYZ(clue26x, clue26y, clue26z, -2291, 5125, 3623)       // mega tree stump very high     
+        Call SetClueXYZ(clue27x, clue27y, clue27z, -4180, 1852, -170)       // behind random pillar
+        Call SetClueXYZ(clue28x, clue28y, clue28z, -559, 2051, 1224)        // near rajan temple door
+        Call SetClueXYZ(clue29x, clue29y, clue29z, -3296, -5070, 2403)      // branch near safehouse 
+        Call SetClueXYZ(clue30x, clue30y, clue30z, -830, 4191, -363)        // corner below flooding temple door
+    EI
+    IF mapID =. mapPragueExt // Prague
+        Call SetClueXYZ(clue01x, clue01y, clue01z, -7593, -12576, 1488)     // safehouse roof
+        Call SetClueXYZ(clue02x, clue02y, clue02z, -1906, -13039, 1655)     // very hidden roof
+        Call SetClueXYZ(clue03x, clue03y, clue03z, 4614, -12213, 2077)      // on a hook
+        Call SetClueXYZ(clue04x, clue04y, clue04z, 8207, -9082, 1064)       // high roof above disguisebridge
+        Call SetClueXYZ(clue05x, clue05y, clue05z, 8329, 2473, 1159)        // above train gate
+        Call SetClueXYZ(clue06x, clue06y, clue06z, -7748, 1086, 1119)       // roof near computer3
+        Call SetClueXYZ(clue07x, clue07y, clue07z, -10941, -758, 1913)      // pole above thunderthing
+        Call SetClueXYZ(clue08x, clue08y, clue08z, -7262, -615, 1726)       // sneaky high corner
+        Call SetClueXYZ(clue09x, clue09y, clue09z, -4158, -12143, 2501)     // high above train gate (safehouse)
+        Call SetClueXYZ(clue10x, clue10y, clue10z, 1280, -7114, 747)        // tiny house before tank hill
+        Call SetClueXYZ(clue11x, clue11y, clue11z, -5874, -7114, 956)       // above electric thing
+        Call SetClueXYZ(clue12x, clue12y, clue12z, -3184, -4352, 1532)      // high cliff near tankhill
+        Call SetClueXYZ(clue13x, clue13y, clue13z, -1385, 1562, 4773)       // highest point of prison    
+        Call SetClueXYZ(clue14x, clue14y, clue14z, 6283, -3733, 68)         // under bridge
+        Call SetClueXYZ(clue15x, clue15y, clue15z, 5056, 1612, 2597)        // top of hook near eavesdropping
+        Call SetClueXYZ(clue16x, clue16y, clue16z, 3779, -5385, 600)        // arch above object river
+        Call SetClueXYZ(clue17x, clue17y, clue17z, -1222, 4452, 374)        // spiderlike bridge structure
+        Call SetClueXYZ(clue18x, clue18y, clue18z, -3556, -2722, 1710)      // crawlspace
+        Call SetClueXYZ(clue19x, clue19y, clue19z, -1929, -3630, 2286)      // top of prison gate
+        Call SetClueXYZ(clue20x, clue20y, clue20z, 7489, -4730, 204)        // lamp
+        Call SetClueXYZ(clue21x, clue21y, clue21z, 2953, -9948, 103)        // not hidden corner
+        Call SetClueXYZ(clue22x, clue22y, clue22z, -492, -13016, 30)        // not hidden corner2
+        Call SetClueXYZ(clue23x, clue23y, clue23z, 633, -11494, 1990)       // high narrow roof
+        Call SetClueXYZ(clue24x, clue24y, clue24z, -1437, -4699, 3470)      // spotlightshooter above tankhill
+        Call SetClueXYZ(clue25x, clue25y, clue25z, -2512, -9885, 1897)      // top of high pole
+        Call SetClueXYZ(clue26x, clue26y, clue26z, 2866, -3338, 2719)       // tight spot near sly prison
+        Call SetClueXYZ(clue27x, clue27y, clue27z, -1445, -823, 1680)       // in crawlspace under prison entrance
+        Call SetClueXYZ(clue28x, clue28y, clue28z, 6089, 826, 1489)         // one of the corners of contessa house
+        Call SetClueXYZ(clue29x, clue29y, clue29z, 1496, 5637, 1449)        // high corner of train road roof
+        Call SetClueXYZ(clue30x, clue30y, clue30z, -4277, -11922, -260)     // under trampoline near safehouse
+    EI
+    IF mapID =. mapPrague2Ext // Prague 2
+        Call SetClueXYZ(clue01x, clue01y, clue01z, 11177, 1129, 1714)       // above safehouse
+        Call SetClueXYZ(clue02x, clue02y, clue02z, 11536, 5516, 1200)       // behind house next to safehouse
+        Call SetClueXYZ(clue03x, clue03y, clue03z, 8266, 8746, 1529)        // top of roof near stealingvoices
+        Call SetClueXYZ(clue04x, clue04y, clue04z, 6604, -4914, 346)        // place
+        Call SetClueXYZ(clue05x, clue05y, clue05z, 8871, -2353, 1850)       // old bank
+        Call SetClueXYZ(clue06x, clue06y, clue06z, 2072, -3600, 866)        // somecastleroof
+        Call SetClueXYZ(clue07x, clue07y, clue07z, 646, -4205, 2327)        // somecastleroof
+        Call SetClueXYZ(clue08x, clue08y, clue08z, 471, -958, 1722)         // somecastleroof
+        Call SetClueXYZ(clue09x, clue09y, clue09z, -5889, 2205, 4380)       // contessa figt
+        Call SetClueXYZ(clue10x, clue10y, clue10z, 7080, 3659, -709)        // inside barrel
+        Call SetClueXYZ(clue11x, clue11y, clue11z, 13198, 1864, 743)        // very near safehouse
+        Call SetClueXYZ(clue12x, clue12y, clue12z, 11243, -1779, 1805)      // somecastleroof
+        Call SetClueXYZ(clue13x, clue13y, clue13z, -7498, -4136, 1632)      // somecastleroof
+        Call SetClueXYZ(clue14x, clue14y, clue14z, -825, -4908, 6175)       // reeducation tower
+        Call SetClueXYZ(clue15x, clue15y, clue15z, 11192, 675, 722)         // safehouse windowsill
+        Call SetClueXYZ(clue16x, clue16y, clue16z, -99, 5236, 1770)         // somecastleroof
+        Call SetClueXYZ(clue17x, clue17y, clue17z, 2961, -959, 3040)        // very high spot
+        Call SetClueXYZ(clue18x, clue18y, clue18z, -7375, -1964, 869)       // hidden spot below a bridge
+        Call SetClueXYZ(clue19x, clue19y, clue19z, -3400, 6401, 158)        // hidden spot below a bridge
+        Call SetClueXYZ(clue20x, clue20y, clue20z, -604, -672, 76)          // bush near castle door
+        Call SetClueXYZ(clue21x, clue21y, clue21z, -1847, 5090, 873)        // white truck
+        Call SetClueXYZ(clue22x, clue22y, clue22z, 8645, 4206, 466)         // roof near safehouse
+        Call SetClueXYZ(clue23x, clue23y, clue23z, -2114, -4967, 474)       // somecastleroof
+        Call SetClueXYZ(clue24x, clue24y, clue24z, 123, 1347, 2259)         // somecastleroof
+        Call SetClueXYZ(clue25x, clue25y, clue25z, -1578, 2411, 0)          // behind white truck
+        Call SetClueXYZ(clue26x, clue26y, clue26z, -2671, -7649, -96)       // near ghost crypt
+        Call SetClueXYZ(clue27x, clue27y, clue27z, 6140, -613, 1206)        // tank bridge pole
+        Call SetClueXYZ(clue28x, clue28y, clue28z, -5368, 6564, 1927)       // somecastleroof
+        Call SetClueXYZ(clue29x, clue29y, clue29z, 47, -4605, -363)         // corner of spider house
+        Call SetClueXYZ(clue30x, clue30y, clue30z, -3419, -1678, 1848)      // somecastleroof
+    EI
+    IF mapID =. mapCanadaExt // Canada 1
+        Call SetClueXYZ(clue01x, clue01y, clue01z, -7272, 8431, 1841)       // waterfall next to cabin crimes ghj                     
+        Call SetClueXYZ(clue02x, clue02y, clue02z, 8556, 2666, 570)         // inside bush near carm water platform
+        Call SetClueXYZ(clue03x, clue03y, clue03z, -756, -10148, -110)      // inside of barrel next to safehouse                 
+        Call SetClueXYZ(clue04x, clue04y, clue04z, 4451, -6152, -2)         // inside a tree close to water                           
+        Call SetClueXYZ(clue05x, clue05y, clue05z, -862, -11350, 629)       // top of ye old wrf sign above safehouse door            
+        Call SetClueXYZ(clue06x, clue06y, clue06z, 4063, 1725, 723)         // random tree in the center of the map                   
+        Call SetClueXYZ(clue07x, clue07y, clue07z, 1465, 5322, 4650)        // behind top antenna                                     
+        Call SetClueXYZ(clue08x, clue08y, clue08z, -102, -1565, 113)        // under staircase in the center of the map               
+        Call SetClueXYZ(clue09x, clue09y, clue09z, 520, -5115, 1084)        // above op trigger lightpole                             
+        Call SetClueXYZ(clue10x, clue10y, clue10z, -1348, 1461, 1487)       // 'above' bear cave platform thingy                      
+        Call SetClueXYZ(clue11x, clue11y, clue11z, 1745, 9187, 980)         // under train tracks next to instakill ice               
+        Call SetClueXYZ(clue12x, clue12y, clue12z, -9432, -4846, 811)       // under train tracks next to waterfall next to duck cabin
+        Call SetClueXYZ(clue13x, clue13y, clue13z, -2564, -6447, 1024)      // above sawmill sign                                 
+        Call SetClueXYZ(clue14x, clue14y, clue14z, -7494, -4676, 395)       // under train tracks random spot at the edge             
+        Call SetClueXYZ(clue15x, clue15y, clue15z, 2771, 11126, -97)        // on top of instakill ice                                
+        Call SetClueXYZ(clue16x, clue16y, clue16z, -9646, 3508, 1786)       // on a random slope next to train exit, near cabin crimes
+        Call SetClueXYZ(clue17x, clue17y, clue17z, -5542, 7827, 3068)       // next to jean's cabin top of the electric fence         
+        Call SetClueXYZ(clue18x, clue18y, clue18z, -8477, 846, 80)          // in water next to train track exit                      
+        Call SetClueXYZ(clue19x, clue19y, clue19z, 1619, -1212, 275)        // inside tree near 0,0,0         
+        Call SetClueXYZ(clue20x, clue20y, clue20z, 31, 8551, 1518)          // on top of chill bridge, other side of bear cave        
+        Call SetClueXYZ(clue21x, clue21y, clue21z, 683, -11320, 595)        // other corner of safehouse, jump of faith               
+        Call SetClueXYZ(clue22x, clue22y, clue22z, 4119, -7255, 367)        // on top of pipe system thingy idek                      
+        Call SetClueXYZ(clue23x, clue23y, clue23z, -6538, 4122, 1292)       // tree next to cabin crimes trigger                      
+        Call SetClueXYZ(clue24x, clue24y, clue24z, -13603, -4229, 2414)     // top of duck cabin                                  
+        Call SetClueXYZ(clue25x, clue25y, clue25z, -2484, -706, 165)        // sneaky leafbush thingy                                 
+        Call SetClueXYZ(clue26x, clue26y, clue26z, 2015, -3741, -49)        // next to red barrel                                     
+        Call SetClueXYZ(clue27x, clue27y, clue27z, -2609, 1064, 697)        // tight spot under rail on top of bear cave              
+        Call SetClueXYZ(clue28x, clue28y, clue28z, 3719, 5758, 2179)        // top of curving railroad                                
+        Call SetClueXYZ(clue29x, clue29y, clue29z, 10326, 1388, 2208)       // top of murray jail                                     
+        Call SetClueXYZ(clue30x, clue30y, clue30z, -2690, 5026, 2771)       // under railroad above bear cave thingy                  
+    EI
+    IF mapID =. mapCanada2Ext // Canada 2
+        Call SetClueXYZ(clue01x, clue01y, clue01z, 3128, -4530, 519)        // behind safehouse 
+        Call SetClueXYZ(clue02x, clue02y, clue02z, 10866, -369, -835)       // near canadagames slyclimb
+        Call SetClueXYZ(clue03x, clue03y, clue03z, 7398, -1718, -888)       // under canadagames murrayhook
+        Call SetClueXYZ(clue04x, clue04y, clue04z, 4440, -14067, -828)      // near canadagames bentleyegg
+        Call SetClueXYZ(clue05x, clue05y, clue05z, 7290, 2861, 1372)        // high spot accessible from icicles
+        Call SetClueXYZ(clue06x, clue06y, clue06z, -1696, 8190, 825)        // spinning thing into watermill
+        Call SetClueXYZ(clue07x, clue07y, clue07z, -6037, 6338, 121)        // under tree under laserredirect
+        Call SetClueXYZ(clue08x, clue08y, clue08z, -6500, -1158, 185)       // under tree
+        Call SetClueXYZ(clue09x, clue09y, clue09z, 550, 3426, 1819)         // top of a pole
+        Call SetClueXYZ(clue10x, clue10y, clue10z, 1122, 6044, -100)        // under saws
+        Call SetClueXYZ(clue11x, clue11y, clue11z, 6240, 6676, -627)        // under tree near bearcave
+        Call SetClueXYZ(clue12x, clue12y, clue12z, -4579, 7700, 1612)       // inside pipe above laserredirect     
+        Call SetClueXYZ(clue13x, clue13y, clue13z, -9172, 7323, 445)        // bridge near boathack
+        Call SetClueXYZ(clue14x, clue14y, clue14z, -38, 7637, 199)          // behind huge watermill
+        Call SetClueXYZ(clue15x, clue15y, clue15z, -7249, 9928, 588)        // behind big pile of logs and the axe
+        Call SetClueXYZ(clue16x, clue16y, clue16z, -6839, -2511, 270)       // under snow near rcclub
+        Call SetClueXYZ(clue17x, clue17y, clue17z, -9231, -3678, 0)         // behind trees next to battery
+        Call SetClueXYZ(clue18x, clue18y, clue18z, -8262, 8780, 110)        // under tree near big pile of logs
+        Call SetClueXYZ(clue19x, clue19y, clue19z, -1853, 10920, 2097)      // lodged in jean's roof
+        Call SetClueXYZ(clue20x, clue20y, clue20z, 1697, 10297, 1867)       // above log chopping guide
+        Call SetClueXYZ(clue21x, clue21y, clue21z, 4466, 9664, 2385)        // on the icicles
+        Call SetClueXYZ(clue22x, clue22y, clue22z, -14814, -1299, -1051)    // on vedenpinta next to valotalo
+        Call SetClueXYZ(clue23x, clue23y, clue23z, -2893, -4744, 226)       // under tree unique
+        Call SetClueXYZ(clue24x, clue24y, clue24z, -10763, -352, 485)       // on a branch smalls
+        Call SetClueXYZ(clue25x, clue25y, clue25z, 2068, 5251, 734)         // on tree near kuvattavasaha
+        Call SetClueXYZ(clue26x, clue26y, clue26z, -691, 10893, 250)        // on smal watermil
+        Call SetClueXYZ(clue27x, clue27y, clue27z, 4373, -2476, 922)        // treetop near safehouse
+        Call SetClueXYZ(clue28x, clue28y, clue28z, -4379, -3268, 1088)      // tiny hill near rcclub
+        Call SetClueXYZ(clue29x, clue29y, clue29z, 31, 6123, 1480)          // savupeepyu
+        Call SetClueXYZ(clue30x, clue30y, clue30z, 562, -5706, 1005)        // treetop near recon
+    EI
+    IF mapID =. mapBlimpExt // Blimp
+        W32 requiredBottles 10
+        Call SetClueXYZ(clue01x, clue01y, clue01z, 9921, 2416, -366)        // funky place under the blimp
+        Call SetClueXYZ(clue02x, clue02y, clue02z, 11036, 1271, 189)        // thingymajig near safehouse
+        Call SetClueXYZ(clue03x, clue03y, clue03z, 7423, -1, 1140)          // center red flag near safehouse
+        Call SetClueXYZ(clue04x, clue04y, clue04z, -11644, -5324, 3810)     // propeller
+        Call SetClueXYZ(clue05x, clue05y, clue05z, -9060, -1965, 3113)      // left side of megawing
+        Call SetClueXYZ(clue06x, clue06y, clue06z, -2609, -6287, -429)      // behind stairs near murryalarm
+        Call SetClueXYZ(clue07x, clue07y, clue07z, 4348, 348, 775)          // under bridge
+        Call SetClueXYZ(clue08x, clue08y, clue08z, -7418, -220, -874)       // next to tnt dispenser
+        Call SetClueXYZ(clue09x, clue09y, clue09z, 7260, -1, -492)          // inside triplepipe front of safehouse
+        Call SetClueXYZ(clue10x, clue10y, clue10z, -10563, 4013, 608)       // cool halfpipe
+        Call SetClueXYZ(clue11x, clue11y, clue11z, nan, nan, nan) // lets hope this doesnt glitch the game
+        Call SetClueXYZ(clue12x, clue12y, clue12z, nan, nan, nan)
+        Call SetClueXYZ(clue13x, clue13y, clue13z, nan, nan, nan)
+        Call SetClueXYZ(clue14x, clue14y, clue14z, nan, nan, nan)
+        Call SetClueXYZ(clue15x, clue15y, clue15z, nan, nan, nan)
+        Call SetClueXYZ(clue16x, clue16y, clue16z, nan, nan, nan)
+        Call SetClueXYZ(clue17x, clue17y, clue17z, nan, nan, nan)
+        Call SetClueXYZ(clue18x, clue18y, clue18z, nan, nan, nan)
+        Call SetClueXYZ(clue19x, clue19y, clue19z, nan, nan, nan)
+        Call SetClueXYZ(clue20x, clue20y, clue20z, nan, nan, nan)
+        Call SetClueXYZ(clue21x, clue21y, clue21z, nan, nan, nan)
+        Call SetClueXYZ(clue22x, clue22y, clue22z, nan, nan, nan)
+        Call SetClueXYZ(clue23x, clue23y, clue23z, nan, nan, nan)
+        Call SetClueXYZ(clue24x, clue24y, clue24z, nan, nan, nan)
+        Call SetClueXYZ(clue25x, clue25y, clue25z, nan, nan, nan)
+        Call SetClueXYZ(clue26x, clue26y, clue26z, nan, nan, nan)
+        Call SetClueXYZ(clue27x, clue27y, clue27z, nan, nan, nan)
+        Call SetClueXYZ(clue28x, clue28y, clue28z, nan, nan, nan)
+        Call SetClueXYZ(clue29x, clue29y, clue29z, nan, nan, nan)
+        Call SetClueXYZ(clue30x, clue30y, clue30z, nan, nan, nan)
+    EI
+EI
