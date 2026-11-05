@@ -1,0 +1,66 @@
+SR "[Guard Infighting] \n"
+SR "comment=Guards fight with each other instead of the player\n"
+SR "author=zami3333\n"
+
+Set npcSwarmer 3E0774       // pal: 3E7F74
+Set npcFlashlight 3E0780    // pal: 3E7F80
+Set npcBear 3E07E0          // pal: 3E7FE0
+Set nextSame 0x20
+Set rageFlag 0x394
+Set rageValue 0x398
+W32 20893C 0 // dont write rageblind
+Set rageBlind 0x3A8
+W32 153F60 0 // dont fill enemies list
+Set guardEnemyList 0x1110 // list of enemies for that guard
+
+// Swarmers
+    WP32 npcSwarmer,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,rageFlag 1
+    WP32 npcSwarmer,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,rageValue 0x38
+    WP32 npcSwarmer,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,rageFlag 1
+    WP32 npcSwarmer,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,rageValue 0x38
+    WP32 npcSwarmer,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,rageFlag 1
+    WP32 npcSwarmer,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,rageValue 0x38
+    WP32 npcSwarmer,nextSame,nextSame,nextSame,nextSame,nextSame,rageFlag 1
+    WP32 npcSwarmer,nextSame,nextSame,nextSame,nextSame,nextSame,rageValue 0x38
+    WP32 npcSwarmer,nextSame,nextSame,nextSame,nextSame,rageFlag 1
+    WP32 npcSwarmer,nextSame,nextSame,nextSame,nextSame,rageValue 0x38
+    WP32 npcSwarmer,nextSame,nextSame,nextSame,rageFlag 1
+    WP32 npcSwarmer,nextSame,nextSame,nextSame,rageValue 0x38
+    WP32 npcSwarmer,nextSame,nextSame,rageFlag 1
+    WP32 npcSwarmer,nextSame,nextSame,rageValue 0x38
+    WP32 npcSwarmer,nextSame,rageFlag 1
+    WP32 npcSwarmer,nextSame,rageValue 0x38
+    WP32 npcSwarmer,rageFlag 1
+    WP32 npcSwarmer,rageValue 0x38
+    
+// Flashlight
+    WP32 npcFlashlight,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,rageFlag 1
+    WP32 npcFlashlight,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,rageValue 0x38
+    WP32 npcFlashlight,nextSame,nextSame,nextSame,nextSame,nextSame,rageFlag 1
+    WP32 npcFlashlight,nextSame,nextSame,nextSame,nextSame,nextSame,rageValue 0x38
+    WP32 npcFlashlight,nextSame,nextSame,nextSame,nextSame,rageFlag 1
+    WP32 npcFlashlight,nextSame,nextSame,nextSame,nextSame,rageValue 0x38
+    WP32 npcFlashlight,nextSame,nextSame,nextSame,rageFlag 1
+    WP32 npcFlashlight,nextSame,nextSame,nextSame,rageValue 0x38
+    WP32 npcFlashlight,nextSame,nextSame,rageFlag 1
+    WP32 npcFlashlight,nextSame,nextSame,rageValue 0x38
+    WP32 npcFlashlight,nextSame,rageFlag 1
+    WP32 npcFlashlight,nextSame,rageValue 0x38
+    WP32 npcFlashlight,rageFlag 1
+    WP32 npcFlashlight,rageValue 0x38
+
+// Bear
+    WP32 npcBear,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,rageFlag 1
+    WP32 npcBear,nextSame,nextSame,nextSame,nextSame,nextSame,nextSame,rageValue 0x38
+    WP32 npcBear,nextSame,nextSame,nextSame,nextSame,nextSame,rageFlag 1
+    WP32 npcBear,nextSame,nextSame,nextSame,nextSame,nextSame,rageValue 0x38
+    WP32 npcBear,nextSame,nextSame,nextSame,nextSame,rageFlag 1
+    WP32 npcBear,nextSame,nextSame,nextSame,nextSame,rageValue 0x38
+    WP32 npcBear,nextSame,nextSame,nextSame,rageFlag 1
+    WP32 npcBear,nextSame,nextSame,nextSame,rageValue 0x38
+    WP32 npcBear,nextSame,nextSame,rageFlag 1
+    WP32 npcBear,nextSame,nextSame,rageValue 0x38
+    WP32 npcBear,nextSame,rageFlag 1
+    WP32 npcBear,nextSame,rageValue 0x38
+    WP32 npcBear,rageFlag 1
+    WP32 npcBear,rageValue 0x38
